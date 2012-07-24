@@ -1,0 +1,19 @@
+#!/bin/sh
+
+VERSION=$(cat VERSION)
+DEST_DIR=generated/$VERSION
+HOST=server2.hauptmedia.de
+
+if [ ! -d $DEST_DIR ]; then
+	echo Destination dir $DEST_DIR does not exists! Was the build already created?
+	exit 0 
+fi
+
+echo Deploying version $VERSION on host $HOST
+rsync -avzC --delete $DEST_DIR root@$HOST:/opt/spellEngine
+
+#echo Syncing user...
+#rsync -avz alpha-test-users generate_vhosts vhost_template root@$HOST:/root
+
+#echo Recreating vhosts and restarting apache...
+#ssh root@$HOST cd /root && ./generate_vhosts
