@@ -1,0 +1,9 @@
+[submodule "modules/spellCore"]
+	path = modules/spellCore
+	url = git@git.spielmeister.com:spellCore.git
+[submodule "modules/spellFlash"]
+	path = modules/spellFlash
+	url = git@git.spielmeister.com:spellFlash.git
+[submodule "modules/spellEd"]
+	path = modules/spellEd
+	url = git@git.spielmeister.com:spellEd.git
