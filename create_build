@@ -1,0 +1,38 @@
+#!/bin/sh
+
+VERSION=$(cat VERSION)
+CUR_DIR=$(pwd)
+DEST_DIR=generated/$VERSION
+
+echo Buidling version $VERSION
+
+echo Preparing deploy directory $DEST_DIR...
+if [ -d $DEST_DIR ]; then
+	echo Destination dir $DEST_DIR already exists, aborting!
+	exit 0 
+fi
+
+mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore $DEST_DIR/spellEd $DEST_DIR/projects
+
+echo Copying base repos to generated directory...
+cp -aR modules/spellCore/* $DEST_DIR/spellCore
+cp -aR modules/spellEd/* $DEST_DIR/spellEd
+
+echo Copying reference projects to generated directory...
+cp -aR projects/* $DEST_DIR/projects
+
+echo Building SpellCore...
+cd $DEST_DIR/spellCore
+make
+cd $CUR_DIR
+
+echo Generating documentation...
+cd $DEST_DIR/spellCore
+make docs
+cd $CUR_DIR
+cp -aR $DEST_DIR/spellCore/docs/generated/* $DEST_DIR/docs
+
+echo Stripping down export...
+rm -Rf $DEST_DIR/spellCore/docs
+
+
