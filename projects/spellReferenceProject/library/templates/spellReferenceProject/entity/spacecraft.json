@@ -1,0 +1,50 @@
+{
+	"type" : "entityTemplate",
+	"namespace" : "spellReferenceProject.entity",
+	"name" : "spacecraft",
+	"components" : [
+		{
+			"templateId" : "spell.component.2d.transform",
+			"config" : {
+				"scale" : [ 4, 4 ]
+			}
+		},
+		{
+			"templateId" : "spell.component.visualObject"
+		},
+		{
+			"templateId" : "spell.component.2d.graphics.appearance",
+			"config" : {
+				"assetId" : "appearance:spellReferenceProject.pixelShip1"
+			}
+		},
+		{
+			"templateId" : "spell.component.actor",
+			"config" : {
+				"actions" : {
+					"accelerate" : {
+						"executing" : false
+					},
+					"steerLeft" : {
+						"executing" : false
+					},
+					"steerRight" : {
+						"executing" : false
+					}
+				}
+			}
+		},
+		{
+			"templateId" : "spellReferenceProject.component.spacecraft"
+		},
+		{
+			"templateId" : "spell.component.2d.physics.inertialObject"
+		},
+		{
+			"templateId" : "spell.component.physics.collisionSphere",
+			"config" : {
+				"radius" : 16
+			}
+		}
+	]
+}

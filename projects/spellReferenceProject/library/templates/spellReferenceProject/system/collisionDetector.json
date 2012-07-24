@@ -1,0 +1,21 @@
+{
+	"type" : "systemTemplate",
+	"namespace" : "spellReferenceProject.system",
+	"name" : "collisionDetector",
+
+	"input" : [
+		{
+			"name" : "transforms",
+			"templateId" : "spell.component.2d.transform"
+		},
+		{
+			"name" : "inertialObjects",
+			"templateId" : "spell.component.2d.physics.inertialObject"
+		},
+		{
+			"name" : "collisionSpheres",
+			"templateId" : "spell.component.physics.collisionSphere"
+		}
+	],
+	"scriptId" : "spellReferenceProject/system/collisionDetector"
+}

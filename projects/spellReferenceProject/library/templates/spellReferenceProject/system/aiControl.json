@@ -1,0 +1,17 @@
+{
+	"type" : "systemTemplate",
+	"namespace" : "spellReferenceProject.system",
+	"name" : "aiControl",
+
+	"input" : [
+		{
+			"name" : "actors",
+			"templateId" : "spell.component.actor"
+		},
+		{
+			"name" : "transforms",
+			"templateId" : "spell.component.2d.transform"
+		}
+	],
+	"scriptId" : "spellReferenceProject/system/aiControl"
+}

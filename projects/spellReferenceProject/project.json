@@ -1,0 +1,411 @@
+{
+	"name": "spellReferenceProject",
+	"startScene": "Game",
+	"scenes": [
+		{
+			"name": "Game",
+			"scriptId": "spell/scene/default",
+			"systems": {
+				"update": [],
+				"render": [
+					"spell.system.keyInput",
+					"spellReferenceProject.system.aiControl",
+					"spellReferenceProject.system.spacecraftIntegrator",
+					"spellReferenceProject.system.collisionDetector",
+					"spellReferenceProject.system.endlessPlayingField",
+					"spell.system.render"
+				]
+			},
+			"entities": [
+				{
+					"name": "spacecraft1",
+					"templateId": "spellReferenceProject.entity.spacecraft",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									128,
+									128
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.appearance",
+							"config": {
+								"assetId": "appearance:spellReferenceProject.pixelShip2"
+							}
+						},
+						{
+							"templateId": "spell.component.actor",
+							"config": {
+								"id": "aiControlled"
+							}
+						},
+						{
+							"templateId": "spellReferenceProject.component.spacecraft",
+							"config": {
+								"thrusterForce": 300
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 3
+							}
+						},
+						{
+							"templateId": "spell.component.visualObject",
+							"config": {
+								"opacity": 1
+							}
+						},
+						{
+							"templateId": "spell.component.physics.collisionSphere",
+							"config": {
+								"radius": 35
+							}
+						}
+					],
+					"children": [
+						{
+							"name": "shield",
+							"components": [
+								{
+									"templateId": "spell.component.2d.transform",
+									"config": {
+										"translation": [
+											0,
+											-0.025
+										],
+										"scale": [
+											0.02,
+											0.02
+										]
+									}
+								},
+								{
+									"templateId": "spell.component.visualObject",
+									"config": {
+										"opacity": 0.33
+									}
+								},
+								{
+									"templateId": "spell.component.2d.graphics.appearance",
+									"config": {
+										"assetId": "appearance:spellReferenceProject.shield"
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "spacecraft2",
+					"templateId": "spellReferenceProject.entity.spacecraft",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									400,
+									250
+								],
+								"rotation": 0.2
+							}
+						},
+						{
+							"templateId": "spell.component.actor",
+							"config": {
+								"id": "playerControlled"
+							}
+						},
+						{
+							"templateId": "spellReferenceProject.component.spacecraft",
+							"config": {
+								"thrusterForce": 175
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 1,
+								"velocity": [
+									10,
+									2
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "alienSpacecraft1",
+					"templateId": "spellReferenceProject.entity.alienSpacecraft",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									700,
+									100
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"velocity": [
+									-10,
+									40
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "asteroid1",
+					"templateId": "spellReferenceProject.entity.asteroid",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									600,
+									500
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 100,
+								"velocity": [
+									-4,
+									-2
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "asteroid2",
+					"templateId": "spellReferenceProject.entity.asteroid",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									725,
+									650
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.appearance",
+							"config": {
+								"assetId": "appearance:spellReferenceProject.asteroid2"
+							}
+						},
+						{
+							"templateId": "spell.component.physics.collisionSphere",
+							"config": {
+								"radius": 13
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 12,
+								"velocity": [
+									6,
+									3
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "asteroid3",
+					"templateId": "spellReferenceProject.entity.asteroid",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									300,
+									700
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.appearance",
+							"config": {
+								"assetId": "appearance:spellReferenceProject.asteroid2"
+							}
+						},
+						{
+							"templateId": "spell.component.physics.collisionSphere",
+							"config": {
+								"radius": 13
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 12,
+								"velocity": [
+									2,
+									-8
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "asteroid4",
+					"templateId": "spellReferenceProject.entity.asteroid",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									250,
+									350
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.appearance",
+							"config": {
+								"assetId": "appearance:spellReferenceProject.asteroid2"
+							}
+						},
+						{
+							"templateId": "spell.component.physics.collisionSphere",
+							"config": {
+								"radius": 13
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 12,
+								"velocity": [
+									-10,
+									-3
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "asteroid5",
+					"templateId": "spellReferenceProject.entity.asteroid",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									25,
+									75
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.appearance",
+							"config": {
+								"assetId": "appearance:spellReferenceProject.asteroid2"
+							}
+						},
+						{
+							"templateId": "spell.component.physics.collisionSphere",
+							"config": {
+								"radius": 13
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 12,
+								"velocity": [
+									-5,
+									-2
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "camera",
+					"templateId": "spell.entity.2d.graphics.camera",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									512,
+									384
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.camera",
+							"config": {
+								"width": 1024,
+								"height": 768,
+								"active": true
+							}
+						}
+					]
+				},
+				{
+					"name": "player key input to actor/action mapping",
+					"templateId": "spell.entity.inputDefinition",
+					"components": [
+						{
+							"templateId": "spell.component.inputDefinition",
+							"config": {
+								"actorId": "playerControlled",
+								"keyToAction": {
+									"space": "accelerate",
+									"left arrow": "steerLeft",
+									"right arrow": "steerRight"
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "spelljs logo",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"translation": [
+									950,
+									25
+								],
+								"scale": [
+									0.75,
+									0.75
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.visualObject",
+							"config": {
+								"layer": 2
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.appearance",
+							"config": {
+								"assetId": "appearance:spellReferenceProject.spelljsLogo"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"type" : "spriteSheet",
+	"namespace" : "spellReferenceProject",
+	"name" : "threeRingsSpriteSheet",
+	"doc" : "",
+	"file": "spellReferenceProject/threerings.png",
+	"config" : {
+		"textureWidth" : 450,
+		"textureHeight" : 600,
+		"frameWidth" : 75,
+		"frameHeight" : 75
+	}
+}

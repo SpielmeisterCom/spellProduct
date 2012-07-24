@@ -1,0 +1,31 @@
+{
+	"type" : "entityTemplate",
+	"namespace" : "spellReferenceProject.entity",
+	"name" : "alienSpacecraft",
+	"components" : [
+		{
+			"templateId" : "spell.component.2d.transform"
+		},
+		{
+			"templateId" : "spell.component.visualObject"
+		},
+		{
+			"templateId" : "spell.component.2d.graphics.animatedAppearance",
+			"config" : {
+				"assetId" : "animation:spellReferenceProject.threeRings.twirling"
+			}
+		},
+		{
+			"templateId" : "spell.component.2d.physics.inertialObject",
+			"config" : {
+				"mass" : 150
+			}
+		},
+		{
+			"templateId" : "spell.component.physics.collisionSphere",
+			"config" : {
+				"radius" : 30
+			}
+		}
+	]
+}
