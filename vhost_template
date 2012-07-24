@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+        ServerAdmin info@spielmeister.com
+	ServerName %VHOST%.spelljs.com
+
+	DocumentRoot /var/www
+
+	ProxyRequests Off
+	ProxyPreserveHost On
+	ProxyPass / http://127.0.0.1:%PORT%/
+	ProxyPassReverse / http://127.0.0.1:%PORT%/
+
+	<Proxy *>
+		AddDefaultCharset off
+		Order deny,allow
+		Allow from all
+	</Proxy>
+
+	<Directory proxy:*>
+		Order deny,allow
+		Allow from all
+	</Directory>
+
+</VirtualHost>
+

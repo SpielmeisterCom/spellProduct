@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+use strict;
+
+my $p = 3000;
+open(FILE, "<alpha-test-users") || die $!;
+while (<FILE>) {
+	chomp; next unless $_;
+	@_ = split /\s/;
+	push @_, ++$p;
+	&start_server
+}
+
+sub start_server {
+	my ($vhost, $user, $pass, $email, $port_number) = @_;
+
+}
+

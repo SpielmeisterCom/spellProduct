@@ -12,8 +12,11 @@ fi
 echo Deploying version $VERSION on host $HOST
 rsync -avzC --delete $DEST_DIR root@$HOST:/opt/spellEngine
 
-#echo Syncing user...
-#rsync -avz alpha-test-users generate_vhosts vhost_template root@$HOST:/root
+echo Symlinking "latest" to version $VERSION
+ssh root@$HOST ln -sf /opt/spellEngine/$VERSION /opt/spellEngine/latest
 
-#echo Recreating vhosts and restarting apache...
-#ssh root@$HOST cd /root && ./generate_vhosts
+echo Syncing user and tools...
+rsync -vz alpha-test-users generate_vhosts_and_users vhost_template root@$HOST:/root
+
+echo Recreating vhosts and restarting apache...
+ssh root@$HOST "cd /root && ./generate_vhosts_and_users"

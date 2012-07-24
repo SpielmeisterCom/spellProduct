@@ -1,0 +1,49 @@
+#!/usr/bin/perl
+
+use strict;
+
+&purge_current_apache_config();
+&create_config();
+&restart_apache();
+
+sub create_config {
+	my $p = 3000;
+	open(FILE, "<alpha-test-users") || die $!;
+	while (<FILE>) {
+		chomp; next unless $_;
+		my @params = split /\s/;
+		push @params, ++$p;
+		&create_apache_vhost(@params);
+		&create_user(@params);
+	}
+}
+
+sub purge_current_apache_config {
+
+}
+
+sub restart_apache {
+	system("apache2ctl restart");
+}
+
+sub create_user {
+	my ($vhost, $user, $pass, $email, $port_number) = @_;
+
+	my $dest_dir = "/home/" . $vhost;
+
+	if (! -d $dest_dir) {
+		print "Directory " . $dest_dir . " doesn't exists! Creating it and copy reference projects to it...\n";
+
+		system("mkdir " . $dest_dir);
+		system("cp -R /opt/spellEngine/latest/projects/* " . $dest_dir);
+		system("chmod -R 777 " . $dest_dir);
+	}
+
+}
+
+sub create_apache_vhost {
+	my ($vhost, $user, $pass, $email, $port_number) = @_;
+
+	printf("Creating vhost %s (%s/%s) for %s Port: %s\n", $vhost, $user, $pass, $email, $port_number);
+}
+

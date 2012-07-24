@@ -4,13 +4,14 @@ VERSION=$(cat VERSION)
 CUR_DIR=$(pwd)
 DEST_DIR=generated/$VERSION
 
-echo Buidling version $VERSION
+echo Building version $VERSION
 
-echo Preparing deploy directory $DEST_DIR...
 if [ -d $DEST_DIR ]; then
 	echo Destination dir $DEST_DIR already exists, aborting!
 	exit 0 
 fi
+
+echo Preparing deploy directory $DEST_DIR...
 
 mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore $DEST_DIR/spellEd $DEST_DIR/projects
 
@@ -33,6 +34,5 @@ cd $CUR_DIR
 cp -aR $DEST_DIR/spellCore/docs/generated/* $DEST_DIR/docs
 
 echo Stripping down export...
-rm -Rf $DEST_DIR/spellCore/docs
-
+rm -Rf $DEST_DIR/spellCore/docs $DEST_DIR/spellCore/misc
 
