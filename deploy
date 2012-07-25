@@ -16,7 +16,7 @@ echo Symlinking "latest" to version $VERSION
 ssh root@$HOST ln -sf /opt/spellEngine/$VERSION /opt/spellEngine/latest
 
 echo Syncing user and tools...
-rsync -vz alpha-test-users generate_vhosts_and_users vhost_template start_servers root@$HOST:/root
+rsync -vz live-server/* root@$HOST:/root
 
 echo Recreating vhosts and restarting apache...
 ssh root@$HOST "cd /root && ./generate_vhosts_and_users"
