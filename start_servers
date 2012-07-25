@@ -2,6 +2,8 @@
 
 use strict;
 
+&kill_server();
+
 my $p = 3000;
 open(FILE, "<alpha-test-users") || die $!;
 while (<FILE>) {
@@ -11,8 +13,17 @@ while (<FILE>) {
 	&start_server
 }
 
+sub kill_server {
+	system("killall -9 node");
+}
+
 sub start_server {
 	my ($vhost, $user, $pass, $email, $port_number) = @_;
 
+	#start spelled server
+	system("cd /opt/spellEngine/latest/spellEd && ./server start-server -p " . $port_number . " -b ". $port_number ."0 -r ../../../../home/". $vhost ." 2>&1 >/dev/null &");
+
+	#start build server
+	system("cd /opt/spellEngine/latest/spellCore && ./sappre start-server -p " . $port_number . "0 -r ../../../../home/". $vhost ." 2>&1 >/dev/null &");
 }
 
