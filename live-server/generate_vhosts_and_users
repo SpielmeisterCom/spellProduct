@@ -19,7 +19,7 @@ sub create_config {
 }
 
 sub purge_current_apache_config {
-
+	system("rm /etc/apache2/sites-enabled/generated_*");
 }
 
 sub restart_apache {
@@ -42,8 +42,22 @@ sub create_user {
 }
 
 sub create_apache_vhost {
-	my ($vhost, $user, $pass, $email, $port_number) = @_;
+	my ($vhost, $user, $pass, $email, $port) = @_;
 
-	printf("Creating vhost %s (%s/%s) for %s Port: %s\n", $vhost, $user, $pass, $email, $port_number);
+	printf("Creating vhost %s (%s/%s) for %s Port: %s\n", $vhost, $user, $pass, $email, $port);
+
+
+	open (FILE2, "<vhost_template") || die $!;
+	local $/=undef;
+	my $file = <FILE2>;
+	$/='\n';
+	close(FILE2);
+
+	$file =~ s/%VHOST%/$vhost/g;
+	$file =~ s/%PORT%/$port/g;
+
+	open(FILE3, ">/etc/apache2/sites-enabled/generated_".$vhost) || die $!;
+	print FILE3 $file;
+	close(FILE3);
 }
 
