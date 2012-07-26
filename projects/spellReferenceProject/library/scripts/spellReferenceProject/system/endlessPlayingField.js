@@ -14,7 +14,7 @@ define(
 		 */
 
 		var playingFieldSize    = [ 1024, 768 ],
-			border              = 25,
+			border              = 100,
 			wrapOffset          = 75,
 			rightBorder         = playingFieldSize[ 0 ] + border,
 			leftBorder          = 0 - border,
