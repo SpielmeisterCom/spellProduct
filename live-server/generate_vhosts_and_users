@@ -27,7 +27,8 @@ sub restart_apache {
 }
 
 sub create_user {
-	my ($vhost, $user, $pass, $email, $port_number) = @_;
+	my ($vhost, $user, $pass, $email, $port) = @_;
+
 
 	my $dest_dir = "/home/" . $vhost;
 
@@ -44,8 +45,12 @@ sub create_user {
 sub create_apache_vhost {
 	my ($vhost, $user, $pass, $email, $port) = @_;
 
-	printf("Creating vhost %s (%s/%s) for %s Port: %s\n", $vhost, $user, $pass, $email, $port);
-
+	open (VERSION, "<VERSION") || die $!;
+	my $VERSION = <VERSION>;
+	chomp($VERSION);
+	close(VERSION);
+	
+	printf("Creating vhost %s (%s/%s) for %s Port: %s Version: %s\n", $vhost, $user, $pass, $email, $port, $VERSION);
 
 	open (FILE2, "<vhost_template") || die $!;
 	local $/=undef;
@@ -55,6 +60,7 @@ sub create_apache_vhost {
 
 	$file =~ s/%VHOST%/$vhost/g;
 	$file =~ s/%PORT%/$port/g;
+	$file =~ s/%VERSION%/$VERSION/g;
 
 	open(FILE3, ">/etc/apache2/sites-enabled/generated_".$vhost) || die $!;
 	print FILE3 $file;

@@ -2,10 +2,14 @@
         ServerAdmin info@spielmeister.com
 	ServerName %VHOST%.spelljs.com
 
-	DocumentRoot /var/www
+	RewriteEngine on
+	RewriteRule ^/$ http://%{HTTP_HOST}/%VERSION% [L,R=301]
+	Alias /%VERSION% /opt/spellEngine/%VERSION%/spellEd/public
 
 	ProxyRequests Off
 	ProxyPreserveHost On
+
+	ProxyPass /%VERSION% !
 	ProxyPass / http://127.0.0.1:%PORT%/
 	ProxyPassReverse / http://127.0.0.1:%PORT%/
 

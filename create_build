@@ -13,16 +13,23 @@ fi
 
 echo Preparing deploy directory $DEST_DIR...
 
-mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore $DEST_DIR/spellEd $DEST_DIR/projects
-
-echo Copying base repos to generated directory...
-cp -aR modules/spellCore/* $DEST_DIR/spellCore
-cp -aR modules/spellEd/* $DEST_DIR/spellEd
+mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore $DEST_DIR/projects
 
 echo Copying reference projects to generated directory...
 cp -aR projects/* $DEST_DIR/projects
 
+echo Building SpellEd...
+cd modules/spellEd
+make
+cd $CUR_DIR
+mkdir $DEST_DIR/spellEd
+mkdir $DEST_DIR/spellEd/public
+cp -aR modules/spellEd/build/output/* $DEST_DIR/spellEd/public
+cp -aR modules/spellEd/src modules/spellEd/node_modules modules/spellEd/server $DEST_DIR/spellEd
+
+
 echo Building SpellCore...
+cp -aR modules/spellCore/* $DEST_DIR/spellCore
 cd $DEST_DIR/spellCore
 make
 cd $CUR_DIR
