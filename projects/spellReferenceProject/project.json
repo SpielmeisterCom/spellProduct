@@ -157,7 +157,8 @@
 								"velocity": [
 									-10,
 									40
-								]
+								],
+								"mass": 5
 							}
 						}
 					]
@@ -402,6 +403,100 @@
 							"config": {
 								"assetId": "appearance:spellReferenceProject.spelljsLogo"
 							}
+						}
+					]
+				},
+				{
+					"name": "alienSpacecraft2",
+					"templateId": "spellReferenceProject.entity.alienSpacecraft",
+					"components": [
+						{
+							"templateId": "spell.component.2d.transform",
+							"config": {
+								"scale": [
+									2,
+									2
+								],
+								"translation": [
+									70,
+									400
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.2d.graphics.animatedAppearance",
+							"config": {
+								"assetId": "animation:spellReferenceProject.threeRings.twirling",
+								"offset": 500,
+								"replaySpeed": 0.75
+							}
+						},
+						{
+							"templateId": "spell.component.2d.physics.inertialObject",
+							"config": {
+								"mass": 10,
+								"velocity": [
+									-1,
+									10
+								]
+							}
+						},
+						{
+							"templateId": "spell.component.physics.collisionSphere",
+							"config": {
+								"radius": 90
+							}
+						},
+						{
+							"templateId": "spell.component.actor",
+							"config": {
+								"id": "aiControlled",
+								"actions": {
+									"accelerate": {
+										"executing": false
+									},
+									"steerLeft": {
+										"executing": false
+									},
+									"steerRight": {
+										"executing": false
+									}
+								}
+							}
+						},
+						{
+							"templateId": "spellReferenceProject.component.spacecraft",
+							"config": {
+								"thrusterForce": 300
+							}
+						}
+					],
+					"children": [
+						{
+							"name": "shield",
+							"components": [
+								{
+									"templateId": "spell.component.2d.graphics.appearance",
+									"config": {
+										"assetId": "appearance:spellReferenceProject.shield"
+									}
+								},
+								{
+									"templateId": "spell.component.2d.transform",
+									"config": {
+										"scale": [
+											0.015,
+											0.015
+										]
+									}
+								},
+								{
+									"templateId": "spell.component.visualObject",
+									"config": {
+										"opacity": 0.33
+									}
+								}
+							]
 						}
 					]
 				}

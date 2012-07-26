@@ -1,3 +1,5 @@
-generated
-projects/spellReferenceProject/output
-projects/spellReferenceProject/build
+/.idea
+/generated
+/atlassian-ide-plugin.xml
+/projects/spellReferenceProject/output
+/projects/spellReferenceProject/build
