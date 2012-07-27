@@ -1,0 +1,3 @@
+#!/bin/sh
+cd modules/spellEd
+./server start-server -r ../../projects

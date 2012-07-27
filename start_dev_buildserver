@@ -1,0 +1,3 @@
+#!/bin/sh
+cd modules/spellCore
+./sappre start-server -r ../../projects
