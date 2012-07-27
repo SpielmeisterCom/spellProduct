@@ -7,8 +7,8 @@ DEST_DIR=generated/$VERSION
 echo Building version $VERSION
 
 if [ -d $DEST_DIR ]; then
-	echo Destination dir $DEST_DIR already exists, aborting!
-	exit 0 
+	echo Destination dir $DEST_DIR already exists, purging directory!
+	rm -Rf $DEST_DIR
 fi
 
 echo Preparing deploy directory $DEST_DIR...
