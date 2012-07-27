@@ -20,6 +20,23 @@ cp -aR projects/* $DEST_DIR/projects
 
 echo Building SpellEd...
 cd modules/spellEd
+
+#create app-configuration.js
+
+cat >public/app-configuration.js <<EOF
+//Provide a configuration for the SpellEd Editor
+//CAUTION: This file will be overridden by the build process!
+//see spellEngine/deploy script
+
+Ext.ns("Ext.app");
+
+Ext.app.CONFIGURATION = {
+        "version" : "$VERSION",
+        "name" : "SpellEd",
+        "documentationServerURL": "http://docs.spelljs.com/$VERSION/"
+};
+EOF
+
 make
 cd $CUR_DIR
 mkdir $DEST_DIR/spellEd
