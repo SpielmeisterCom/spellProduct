@@ -2,6 +2,9 @@
         ServerAdmin info@spielmeister.com
 	ServerName %VHOST%.spelljs.com
 
+	Header merge Cache-Control no-cache
+	Header merge Cache-Control no-store
+
 	RewriteEngine on
 	RewriteRule ^/$ http://%{HTTP_HOST}/%VERSION% [L,R=301]
 	Alias /%VERSION% /opt/spellEngine/%VERSION%/spellEd/public

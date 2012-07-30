@@ -2,7 +2,7 @@
 
 VERSION=$(cat VERSION)
 DEST_DIR=generated/$VERSION
-HOST=server2.hauptmedia.de
+HOST=spelled.spielmeister.com
 
 if [ ! -d $DEST_DIR ]; then
 	echo Destination dir $DEST_DIR does not exists! Was the build already created?
