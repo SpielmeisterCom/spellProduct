@@ -1,31 +1,22 @@
 {
-	"type" : "entityTemplate",
-	"namespace" : "spellReferenceProject.entity",
-	"name" : "asteroid",
-	"components" : [
-		{
-			"templateId" : "spell.component.2d.transform",
-			"config" : {
-				"scale" : [ 4, 4 ]
-			}
+	"name": "asteroid",
+	"namespace": "spellReferenceProject.entity",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.transform": {
+			"scale": [
+				4,
+				4
+			]
 		},
-		{
-			"templateId" : "spell.component.visualObject"
+		"spell.component.visualObject": {},
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:spellReferenceProject.asteroid1"
 		},
-		{
-			"templateId" : "spell.component.2d.graphics.appearance",
-			"config" : {
-				"assetId" : "appearance:spellReferenceProject.asteroid1"
-			}
-		},
-		{
-			"templateId" : "spell.component.2d.physics.inertialObject"
-		},
-		{
-			"templateId" : "spell.component.physics.collisionSphere",
-			"config" : {
-				"radius" : 30
-			}
+		"spell.component.2d.physics.inertialObject": {},
+		"spell.component.physics.collisionSphere": {
+			"radius": 30
 		}
-	]
+	},
+	"children": []
 }

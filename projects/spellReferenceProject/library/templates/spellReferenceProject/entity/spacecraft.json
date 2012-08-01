@@ -1,50 +1,36 @@
 {
-	"type" : "entityTemplate",
-	"namespace" : "spellReferenceProject.entity",
-	"name" : "spacecraft",
-	"components" : [
-		{
-			"templateId" : "spell.component.2d.transform",
-			"config" : {
-				"scale" : [ 4, 4 ]
-			}
+	"name": "spacecraft",
+	"namespace": "spellReferenceProject.entity",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.transform": {
+			"scale": [
+				4,
+				4
+			]
 		},
-		{
-			"templateId" : "spell.component.visualObject"
+		"spell.component.visualObject": {},
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:spellReferenceProject.pixelShip1"
 		},
-		{
-			"templateId" : "spell.component.2d.graphics.appearance",
-			"config" : {
-				"assetId" : "appearance:spellReferenceProject.pixelShip1"
-			}
-		},
-		{
-			"templateId" : "spell.component.actor",
-			"config" : {
-				"actions" : {
-					"accelerate" : {
-						"executing" : false
-					},
-					"steerLeft" : {
-						"executing" : false
-					},
-					"steerRight" : {
-						"executing" : false
-					}
+		"spell.component.actor": {
+			"actions": {
+				"accelerate": {
+					"executing": false
+				},
+				"steerLeft": {
+					"executing": false
+				},
+				"steerRight": {
+					"executing": false
 				}
 			}
 		},
-		{
-			"templateId" : "spellReferenceProject.component.spacecraft"
-		},
-		{
-			"templateId" : "spell.component.2d.physics.inertialObject"
-		},
-		{
-			"templateId" : "spell.component.physics.collisionSphere",
-			"config" : {
-				"radius" : 16
-			}
+		"spellReferenceProject.component.spacecraft": {},
+		"spell.component.2d.physics.inertialObject": {},
+		"spell.component.physics.collisionSphere": {
+			"radius": 16
 		}
-	]
+	},
+	"children": []
 }

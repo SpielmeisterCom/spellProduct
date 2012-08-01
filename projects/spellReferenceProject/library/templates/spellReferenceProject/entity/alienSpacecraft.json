@@ -1,31 +1,19 @@
 {
-	"type" : "entityTemplate",
-	"namespace" : "spellReferenceProject.entity",
-	"name" : "alienSpacecraft",
-	"components" : [
-		{
-			"templateId" : "spell.component.2d.transform"
+	"name": "alienSpacecraft",
+	"namespace": "spellReferenceProject.entity",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {},
+		"spell.component.2d.graphics.animatedAppearance": {
+			"assetId": "animation:spellReferenceProject.threeRings.twirling"
 		},
-		{
-			"templateId" : "spell.component.visualObject"
+		"spell.component.2d.physics.inertialObject": {
+			"mass": 150
 		},
-		{
-			"templateId" : "spell.component.2d.graphics.animatedAppearance",
-			"config" : {
-				"assetId" : "animation:spellReferenceProject.threeRings.twirling"
-			}
-		},
-		{
-			"templateId" : "spell.component.2d.physics.inertialObject",
-			"config" : {
-				"mass" : 150
-			}
-		},
-		{
-			"templateId" : "spell.component.physics.collisionSphere",
-			"config" : {
-				"radius" : 30
-			}
+		"spell.component.physics.collisionSphere": {
+			"radius": 30
 		}
-	]
+	},
+	"children": []
 }
