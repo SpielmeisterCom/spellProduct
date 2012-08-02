@@ -18,6 +18,7 @@
 			},
 			"entities": [
 				{
+					"id": "1",
 					"name": "spacecraft1",
 					"templateId": "spellReferenceProject.entity.spacecraft",
 					"config": {
@@ -48,6 +49,7 @@
 					},
 					"children": [
 						{
+							"id": "2",
 							"name": "shield",
 							"config": {
 								"spell.component.2d.transform": {
@@ -71,6 +73,7 @@
 					]
 				},
 				{
+					"id": "3",
 					"name": "spacecraft2",
 					"templateId": "spellReferenceProject.entity.spacecraft",
 					"config": {
@@ -97,6 +100,7 @@
 					}
 				},
 				{
+					"id": "4",
 					"name": "alienSpacecraft1",
 					"templateId": "spellReferenceProject.entity.alienSpacecraft",
 					"config": {
@@ -116,6 +120,7 @@
 					}
 				},
 				{
+					"id": "5",
 					"name": "asteroid1",
 					"templateId": "spellReferenceProject.entity.asteroid",
 					"config": {
@@ -135,6 +140,7 @@
 					}
 				},
 				{
+					"id": "6",
 					"name": "asteroid2",
 					"templateId": "spellReferenceProject.entity.asteroid",
 					"config": {
@@ -160,6 +166,7 @@
 					}
 				},
 				{
+					"id": "7",
 					"name": "asteroid3",
 					"templateId": "spellReferenceProject.entity.asteroid",
 					"config": {
@@ -185,6 +192,7 @@
 					}
 				},
 				{
+					"id": "8",
 					"name": "asteroid4",
 					"templateId": "spellReferenceProject.entity.asteroid",
 					"config": {
@@ -210,6 +218,7 @@
 					}
 				},
 				{
+					"id": "9",
 					"name": "asteroid5",
 					"templateId": "spellReferenceProject.entity.asteroid",
 					"config": {
@@ -235,6 +244,7 @@
 					}
 				},
 				{
+					"id": "10",
 					"name": "camera",
 					"templateId": "spell.entity.2d.graphics.camera",
 					"config": {
@@ -252,6 +262,7 @@
 					}
 				},
 				{
+					"id": "11",
 					"name": "player key input to actor/action mapping",
 					"templateId": "spell.entity.inputDefinition",
 					"config": {
@@ -266,6 +277,7 @@
 					}
 				},
 				{
+					"id": "12",
 					"name": "spelljs logo",
 					"config": {
 						"spell.component.2d.transform": {
@@ -287,6 +299,7 @@
 					}
 				},
 				{
+					"id": "13",
 					"name": "alienSpacecraft2",
 					"templateId": "spellReferenceProject.entity.alienSpacecraft",
 					"config": {
@@ -335,6 +348,7 @@
 					},
 					"children": [
 						{
+							"id": "14",
 							"name": "shield",
 							"config": {
 								"spell.component.2d.graphics.appearance": {
