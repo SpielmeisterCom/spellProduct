@@ -7,3 +7,12 @@
 [submodule "modules/spellEd"]
 	path = modules/spellEd
 	url = git@git.spielmeister.com:spellEd.git
+[submodule "modules/ace"]
+	path = modules/ace
+	url = https://github.com/ajaxorg/ace.git
+[submodule "modules/requirejs"]
+	path = modules/requirejs
+	url = https://github.com/jrburke/requirejs.git
+[submodule "modules/underscore"]
+	path = modules/underscore
+	url = https://github.com/amdjs/underscore.git
