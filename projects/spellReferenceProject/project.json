@@ -301,7 +301,7 @@
 							]
 						},
 						"spell.component.2d.graphics.animatedAppearance": {
-							"assetId": "animation:spellReferenceProject.threeRings.twirling",
+							"assetId": "animation:spellReferenceProject.threeRingsAnimation",
 							"offset": 500,
 							"replaySpeed": 0.75
 						},

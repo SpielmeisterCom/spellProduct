@@ -6,7 +6,7 @@
 		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
 		"spell.component.2d.graphics.animatedAppearance": {
-			"assetId": "animation:spellReferenceProject.threeRings.twirling"
+			"assetId": "animation:spellReferenceProject.threeRingsAnimation"
 		},
 		"spell.component.2d.physics.inertialObject": {
 			"mass": 150

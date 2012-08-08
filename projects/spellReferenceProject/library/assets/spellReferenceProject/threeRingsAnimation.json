@@ -1,7 +1,7 @@
 {
 	"type" : "animation",
-	"namespace" : "spellReferenceProject.threeRings",
-	"name" : "twirling",
+	"namespace" : "spellReferenceProject",
+	"name" : "threeRingsAnimation",
 	"doc" : "",
 	"assetId" : "spriteSheet:spellReferenceProject.threeRingsSpriteSheet",
 	"config" : {
