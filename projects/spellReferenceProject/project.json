@@ -1,6 +1,42 @@
 {
 	"name": "spellReferenceProject",
 	"startScene": "Game",
+	"assetIds": [
+		"spell.defaultAppearance",
+		"spellReferenceProject.asteroid1",
+		"spellReferenceProject.asteroid2",
+		"spellReferenceProject.pixelShip1",
+		"spellReferenceProject.pixelShip2",
+		"spellReferenceProject.shield",
+		"spellReferenceProject.spelljsLogo",
+		"spellReferenceProject.threeRingsAnimation",
+		"spellReferenceProject.threeRingsSpriteSheet"
+	],
+	"templateIds": [
+		"spell.component.2d.graphics.animatedAppearance",
+		"spell.component.2d.graphics.appearance",
+		"spell.component.2d.graphics.camera",
+		"spell.component.2d.physics.inertialObject",
+		"spell.component.2d.transform",
+		"spell.component.actor",
+		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.root",
+		"spell.component.inputDefinition",
+		"spell.component.physics.collisionSphere",
+		"spell.component.visualObject",
+		"spellReferenceProject.component.spacecraft",
+		"spell.entity.2d.graphics.camera",
+		"spell.entity.inputDefinition",
+		"spellReferenceProject.entity.alienSpacecraft",
+		"spellReferenceProject.entity.asteroid",
+		"spellReferenceProject.entity.spacecraft",
+		"spell.system.keyInput",
+		"spell.system.render",
+		"spellReferenceProject.system.aiControl",
+		"spellReferenceProject.system.collisionDetector",
+		"spellReferenceProject.system.endlessPlayingField",
+		"spellReferenceProject.system.spacecraftIntegrator"
+	],
 	"scenes": [
 		{
 			"name": "Game",
