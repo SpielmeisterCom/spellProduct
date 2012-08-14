@@ -7,8 +7,8 @@
 	"attributes": [
 		{
 			"name": "thrusterForce",
-			"type": "object",
-			"default": {}
+			"type": "number",
+			"default": "0"
 		}
 	]
 }
