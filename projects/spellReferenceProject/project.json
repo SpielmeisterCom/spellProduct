@@ -17,6 +17,7 @@
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.textAppearance",
 		"spell.component.2d.physics.inertialObject",
 		"spell.component.2d.transform",
 		"spell.component.actor",
@@ -131,7 +132,28 @@
 								2
 							]
 						}
-					}
+					},
+					"children": [
+						{
+							"name": "label",
+							"config": {
+								"spell.component.2d.graphics.textAppearance": {
+									"text": "Player"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										0.025,
+										0.025
+									],
+									"translation": [
+										0.5,
+										0
+									]
+								},
+								"spell.component.visualObject": {}
+							}
+						}
+					]
 				},
 				{
 					"name": "alienSpacecraft1",
@@ -393,6 +415,28 @@
 							}
 						}
 					]
+				},
+				{
+					"name": "text",
+					"config": {
+						"spell.component.2d.graphics.textAppearance": {
+							"text": "Asteroid Demo"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								8,
+								0
+							],
+							"scale": [
+								1.5,
+								1.5
+							],
+							"rotation": 0
+						},
+						"spell.component.visualObject": {
+							"layer": 2
+						}
+					}
 				}
 			]
 		}
