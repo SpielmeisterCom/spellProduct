@@ -4,6 +4,10 @@
 	"assetIds": [
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
+		"spellReferenceProject.Comic Sans 25",
+		"spellReferenceProject.Impact",
+		"spellReferenceProject.LCARS 25",
+		"spellReferenceProject.Press Start 2P 8",
 		"spellReferenceProject.asteroid1",
 		"spellReferenceProject.asteroid2",
 		"spellReferenceProject.pixelShip1",
@@ -138,7 +142,8 @@
 							"name": "label",
 							"config": {
 								"spell.component.2d.graphics.textAppearance": {
-									"text": "Player"
+									"text": "Player",
+									"assetId": "font:spellReferenceProject.Press Start 2P 8"
 								},
 								"spell.component.2d.transform": {
 									"scale": [
@@ -147,6 +152,26 @@
 									],
 									"translation": [
 										0.5,
+										0
+									]
+								},
+								"spell.component.visualObject": {}
+							}
+						},
+						{
+							"name": "label2",
+							"config": {
+								"spell.component.2d.graphics.textAppearance": {
+									"assetId": "font:spellReferenceProject.LCARS 25",
+									"text": "Star Fleet"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										0.02,
+										0.02
+									],
+									"translation": [
+										-2,
 										0
 									]
 								},
@@ -420,7 +445,8 @@
 					"name": "text",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
-							"text": "Asteroid Demo"
+							"text": "Asteroid Demo",
+							"assetId": "font:spellReferenceProject.Impact"
 						},
 						"spell.component.2d.transform": {
 							"translation": [
@@ -428,14 +454,55 @@
 								0
 							],
 							"scale": [
-								1.5,
-								1.5
+								0.5,
+								0.5
 							],
 							"rotation": 0
 						},
 						"spell.component.visualObject": {
 							"layer": 2
 						}
+					}
+				},
+				{
+					"name": "text2",
+					"config": {
+						"spell.component.2d.graphics.textAppearance": {
+							"assetId": "font:spellReferenceProject.Comic Sans 25",
+							"text": "Comic Sans"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								2,
+								2
+							],
+							"translation": [
+								75,
+								150
+							],
+							"rotation": -0.05
+						},
+						"spell.component.visualObject": {}
+					}
+				},
+				{
+					"name": "message",
+					"config": {
+						"spell.component.2d.graphics.textAppearance": {
+							"assetId": "font:spellReferenceProject.Press Start 2P 8",
+							"text": "press start to play"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								4,
+								4
+							],
+							"translation": [
+								125,
+								380
+							]
+						},
+						"spell.component.visualObject": {}
 					}
 				}
 			]
