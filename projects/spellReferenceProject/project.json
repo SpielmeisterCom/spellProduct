@@ -144,7 +144,8 @@
 							"config": {
 								"spell.component.2d.graphics.textAppearance": {
 									"text": "Player",
-									"assetId": "font:spellReferenceProject.Press Start 2P 8"
+									"assetId": "font:spellReferenceProject.Press Start 2P 8",
+									"spacing": -2
 								},
 								"spell.component.2d.transform": {
 									"scale": [
@@ -466,40 +467,17 @@
 					}
 				},
 				{
-					"name": "text2",
-					"config": {
-						"spell.component.2d.graphics.textAppearance": {
-							"assetId": "font:spellReferenceProject.Comic Sans 25",
-							"text": "Comic Sans"
-						},
-						"spell.component.2d.transform": {
-							"scale": [
-								2,
-								2
-							],
-							"translation": [
-								75,
-								150
-							],
-							"rotation": -0.05
-						},
-						"spell.component.visualObject": {
-							"layer": 2
-						}
-					}
-				},
-				{
 					"name": "message",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
 							"assetId": "font:spellReferenceProject.Press Start 2P 8",
-							"text": "press start to play",
-							"spacing": 0
+							"text": "use left, right and space to play",
+							"spacing": -2
 						},
 						"spell.component.2d.transform": {
 							"scale": [
-								4,
-								4
+								3,
+								3
 							],
 							"translation": [
 								125,
@@ -507,7 +485,8 @@
 							]
 						},
 						"spell.component.visualObject": {
-							"layer": 2
+							"layer": 2,
+							"opacity": 1
 						}
 					}
 				},
