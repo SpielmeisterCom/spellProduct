@@ -4,6 +4,7 @@
 	"assetIds": [
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
+		"spellReferenceProject.Bello Pro",
 		"spellReferenceProject.Comic Sans 25",
 		"spellReferenceProject.Impact",
 		"spellReferenceProject.LCARS 25",
@@ -454,8 +455,8 @@
 								0
 							],
 							"scale": [
-								0.5,
-								0.5
+								1,
+								1
 							],
 							"rotation": 0
 						},
@@ -482,7 +483,9 @@
 							],
 							"rotation": -0.05
 						},
-						"spell.component.visualObject": {}
+						"spell.component.visualObject": {
+							"layer": 2
+						}
 					}
 				},
 				{
@@ -490,7 +493,8 @@
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
 							"assetId": "font:spellReferenceProject.Press Start 2P 8",
-							"text": "press start to play"
+							"text": "press start to play",
+							"spacing": 0
 						},
 						"spell.component.2d.transform": {
 							"scale": [
@@ -502,7 +506,32 @@
 								380
 							]
 						},
-						"spell.component.visualObject": {}
+						"spell.component.visualObject": {
+							"layer": 2
+						}
+					}
+				},
+				{
+					"name": "Speilmeister",
+					"config": {
+						"spell.component.2d.graphics.textAppearance": {
+							"assetId": "font:spellReferenceProject.Bello Pro",
+							"text": "Spielmeister",
+							"spacing": -14
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								1,
+								1
+							],
+							"translation": [
+								100,
+								100
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 2
+						}
 					}
 				}
 			]
