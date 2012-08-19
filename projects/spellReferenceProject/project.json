@@ -153,8 +153,8 @@
 										0.025
 									],
 									"translation": [
-										0.5,
-										0
+										-0.6,
+										-0.65
 									]
 								},
 								"spell.component.visualObject": {}
@@ -173,8 +173,8 @@
 										0.02
 									],
 									"translation": [
-										-2,
-										0
+										-0.8,
+										-1.2
 									]
 								},
 								"spell.component.visualObject": {}
@@ -462,7 +462,8 @@
 							"rotation": 0
 						},
 						"spell.component.visualObject": {
-							"layer": 2
+							"layer": 2,
+							"opacity": 0.5
 						}
 					}
 				},
@@ -486,7 +487,7 @@
 						},
 						"spell.component.visualObject": {
 							"layer": 2,
-							"opacity": 1
+							"opacity": 0.75
 						}
 					}
 				},
@@ -495,8 +496,8 @@
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
 							"assetId": "font:spellReferenceProject.Bello Pro",
-							"text": "Spielmeister",
-							"spacing": -14
+							"text": "We let the world play together!",
+							"spacing": -18
 						},
 						"spell.component.2d.transform": {
 							"scale": [
@@ -506,10 +507,18 @@
 							"translation": [
 								100,
 								100
-							]
+							],
+							"rotation": 195
 						},
 						"spell.component.visualObject": {
-							"layer": 2
+							"layer": -1,
+							"opacity": 0.75
+						},
+						"spell.component.2d.physics.inertialObject": {
+							"velocity": [
+								150,
+								-100
+							]
 						}
 					}
 				}
