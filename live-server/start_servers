@@ -13,6 +13,12 @@ while (<FILE>) {
 	&start_server
 }
 
+#restart apache
+my $cmd = "sleep 1 && apache2ctl restart";
+print "# restarting apache...\n";
+print $cmd . "\n";
+system($cmd);
+
 sub kill_server {
 	system("killall -9 node");
 }
@@ -35,7 +41,6 @@ sub start_server {
 	print "# starting build server for " . $vhost . "...\n";
 	print $cmd . "\n";
 	system($cmd);
-
 
 }
 
