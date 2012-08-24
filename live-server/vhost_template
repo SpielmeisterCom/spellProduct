@@ -7,6 +7,11 @@
 
 	RewriteEngine on
 	RewriteRule ^/$ http://%{HTTP_HOST}/%VERSION% [L,R=301]
+
+	RewriteCond %{REQUEST_URI} ^/(\d+)\.(\d+)\.(\d+)
+	RewriteCond %{REQUEST_URI} !^/%VERSION%
+	RewriteRule (.*) http://%{HTTP_HOST}/%VERSION% [L]
+
 	Alias /%VERSION% /opt/spellEngine/%VERSION%/spellEd/public
 
 	ProxyRequests Off
