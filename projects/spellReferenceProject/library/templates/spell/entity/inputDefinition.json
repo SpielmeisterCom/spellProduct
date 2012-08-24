@@ -1,6 +1,7 @@
 {
 	"name": "inputDefinition",
 	"namespace": "spell.entity",
+	"readonly" : true,
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.inputDefinition": {}
