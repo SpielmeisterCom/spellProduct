@@ -1,0 +1,18 @@
+{
+	"type" : "systemTemplate",
+	"readonly" : true,
+	"namespace" : "spell.system",
+	"name" : "keyInput",
+
+	"input" : [
+		{
+			"name" : "actors",
+			"templateId" : "spell.component.actor"
+		},
+		{
+			"name" : "inputDefinitions",
+			"templateId" : "spell.component.inputDefinition"
+		}
+	],
+	"scriptId" : "spell/system/keyInput"
+}

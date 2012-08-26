@@ -1,0 +1,15 @@
+{
+	"name": "cloud",
+	"namespace": "",
+	"type": "componentTemplate",
+	"title": "",
+	"doc": "",
+	"icon": "",
+	"attributes": [
+		{
+			"name": "base_speed",
+			"type": "vec2",
+			"default": "[0,0]"
+		}
+	]
+}

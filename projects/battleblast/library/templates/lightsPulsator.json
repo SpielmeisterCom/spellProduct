@@ -1,0 +1,17 @@
+{
+    "type" : "systemTemplate",
+    "namespace" : "",
+    "name" : "lightsPulsator",
+
+    "input" : [
+        {
+            "name" : "lights",
+            "templateId" : "light"
+        },
+        {
+            "name" : "visualObjects",
+            "templateId" : "spell.component.visualObject"
+        }
+    ],
+    "scriptId" : "lightsPulsator"
+}

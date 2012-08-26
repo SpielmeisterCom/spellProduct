@@ -1,0 +1,532 @@
+{
+	"name": "spellReferenceProject",
+	"startScene": "Scene1",
+	"assetIds": [
+		"bellopro",
+		"bg",
+		"cloud_dark_01",
+		"cloud_dark_02",
+		"cloud_dark_03",
+		"cloud_dark_04",
+		"cloud_dark_05",
+		"cloud_dark_06",
+		"cloud_dark_07",
+		"cloud_light_01",
+		"cloud_light_02",
+		"cloud_light_03",
+		"cloud_light_04",
+		"cloud_light_05",
+		"cloud_light_06",
+		"cloud_light_07",
+		"glass",
+		"glass_broken",
+		"lightoff",
+		"lighton",
+		"platform half",
+		"propeller",
+		"ship1_blue",
+		"ship1_green",
+		"ship1_magenta",
+		"ship1_red",
+		"ship2_blue",
+		"ship2_green",
+		"ship2_magenta",
+		"ship2_red",
+		"ship3_blue",
+		"ship3_green",
+		"ship3_magenta",
+		"ship3_red",
+		"ship4_blue",
+		"ship4_green",
+		"ship4_magenta",
+		"ship4_red",
+		"ship5_blue",
+		"ship5_green",
+		"ship5_magenta",
+		"ship5_red",
+		"ship6_blue",
+		"ship6_green",
+		"ship6_magenta",
+		"ship6_red",
+		"ship7_blue",
+		"ship7_green",
+		"ship7_magenta",
+		"ship7_red",
+		"spell.OpenSans14px",
+		"spell.defaultAppearance"
+	],
+	"templateIds": [
+		"cloud",
+		"light",
+		"platform",
+		"propeller",
+		"spacecraft",
+		"spell.component.2d.graphics.animatedAppearance",
+		"spell.component.2d.graphics.appearance",
+		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.physics.inertialObject",
+		"spell.component.2d.transform",
+		"spell.component.actor",
+		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.root",
+		"spell.component.inputDefinition",
+		"spell.component.physics.collisionSphere",
+		"spell.component.visualObject",
+		"dark_cloud",
+		"light_cloud",
+		"spell.entity.2d.graphics.camera",
+		"spell.entity.inputDefinition",
+		"animateClouds",
+		"lightsPulsator",
+		"platformMover",
+		"propellerRotationSystem",
+		"spacecraftIntegrator",
+		"spell.system.keyInput",
+		"spell.system.render"
+	],
+	"scenes": [
+		{
+			"name": "Scene1",
+			"scriptId": "spell/scene/default",
+			"systems": {
+				"update": [],
+				"render": [
+					"spell.system.keyInput",
+					"spacecraftIntegrator",
+					"platformMover",
+					"lightsPulsator",
+					"propellerRotationSystem",
+					"spell.system.render"
+				]
+			},
+			"entities": [
+				{
+					"name": "camera",
+					"templateId": "spell.entity.2d.graphics.camera",
+					"config": {
+						"spell.component.2d.graphics.camera": {
+							"height": 768,
+							"width": 1024,
+							"active": true
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								1,
+								1
+							],
+							"translation": [
+								512,
+								430
+							],
+							"rotation": 0
+						}
+					}
+				},
+				{
+					"name": "platform_left",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:platform half"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								256,
+								420
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 2
+						},
+						"platform": {}
+					}
+				},
+				{
+					"name": "platform_right",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:platform half"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								793,
+								420
+							],
+							"rotation": 0,
+							"scale": [
+								-1,
+								1
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 2
+						},
+						"platform": {}
+					}
+				},
+				{
+					"name": "background_layer0",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:bg"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								3,
+								3
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": -999
+						}
+					}
+				},
+				{
+					"name": "light1",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								139,
+								716
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "light2",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								496,
+								718
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "light3",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								553,
+								718
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "light4",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								910,
+								716
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "light5",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								909,
+								97
+							],
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "light6",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								553,
+								100
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "light7",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								496,
+								100
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "light8",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:lighton"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								139,
+								97
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 4,
+							"opacity": 0
+						},
+						"platform": {},
+						"light": {}
+					}
+				},
+				{
+					"name": "player",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:ship5_blue"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								200,
+								200
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 10
+						},
+						"spell.component.2d.physics.inertialObject": {},
+						"spell.component.actor": {
+							"actions": {
+								"accelerate": {
+									"executing": false
+								},
+								"break": {
+									"executing": false
+								},
+								"steerLeft": {
+									"executing": false
+								},
+								"steerRight": {
+									"executing": false
+								}
+							},
+							"id": "playerControlled"
+						},
+						"spacecraft": {
+							"thrusterForce": 100
+						},
+						"platform": {}
+					}
+				},
+				{
+					"name": "test",
+					"config": {
+						"spell.component.2d.graphics.textAppearance": {
+							"text": "10/10 stars for levelup",
+							"assetId": "font:bellopro",
+							"spacing": -5
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								180,
+								740
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 10
+						}
+					}
+				},
+				{
+					"name": "propeller1",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:propeller"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								50,
+								670
+							],
+							"rotation": 0,
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 1
+						},
+						"propeller": {
+							"radPerS": 7
+						},
+						"platform": {}
+					}
+				},
+				{
+					"name": "propeller2",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:propeller"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								990,
+								670
+							],
+							"rotation": 1
+						},
+						"spell.component.visualObject": {},
+						"propeller": {
+							"radPerS": 7
+						},
+						"platform": {}
+					}
+				},
+				{
+					"name": "propeller3",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:propeller"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								55,
+								-5
+							],
+							"rotation": 2
+						},
+						"spell.component.visualObject": {
+							"layer": 1
+						},
+						"propeller": {
+							"radPerS": 7
+						},
+						"platform": {}
+					}
+				},
+				{
+					"name": "propeller4",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:propeller"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								990,
+								-5
+							],
+							"rotation": 3,
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.visualObject": {},
+						"propeller": {
+							"radPerS": 7
+						},
+						"platform": {}
+					}
+				},
+				{
+					"name": "window",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:glass"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								512,
+								384
+							]
+						},
+						"spell.component.visualObject": {},
+						"platform": {}
+					}
+				},
+				{
+					"name": "keymapping",
+					"templateId": "spell.entity.inputDefinition",
+					"config": {
+						"spell.component.inputDefinition": {
+							"actorId": "playerControlled",
+							"keyToAction": {
+								"up arrow": "accelerate",
+								"down arrow": "break",
+								"left arrow": "steerLeft",
+								"right arrow": "steerRight"
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

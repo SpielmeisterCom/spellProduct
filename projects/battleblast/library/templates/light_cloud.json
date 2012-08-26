@@ -1,0 +1,17 @@
+{
+	"name": "light_cloud",
+	"namespace": "",
+	"type": "entityTemplate",
+	"config": {
+		"cloud": {
+			"base_speed": [
+				24,
+				-18
+			]
+		},
+		"spell.component.2d.graphics.appearance": {},
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {}
+	},
+	"children": []
+}

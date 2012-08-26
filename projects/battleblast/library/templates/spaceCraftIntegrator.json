@@ -1,0 +1,25 @@
+{
+    "type" : "systemTemplate",
+    "namespace" : "",
+    "name" : "spacecraftIntegrator",
+
+    "input" : [
+        {
+            "name" : "actors",
+            "templateId" : "spell.component.actor"
+        },
+        {
+            "name" : "transforms",
+            "templateId" : "spell.component.2d.transform"
+        },
+        {
+            "name" : "spacecrafts",
+            "templateId" : "spacecraft"
+        },
+        {
+            "name" : "inertialObjects",
+            "templateId" : "spell.component.2d.physics.inertialObject"
+        }
+    ],
+    "scriptId" : "spacecraftIntegrator"
+}

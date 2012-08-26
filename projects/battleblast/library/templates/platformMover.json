@@ -1,0 +1,17 @@
+{
+    "type" : "systemTemplate",
+    "namespace" : "",
+    "name" : "platformMover",
+
+    "input" : [
+        {
+            "name" : "platforms",
+            "templateId" : "platform"
+        },
+        {
+            "name" : "transforms",
+            "templateId" : "spell.component.2d.transform"
+        }
+    ],
+    "scriptId" : "platformMover"
+}

@@ -1,0 +1,17 @@
+{
+    "type" : "systemTemplate",
+    "namespace" : "",
+    "name" : "propellerRotationSystem",
+
+    "input" : [
+        {
+            "name" : "propellers",
+            "templateId" : "propeller"
+        },
+        {
+            "name" : "transforms",
+            "templateId" : "spell.component.2d.transform"
+        }
+    ],
+    "scriptId" : "propellerRotationSystem"
+}

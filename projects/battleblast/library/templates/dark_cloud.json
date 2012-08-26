@@ -1,0 +1,17 @@
+{
+	"name": "dark_cloud",
+	"namespace": "",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.graphics.appearance": {},
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {},
+		"cloud": {
+			"base_speed": [
+				16,
+				-14
+			]
+		}
+	},
+	"children": []
+}

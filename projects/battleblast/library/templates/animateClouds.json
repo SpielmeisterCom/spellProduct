@@ -1,0 +1,17 @@
+{
+    "type" : "systemTemplate",
+    "namespace" : "",
+    "name" : "animateClouds",
+
+    "input" : [
+        {
+            "name" : "clouds",
+            "templateId" : "cloud"
+        },
+        {
+            "name" : "transforms",
+            "templateId" : "spell.component.2d.transform"
+        }
+    ],
+    "scriptId" : "animateClouds"
+}

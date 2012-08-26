@@ -1,0 +1,15 @@
+{
+	"name": "propeller",
+	"namespace": "",
+	"type": "componentTemplate",
+	"title": "",
+	"doc": "",
+	"icon": "",
+	"attributes": [
+		{
+			"name": "radPerS",
+			"type": "number",
+			"default": "0"
+		}
+	]
+}

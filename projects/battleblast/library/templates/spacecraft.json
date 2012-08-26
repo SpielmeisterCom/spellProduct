@@ -1,0 +1,14 @@
+{
+	"name": "spacecraft",
+	"namespace": "",
+	"type": "componentTemplate",
+	"title": "",
+	"doc": "",
+	"attributes": [
+		{
+			"name": "thrusterForce",
+			"type": "number",
+			"default": "0"
+		}
+	]
+}

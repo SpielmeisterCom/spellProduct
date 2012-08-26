@@ -1,0 +1,9 @@
+{
+	"name": "inputDefinition",
+	"namespace": "spell.entity",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.inputDefinition": {}
+	},
+	"children": []
+}
