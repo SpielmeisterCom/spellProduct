@@ -14,7 +14,7 @@ while (<FILE>) {
 }
 
 #restart apache
-my $cmd = "sleep 1 && apache2ctl restart";
+my $cmd = "sleep 1 && apachectl restart";
 print "# restarting apache...\n";
 print $cmd . "\n";
 system($cmd);
