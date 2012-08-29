@@ -21,9 +21,9 @@ define(
 			tmp = vec2.create()
 
 
-		var init = function( globals ) { }
+		var init = function( spell ) { }
 
-		var cleanUp = function( globals ) {}
+		var cleanUp = function( spell ) {}
 
 		var applyActionsToSpacecraftIter = function( deltaTimeInS, spacecraft, actor, inertialObject, transform ) {
 			var actions = actor.actions
@@ -66,7 +66,7 @@ define(
 			vec2.add( tmp, transform.translation )
 		}
 
-		var process = function( globals, timeInMs, deltaTimeInMs ) {
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var deltaTimeInS = deltaTimeInMs / 1000
 
 			this.updateSpacecrafts( deltaTimeInS )
@@ -78,7 +78,7 @@ define(
 		 * public
 		 */
 
-		var SpacecraftIntegrator = function( globals ) {
+		var SpacecraftIntegrator = function( spell ) {
 			this.updateSpacecrafts     = createEntityEach( this.spacecrafts, [ this.actors, this.inertialObjects, this.transforms ], applyActionsToSpacecraftIter )
 			this.updateInertialObjects = createEntityEach( this.inertialObjects, this.transforms, updateInertialObjectIter )
 		}

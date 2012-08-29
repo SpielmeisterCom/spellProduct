@@ -13,11 +13,11 @@ define(
 		 * private
 		 */
 
-		var init = function( globals ) { }
+		var init = function( spell ) { }
 
-		var cleanUp = function( globals ) {}
+		var cleanUp = function( spell ) {}
 
-		var process = function( globals, timeInMs, deltaTimeInMs ) {
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			this.updatePlatform( timeInMs )
 		}
 
@@ -41,7 +41,7 @@ define(
 		 * public
 		 */
 
-		var PropellerSystem = function( globals ) {
+		var PropellerSystem = function( spell ) {
 			this.updatePlatform     = createEntityEach( this.platforms, [ this.transforms ], applyActionsToPlatformElements )
 		}
 

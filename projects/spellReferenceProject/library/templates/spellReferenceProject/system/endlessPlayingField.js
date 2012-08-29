@@ -22,9 +22,9 @@ define(
 			bottomBorder        = 0 - border
 
 
-		var init = function( globals ) { }
+		var init = function( spell ) { }
 
-		var cleanUp = function( globals ) {}
+		var cleanUp = function( spell ) {}
 
 		var updatePositionIter = function( transform, inertialObject ) {
 			if( !inertialObject ) return
@@ -49,7 +49,7 @@ define(
 			}
 		}
 
-		var process = function( globals, timeInMs, deltaTimeInMs ) {
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			this.updatePosition()
 		}
 
@@ -58,7 +58,7 @@ define(
 		 * public
 		 */
 
-		var EndlessPlayingField = function( globals ) {
+		var EndlessPlayingField = function( spell ) {
 			this.updatePosition = createEntityEach( this.transforms, [ this.inertialObjects ], updatePositionIter )
 		}
 

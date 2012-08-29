@@ -9,7 +9,7 @@ define(
 		createEntityEach,
 		vec2,
 	    XorShift32
-	) {
+		) {
 		'use strict'
 
 
@@ -17,7 +17,7 @@ define(
 		 * private
 		 */
 
-		var init = function( globals ) {
+		var init = function( spell ) {
 
 			var maxCloudTextureSize = 512
 			var xSize = 1024
@@ -54,7 +54,7 @@ define(
 
 					var index = "_0" + ( 1 + ( i % 6 ) )
 
-					globals.entityManager.createEntity(type)
+					spell.entityManager.createEntity(type)
 
 					/*
 						[ {
@@ -82,15 +82,15 @@ define(
 
 		}
 
-		var cleanUp = function( globals ) {}
+		var cleanUp = function( spell ) {}
 
-		var process = function( globals, timeInMs, deltaTimeInMs ) {
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
 		}
 
 		/**
 		 * public
 		 */
-		var CloudAnimationSystem = function( globals ) {
+		var CloudAnimationSystem = function( spell ) {
 		}
 
 		CloudAnimationSystem.prototype = {

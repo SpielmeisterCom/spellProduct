@@ -13,11 +13,11 @@ define(
 		 * private
 		 */
 
-		var init = function( globals ) { }
+		var init = function( spell ) { }
 
-		var cleanUp = function( globals ) {}
+		var cleanUp = function( spell ) {}
 
-		var process = function( globals, timeInMs, deltaTimeInMs ) {
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var deltaTimeInS = deltaTimeInMs / 1000
 			this.updatePropellers( deltaTimeInS )
 		}
@@ -30,7 +30,7 @@ define(
 		 * public
 		 */
 
-		var PropellerSystem = function( globals ) {
+		var PropellerSystem = function( spell ) {
 			this.updatePropellers     = createEntityEach( this.propellers, [ this.transforms ], applyActionsToPropellers )
 		}
 

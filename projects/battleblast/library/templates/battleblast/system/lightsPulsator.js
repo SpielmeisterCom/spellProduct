@@ -13,11 +13,11 @@ define(
 		 * private
 		 */
 
-		var init = function( globals ) { }
+		var init = function( spell ) { }
 
-		var cleanUp = function( globals ) {}
+		var cleanUp = function( spell ) {}
 
-		var process = function( globals, timeInMs, deltaTimeInMs ) {
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
 
 			var opacity = Math.abs( Math.sin(timeInMs/1500) )
 
@@ -32,7 +32,7 @@ define(
 		 * public
 		 */
 
-		var LightsPulsatorSystem = function( globals ) {
+		var LightsPulsatorSystem = function( spell ) {
 			this.updateLights     = createEntityEach( this.lights, [ this.visualObjects ], applyActionsToLights )
 		}
 

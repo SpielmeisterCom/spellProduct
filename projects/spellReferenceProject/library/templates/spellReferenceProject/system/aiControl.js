@@ -21,9 +21,9 @@ define(
 			tmp            = vec2.create()
 
 
-		var init = function( globals ) { }
+		var init = function( spell ) { }
 
-		var cleanUp = function( globals ) {}
+		var cleanUp = function( spell ) {}
 
 
 		var isAIControlled = function( actor ) {
@@ -64,7 +64,7 @@ define(
 			actions.accelerate.executing = Math.abs( deltaAngle ) < aimingAccuracy
 		}
 
-		var updateActors = function( globals, timeInMs, deltaTimeInMs ) {
+		var updateActors = function( spell, timeInMs, deltaTimeInMs ) {
 			var actors     = this.actors,
 				transforms = this.transforms
 
@@ -103,7 +103,7 @@ define(
 		 * public
 		 */
 
-		var AIControl = function( globals ) {}
+		var AIControl = function( spell ) {}
 
 		AIControl.prototype = {
 			cleanUp : cleanUp,
