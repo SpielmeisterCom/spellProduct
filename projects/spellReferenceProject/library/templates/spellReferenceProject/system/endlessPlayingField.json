@@ -12,6 +12,5 @@
 			"name" : "inertialObjects",
 			"templateId" : "spell.component.2d.physics.inertialObject"
 		}
-	],
-	"scriptId" : "spellReferenceProject/system/endlessPlayingField"
+	]
 }

@@ -16,6 +16,5 @@
 			"name" : "collisionSpheres",
 			"templateId" : "spell.component.physics.collisionSphere"
 		}
-	],
-	"scriptId" : "spellReferenceProject/system/collisionDetector"
+	]
 }

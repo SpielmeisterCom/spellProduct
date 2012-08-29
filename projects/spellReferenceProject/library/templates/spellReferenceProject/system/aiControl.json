@@ -12,6 +12,5 @@
 			"name" : "transforms",
 			"templateId" : "spell.component.2d.transform"
 		}
-	],
-	"scriptId" : "spellReferenceProject/system/aiControl"
+	]
 }
