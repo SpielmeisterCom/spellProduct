@@ -1,5 +1,5 @@
 /.idea
 /generated
 /atlassian-ide-plugin.xml
-/projects/spellReferenceProject/public
-/projects/spellReferenceProject/build
+/projects/*/public
+/projects/*/build
