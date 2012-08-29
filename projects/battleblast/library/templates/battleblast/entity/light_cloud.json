@@ -1,9 +1,9 @@
 {
 	"name": "light_cloud",
-	"namespace": "",
+	"namespace": "battleblast.entity",
 	"type": "entityTemplate",
 	"config": {
-		"cloud": {
+		"battleblast.component.cloud": {
 			"base_speed": [
 				24,
 				-18

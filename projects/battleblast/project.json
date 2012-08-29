@@ -56,11 +56,11 @@
 		"spell.defaultAppearance"
 	],
 	"templateIds": [
-		"cloud",
-		"light",
-		"platform",
-		"propeller",
-		"spacecraft",
+		"battleblast.component.cloud",
+		"battleblast.component.light",
+		"battleblast.component.platform",
+		"battleblast.component.propeller",
+		"battleblast.component.spacecraft",
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
@@ -73,15 +73,15 @@
 		"spell.component.inputDefinition",
 		"spell.component.physics.collisionSphere",
 		"spell.component.visualObject",
-		"dark_cloud",
-		"light_cloud",
+		"battleblast.entity.dark_cloud",
+		"battleblast.entity.light_cloud",
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
-		"animateClouds",
-		"lightsPulsator",
-		"platformMover",
-		"propellerRotationSystem",
-		"spacecraftIntegrator",
+		"battleblast.system.animateClouds",
+		"battleblast.system.lightsPulsator",
+		"battleblast.system.platformMover",
+		"battleblast.system.propellerRotationSystem",
+		"battleblast.system.spacecraftIntegrator",
 		"spell.system.keyInput",
 		"spell.system.render"
 	],
@@ -93,10 +93,10 @@
 				"update": [],
 				"render": [
 					"spell.system.keyInput",
-					"spacecraftIntegrator",
-					"platformMover",
-					"lightsPulsator",
-					"propellerRotationSystem",
+					"battleblast.system.spacecraftIntegrator",
+					"battleblast.system.platformMover",
+					"battleblast.system.lightsPulsator",
+					"battleblast.system.propellerRotationSystem",
 					"spell.system.render"
 				]
 			},
@@ -138,7 +138,7 @@
 						"spell.component.visualObject": {
 							"layer": 2
 						},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{
@@ -161,7 +161,7 @@
 						"spell.component.visualObject": {
 							"layer": 2
 						},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{
@@ -197,8 +197,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -217,8 +217,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -237,8 +237,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -257,8 +257,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -281,8 +281,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -301,8 +301,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -321,8 +321,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -341,8 +341,8 @@
 							"layer": 4,
 							"opacity": 0
 						},
-						"platform": {},
-						"light": {}
+						"battleblast.component.platform": {},
+						"battleblast.component.light": {}
 					}
 				},
 				{
@@ -378,10 +378,10 @@
 							},
 							"id": "playerControlled"
 						},
-						"spacecraft": {
+						"battleblast.component.spacecraft": {
 							"thrusterForce": 100
 						},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{
@@ -423,10 +423,10 @@
 						"spell.component.visualObject": {
 							"layer": 1
 						},
-						"propeller": {
+						"battleblast.component.propeller": {
 							"radPerS": 7
 						},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{
@@ -443,10 +443,10 @@
 							"rotation": 1
 						},
 						"spell.component.visualObject": {},
-						"propeller": {
+						"battleblast.component.propeller": {
 							"radPerS": 7
 						},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{
@@ -465,10 +465,10 @@
 						"spell.component.visualObject": {
 							"layer": 1
 						},
-						"propeller": {
+						"battleblast.component.propeller": {
 							"radPerS": 7
 						},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{
@@ -489,10 +489,10 @@
 							]
 						},
 						"spell.component.visualObject": {},
-						"propeller": {
+						"battleblast.component.propeller": {
 							"radPerS": 7
 						},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{
@@ -508,7 +508,7 @@
 							]
 						},
 						"spell.component.visualObject": {},
-						"platform": {}
+						"battleblast.component.platform": {}
 					}
 				},
 				{

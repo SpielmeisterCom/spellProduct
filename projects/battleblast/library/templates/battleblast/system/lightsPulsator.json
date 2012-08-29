@@ -1,17 +1,16 @@
 {
     "type" : "systemTemplate",
-    "namespace" : "",
+    "namespace" : "battleblast.system",
     "name" : "lightsPulsator",
 
     "input" : [
         {
             "name" : "lights",
-            "templateId" : "light"
+            "templateId" : "battleblast.component.light"
         },
         {
             "name" : "visualObjects",
             "templateId" : "spell.component.visualObject"
         }
-    ],
-    "scriptId" : "lightsPulsator"
+    ]
 }

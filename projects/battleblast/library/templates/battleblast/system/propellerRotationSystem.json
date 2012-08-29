@@ -1,17 +1,16 @@
 {
     "type" : "systemTemplate",
-    "namespace" : "",
-    "name" : "platformMover",
+    "namespace" : "battleblast.system",
+    "name" : "propellerRotationSystem",
 
     "input" : [
         {
-            "name" : "platforms",
-            "templateId" : "platform"
+            "name" : "propellers",
+            "templateId" : "battleblast.component.propeller"
         },
         {
             "name" : "transforms",
             "templateId" : "spell.component.2d.transform"
         }
-    ],
-    "scriptId" : "platformMover"
+    ]
 }

@@ -1,13 +1,12 @@
 {
-	"name": "propeller",
-	"namespace": "",
+	"name": "spacecraft",
+	"namespace": "battleblast.component",
 	"type": "componentTemplate",
 	"title": "",
 	"doc": "",
-	"icon": "",
 	"attributes": [
 		{
-			"name": "radPerS",
+			"name": "thrusterForce",
 			"type": "number",
 			"default": "0"
 		}

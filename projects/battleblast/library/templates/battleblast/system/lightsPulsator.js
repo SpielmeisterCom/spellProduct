@@ -1,5 +1,5 @@
 define(
-	'lightsPulsator',
+	'battleblast/system/lightsPulsator',
 	[
 		'spell/shared/util/createEntityEach'
 	],

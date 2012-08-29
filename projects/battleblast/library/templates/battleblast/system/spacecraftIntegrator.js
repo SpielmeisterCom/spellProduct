@@ -1,5 +1,5 @@
 define(
-	'spacecraftIntegrator',
+	'battleblast/system/spacecraftIntegrator',
 	[
 		'spell/shared/util/createEntityEach',
 
@@ -58,7 +58,7 @@ define(
 					inertialObject.velocity
 				)
 			}
-            
+
             if( actions["break"]["executing"] ) {
 				var rotation      = transform.rotation,
 					thrusterForce = spacecraft.thrusterForce
@@ -77,7 +77,7 @@ define(
 					vec2.scale( tmp, deltaTimeInS / inertialObject.mass ),
 					inertialObject.velocity
 				)
-                
+
                 if ( inertialObject.velocity[0] < 0) {
                     inertialObject.velocity[0] = 0
                 }
@@ -85,8 +85,8 @@ define(
                 if ( inertialObject.velocity[1] < 0) {
                     inertialObject.velocity[1] = 0
                 }
-                
-			}            
+
+			}
 		}
 
 		var updateInertialObjectIter = function( deltaTimeInS, inertialObject, transform ) {

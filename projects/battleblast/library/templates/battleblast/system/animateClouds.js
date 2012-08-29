@@ -1,5 +1,5 @@
 define(
-	'animateClouds',
+	'battleblast/system/animateClouds',
 	[
 		'spell/shared/util/createEntityEach',
 		'spell/math/vec2',
@@ -9,7 +9,7 @@ define(
 		createEntityEach,
 		vec2,
 	    XorShift32
-		) {
+	) {
 		'use strict'
 
 

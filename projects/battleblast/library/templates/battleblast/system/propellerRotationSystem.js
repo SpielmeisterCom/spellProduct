@@ -1,5 +1,5 @@
 define(
-    'propellerRotationSystem',
+    'battleblast/system/propellerRotationSystem',
 	[
 		'spell/shared/util/createEntityEach'
 	],
@@ -16,7 +16,7 @@ define(
 		var init = function( globals ) { }
 
 		var cleanUp = function( globals ) {}
-        
+
 		var process = function( globals, timeInMs, deltaTimeInMs ) {
 			var deltaTimeInS = deltaTimeInMs / 1000
 			this.updatePropellers( deltaTimeInS )
@@ -25,7 +25,7 @@ define(
     	var applyActionsToPropellers = function( deltaTimeInS, propellor, transform ) {
             transform.rotation += deltaTimeInS * propellor.radPerS % (Math.PI * 2)
         }
-        
+
 		/**
 		 * public
 		 */

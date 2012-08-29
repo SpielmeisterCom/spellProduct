@@ -1,6 +1,6 @@
 {
 	"name": "cloud",
-	"namespace": "",
+	"namespace": "battleblast.component",
 	"type": "componentTemplate",
 	"title": "",
 	"doc": "",

@@ -1,12 +1,12 @@
 {
 	"name": "dark_cloud",
-	"namespace": "",
+	"namespace": "battleblast.entity",
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.graphics.appearance": {},
 		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
-		"cloud": {
+		"battleblast.component.cloud": {
 			"base_speed": [
 				16,
 				-14

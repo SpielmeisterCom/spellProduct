@@ -1,5 +1,5 @@
 define(
-	'platformMover',
+	'battleblast/system/platformMover',
 	[
 		'spell/shared/util/createEntityEach'
 	],
@@ -20,18 +20,18 @@ define(
 		var process = function( globals, timeInMs, deltaTimeInMs ) {
 			this.updatePlatform( timeInMs )
 		}
-        
+
         var rescale = function(number, istart, istop, ostart, ostop) {
     		return ostart + (ostop - ostart) * ((number-istart) / (istop-istart));
 		}
-        
+
 
         var s = 0.4
-        
+
 		var applyActionsToPlatformElements = function( timeInMs, platform, transform ) {
-            
+
             var moveFactor = rescale(Math.sin(timeInMs/500), -1, 1, -s, s)
-            
+
 			transform.translation[0] += moveFactor
     		transform.translation[1] += moveFactor
 

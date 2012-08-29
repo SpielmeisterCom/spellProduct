@@ -1,6 +1,6 @@
 {
 	"name": "light",
-	"namespace": "",
+	"namespace": "battleblast.component",
 	"type": "componentTemplate",
 	"attributes": []
 }
