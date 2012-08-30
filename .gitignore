@@ -2,3 +2,4 @@
 /generated
 /atlassian-ide-plugin.xml
 /projects/*/build
+/projects/*/public
