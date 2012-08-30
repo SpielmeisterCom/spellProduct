@@ -52,6 +52,7 @@
 		"ship7_green",
 		"ship7_magenta",
 		"ship7_red",
+		"shipKeyToActionMap",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance"
 	],
@@ -517,12 +518,7 @@
 					"config": {
 						"spell.component.inputDefinition": {
 							"actorId": "playerControlled",
-							"keyToAction": {
-								"up arrow": "accelerate",
-								"down arrow": "break",
-								"left arrow": "steerLeft",
-								"right arrow": "steerRight"
-							}
+							"assetId": "keyToActionMap:shipKeyToActionMap"
 						}
 					}
 				}
