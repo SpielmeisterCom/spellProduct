@@ -1,0 +1,10 @@
+{
+	"type": "keyToActionMap",
+	"namespace": "spellReferenceProject",
+	"name": "spacecraftKeyToActionMap",
+	"config": {
+		"SPACE": "accelerate",
+		"LEFT_ARROW": "steerLeft",
+		"RIGHT_ARROW": "steerRight"
+	}
+}

@@ -14,6 +14,7 @@
 		"spellReferenceProject.pixelShip1",
 		"spellReferenceProject.pixelShip2",
 		"spellReferenceProject.shield",
+		"spellReferenceProject.spacecraftKeyToActionMap",
 		"spellReferenceProject.spelljsLogo",
 		"spellReferenceProject.threeRingsAnimation",
 		"spellReferenceProject.threeRingsSpriteSheet"
@@ -347,11 +348,7 @@
 					"config": {
 						"spell.component.inputDefinition": {
 							"actorId": "playerControlled",
-							"keyToAction": {
-								"space": "accelerate",
-								"left arrow": "steerLeft",
-								"right arrow": "steerRight"
-							}
+							"assetId": "keyToActionMap:spellReferenceProject.spacecraftKeyToActionMap"
 						}
 					}
 				},
