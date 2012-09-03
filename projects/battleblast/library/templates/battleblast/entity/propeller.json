@@ -1,0 +1,21 @@
+{
+	"name": "propeller",
+	"namespace": "battleblast.entity",
+	"type": "entityTemplate",
+	"config": {
+		"battleblast.component.propeller": {
+			"radPerS": 7
+		},
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:propeller"
+		},
+		"spell.component.2d.transform": {
+			"scale": [
+				1,
+				1
+			]
+		},
+		"spell.component.visualObject": {}
+	},
+	"children": []
+}

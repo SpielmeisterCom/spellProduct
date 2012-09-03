@@ -76,6 +76,7 @@
 		"spell.component.visualObject",
 		"battleblast.entity.dark_cloud",
 		"battleblast.entity.light_cloud",
+		"battleblast.entity.propeller",
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
 		"battleblast.system.animateClouds",
@@ -96,6 +97,7 @@
 					"spell.system.keyInput",
 					"battleblast.system.spacecraftIntegrator",
 					"battleblast.system.lightsPulsator",
+					"battleblast.system.platformMover",
 					"battleblast.system.propellerRotationSystem",
 					"spell.system.render"
 				]
@@ -136,12 +138,51 @@
 							],
 							"translation": [
 								538,
-								433.5
-							]
+								400
+							],
+							"rotation": 0
 						},
-						"spell.component.2d.graphics.appearance": {}
+						"battleblast.component.platform": {}
 					},
 					"children": [
+						{
+							"name": "player",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:ship5_blue"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										200,
+										200
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 10
+								},
+								"spell.component.2d.physics.inertialObject": {},
+								"spell.component.actor": {
+									"actions": {
+										"accelerate": {
+											"executing": false
+										},
+										"break": {
+											"executing": false
+										},
+										"steerLeft": {
+											"executing": false
+										},
+										"steerRight": {
+											"executing": false
+										}
+									},
+									"id": "playerControlled"
+								},
+								"battleblast.component.spacecraft": {
+									"thrusterForce": 100
+								}
+							}
+						},
 						{
 							"name": "platform_left",
 							"config": {
@@ -196,28 +237,56 @@
 										-12
 									]
 								},
-								"spell.component.visualObject": {}
+								"spell.component.visualObject": {
+									"opacity": 0.4
+								}
 							}
 						},
 						{
-							"name": "prop_top_left",
+							"name": "propeller_top_right",
+							"templateId": "battleblast.entity.propeller",
 							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:propeller"
-								},
 								"spell.component.2d.transform": {
-									"scale": [
-										1,
-										1
-									],
+									"translation": [
+										470,
+										240
+									]
+								}
+							}
+						},
+						{
+							"name": "propeller_top_left",
+							"templateId": "battleblast.entity.propeller",
+							"config": {
+								"spell.component.2d.transform": {
 									"translation": [
 										-470,
-										230
+										240
 									]
-								},
-								"spell.component.visualObject": {},
-								"battleblast.component.propeller": {
-									"radPerS": 7
+								}
+							}
+						},
+						{
+							"name": "propeller_bottom_left",
+							"templateId": "battleblast.entity.propeller",
+							"config": {
+								"spell.component.2d.transform": {
+									"translation": [
+										-470,
+										-420
+									]
+								}
+							}
+						},
+						{
+							"name": "propeller_bottom_right",
+							"templateId": "battleblast.entity.propeller",
+							"config": {
+								"spell.component.2d.transform": {
+									"translation": [
+										470,
+										-420
+									]
 								}
 							}
 						}
@@ -236,7 +305,7 @@
 							]
 						},
 						"spell.component.visualObject": {
-							"layer": -999
+							"layer": -1
 						}
 					}
 				},
@@ -405,45 +474,6 @@
 					}
 				},
 				{
-					"name": "player",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:ship5_blue"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								200,
-								200
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 10
-						},
-						"spell.component.2d.physics.inertialObject": {},
-						"spell.component.actor": {
-							"actions": {
-								"accelerate": {
-									"executing": false
-								},
-								"break": {
-									"executing": false
-								},
-								"steerLeft": {
-									"executing": false
-								},
-								"steerRight": {
-									"executing": false
-								}
-							},
-							"id": "playerControlled"
-						},
-						"battleblast.component.spacecraft": {
-							"thrusterForce": 100
-						},
-						"battleblast.component.platform": {}
-					}
-				},
-				{
 					"name": "test",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
@@ -460,72 +490,6 @@
 						"spell.component.visualObject": {
 							"layer": 10
 						}
-					}
-				},
-				{
-					"name": "propeller2",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:propeller"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								990,
-								670
-							],
-							"rotation": 1
-						},
-						"spell.component.visualObject": {},
-						"battleblast.component.propeller": {
-							"radPerS": 7
-						},
-						"battleblast.component.platform": {}
-					}
-				},
-				{
-					"name": "propeller3",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:propeller"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								55,
-								-5
-							],
-							"rotation": 2
-						},
-						"spell.component.visualObject": {
-							"layer": 1
-						},
-						"battleblast.component.propeller": {
-							"radPerS": 7
-						},
-						"battleblast.component.platform": {}
-					}
-				},
-				{
-					"name": "propeller4",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:propeller"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								990,
-								-5
-							],
-							"rotation": 3,
-							"scale": [
-								1,
-								1
-							]
-						},
-						"spell.component.visualObject": {},
-						"battleblast.component.propeller": {
-							"radPerS": 7
-						},
-						"battleblast.component.platform": {}
 					}
 				},
 				{
