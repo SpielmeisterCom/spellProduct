@@ -148,6 +148,17 @@ define(
 				'spelled.debug.executeRuntimeModule' : function( payload ) {
 					spell.runtimeModule = payload
 					startEngine( payload )
+				},
+				'spelled.debug.updateComponent' : function( payload ) {
+					//TODO: check if the scene is correct
+
+					var component = spell.entityManager.getComponent( payload.entityId, payload.componentId );
+					if ( component ) {
+						spell.logger.debug( "Setting " + payload.componentId + ":" + payload.key + " = " + payload.value + " in entity " + payload.entityId)
+						component[payload.key] = payload.value
+					} else {
+						spell.logger.debug( "Could not find component " + payload.componentId + " in entity " + payload.entityId )
+					}
 				}
 			}
 
@@ -2581,6 +2592,21 @@ define(
 				if( !componentList ) return false
 
 				return !!componentList[ entityId ]
+			},
+
+			/**
+			 * Returns a specific component
+			 *
+			 * @param entityId the id of the entity
+			 * @param componentId the id of the component
+			 * @return {Object}
+			 */
+			getComponent : function( entityId, componentId ) {
+				var componentList = this.components[ componentId ]
+
+				if( !componentList || !componentList[ entityId ]) return undefined
+
+				return componentList[ entityId ]
 			},
 
 			getComponentsById : function( componentTemplateId ) {
@@ -8711,7 +8737,7 @@ define(
 					runtimeModule        : undefined,
 					soundManager         : soundManager,
 					statisticsManager    : statisticsManager,
-					templateManager      : templateManager,
+					templateManager      : templateManager
 				}
 			)
 
