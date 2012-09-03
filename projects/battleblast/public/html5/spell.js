@@ -2326,21 +2326,15 @@ define(
 			childrenComponentId = 'spell.component.entityComposite.children'
 
 		/**
-		 * Returns an entity id. If an entity config already has an entity id it must be processed by this function too. This is necessary because otherwise
-		 * the engine can not guarantee that a generated entity id is not already in use.
+		 * Returns an entity id. If no entity id is provided a new one is generated.
 		 *
-		 * @param {Integer} id
+		 * @param {Object} id
 		 * @return {Integer}
 		 */
 		var getEntityId = function( id ) {
-			if( id ) {
-				nextEntityId = Math.max( id + 1, nextEntityId )
+			if( !id ) return nextEntityId++
 
-				return id
-
-			} else {
-				return nextEntityId++
-			}
+			return id
 		}
 
 		var createComponentList = function( componentTemplateIds ) {
@@ -2492,7 +2486,7 @@ define(
 			// creating current entity
 			_.extend( config, createEntityCompositeConfig( isRoot, childEntityIds ) )
 
-			var entityId = getEntityId( parseInt( entityConfig.id ) )
+			var entityId = getEntityId( entityConfig.id )
 
 			addComponents(
 				components,
@@ -8201,6 +8195,14 @@ define(
 		 * @return {Array}
 		 */
 		_.intersection = platformImpl.intersection
+
+		/**
+		 * Returns true if object is NaN.
+		 * Note: this is not the same as the native isNaN function, which will also return true if the variable is undefined.
+		 *
+		 * @param {Object} Number
+		 */
+		_.isNaN = platformImpl.isNaN
 
 		return _
 	}
