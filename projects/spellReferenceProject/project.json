@@ -97,11 +97,11 @@
 								"spell.component.2d.transform": {
 									"translation": [
 										0,
-										-0.025
+										-0.5
 									],
 									"scale": [
-										0.02,
-										0.02
+										0.28,
+										0.28
 									]
 								},
 								"spell.component.visualObject": {
@@ -150,12 +150,12 @@
 								},
 								"spell.component.2d.transform": {
 									"scale": [
-										0.025,
-										0.025
+										0.33,
+										0.33
 									],
 									"translation": [
-										-0.6,
-										-0.65
+										-8,
+										-10
 									]
 								},
 								"spell.component.visualObject": {}
@@ -170,12 +170,12 @@
 								},
 								"spell.component.2d.transform": {
 									"scale": [
-										0.02,
-										0.02
+										0.2,
+										0.2
 									],
 									"translation": [
-										-0.8,
-										-1.2
+										-8.5,
+										-16
 									]
 								},
 								"spell.component.visualObject": {}
@@ -429,8 +429,8 @@
 								},
 								"spell.component.2d.transform": {
 									"scale": [
-										0.015,
-										0.015
+										1.1,
+										1.1
 									]
 								},
 								"spell.component.visualObject": {

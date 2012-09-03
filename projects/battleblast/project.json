@@ -95,7 +95,6 @@
 				"render": [
 					"spell.system.keyInput",
 					"battleblast.system.spacecraftIntegrator",
-					"battleblast.system.platformMover",
 					"battleblast.system.lightsPulsator",
 					"battleblast.system.propellerRotationSystem",
 					"spell.system.render"
@@ -118,52 +117,111 @@
 							],
 							"translation": [
 								512,
-								430
+								384
 							],
 							"rotation": 0
 						}
 					}
 				},
 				{
-					"name": "platform_left",
+					"name": "platform",
 					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:platform half"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								256,
-								420
-							]
-						},
 						"spell.component.visualObject": {
 							"layer": 2
 						},
-						"battleblast.component.platform": {}
-					}
-				},
-				{
-					"name": "platform_right",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:platform half"
-						},
 						"spell.component.2d.transform": {
-							"translation": [
-								793,
-								420
-							],
-							"rotation": 0,
 							"scale": [
-								-1,
+								1,
 								1
+							],
+							"translation": [
+								538,
+								433.5
 							]
 						},
-						"spell.component.visualObject": {
-							"layer": 2
+						"spell.component.2d.graphics.appearance": {}
+					},
+					"children": [
+						{
+							"name": "platform_left",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:platform half"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										-269,
+										0
+									],
+									"scale": [
+										1,
+										1
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 2
+								}
+							}
 						},
-						"battleblast.component.platform": {}
-					}
+						{
+							"name": "platform_right",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:platform half"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										-1,
+										1
+									],
+									"translation": [
+										269,
+										0
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 2
+								}
+							}
+						},
+						{
+							"name": "glass_floor",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:glass"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										0,
+										-12
+									]
+								},
+								"spell.component.visualObject": {}
+							}
+						},
+						{
+							"name": "prop_top_left",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:propeller"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										1,
+										1
+									],
+									"translation": [
+										-470,
+										230
+									]
+								},
+								"spell.component.visualObject": {},
+								"battleblast.component.propeller": {
+									"radPerS": 7
+								}
+							}
+						}
+					]
 				},
 				{
 					"name": "background_layer0",
@@ -405,32 +463,6 @@
 					}
 				},
 				{
-					"name": "propeller1",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:propeller"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								50,
-								670
-							],
-							"rotation": 0,
-							"scale": [
-								1,
-								1
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 1
-						},
-						"battleblast.component.propeller": {
-							"radPerS": 7
-						},
-						"battleblast.component.platform": {}
-					}
-				},
-				{
 					"name": "propeller2",
 					"config": {
 						"spell.component.2d.graphics.appearance": {
@@ -493,22 +525,6 @@
 						"battleblast.component.propeller": {
 							"radPerS": 7
 						},
-						"battleblast.component.platform": {}
-					}
-				},
-				{
-					"name": "window",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:glass"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								512,
-								384
-							]
-						},
-						"spell.component.visualObject": {},
 						"battleblast.component.platform": {}
 					}
 				},

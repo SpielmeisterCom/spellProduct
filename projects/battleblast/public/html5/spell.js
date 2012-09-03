@@ -1387,11 +1387,7 @@ define(
 			return true
 		}
 
-		var throwCouldNotFindTemplate = function( templateId, templateType ) {
-			throw 'Error: Could not find a template with id \'' + templateId + ( templateType ? '\' of type ' + templateType : '' ) + '.'
-		}
-
-		var createComponentTemplate = function( componentTemplate ) {
+		var createComponentPrototype = function( componentTemplate ) {
 			return _.reduce(
 				componentTemplate.attributes,
 				function( memo, attributeConfig ) {
@@ -1412,32 +1408,15 @@ define(
 			}
 		}
 
-		var createEntityTemplate = function( templates, entityTemplate ) {
-			return _.reduce(
-				entityTemplate.config,
-				function( memo, componentConfig, componentTemplateId ) {
-					var componentTemplate = getTemplate( templates, componentTemplateId, TemplateTypes.COMPONENT )
-
-					if( !componentTemplate ) throwCouldNotFindTemplate( componentTemplateId, TemplateTypes.COMPONENT )
-
-					memo[ componentTemplateId ] = updateComponent( createComponentTemplate( componentTemplate ), componentConfig )
-
-					return memo
-				},
-				{}
-			)
-		}
-
-		var addTemplate = function( templates, entityPrototypes, definition ) {
+		var addTemplate = function( assets, templates, entityPrototypes, definition ) {
 			var templateId = createName( definition.namespace, definition.name )
 
 			if( _.has( templates, templateId ) ) throw 'Error: Template definition \'' + templateId + '\' already exists.'
 
-
 			templates[ templateId ] = definition
 
 			if( definition.type === TemplateTypes.ENTITY ) {
-				entityPrototypes[ templateId ] = createEntityTemplate( templates, definition )
+				entityPrototypes[ templateId ] = createComponents( assets, templates, definition.config, null, templateId )
 			}
 		}
 
@@ -1456,36 +1435,85 @@ define(
 			)
 		}
 
-		var createComponentsFromEntityTemplate = function( templates, entityTemplateId, entity, config ) {
+		var hasAssetIdAttribute = function( attributeConfig ) {
+			return !!_.find(
+				attributeConfig,
+				function( attribute ) {
+					return attribute.type.indexOf( 'assetId:' ) === 0
+				}
+			)
+		}
+
+		/**
+		 * This function dereferences asset ids. If a component with an asset id attribute is found the reference is resolved and a additional asset attribute
+		 * is added to the component instance.
+		 *
+		 * @param assets
+		 * @param componentTemplate
+		 * @param component
+		 * @return {*}
+		 */
+		var injectAsset = function( assets, componentTemplate, component ) {
+			if( hasAssetIdAttribute( componentTemplate.attributes ) ) {
+				component.asset = assets[ component.assetId ]
+			}
+
+			return component
+		}
+
+		/**
+		 * Applies a component config to an entity and returns the configured entity.
+		 *
+		 * @param entity
+		 * @param componentConfig
+		 * @return {*}
+		 */
+		var applyComponentConfig = function( entity, componentConfig ) {
 			return _.reduce(
-				config,
-				function( memo, componentConfig, componentId ) {
-					var componentTemplate = getTemplate( templates, componentId, TemplateTypes.COMPONENT )
+				componentConfig,
+				function( entity, attributeConfig, componentId ) {
+					entity[ componentId ] = _.extend(
+						entity[ componentId ] || {},
+						attributeConfig
+					)
 
-					if( !componentTemplate ) {
-						throw 'Error: Could not find component template \'' + componentId + '\' for \'' + entityTemplateId + '\'.'
-					}
-
-					memo[ componentId ] = updateComponent( memo[ componentId ] || {}, componentConfig )
-
-					return memo
+					return entity
 				},
 				entity
 			)
 		}
 
-		var createComponents = function( templates, config ) {
-			return _.reduce(
-				config,
-				function( memo, componentConfig, componentId ) {
+		var createComponents = function( assets, templates, componentConfig, entityPrototype, entityTemplateId ) {
+			var entity = applyComponentConfig(
+				entityPrototype ? deepClone( entityPrototype ) : {},
+				componentConfig
+			)
+
+			_.each(
+				entity,
+				function( attributeConfig, componentId ) {
 					var componentTemplate = getTemplate( templates, componentId, TemplateTypes.COMPONENT )
 
-					memo[ componentId ] = updateComponent( createComponentTemplate( componentTemplate ), componentConfig )
+					if( !componentTemplate ) {
+						throw 'Error: Could not find component template \'' + componentId +
+							( entityTemplateId ?
+								'\' referenced in entity template \'' + entityTemplateId + '\'.' :
+								'\'.'
+							)
+					}
 
-					return memo
-				},
-				{}
+					entity[ componentId ] = injectAsset(
+						assets,
+						componentTemplate,
+						updateComponent(
+							createComponentPrototype( componentTemplate ),
+							attributeConfig
+						)
+					)
+				}
 			)
+
+			return entity
 		}
 
 
@@ -1493,8 +1521,9 @@ define(
 		 * public
 		 */
 
-		function TemplateManager() {
-			this.templates = {}
+		function TemplateManager( assets ) {
+			this.assets           = assets
+			this.templates        = {}
 			this.entityPrototypes = {}
 		}
 
@@ -1506,20 +1535,19 @@ define(
 					throw 'Error: The format of the supplied template definition is invalid.'
 				}
 
-				addTemplate( this.templates, this.entityPrototypes, definition )
+				addTemplate( this.assets, this.templates, this.entityPrototypes, definition )
 			},
 
 			createComponents : function( entityTemplateId, config ) {
+				var entityPrototype
+
 				if( entityTemplateId ) {
-					var entityPrototype = this.entityPrototypes[ entityTemplateId ]
+					entityPrototype = this.entityPrototypes[ entityTemplateId ]
 
 					if( !entityPrototype ) throw 'Error: Could not find entity prototype for template id \'' + entityTemplateId + '\'.'
-
-					return createComponentsFromEntityTemplate( this.templates, entityTemplateId, deepClone( entityPrototype ), config )
-
-				} else {
-					return createComponents( this.templates, config )
 				}
+
+				return createComponents( this.assets, this.templates, config, entityPrototype, entityTemplateId )
 			},
 
 			hasTemplate : function( templateId ) {
@@ -2130,29 +2158,17 @@ define(
 			)
 		}
 
-		var createDefaultCamera = function( entityManager ) {
-			var entityConfig = {}
-			entityConfig[ cameraComponentTemplateId ] = {
-				active : true
-			}
-
-			entityManager.createEntity( {
-				templateId : cameraEntityTemplateId,
-				config : entityConfig
-			} )
- 		}
-
 
 		/*
 		 * public
 		 */
 
-		var Scene = function( spell, templateManager ) {
-			this.spell           = spell
-			this.templateManager = templateManager
-			this.renderSystems   = null
-			this.updateSystems   = null
-			this.script          = null
+		var Scene = function( spell, entityManager ) {
+			this.spell         = spell
+			this.entityManager = entityManager
+			this.renderSystems = null
+			this.updateSystems = null
+			this.script        = null
 		}
 
 		Scene.prototype = {
@@ -2163,15 +2179,15 @@ define(
 				invoke( this.updateSystems, 'process', [ this.spell, timeInMs, deltaTimeInMs ] )
 			},
 			init: function( spell, sceneConfig, anonymizeModuleIdentifiers ) {
-				var entityManager = spell.entityManager
-
 				if( !hasActiveCamera( sceneConfig ) ) {
-					createDefaultCamera( entityManager )
+					spell.logger.error( 'Could not start scene "' + sceneConfig.name + '" because no camera entity was found. A scene must have at least one active camera entity.' )
+
+					return
 				}
 
 				if( sceneConfig.scriptId ) {
 					this.script = loadModule( sceneConfig.scriptId )
-					this.script.init( this.spell, entityManager, sceneConfig )
+					this.script.init( this.spell, this.entityManager, sceneConfig )
 				}
 
 				if( sceneConfig.systems ) {
@@ -2215,15 +2231,15 @@ define(
 		 * public
 		 */
 
-		var SceneManager = function( spell, templateManager, mainLoop ) {
-			this.spell           = spell
-			this.mainLoop        = mainLoop
-			this.templateManager = templateManager
+		var SceneManager = function( spell, entityManager, mainLoop ) {
+			this.entityManager = entityManager
+			this.mainLoop      = mainLoop
+			this.spell         = spell
 		}
 
 		SceneManager.prototype = {
 			startScene: function( sceneConfig, anonymizeModuleIdentifiers ) {
-				var scene = new Scene( this.spell, this.templateManager )
+				var scene = new Scene( this.spell, this.entityManager )
 				scene.init( this.spell, sceneConfig, anonymizeModuleIdentifiers )
 
 				this.mainLoop.setRenderCallback( _.bind( scene.render, scene ) )
@@ -2363,30 +2379,35 @@ define(
 		/*
 		 * Normalizes the provided entity config
 		 *
-		 * @param arg0 can be either a entity template id or a entity config
+		 * @param templateManager
+		 * @param arg1 can be either a entity template id or a entity config
 		 * @return {*}
 		 */
-		var normalizeEntityConfig = function( arg0 ) {
-			if( !arg0 ) return
+		var normalizeEntityConfig = function( templateManager, arg1 ) {
+			if( !arg1 ) return
 
-			var templateId, config, children
+			var config     = arg1.config || {},
+				children   = arg1.children || [],
+				templateId = _.isString( arg1 ) ? arg1 : arg1.templateId
 
-			if( _.isString( arg0 ) ) {
-				templateId = arg0
+			if( templateId ) {
+				var template = templateManager.getTemplate( templateId )
 
-			} else if( _.isObject( arg0 ) ) {
-				var hasTemplateId = _.has( arg0, 'templateId'),
-					hasConfig     = _.has( arg0, 'config' )
+				if( !template ) {
+					throw 'Error: Unknown template \'' + templateId + '\'. Could not create entity.'
+				}
 
-				if( hasTemplateId ) templateId = arg0.templateId
-				config = ( hasConfig ? arg0.config : {} )
-				if( _.has( arg0, 'children' ) ) children = arg0.children
+				if( template.children &&
+					template.children.length > 0 ) {
+
+					children = children.concat( template.children )
+				}
 			}
 
 			return {
 				children   : children,
 				config     : config,
-				id         : arg0.id ? arg0.id : undefined,
+				id         : arg1.id ? arg1.id : undefined,
 				templateId : templateId
 			}
 		}
@@ -2438,7 +2459,7 @@ define(
 
 		var createEntity = function( components, templateManager, entityConfig, isRoot ) {
 			isRoot       = ( isRoot === true || isRoot === undefined )
-			entityConfig = normalizeEntityConfig( entityConfig )
+			entityConfig = normalizeEntityConfig( templateManager, entityConfig )
 
 			if( !entityConfig ) throw 'Error: Supplied invalid arguments.'
 
@@ -2447,10 +2468,6 @@ define(
 
 			if( !templateId && !config ) {
 				throw 'Error: Supplied invalid arguments.'
-			}
-
-			if( templateId && !templateManager.hasTemplate( templateId ) ) {
-				throw 'Error: Unknown template \'' + templateId + '\'. Could not create entity.'
 			}
 
 			// creating child entities
@@ -2481,8 +2498,8 @@ define(
 		 */
 
 		var EntityManager = function( templateManager ) {
-			this.templateManager = templateManager
 			this.components      = createComponentList( templateManager.getTemplateIds( 'componentTemplate' ) )
+			this.templateManager = templateManager
 		}
 
 		EntityManager.prototype = {
@@ -7143,7 +7160,7 @@ define(
 			}
 		}
 
-		return function( context, resources, fontAsset, screenSize, cameraDimensions, cameraTransform ) {
+		return function( context, fontAsset, screenSize, cameraDimensions, cameraTransform ) {
 			var position     = cameraTransform.translation,
 				cameraWidth  = cameraDimensions[ 0 ],
 				cameraHeight = cameraDimensions[ 1 ],
@@ -7153,7 +7170,7 @@ define(
 				maxY         = minY + cameraHeight,
 				stepSize     = computeGridLineStepSize( cameraWidth ),
 				worldToScreenTranslation = [ -minX, -minY ],
-				fontTexture  = resources[ fontAsset.resourceId ]
+				fontTexture  = fontAsset.resource
 
 			vec2.divide( screenSize, cameraDimensions, invScale )
 
@@ -8325,6 +8342,16 @@ define(
 			)
 		}
 
+		var injectResource = function( asset, resources, resourceId ) {
+			if( !asset.resourceId ) return
+
+			var resource = resources[ asset.resourceId ]
+
+			if( !resource ) throw 'Error: Could not resolve resource id \'' + asset.resourceId + '\'.'
+
+			asset.resource = resource
+		}
+
 
 		/*
 		 * public
@@ -8335,10 +8362,10 @@ define(
 			var assets = _.reduce(
 				assetDefinitions,
 				function( memo, assetDefinition, resourceName ) {
-					var assetId = createAssetId( assetDefinition.type, resourceName )
+					var asset
 
 					if( assetDefinition.type === 'appearance') {
-						memo[ assetId ] = {
+						asset = {
 							resourceId : assetDefinition.file,
 							type       : assetDefinition.type
 						}
@@ -8346,15 +8373,17 @@ define(
 					} else if( assetDefinition.type === 'spriteSheet' ||
 						assetDefinition.type === 'font') {
 
-						memo[ assetId ] = {
+						asset = {
 							config     : assetDefinition.config,
 							resourceId : assetDefinition.file,
 							type       : assetDefinition.type
 						}
 
 					} else if( assetDefinition.type === 'keyToActionMap' ) {
-						memo[ assetId ] = createKeyToActionMapAsset( assetDefinition )
+						asset = createKeyToActionMapAsset( assetDefinition )
 					}
+
+					memo[ createAssetId( assetDefinition.type, resourceName ) ] = asset
 
 					return memo
 				},
@@ -8365,10 +8394,8 @@ define(
 			return _.reduce(
 				assetDefinitions,
 				function( memo, assetDefinition, resourceName ) {
-					var assetId = createAssetId( assetDefinition.type, resourceName )
-
 					if( assetDefinition.type === 'animation' ) {
-						memo[ assetId ] = createAnimationAsset( memo, assetDefinition )
+						memo[ createAssetId( assetDefinition.type, resourceName ) ] = createAnimationAsset( memo, assetDefinition )
 					}
 
 					return memo
@@ -8435,11 +8462,22 @@ define(
 			)
 		}
 
+		var injectResource = function( resources, asset ) {
+			if( !asset.resourceId ) return
+
+			var resource = resources[ asset.resourceId ]
+
+			if( !resource ) throw 'Error: Could not resolve resource id \'' + asset.resourceId + '\'.'
+
+			asset.resource = resource
+		}
+
 
 		return function( spell, next ) {
 			var eventManager     = spell.eventManager,
 				renderingContext = spell.renderingContext,
 				resourceLoader   = spell.resourceLoader,
+				resources        = spell.resources,
 				runtimeModule    = spell.runtimeModule,
 				templateManager  = spell.templateManager
 
@@ -8448,16 +8486,21 @@ define(
 				resourceBundleId = 'resources'
 
 			eventManager.waitFor(
-				[ Events.RESOURCE_LOADING_COMPLETED, templateBundleId ],
-				function( templates ) {
-					_.each( templates, function( template ) { templateManager.add( template ) } )
-				}
-
-			).and(
 				[ Events.RESOURCE_LOADING_COMPLETED, assetBundleId ],
-				function( assets ) {
-					spell.assets = createAssets( assets )
+				function( loadedAssets ) {
+					_.extend( spell.assets, createAssets( loadedAssets ) )
 
+					// start loading template definition files
+					startLoadingResources(
+						resourceLoader,
+						templateBundleId,
+						resourceIdsToJsonFilenames( runtimeModule.templateIds ),
+						'library/templates',
+						'text',
+						resourceJsonDecoder
+					)
+
+					// start loading resources
 					startLoadingResources(
 						resourceLoader,
 						resourceBundleId,
@@ -8471,21 +8514,25 @@ define(
 				}
 
 			).and(
-				[ Events.RESOURCE_LOADING_COMPLETED, resourceBundleId ]
+				[ Events.RESOURCE_LOADING_COMPLETED, templateBundleId ],
+				function( loadedTemplates ) {
+					_.each( loadedTemplates, function( template ) { templateManager.add( template ) } )
+				}
+
+			).and(
+				[ Events.RESOURCE_LOADING_COMPLETED, resourceBundleId ],
+				function( loadedResources ) {
+					_.each(
+						spell.assets,
+						_.bind( injectResource, null, loadedResources )
+					)
+				}
 
 			).resume( function() {
 				next()
 			} )
 
-			startLoadingResources(
-				resourceLoader,
-				templateBundleId,
-				resourceIdsToJsonFilenames( runtimeModule.templateIds ),
-				'library/templates',
-				'text',
-				resourceJsonDecoder
-			)
-
+			// start loading asset definition files
 			startLoadingResources(
 				resourceLoader,
 				assetBundleId,
@@ -8554,6 +8601,7 @@ define(
 			var spell = this.spell
 
 			spell.entityManager = new EntityManager( spell.templateManager )
+			spell.sceneManager  = new SceneManager( spell, spell.entityManager, spell.mainLoop )
 
 			spell.logger.debug( 'loading resources completed' )
 
@@ -8616,7 +8664,8 @@ define(
 		}
 
 		var init = function( config ) {
-			var spell              = {},
+			var spell                = {},
+				assets               = {},
 				logger               = new Logger(),
 				eventManager         = new EventManager(),
 				configurationManager = new ConfigurationManager( eventManager, config ),
@@ -8630,15 +8679,15 @@ define(
 				soundManager         = PlatformKit.createSoundManager(),
 				inputManager         = new InputManager( configurationManager ),
 				statisticsManager    = new StatisticsManager(),
-				templateManager      = new TemplateManager(),
-				mainLoop             = createMainLoop( eventManager, statisticsManager),
-				sceneManager         = new SceneManager( spell, templateManager, mainLoop )
+				templateManager      = new TemplateManager( assets ),
+				mainLoop             = createMainLoop( eventManager, statisticsManager )
 
 			statisticsManager.init()
 
 			_.extend(
 				spell,
 				{
+					assets               : assets,
 					configurationManager : configurationManager,
 					eventManager         : eventManager,
 					inputEvents          : inputManager.getInputEvents(),
@@ -8647,7 +8696,6 @@ define(
 					mainLoop             : mainLoop,
 					renderingContext     : renderingContext,
 					runtimeModule        : undefined,
-					sceneManager         : sceneManager,
 					soundManager         : soundManager,
 					statisticsManager    : statisticsManager,
 					templateManager      : templateManager,
