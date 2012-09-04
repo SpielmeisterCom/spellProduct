@@ -19,7 +19,7 @@ define(
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 
-			var opacity = Math.abs( Math.sin(timeInMs/1500) )
+			var opacity = Math.abs( Math.sin(timeInMs/30) )
 
 			this.updateLights( timeInMs, opacity )
 		}

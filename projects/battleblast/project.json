@@ -75,6 +75,7 @@
 		"spell.component.physics.collisionSphere",
 		"spell.component.visualObject",
 		"battleblast.entity.dark_cloud",
+		"battleblast.entity.light",
 		"battleblast.entity.light_cloud",
 		"battleblast.entity.propeller",
 		"spell.entity.2d.graphics.camera",
@@ -114,8 +115,8 @@
 						},
 						"spell.component.2d.transform": {
 							"scale": [
-								1,
-								1
+								1.2,
+								1.2
 							],
 							"translation": [
 								512,
@@ -289,6 +290,112 @@
 									]
 								}
 							}
+						},
+						{
+							"name": "lights",
+							"config": {
+								"spell.component.visualObject": {
+									"layer": 10
+								}
+							},
+							"children": [
+								{
+									"name": "light1",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												-386,
+												297
+											]
+										}
+									}
+								},
+								{
+									"name": "light2",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												-29,
+												299
+											]
+										}
+									}
+								},
+								{
+									"name": "light3",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												28,
+												299
+											]
+										}
+									}
+								},
+								{
+									"name": "light4",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												385,
+												297
+											]
+										}
+									}
+								},
+								{
+									"name": "light5",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												384,
+												-322
+											]
+										}
+									}
+								},
+								{
+									"name": "light6",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												28,
+												-319
+											]
+										}
+									}
+								},
+								{
+									"name": "light7",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												-29,
+												-319
+											]
+										}
+									}
+								},
+								{
+									"name": "light8",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												-386,
+												-323
+											]
+										}
+									}
+								}
+							]
 						}
 					]
 				},
@@ -307,170 +414,6 @@
 						"spell.component.visualObject": {
 							"layer": -1
 						}
-					}
-				},
-				{
-					"name": "light1",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								139,
-								716
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
-					}
-				},
-				{
-					"name": "light2",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								496,
-								718
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
-					}
-				},
-				{
-					"name": "light3",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								553,
-								718
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
-					}
-				},
-				{
-					"name": "light4",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								910,
-								716
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
-					}
-				},
-				{
-					"name": "light5",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								909,
-								97
-							],
-							"scale": [
-								1,
-								1
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
-					}
-				},
-				{
-					"name": "light6",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								553,
-								100
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
-					}
-				},
-				{
-					"name": "light7",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								496,
-								100
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
-					}
-				},
-				{
-					"name": "light8",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:lighton"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								139,
-								97
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 4,
-							"opacity": 0
-						},
-						"battleblast.component.platform": {},
-						"battleblast.component.light": {}
 					}
 				},
 				{

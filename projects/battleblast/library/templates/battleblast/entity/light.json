@@ -1,0 +1,14 @@
+{
+	"name": "light",
+	"namespace": "battleblast.entity",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:lighton"
+		},
+		"spell.component.visualObject": {},
+		"battleblast.component.light": {},
+		"spell.component.2d.transform": {}
+	},
+	"children": []
+}
