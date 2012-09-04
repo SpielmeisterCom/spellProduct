@@ -244,52 +244,57 @@
 							}
 						},
 						{
-							"name": "propeller_top_right",
-							"templateId": "battleblast.entity.propeller",
-							"config": {
-								"spell.component.2d.transform": {
-									"translation": [
-										470,
-										240
-									]
+							"name": "propellers",
+							"children": [
+								{
+									"name": "propeller_top_right",
+									"templateId": "battleblast.entity.propeller",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												470,
+												240
+											]
+										}
+									}
+								},
+								{
+									"name": "propeller_top_left",
+									"templateId": "battleblast.entity.propeller",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												-470,
+												240
+											]
+										}
+									}
+								},
+								{
+									"name": "propeller_bottom_left",
+									"templateId": "battleblast.entity.propeller",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												-470,
+												-420
+											]
+										}
+									}
+								},
+								{
+									"name": "propeller_bottom_right",
+									"templateId": "battleblast.entity.propeller",
+									"config": {
+										"spell.component.2d.transform": {
+											"translation": [
+												470,
+												-420
+											]
+										}
+									}
 								}
-							}
-						},
-						{
-							"name": "propeller_top_left",
-							"templateId": "battleblast.entity.propeller",
-							"config": {
-								"spell.component.2d.transform": {
-									"translation": [
-										-470,
-										240
-									]
-								}
-							}
-						},
-						{
-							"name": "propeller_bottom_left",
-							"templateId": "battleblast.entity.propeller",
-							"config": {
-								"spell.component.2d.transform": {
-									"translation": [
-										-470,
-										-420
-									]
-								}
-							}
-						},
-						{
-							"name": "propeller_bottom_right",
-							"templateId": "battleblast.entity.propeller",
-							"config": {
-								"spell.component.2d.transform": {
-									"translation": [
-										470,
-										-420
-									]
-								}
-							}
+							]
 						},
 						{
 							"name": "lights",
