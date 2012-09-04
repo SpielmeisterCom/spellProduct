@@ -2,6 +2,21 @@
 
 VERSION=$(cat VERSION)
 
+cd modules/spellEd
+git add public/app-configuration.js
+git commit -m "Version $VERSION release"
+git push
+
+cd ../..
+
+git add VERSION
+git add modules/ace
+git add modules/spellEd
+git add modules/spellCore
+git add modules/spellFlash
+git commit -m "Version $VERSION release"
+git push
+
 git tag -a "$VERSION" -m "Version $VERSION release"              
 git push --tags
 
