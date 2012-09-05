@@ -37,7 +37,7 @@ Ext.app.CONFIGURATION = {
 };
 EOF
 
-make
+make deploy
 cd $CUR_DIR
 mkdir $DEST_DIR/spellEd
 mkdir $DEST_DIR/spellEd/public
