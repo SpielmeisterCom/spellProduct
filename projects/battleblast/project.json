@@ -72,6 +72,7 @@
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
+		"spell.component.name",
 		"spell.component.physics.collisionSphere",
 		"spell.component.visualObject",
 		"battleblast.entity.dark_cloud",
