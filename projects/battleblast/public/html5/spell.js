@@ -136,7 +136,12 @@ define(
 
 define(
 	'spell/shared/util/createDebugMessageHandler',
-	function() {
+	[
+		'spell/functions'
+	],
+	function(
+		_
+	) {
 		'use strict'
 
 
@@ -150,21 +155,15 @@ define(
 					startEngine( payload )
 				},
 				'spelled.debug.updateComponent' : function( payload ) {
-					var component = spell.entityManager.getComponentById( payload.componentId, payload.entityId )
+					var success = spell.entityManager.updateComponent( payload.componentId, payload.entityId, payload.config )
 
-					if( component ) {
-						component[ payload.key ] = payload.value
-
-					} else {
-						spell.logger.debug( "Could not update component " + payload.componentId + " in entity " + payload.entityId )
+					if( !success ) {
+						spell.logger.error( 'Could not update component \'' + payload.componentId + '\' in entity ' + payload.entityId + '.' )
 					}
 				}
 			}
 
 			return function( message ) {
-				spell.logger.debug( 'Received message: ' + message.type )
-
-
 				var handler = messageTypeToHandler[ message.type ]
 
 				if( !handler ) return
@@ -1423,7 +1422,16 @@ define(
 			}
 		}
 
-		var addTemplate = function( assets, templates, entityPrototypes, definition ) {
+		var hasAssetIdAttribute = function( attributeConfig ) {
+			return !!_.find(
+				attributeConfig,
+				function( attribute ) {
+					return attribute.type.indexOf( 'assetId:' ) === 0
+				}
+			)
+		}
+
+		var addTemplate = function( assets, templates, componentTemplatesWithAssets, entityPrototypes, definition ) {
 			var templateId = createName( definition.namespace, definition.name )
 
 			if( _.has( templates, templateId ) ) throw 'Error: Template definition \'' + templateId + '\' already exists.'
@@ -1432,6 +1440,11 @@ define(
 
 			if( definition.type === TemplateTypes.ENTITY ) {
 				entityPrototypes[ templateId ] = createComponents( assets, templates, definition.config, null, templateId, false )
+
+			} else if( definition.type === TemplateTypes.COMPONENT ) {
+				var hasAssetId = hasAssetIdAttribute( definition.attributes )
+
+				if( hasAssetId ) componentTemplatesWithAssets[ templateId ] = true
 			}
 		}
 
@@ -1447,15 +1460,6 @@ define(
 						template
 					)
 				)
-			)
-		}
-
-		var hasAssetIdAttribute = function( attributeConfig ) {
-			return !!_.find(
-				attributeConfig,
-				function( attribute ) {
-					return attribute.type.indexOf( 'assetId:' ) === 0
-				}
 			)
 		}
 
@@ -1540,9 +1544,12 @@ define(
 		 */
 
 		function TemplateManager( assets ) {
-			this.assets           = assets
-			this.templates        = {}
-			this.entityPrototypes = {}
+			this.assets                       = assets
+			this.templates                    = {}
+			this.entityPrototypes             = {}
+
+			// map of component template ids which have an asset id
+			this.componentTemplatesWithAssets = {}
 		}
 
 		TemplateManager.prototype = {
@@ -1553,7 +1560,13 @@ define(
 					throw 'Error: The format of the supplied template definition is invalid.'
 				}
 
-				addTemplate( this.assets, this.templates, this.entityPrototypes, definition )
+				addTemplate(
+					this.assets,
+					this.templates,
+					this.componentTemplatesWithAssets,
+					this.entityPrototypes,
+					definition
+				)
 			},
 
 			createComponents : function( entityTemplateId, config ) {
@@ -1566,6 +1579,18 @@ define(
 				}
 
 				return createComponents( this.assets, this.templates, config, entityPrototype, entityTemplateId )
+			},
+
+			updateComponent : function( componentId, component, attributeConfig ) {
+				updateComponent( component, attributeConfig )
+
+				if( this.componentTemplatesWithAssets[ componentId ] ) {
+					var assetIdChanged = !!attributeConfig[ 'assetId' ]
+
+					if( assetIdChanged ) {
+						injectAsset( this.assets, this.templates[ componentId ], component )
+					}
+				}
 			},
 
 			hasTemplate : function( templateId ) {
@@ -2713,6 +2738,24 @@ define(
 				}
 
 				return _.pick( componentDictionary, ids )
+			},
+
+			/**
+			 * Updates the attributes of a component. Returns true when successful, false otherwise.
+			 *
+			 * @param {String} componentId the component id of the component
+			 * @param {String} entityId the id of the entity which the component belongs to
+			 * @param {Object} attributeConfig the attribute configuration change of the component
+			 * @return {Boolean}
+			 */
+			updateComponent : function( componentId, entityId, attributeConfig ) {
+				var component = this.getComponentById( componentId, entityId )
+
+				if( !component ) return false
+
+				this.templateManager.updateComponent( componentId, component, attributeConfig )
+
+				return true
 			},
 
 			/**
