@@ -426,7 +426,7 @@
 					"name": "test",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
-							"text": "10/10 stars for levelup",
+							"text": "R",
 							"assetId": "font:bellopro",
 							"spacing": -5
 						},
