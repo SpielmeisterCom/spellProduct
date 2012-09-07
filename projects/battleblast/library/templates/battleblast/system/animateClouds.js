@@ -41,13 +41,6 @@ define(
 				var prng = new XorShift32( 437840 )
 				var tmp = vec2.create()
 
-
-				var fromX  = ( -maxCloudTextureSize ) * scaleFactor
-				var fromY  = ( -maxCloudTextureSize ) * scaleFactor
-				var untilX = ( maxCloudTextureSize + xSize ) * scaleFactor
-				var untilY = ( maxCloudTextureSize + ySize ) * scaleFactor
-
-
 				for( var i = 0; i < numberOfClouds; i++) {
 					var position = [
 						prng.nextBetween( fromX, untilX ),
@@ -125,7 +118,7 @@ define(
 			)
 
 			createClouds(spell,
-				25,
+				35,
 				"cloud_light"
 			)
 		}
