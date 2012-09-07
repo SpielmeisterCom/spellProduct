@@ -117,8 +117,8 @@
 						},
 						"spell.component.2d.transform": {
 							"scale": [
-								1.2,
-								1.2
+								1.1,
+								1.1
 							],
 							"translation": [
 								512,
@@ -241,7 +241,7 @@
 									]
 								},
 								"spell.component.visualObject": {
-									"opacity": 0.4
+									"opacity": 0.6
 								}
 							}
 						},
@@ -427,9 +427,9 @@
 					"name": "test",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
-							"text": "R",
+							"text": "Hello World!",
 							"assetId": "font:bellopro",
-							"spacing": -5
+							"spacing": -28
 						},
 						"spell.component.2d.transform": {
 							"translation": [

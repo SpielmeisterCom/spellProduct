@@ -4,9 +4,9 @@
 	"type": "entityTemplate",
 	"config": {
 		"battleblast.component.cloud": {
-			"base_speed": [
-				24,
-				-18
+			"speed": [
+				48,
+				-36
 			]
 		},
 		"spell.component.2d.graphics.appearance": {},

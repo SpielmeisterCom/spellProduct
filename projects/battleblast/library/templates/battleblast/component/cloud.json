@@ -7,7 +7,7 @@
 	"icon": "",
 	"attributes": [
 		{
-			"name": "base_speed",
+			"name": "speed",
 			"type": "vec2",
 			"default": "[0,0]"
 		}

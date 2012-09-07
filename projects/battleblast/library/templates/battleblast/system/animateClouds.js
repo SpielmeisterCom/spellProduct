@@ -11,20 +11,26 @@ define(
 	    XorShift32
 		) {
 		'use strict'
+        
+        var cloudId = 0
 
+        var maxCloudTextureSize = 512
+		var scaleFactor = 1.0
+		var xSize = 1024
+		var ySize = 768
+            
+		var fromX  = ( -maxCloudTextureSize ) * scaleFactor
+		var fromY  = ( -maxCloudTextureSize ) * scaleFactor
+		var untilX = ( maxCloudTextureSize + xSize ) * scaleFactor
+		var untilY = ( maxCloudTextureSize + ySize ) * scaleFactor
+
+		var distanceCovered = vec2.create()
 
 		/**
 		 * private
 		 */
-
-		var init = function( spell ) {
+        var createClouds = function( spell, numberOfClouds, type ) {
             var baseSpeed = 10
-			var maxCloudTextureSize = 512
-			var xSize = 1024
-			var ySize = 768
-            var cloudId = 0
-                
-            var createClouds = function( numberOfClouds, type ) {
 
                 
 				if( type !== "cloud_dark" &&
@@ -35,7 +41,6 @@ define(
 
 
 				var prng = new XorShift32( 437840 )
-				var scaleFactor = 1.0
 				var tmp = vec2.create()
 
 
@@ -80,102 +85,69 @@ define(
 				}
 			}
             
-			// add clouds
-			createClouds(
+        var applyActionsToClouds = function(deltaTimeInMs, cloud, transform ) {
+            var cloudTranslation = transform.translation
+            var cloudSpeedVec2 = cloud.speed
+            
+    		var deltaTimeInS = deltaTimeInMs / 1000
+
+
+			vec2.scale( cloudSpeedVec2, deltaTimeInS, distanceCovered )
+			vec2.add( cloudTranslation, distanceCovered, cloudTranslation )
+
+			if( cloudTranslation[ 0 ] > untilX ||
+				cloudTranslation[ 0 ] < fromX ) {
+
+				cloudTranslation[ 0 ] = ( cloudSpeedVec2[ 0 ] > 0 ? fromX : untilX )
+			}
+
+			if( cloudTranslation[ 1 ] > untilY ||
+				cloudTranslation[ 1 ] < fromY ) {
+
+				cloudTranslation[ 1 ] = ( cloudSpeedVec2[ 1 ] > 0 ? fromY : untilY )
+			}
+		}
+           
+        /**
+         * Constructor
+         */
+        var CloudAnimationSystem = function( spell ) {
+        	this.updateClouds     = createEntityEach( this.clouds, [ this.transforms ], applyActionsToClouds )
+           // this.spell = spell
+		}
+        
+        /**
+         * Init function gets called when this system is enabled
+         */
+		CloudAnimationSystem.prototype.init = function( spell ) {
+
+			// dynamicly create clouds, when this is enabled
+			createClouds(spell,
 				35,
 				"cloud_dark"
 			)
 
-			createClouds(
+			createClouds(spell,
 				25,
 				"cloud_light"
 			)
 		}
 
-		var cleanUp = function( spell ) {}
-
-		var process = function( spell, timeInMs, deltaTimeInMs ) {
+        /**
+         * Cleanup function gets called when this system is disabled
+         */
+		CloudAnimationSystem.prototype.cleanUp = function( spell ) {
+    	    
 		}
 
-		/**
-		 * public
-		 */
-		var CloudAnimationSystem = function( spell ) {
-		}
-
-		CloudAnimationSystem.prototype = {
-			cleanUp : cleanUp,
-			init : init,
-			process : process
+        /**
+         * The process function get called every frame
+         */
+		CloudAnimationSystem.prototype.process = function( spell, timeInMs, deltaTimeInMs ) {
+    		this.updateClouds( deltaTimeInMs )
 		}
 
 		return CloudAnimationSystem
 	}
 )
 
-
-
-/*
-define(
-	"",
-	[
-		"funkysnakes/shared/config/constants",
-
-		"spell/shared/util/math",
-
-		"glmatrix/vec3",
-		"underscore"
-	],
-	function(
-		constants,
-
-		math,
-
-		vec3,
-		_
-		) {
-		"use strict"
-
-
-		var scaleFactor = 1.0
-		var fromX  = ( -constants.maxCloudTextureSize ) * scaleFactor
-		var fromY  = ( -constants.maxCloudTextureSize ) * scaleFactor
-		var untilX = ( constants.maxCloudTextureSize + constants.xSize ) * scaleFactor
-		var untilY = ( constants.maxCloudTextureSize + constants.ySize ) * scaleFactor
-
-		var distanceCovered = vec3.create( [ 0, 0, 0 ] )
-
-
-		var animateClouds = function(
-			timeInMs,
-			deltaTimeInMs,
-			cloudEntities
-			) {
-			var deltaTimeInS = deltaTimeInMs / 1000
-
-			_.each(
-				cloudEntities,
-				function( cloud ) {
-					vec3.scale( cloud.cloud.speed, deltaTimeInS, distanceCovered )
-					vec3.add( cloud.position, distanceCovered )
-
-					if( cloud.position[ 0 ] > untilX ||
-						cloud.position[ 0 ] < fromX ) {
-
-						cloud.position[ 0 ] = ( cloud.cloud.speed[ 0 ] > 0 ? fromX : untilX )
-					}
-
-					if( cloud.position[ 1 ] > untilY ||
-						cloud.position[ 1 ] < fromY ) {
-
-						cloud.position[ 1 ] = ( cloud.cloud.speed[ 1 ] > 0 ? fromY : untilY )
-					}
-				}
-			)
-		}
-
-
-		return animateClouds
-	}
-)
-*/
