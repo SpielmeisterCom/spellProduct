@@ -59,7 +59,6 @@ define(
 
 					var entityId = spell.entityManager.createEntity({
                         "templateId": "battleblast.entity." + type,
-                        "id": "cloud" + cloudId++,
                         "config": {
                         "spell.component.2d.transform": {
                                 "scale": [ scaleFactor, scaleFactor ],
