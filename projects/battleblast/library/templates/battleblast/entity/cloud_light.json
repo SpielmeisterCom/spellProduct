@@ -5,10 +5,10 @@
 	"config": {
 		"battleblast.component.cloud": {
 			"movement": [
-				12,
-				-8
+				16,
+				-7
 			],
-			"speedFactor": 10
+			"speedFactor": 16
 		},
 		"spell.component.2d.graphics.appearance": {},
 		"spell.component.2d.transform": {},

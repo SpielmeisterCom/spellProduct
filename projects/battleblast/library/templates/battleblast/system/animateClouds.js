@@ -13,14 +13,13 @@ define(
 		'use strict'
         
         var maxCloudTextureSize = 512
-		var scaleFactor = 1.0
 		var xSize = 1024
 		var ySize = 768
             
-		var fromX  = ( -maxCloudTextureSize ) * scaleFactor
-		var fromY  = ( -maxCloudTextureSize ) * scaleFactor
-		var untilX = ( maxCloudTextureSize + xSize ) * scaleFactor
-		var untilY = ( maxCloudTextureSize + ySize ) * scaleFactor
+		var fromX  = ( -maxCloudTextureSize )
+		var fromY  = ( -maxCloudTextureSize )
+		var untilX = ( maxCloudTextureSize + xSize )
+		var untilY = ( maxCloudTextureSize + ySize )
 
 		var distanceCovered = vec2.create()
 
@@ -28,45 +27,40 @@ define(
 		 * private
 		 */
         var createClouds = function( spell, numberOfClouds, type ) {
-            var baseSpeed = 10
+   			if( type !== "cloud_dark" &&
+				type !== "cloud_light" ) {
 
-                
-				if( type !== "cloud_dark" &&
-					type !== "cloud_light" ) {
-
-					throw "Type '" + type + "' is not supported"
-				}
-
-
-				var prng = new XorShift32( 437840 )
-				var tmp = vec2.create()
-
-				for( var i = 0; i < numberOfClouds; i++) {
-					var position = [
-						prng.nextBetween( fromX, untilX ),
-						prng.nextBetween( fromY, untilY ),
-						0
-					]
-
-					vec2.set( baseSpeed, tmp )
-					vec2.scale( tmp, prng.nextBetween( 0.75, 1.0 ) * scaleFactor )
-
-					var index = "_0" + ( 1 + ( i % 6 ) )
-
-					var entityId = spell.entityManager.createEntity({
-                        "templateId": "battleblast.entity." + type,
-                        "config": {
-                            "spell.component.2d.transform": {
-                                "scale": [ scaleFactor, scaleFactor ],
-                                "translation": position
-                            },                    
-                           "spell.component.2d.graphics.appearance": {
-                                "assetId": "appearance:" + type + index
-                            }
-                        }
-					})
-				}
+				throw "Type '" + type + "' is not supported"
 			}
+
+
+			var prng = new XorShift32( 437840 )
+			var tmp = vec2.create()
+
+			for( var i = 0; i < numberOfClouds; i++) {
+				var position = [
+					prng.nextBetween( fromX, untilX ),
+					prng.nextBetween( fromY, untilY ),
+					0
+				]
+
+				vec2.scale( tmp, prng.nextBetween( 0.75, 1.0 ) )
+
+				var index = "_0" + ( 1 + ( i % 6 ) )
+
+				var entityId = spell.entityManager.createEntity({
+                    "templateId": "battleblast.entity." + type,
+                    "config": {
+                        "spell.component.2d.transform": {
+                            "translation": position
+                        },                    
+                       "spell.component.2d.graphics.appearance": {
+                            "assetId": "appearance:" + type + index
+                        }
+                    }
+				})
+			}
+		}
             
         var applyActionsToClouds = function(deltaTimeInMs, cloud, transform ) {
             var cloudTranslation = transform.translation
@@ -108,7 +102,7 @@ define(
 
 			// dynamicly create clouds, when this is enabled
 			createClouds(spell,
-				35,
+				55,
 				"cloud_dark"
 			)
 

@@ -26,13 +26,18 @@ define(
 		}
 
 
-        var s = 0.4
+        var s = 0.3
 
 		var applyActionsToPlatformElements = function( timeInMs, platform, transform ) {
 
-            var moveFactor = rescale(Math.sin(timeInMs/500), -1, 1, -s, s)
+            var sin = Math.sin(timeInMs/500)
+            var scaleFactor = rescale(sin, -1, 1, 1, 1.02)
+            var moveFactor = rescale(sin, -1, 1, -s, s)
 
-			transform.translation[0] += moveFactor
+			transform.scale[0] = scaleFactor
+    		transform.scale[1] = scaleFactor
+            
+        	transform.translation[0] += moveFactor
     		transform.translation[1] += moveFactor
 
 		}
