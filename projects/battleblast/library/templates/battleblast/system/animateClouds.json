@@ -1,16 +1,15 @@
 {
-    "type" : "systemTemplate",
-    "namespace" : "battleblast.system",
-    "name" : "animateClouds",
-
-    "input" : [
-        {
-            "name" : "clouds",
-            "templateId" : "battleblast.component.cloud"
-        },
-        {
-            "name" : "transforms",
-            "templateId" : "spell.component.2d.transform"
-        }
-    ]
+	"name": "animateClouds",
+	"namespace": "battleblast.system",
+	"type": "systemTemplate",
+	"input": [
+		{
+			"name": "clouds",
+			"templateId": "battleblast.component.cloud"
+		},
+		{
+			"name": "transforms",
+			"templateId": "spell.component.2d.transform"
+		}
+	]
 }
