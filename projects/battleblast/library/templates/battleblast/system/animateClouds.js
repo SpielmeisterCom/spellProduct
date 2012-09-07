@@ -18,14 +18,17 @@ define(
 		 */
 
 		var init = function( spell ) {
-
+            var baseSpeed = 10
 			var maxCloudTextureSize = 512
 			var xSize = 1024
 			var ySize = 768
+            var cloudId = 0
+                
+            var createClouds = function( numberOfClouds, type ) {
 
-			var createClouds = function( numberOfClouds, baseSpeed, type ) {
-				if( type !== "dark_cloud" &&
-					type !== "light_cloud" ) {
+                
+				if( type !== "cloud_dark" &&
+					type !== "cloud_light" ) {
 
 					throw "Type '" + type + "' is not supported"
 				}
@@ -54,32 +57,39 @@ define(
 
 					var index = "_0" + ( 1 + ( i % 6 ) )
 
-					spell.entityManager.createEntity(type)
-
-					/*
-						[ {
-							scale     : [ scaleFactor, scaleFactor, 0 ],
-							textureId : "environment/" + type + index + ".png",
+					var entityId = spell.entityManager.createEntity({
+                        "templateId": "battleblast.entity." + type,
+                        "id": "cloud" + cloudId++,
+                        "config": {
+                        "spell.component.2d.transform": {
+                                "scale": [ scaleFactor, scaleFactor ],
+                                "translation": position
+                            },                    
+                           "spell.component.2d.graphics.appearance": {
+                                "assetId": "appearance:" + type + index
+                            }
+                        }
+					})
+					
+					/*	[ {
 							speed     : tmp,
 							position  : position
-						} ]
+						} ]*/
 
-					*/
+		
 				}
 			}
-
+            
 			// add clouds
 			createClouds(
 				35,
-				"dark_cloud"
+				"cloud_dark"
 			)
 
 			createClouds(
 				25,
-				"light_cloud"
+				"cloud_light"
 			)
-
-
 		}
 
 		var cleanUp = function( spell ) {}
