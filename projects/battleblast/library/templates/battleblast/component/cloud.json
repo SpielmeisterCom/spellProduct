@@ -7,9 +7,14 @@
 	"icon": "",
 	"attributes": [
 		{
-			"name": "speed",
+			"name": "movement",
 			"type": "vec2",
 			"default": "[0,0]"
+		},
+		{
+			"name": "speedFactor",
+			"type": "number",
+			"default": "1"
 		}
 	]
 }

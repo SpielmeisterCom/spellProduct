@@ -4,10 +4,11 @@
 	"type": "entityTemplate",
 	"config": {
 		"battleblast.component.cloud": {
-			"speed": [
-				48,
-				-36
-			]
+			"movement": [
+				12,
+				-8
+			],
+			"speedFactor": 10
 		},
 		"spell.component.2d.graphics.appearance": {},
 		"spell.component.2d.transform": {},
