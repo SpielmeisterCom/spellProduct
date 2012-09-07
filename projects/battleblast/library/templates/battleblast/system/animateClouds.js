@@ -12,8 +12,6 @@ define(
 		) {
 		'use strict'
         
-        var cloudId = 0
-
         var maxCloudTextureSize = 512
 		var scaleFactor = 1.0
 		var xSize = 1024
