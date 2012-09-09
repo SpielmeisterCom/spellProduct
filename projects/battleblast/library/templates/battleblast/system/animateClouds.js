@@ -48,7 +48,7 @@ define(
 
 				var index = "_0" + ( 1 + ( i % 6 ) )
 
-				var entityId = spell.entityManager.createEntity({
+				var entityId = spell.EntityManager.createEntity({
                     "templateId": "battleblast.entity." + type,
                     "config": {
                         "spell.component.2d.transform": {
@@ -63,27 +63,23 @@ define(
 		}
             
         var applyActionsToClouds = function(deltaTimeInMs, cloud, transform ) {
-            var cloudTranslation = transform.translation
-            var cloudMoveVec2 = cloud.movement
-            var speedFactor = cloud.speedFactor
-            
-    		var deltaTimeInS = deltaTimeInMs / 1000
+      		var deltaTimeInS = deltaTimeInMs / 1000
 
-			vec2.scale( cloudMoveVec2, deltaTimeInS, distanceCovered )
-            vec2.scale( distanceCovered, speedFactor, distanceCovered )
+			vec2.scale( cloud.movement, deltaTimeInS, distanceCovered )
+            vec2.scale( distanceCovered, cloud.speedFactor, distanceCovered )
 
-			vec2.add( cloudTranslation, distanceCovered, cloudTranslation )
+			vec2.add( transform.translation, distanceCovered, transform.translation )
 
-			if( cloudTranslation[ 0 ] > untilX ||
-				cloudTranslation[ 0 ] < fromX ) {
+			if( transform.translation[ 0 ] > untilX ||
+				transform.translation[ 0 ] < fromX ) {
 
-				cloudTranslation[ 0 ] = ( cloudMoveVec2[ 0 ] > 0 ? fromX : untilX )
+				transform.translation[ 0 ] = ( cloud.movement[ 0 ] > 0 ? fromX : untilX )
 			}
 
-			if( cloudTranslation[ 1 ] > untilY ||
-				cloudTranslation[ 1 ] < fromY ) {
+			if( transform.translation[ 1 ] > untilY ||
+				transform.translation[ 1 ] < fromY ) {
 
-				cloudTranslation[ 1 ] = ( cloudMoveVec2[ 1 ] > 0 ? fromY : untilY )
+				transform.translation[ 1 ] = ( cloud.movement[ 1 ] > 0 ? fromY : untilY )
 			}
 		}
            
