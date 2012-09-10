@@ -9,8 +9,9 @@ define(
 		createEntityEach,
 		vec2,
 	    XorShift32
-		) {
+	) {
 		'use strict'
+        
         
         var maxCloudTextureSize = 512
 		var xSize = 1024
@@ -26,12 +27,14 @@ define(
 		/**
 		 * private
 		 */
-        var createClouds = function( spell, numberOfClouds, type ) {
+        var createClouds = function( spell, numberOfClouds, type, layer ) {
    			if( type !== "cloud_dark" &&
 				type !== "cloud_light" ) {
 
 				throw "Type '" + type + "' is not supported"
 			}
+            
+            layer = layer || 0
 
 
 			var prng = new XorShift32( 437840 )
@@ -48,21 +51,24 @@ define(
 
 				var index = "_0" + ( 1 + ( i % 6 ) )
 
-				var entityId = spell.EntityManager.createEntity({
+				var entityId = spell.EntityManager.createEntity( {
                     "templateId": "battleblast.entity." + type,
                     "config": {
                         "spell.component.2d.transform": {
                             "translation": position
                         },                    
-                       "spell.component.2d.graphics.appearance": {
+                        "spell.component.2d.graphics.appearance": {
                             "assetId": "appearance:" + type + index
+                        },
+                        "spell.component.visualObject": {
+                            "layer": layer
                         }
                     }
-				})
+				} )
 			}
 		}
             
-        var applyActionsToClouds = function(deltaTimeInMs, cloud, transform ) {
+        var animateClouds = function(deltaTimeInMs, cloud, transform ) {
       		var deltaTimeInS = deltaTimeInMs / 1000
 
 			vec2.scale( cloud.movement, deltaTimeInS, distanceCovered )
@@ -87,7 +93,7 @@ define(
          * Constructor
          */
         var CloudAnimationSystem = function( spell ) {
-        	this.updateClouds     = createEntityEach( this.clouds, [ this.transforms ], applyActionsToClouds )
+        	this.updateClouds = createEntityEach( this.clouds, [ this.transforms ], animateClouds )
            // this.spell = spell
 		}
         
@@ -95,17 +101,8 @@ define(
          * Init function gets called when this system is enabled
          */
 		CloudAnimationSystem.prototype.init = function( spell ) {
-
-			// dynamicly create clouds, when this is enabled
-			createClouds(spell,
-				55,
-				"cloud_dark"
-			)
-
-			createClouds(spell,
-				35,
-				"cloud_light"
-			)
+			createClouds( spell, 55, "cloud_dark", -2 )
+			createClouds( spell, 35, "cloud_light", -1 )
 		}
 
         /**
@@ -125,4 +122,3 @@ define(
 		return CloudAnimationSystem
 	}
 )
-

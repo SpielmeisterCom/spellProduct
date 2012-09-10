@@ -423,7 +423,7 @@
 							]
 						},
 						"spell.component.visualObject": {
-							"layer": -1
+							"layer": -3
 						}
 					}
 				},
