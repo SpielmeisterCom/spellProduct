@@ -257,6 +257,9 @@
 												470,
 												240
 											]
+										},
+										"battleblast.component.propeller": {
+											"radPerS": -7
 										}
 									}
 								},
@@ -269,6 +272,9 @@
 												-470,
 												240
 											]
+										},
+										"battleblast.component.propeller": {
+											"radPerS": 7
 										}
 									}
 								},
@@ -281,6 +287,9 @@
 												-470,
 												-420
 											]
+										},
+										"battleblast.component.propeller": {
+											"radPerS": -7
 										}
 									}
 								},

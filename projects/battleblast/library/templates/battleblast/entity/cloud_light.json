@@ -8,7 +8,7 @@
 				16,
 				-7
 			],
-			"speedFactor": 16
+			"speedFactor": 2
 		},
 		"spell.component.2d.graphics.appearance": {},
 		"spell.component.2d.transform": {},
