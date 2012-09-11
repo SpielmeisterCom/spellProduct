@@ -42,7 +42,7 @@ cd $CUR_DIR
 mkdir $DEST_DIR/spellEd
 mkdir $DEST_DIR/spellEd/public
 cp -aR modules/spellEd/build/output/* $DEST_DIR/spellEd/public
-cp -aR modules/spellEd/src modules/spellEd/node_modules modules/spellEd/server $DEST_DIR/spellEd
+cp -aR modules/spellEd/src modules/spellEd/server $DEST_DIR/spellEd
 
 echo Copying node_modules...
 cp -aR node_modules $DEST_DIR/
