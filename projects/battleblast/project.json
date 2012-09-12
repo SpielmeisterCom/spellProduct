@@ -2,6 +2,37 @@
 	"name": "battleblast",
 	"startScene": "Scene1",
 	"assetIds": [
+		"battleblast.levels.flying_fantasy.lighton",
+		"battleblast.levels.flying_fantasy.platform_half",
+		"battleblast.levels.flying_fantasy.propeller",
+		"battleblast.ships.ship1_blue",
+		"battleblast.ships.ship1_green",
+		"battleblast.ships.ship1_magenta",
+		"battleblast.ships.ship1_red",
+		"battleblast.ships.ship2_blue",
+		"battleblast.ships.ship2_green",
+		"battleblast.ships.ship2_magenta",
+		"battleblast.ships.ship2_red",
+		"battleblast.ships.ship3_blue",
+		"battleblast.ships.ship3_green",
+		"battleblast.ships.ship3_magenta",
+		"battleblast.ships.ship3_red",
+		"battleblast.ships.ship4_blue",
+		"battleblast.ships.ship4_green",
+		"battleblast.ships.ship4_magenta",
+		"battleblast.ships.ship4_red",
+		"battleblast.ships.ship5_blue",
+		"battleblast.ships.ship5_green",
+		"battleblast.ships.ship5_magenta",
+		"battleblast.ships.ship5_red",
+		"battleblast.ships.ship6_blue",
+		"battleblast.ships.ship6_green",
+		"battleblast.ships.ship6_magenta",
+		"battleblast.ships.ship6_red",
+		"battleblast.ships.ship7_blue",
+		"battleblast.ships.ship7_green",
+		"battleblast.ships.ship7_magenta",
+		"battleblast.ships.ship7_red",
 		"bellopro",
 		"bg",
 		"cloud_dark_01",
@@ -20,38 +51,6 @@
 		"cloud_light_07",
 		"glass",
 		"glass_broken",
-		"lightoff",
-		"lighton",
-		"platform half",
-		"propeller",
-		"ship1_blue",
-		"ship1_green",
-		"ship1_magenta",
-		"ship1_red",
-		"ship2_blue",
-		"ship2_green",
-		"ship2_magenta",
-		"ship2_red",
-		"ship3_blue",
-		"ship3_green",
-		"ship3_magenta",
-		"ship3_red",
-		"ship4_blue",
-		"ship4_green",
-		"ship4_magenta",
-		"ship4_red",
-		"ship5_blue",
-		"ship5_green",
-		"ship5_magenta",
-		"ship5_red",
-		"ship6_blue",
-		"ship6_green",
-		"ship6_magenta",
-		"ship6_red",
-		"ship7_blue",
-		"ship7_green",
-		"ship7_magenta",
-		"ship7_red",
 		"shipKeyToActionMap",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance"
@@ -152,7 +151,7 @@
 							"name": "player",
 							"config": {
 								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:ship5_blue"
+									"assetId": "appearance:battleblast.ships.ship1_blue"
 								},
 								"spell.component.2d.transform": {
 									"translation": [
@@ -190,7 +189,7 @@
 							"name": "platform_left",
 							"config": {
 								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:platform half"
+									"assetId": "appearance:battleblast.levels.flying_fantasy.platform_half"
 								},
 								"spell.component.2d.transform": {
 									"translation": [
@@ -211,7 +210,7 @@
 							"name": "platform_right",
 							"config": {
 								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:platform half"
+									"assetId": "appearance:battleblast.levels.flying_fantasy.platform_half"
 								},
 								"spell.component.2d.transform": {
 									"scale": [

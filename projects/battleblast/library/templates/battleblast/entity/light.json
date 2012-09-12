@@ -4,7 +4,7 @@
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.graphics.appearance": {
-			"assetId": "appearance:lighton"
+			"assetId": "appearance:battleblast.levels.flying_fantasy.lighton"
 		},
 		"spell.component.visualObject": {},
 		"battleblast.component.light": {},
