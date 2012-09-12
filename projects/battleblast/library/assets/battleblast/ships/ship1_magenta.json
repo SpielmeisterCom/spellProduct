@@ -1,0 +1,7 @@
+{
+    "name": "ship1_magenta",
+    "type": "appearance",
+    "namespace": "battleblast.ships",
+    "doc": "",
+    "file": "battleblast/ships/ship1_magenta.png"
+}
