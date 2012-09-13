@@ -7,8 +7,39 @@
 		]
 	},
 	"name": "battleblast",
-	"startScene": "Scene1",
+	"startScene": "doom_elevator",
 	"assetIds": [
+		"battleblast.levels.doom_elevator.background.frame_0000",
+		"battleblast.levels.doom_elevator.background.frame_0001",
+		"battleblast.levels.doom_elevator.background.frame_0002",
+		"battleblast.levels.doom_elevator.background.frame_0003",
+		"battleblast.levels.doom_elevator.background.frame_0004",
+		"battleblast.levels.doom_elevator.background.frame_0005",
+		"battleblast.levels.doom_elevator.background.frame_0006",
+		"battleblast.levels.doom_elevator.background.frame_0007",
+		"battleblast.levels.doom_elevator.background.frame_0008",
+		"battleblast.levels.doom_elevator.background.frame_0009",
+		"battleblast.levels.doom_elevator.background.frame_0010",
+		"battleblast.levels.doom_elevator.background.frame_0011",
+		"battleblast.levels.doom_elevator.background.frame_0012",
+		"battleblast.levels.doom_elevator.background.frame_0013",
+		"battleblast.levels.doom_elevator.background.frame_0014",
+		"battleblast.levels.doom_elevator.background.frame_0015",
+		"battleblast.levels.doom_elevator.background.frame_0016",
+		"battleblast.levels.doom_elevator.background.frame_0017",
+		"battleblast.levels.doom_elevator.background.frame_0018",
+		"battleblast.levels.doom_elevator.background.frame_0019",
+		"battleblast.levels.doom_elevator.background.frame_0020",
+		"battleblast.levels.doom_elevator.background.frame_0021",
+		"battleblast.levels.doom_elevator.background.frame_0022",
+		"battleblast.levels.doom_elevator.background.frame_0023",
+		"battleblast.levels.doom_elevator.background.frame_0024",
+		"battleblast.levels.doom_elevator.background.frame_0025",
+		"battleblast.levels.doom_elevator.background.frame_0026",
+		"battleblast.levels.doom_elevator.background.frame_0027",
+		"battleblast.levels.doom_elevator.background.frame_0028",
+		"battleblast.levels.doom_elevator.background.frame_0029",
+		"battleblast.levels.doom_elevator.background.frame_0030",
 		"battleblast.levels.flying_fantasy.lighton",
 		"battleblast.levels.flying_fantasy.platform_half",
 		"battleblast.levels.flying_fantasy.propeller",
@@ -81,6 +112,7 @@
 		"spell.component.name",
 		"spell.component.physics.collisionSphere",
 		"spell.component.visualObject",
+		"battleblast.entity.background_tile",
 		"battleblast.entity.cloud_dark",
 		"battleblast.entity.cloud_light",
 		"battleblast.entity.light",
@@ -470,6 +502,122 @@
 							"assetId": "keyToActionMap:shipKeyToActionMap"
 						}
 					}
+				}
+			]
+		},
+		{
+			"name": "doom_elevator",
+			"scriptId": "spell/scene/default",
+			"systems": {
+				"update": [],
+				"render": [
+					"spell.system.keyInput",
+					"spell.system.render"
+				]
+			},
+			"entities": [
+				{
+					"name": "camera",
+					"templateId": "spell.entity.2d.graphics.camera",
+					"config": {
+						"spell.component.2d.graphics.camera": {
+							"active": true,
+							"height": 768,
+							"width": 1024,
+							"clearUnsafeArea": true
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								1,
+								1
+							],
+							"translation": [
+								512,
+								384
+							]
+						}
+					}
+				},
+				{
+					"name": "background",
+					"config": {
+						"spell.component.visualObject": {},
+						"spell.component.2d.transform": {}
+					},
+					"children": [
+						{
+							"name": "bg_top_left",
+							"templateId": "battleblast.entity.background_tile",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_0000"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										256,
+										576
+									]
+								}
+							}
+						},
+						{
+							"name": "bg_top_right",
+							"templateId": "battleblast.entity.background_tile",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_0000"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										768,
+										576
+									],
+									"scale": [
+										-1,
+										1
+									]
+								}
+							}
+						},
+						{
+							"name": "bg_bottom_left",
+							"templateId": "battleblast.entity.background_tile",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_0000"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										256,
+										192
+									],
+									"scale": [
+										1,
+										-1
+									]
+								}
+							}
+						},
+						{
+							"name": "bg_bottom_right",
+							"templateId": "battleblast.entity.background_tile",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_0000"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										768,
+										192
+									],
+									"scale": [
+										-1,
+										-1
+									]
+								}
+							}
+						}
+					]
 				}
 			]
 		}
