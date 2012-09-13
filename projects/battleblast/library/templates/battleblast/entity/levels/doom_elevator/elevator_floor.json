@@ -1,0 +1,20 @@
+{
+	"name": "elevator_floor",
+	"namespace": "battleblast.entity.levels.doom_elevator",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:battleblast.levels.doom_elevator.elevator_base"
+		},
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {
+			"layer": 3
+		}
+	},
+	"children": [
+		{
+			"name": "light",
+			"templateId": "battleblast.entity.levels.doom_elevator.elevator_floor_light"
+		}
+	]
+}
