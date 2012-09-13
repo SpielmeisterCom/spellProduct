@@ -1,12 +1,10 @@
 define(
 	'battleblast/system/doom_elevator_background_animation',
 	[
-		'spell/functions',
-        'spell/shared/util/createEntityEach'
+		'spell/functions'
 	],
 	function(
-		_,
-        createEntityEach
+		_
 	) {
 		// all the codes belongs to here
         "use strict"

@@ -40,7 +40,10 @@
 		"battleblast.levels.doom_elevator.background.frame_0028",
 		"battleblast.levels.doom_elevator.background.frame_0029",
 		"battleblast.levels.doom_elevator.background.frame_0030",
+		"battleblast.levels.doom_elevator.door",
 		"battleblast.levels.doom_elevator.elevator_base",
+		"battleblast.levels.doom_elevator.floor",
+		"battleblast.levels.doom_elevator.floor_light",
 		"battleblast.levels.doom_elevator.shadow",
 		"battleblast.levels.flying_fantasy.lighton",
 		"battleblast.levels.flying_fantasy.platform_half",
@@ -516,6 +519,7 @@
 				"update": [],
 				"render": [
 					"spell.system.keyInput",
+					"battleblast.system.lightsPulsator",
 					"battleblast.system.doom_elevator_background_animation",
 					"spell.system.render"
 				]
@@ -646,13 +650,37 @@
 									],
 									"translation": [
 										256,
-										610
+										606
 									]
 								},
 								"spell.component.visualObject": {
-									"layer": 2
+									"layer": 3
 								}
-							}
+							},
+							"children": [
+								{
+									"name": "light_top_left",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.levels.doom_elevator.floor_light"
+										},
+										"spell.component.visualObject": {
+											"layer": 3
+										},
+										"spell.component.2d.transform": {
+											"translation": [
+												58,
+												-11
+											],
+											"scale": [
+												1,
+												1
+											]
+										}
+									}
+								}
+							]
 						},
 						{
 							"name": "platform_top_right",
@@ -663,7 +691,7 @@
 								"spell.component.2d.transform": {
 									"translation": [
 										768,
-										610
+										606
 									],
 									"scale": [
 										-1,
@@ -671,9 +699,29 @@
 									]
 								},
 								"spell.component.visualObject": {
-									"layer": 2
+									"layer": 3
 								}
-							}
+							},
+							"children": [
+								{
+									"name": "light_top_right",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.levels.doom_elevator.floor_light"
+										},
+										"spell.component.visualObject": {
+											"layer": 3
+										},
+										"spell.component.2d.transform": {
+											"translation": [
+												58,
+												-11
+											]
+										}
+									}
+								}
+							]
 						},
 						{
 							"name": "platform_bottom_left",
@@ -692,9 +740,26 @@
 									]
 								},
 								"spell.component.visualObject": {
-									"layer": 2
+									"layer": 3
 								}
-							}
+							},
+							"children": [
+								{
+									"name": "light_bottom_left",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.levels.doom_elevator.floor_light"
+										},
+										"spell.component.2d.transform": {
+											"translation": [
+												58,
+												-11
+											]
+										}
+									}
+								}
+							]
 						},
 						{
 							"name": "platform_bottom_right",
@@ -713,9 +778,26 @@
 									]
 								},
 								"spell.component.visualObject": {
-									"layer": 2
+									"layer": 3
 								}
-							}
+							},
+							"children": [
+								{
+									"name": "light_bottom_right",
+									"templateId": "battleblast.entity.light",
+									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.levels.doom_elevator.floor_light"
+										},
+										"spell.component.2d.transform": {
+											"translation": [
+												58,
+												-11
+											]
+										}
+									}
+								}
+							]
 						},
 						{
 							"name": "shadow",
@@ -730,6 +812,61 @@
 									]
 								},
 								"spell.component.visualObject": {}
+							}
+						},
+						{
+							"name": "floor",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.floor"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										530,
+										382
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 2
+								}
+							}
+						},
+						{
+							"name": "door_left",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.door"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										102,
+										383
+									],
+									"scale": [
+										-1,
+										1
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 4
+								}
+							}
+						},
+						{
+							"name": "door_right",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.door"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										912,
+										383
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 6
+								}
 							}
 						}
 					]
