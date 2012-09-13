@@ -1,4 +1,11 @@
 {
+	"config": {
+		"screenMode": "fixed",
+		"screenSize": [
+			1024,
+			768
+		]
+	},
 	"name": "battleblast",
 	"startScene": "Scene1",
 	"assetIds": [
