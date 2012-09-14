@@ -1,0 +1,150 @@
+{
+	"name": "elevator",
+	"namespace": "battleblast.entity.levels.doom_elevator",
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:battleblast.levels.doom_elevator.elevator_base"
+		},
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {
+			"layer": 3
+		}
+	},
+	"children": [
+        {
+            "name": "elevator_floor_top_left",
+            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "config": {
+                "spell.component.2d.transform": {
+                    "scale": [
+                        1,
+                        1
+                    ],
+                    "translation": [
+                        -256,
+                        222
+                    ]
+                }
+            }
+        },
+        {
+            "name": "elevator_floor_top_right",
+            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "config": {
+                "spell.component.2d.transform": {
+                    "translation": [
+                        256,
+                        222
+                    ],
+                    "scale": [
+                        -1,
+                        1
+                    ]
+                }
+            }
+        },
+        {
+            "name": "elevator_floor_bottom_left",
+            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "config": {
+                "spell.component.2d.transform": {
+                    "translation": [
+                        -256,
+                        -224
+                    ],
+                    "scale": [
+                        1,
+                        -1
+                    ]
+                }
+            }
+        },
+        {
+            "name": "elevator_floor_bottom_right",
+            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "config": {
+                "spell.component.2d.transform": {
+                    "translation": [
+                        256,
+                        -224
+                    ],
+                    "scale": [
+                        -1,
+                        -1
+                    ]
+                }
+            }
+        },
+        {
+            "name": "shadow",
+            "config": {
+                "spell.component.2d.graphics.appearance": {
+                    "assetId": "appearance:battleblast.levels.doom_elevator.shadow"
+                },
+                "spell.component.2d.transform": {
+                    "translation": [
+                        -2,
+                        6
+                    ]
+                },
+                "spell.component.visualObject": {}
+            }
+        },
+        {
+            "name": "floor",
+            "config": {
+                "spell.component.2d.graphics.appearance": {
+                    "assetId": "appearance:battleblast.levels.doom_elevator.floor"
+                },
+                "spell.component.2d.transform": {
+                    "translation": [
+                        18,
+                        0
+                    ]
+                },
+                "spell.component.visualObject": {
+                    "layer": 2
+                }
+            }
+        },
+        {
+            "name": "door_left",
+            "config": {
+                "spell.component.2d.graphics.appearance": {
+                    "assetId": "appearance:battleblast.levels.doom_elevator.door"
+                },
+                "spell.component.2d.transform": {
+                    "translation": [
+                        -410,
+                        0
+                    ],
+                    "scale": [
+                        -1,
+                        1
+                    ]
+                },
+                "spell.component.visualObject": {
+                    "layer": 4
+                }
+            }
+        },
+        {
+            "name": "door_right",
+            "config": {
+                "spell.component.2d.graphics.appearance": {
+                    "assetId": "appearance:battleblast.levels.doom_elevator.door"
+                },
+                "spell.component.2d.transform": {
+                    "translation": [
+                        400,
+                        0
+                    ]
+                },
+                "spell.component.visualObject": {
+                    "layer": 6
+                }
+            }
+        }
+	]
+}
