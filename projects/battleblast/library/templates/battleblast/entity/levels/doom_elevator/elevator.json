@@ -114,11 +114,11 @@
                 "spell.component.2d.transform": {
                     "translation": [
                         -410,
-                        0
+                        1
                     ],
                     "scale": [
-                        -1,
-                        1
+                        -1.045,
+                        1.045
                     ]
                 },
                 "spell.component.visualObject": {
@@ -135,7 +135,11 @@
                 "spell.component.2d.transform": {
                     "translation": [
                         400,
-                        0
+                        1
+                    ],
+                    "scale": [
+                        1.045,
+                        1.045
                     ]
                 },
                 "spell.component.visualObject": {
