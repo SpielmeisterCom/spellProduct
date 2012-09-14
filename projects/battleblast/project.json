@@ -44,6 +44,7 @@
 		"battleblast.levels.doom_elevator.elevator_base",
 		"battleblast.levels.doom_elevator.floor",
 		"battleblast.levels.doom_elevator.floor_light",
+		"battleblast.levels.doom_elevator.pin",
 		"battleblast.levels.doom_elevator.shadow",
 		"battleblast.levels.flying_fantasy.lighton",
 		"battleblast.levels.flying_fantasy.platform_half",
@@ -258,7 +259,36 @@
 								384
 							]
 						}
-					}
+					},
+					"children": [
+						{
+							"name": "pin_top",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.pin"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										0,
+										332
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 10
+								}
+							}
+						},
+						{
+							"name": "pin_bottom",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:battleblast.levels.doom_elevator.pin"
+								},
+								"spell.component.2d.transform": {},
+								"spell.component.visualObject": {}
+							}
+						}
+					]
 				}
 			]
 		},
