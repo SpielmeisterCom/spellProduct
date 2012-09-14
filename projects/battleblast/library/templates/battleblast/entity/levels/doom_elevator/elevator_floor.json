@@ -14,7 +14,15 @@
 	"children": [
 		{
 			"name": "light",
-			"templateId": "battleblast.entity.levels.doom_elevator.elevator_floor_light"
+			"templateId": "battleblast.entity.levels.doom_elevator.elevator_floor_light",
+            "config": {
+                "spell.component.2d.transform": {
+                    "translation": [
+                        58,
+                        -11
+                    ]
+                }
+            }
 		}
 	]
 }

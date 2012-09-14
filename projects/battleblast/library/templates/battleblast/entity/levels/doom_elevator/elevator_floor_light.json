@@ -6,12 +6,7 @@
 		"spell.component.2d.graphics.appearance": {
 			"assetId": "appearance:battleblast.levels.doom_elevator.floor_light"
 		},
-		"spell.component.2d.transform": {
-			"translation": [
-				58,
-				-11
-			]
-		},
+		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
 		"battleblast.component.light": {}
 	},
