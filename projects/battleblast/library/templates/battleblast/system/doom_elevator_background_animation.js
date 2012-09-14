@@ -15,13 +15,16 @@ define(
 
         var frameOffset = 0,
 	        frameCount = 31,
-	        entityId   = undefined
+	        entityId   = undefined,
+            frameOffsetInt = 0
 
 		var init = function( spell ) { }
 
 		var cleanUp = function( spell ) {}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
+            
+            frameOffsetInt = parseInt( frameOffset, 10 )
             
             for (entityId in this.background_tiles) {
                           
@@ -30,14 +33,14 @@ define(
                     entityId, 
                     {
                         "assetId":  "appearance:battleblast.levels.doom_elevator.background.frame_00" +
-                                    ( ( frameOffset < 10 ) ? ( "0" + frameOffset ) : frameOffset )
+                                    ( (  frameOffsetInt < 10 ) ? ( "0" + frameOffsetInt ) : frameOffsetInt )
                     }
                 )
             }
 
             //this animations runs with 60fps, so just increase
             //the frame count for every frame processed
-			frameOffset = (frameOffset + 1) % frameCount
+			frameOffset = (frameOffset + 0.4) % frameCount
 		}
 
 		/**

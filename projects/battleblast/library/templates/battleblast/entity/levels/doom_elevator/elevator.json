@@ -3,9 +3,6 @@
 	"namespace": "battleblast.entity.levels.doom_elevator",
 	"type": "entityTemplate",
 	"config": {
-		"spell.component.2d.graphics.appearance": {
-			"assetId": "appearance:battleblast.levels.doom_elevator.elevator_base"
-		},
 		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {
 			"layer": 3
@@ -51,7 +48,7 @@
                 "spell.component.2d.transform": {
                     "translation": [
                         -256,
-                        -224
+                        -220
                     ],
                     "scale": [
                         1,
@@ -67,7 +64,7 @@
                 "spell.component.2d.transform": {
                     "translation": [
                         256,
-                        -224
+                        -220
                     ],
                     "scale": [
                         -1,
@@ -99,7 +96,7 @@
                 },
                 "spell.component.2d.transform": {
                     "translation": [
-                        18,
+                        0,
                         0
                     ]
                 },
