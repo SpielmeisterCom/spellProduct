@@ -14,7 +14,7 @@ define(
 		 */
 
         var frameOffset = 0,
-	        frameCount = 31,
+	        frameCount = 30,
 	        entityId   = undefined,
             frameOffsetInt = 0
 
