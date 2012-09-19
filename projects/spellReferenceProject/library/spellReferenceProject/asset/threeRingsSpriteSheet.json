@@ -3,7 +3,7 @@
 	"namespace" : "spellReferenceProject",
 	"name" : "threeRingsSpriteSheet",
 	"doc" : "",
-	"file": "spellReferenceProject/threerings.png",
+	"file": "spellReferenceProject/asset/threerings.png",
 	"config" : {
 		"textureWidth" : 450,
 		"textureHeight" : 600,

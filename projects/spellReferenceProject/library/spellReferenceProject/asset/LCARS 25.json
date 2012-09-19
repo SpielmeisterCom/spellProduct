@@ -1,7 +1,7 @@
 {
 	"name": "LCARS 25",
 	"type": "font",
-	"namespace": "spellReferenceProject",
+	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {
 		"fontFamily": "LCARSGTJ3",
@@ -680,5 +680,5 @@
 		},
 		"spacing": 1
 	},
-	"file": "spellReferenceProject/LCARS 25.png"
+	"file": "spellReferenceProject/asset/LCARS 25.png"
 }

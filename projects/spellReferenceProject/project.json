@@ -2,22 +2,22 @@
 	"name": "spellReferenceProject",
 	"startScene": "Game",
 	"assetIds": [
-		"spell.OpenSans14px",
-		"spell.defaultAppearance",
-		"spellReferenceProject.Bello Pro",
-		"spellReferenceProject.Comic Sans 25",
-		"spellReferenceProject.Impact",
-		"spellReferenceProject.LCARS 25",
-		"spellReferenceProject.Press Start 2P 8",
-		"spellReferenceProject.asteroid1",
-		"spellReferenceProject.asteroid2",
-		"spellReferenceProject.pixelShip1",
-		"spellReferenceProject.pixelShip2",
-		"spellReferenceProject.shield",
-		"spellReferenceProject.spacecraftKeyToActionMap",
-		"spellReferenceProject.spelljsLogo",
-		"spellReferenceProject.threeRingsAnimation",
-		"spellReferenceProject.threeRingsSpriteSheet"
+		"spell.asset.OpenSans14px",
+		"spell.asset.defaultAppearance",
+		"spellReferenceProject.asset.Bello Pro",
+		"spellReferenceProject.asset.Comic Sans 25",
+		"spellReferenceProject.asset.Impact",
+		"spellReferenceProject.asset.LCARS 25",
+		"spellReferenceProject.asset.Press Start 2P 8",
+		"spellReferenceProject.asset.asteroid1",
+		"spellReferenceProject.asset.asteroid2",
+		"spellReferenceProject.asset.pixelShip1",
+		"spellReferenceProject.asset.pixelShip2",
+		"spellReferenceProject.asset.shield",
+		"spellReferenceProject.asset.spacecraftKeyToActionMap",
+		"spellReferenceProject.asset.spelljsLogo",
+		"spellReferenceProject.asset.threeRingsAnimation",
+		"spellReferenceProject.asset.threeRingsSpriteSheet"
 	],
 	"templateIds": [
 		"spell.component.2d.graphics.animatedAppearance",
@@ -49,7 +49,7 @@
 	"scenes": [
 		{
 			"name": "Game",
-			"scriptId": "spell/scene/default",
+			"scriptId": "spell.scene.default",
 			"systems": {
 				"update": [],
 				"render": [
@@ -73,7 +73,7 @@
 							]
 						},
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:spellReferenceProject.pixelShip2"
+							"assetId": "appearance:spellReferenceProject.asset.pixelShip2"
 						},
 						"spell.component.actor": {
 							"id": "aiControlled"
@@ -109,7 +109,7 @@
 									"opacity": 0.33
 								},
 								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:spellReferenceProject.shield"
+									"assetId": "appearance:spellReferenceProject.asset.shield"
 								}
 							}
 						}
@@ -146,7 +146,7 @@
 							"config": {
 								"spell.component.2d.graphics.textAppearance": {
 									"text": "Player",
-									"assetId": "font:spellReferenceProject.Press Start 2P 8",
+									"assetId": "font:spellReferenceProject.asset.Press Start 2P 8",
 									"spacing": -2
 								},
 								"spell.component.2d.transform": {
@@ -166,7 +166,7 @@
 							"name": "label2",
 							"config": {
 								"spell.component.2d.graphics.textAppearance": {
-									"assetId": "font:spellReferenceProject.LCARS 25",
+									"assetId": "font:spellReferenceProject.asset.LCARS 25",
 									"text": "Star Fleet"
 								},
 								"spell.component.2d.transform": {
@@ -233,7 +233,7 @@
 							]
 						},
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:spellReferenceProject.asteroid2"
+							"assetId": "appearance:spellReferenceProject.asset.asteroid2"
 						},
 						"spell.component.physics.collisionSphere": {
 							"radius": 13
@@ -258,7 +258,7 @@
 							]
 						},
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:spellReferenceProject.asteroid2"
+							"assetId": "appearance:spellReferenceProject.asset.asteroid2"
 						},
 						"spell.component.physics.collisionSphere": {
 							"radius": 13
@@ -283,7 +283,7 @@
 							]
 						},
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:spellReferenceProject.asteroid2"
+							"assetId": "appearance:spellReferenceProject.asset.asteroid2"
 						},
 						"spell.component.physics.collisionSphere": {
 							"radius": 13
@@ -308,7 +308,7 @@
 							]
 						},
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:spellReferenceProject.asteroid2"
+							"assetId": "appearance:spellReferenceProject.asset.asteroid2"
 						},
 						"spell.component.physics.collisionSphere": {
 							"radius": 13
@@ -349,7 +349,7 @@
 					"config": {
 						"spell.component.inputDefinition": {
 							"actorId": "playerControlled",
-							"assetId": "keyToActionMap:spellReferenceProject.spacecraftKeyToActionMap"
+							"assetId": "keyToActionMap:spellReferenceProject.asset.spacecraftKeyToActionMap"
 						}
 					}
 				},
@@ -370,7 +370,7 @@
 							"layer": 2
 						},
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:spellReferenceProject.spelljsLogo"
+							"assetId": "appearance:spellReferenceProject.asset.spelljsLogo"
 						}
 					}
 				},
@@ -389,7 +389,7 @@
 							]
 						},
 						"spell.component.2d.graphics.animatedAppearance": {
-							"assetId": "animation:spellReferenceProject.threeRingsAnimation",
+							"assetId": "animation:spellReferenceProject.asset.threeRingsAnimation",
 							"offset": 500,
 							"replaySpeed": 0.75
 						},
@@ -426,7 +426,7 @@
 							"name": "shield",
 							"config": {
 								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:spellReferenceProject.shield"
+									"assetId": "appearance:spellReferenceProject.asset.shield"
 								},
 								"spell.component.2d.transform": {
 									"scale": [
@@ -446,7 +446,7 @@
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
 							"text": "Asteroid Demo",
-							"assetId": "font:spellReferenceProject.Impact"
+							"assetId": "font:spellReferenceProject.asset.Impact"
 						},
 						"spell.component.2d.transform": {
 							"translation": [
@@ -469,7 +469,7 @@
 					"name": "message",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
-							"assetId": "font:spellReferenceProject.Press Start 2P 8",
+							"assetId": "font:spellReferenceProject.asset.Press Start 2P 8",
 							"text": "use left, right and space to play",
 							"spacing": -2
 						},
@@ -493,7 +493,7 @@
 					"name": "Speilmeister",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
-							"assetId": "font:spellReferenceProject.Bello Pro",
+							"assetId": "font:spellReferenceProject.asset.Bello Pro",
 							"text": "We let the world play together!",
 							"spacing": -18
 						},

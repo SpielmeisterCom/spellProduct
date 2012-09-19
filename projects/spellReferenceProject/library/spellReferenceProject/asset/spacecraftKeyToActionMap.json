@@ -1,6 +1,6 @@
 {
 	"type": "keyToActionMap",
-	"namespace": "spellReferenceProject",
+	"namespace": "spellReferenceProject.asset",
 	"name": "spacecraftKeyToActionMap",
 	"config": {
 		"SPACE": "accelerate",

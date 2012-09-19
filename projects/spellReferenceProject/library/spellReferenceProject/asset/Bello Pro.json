@@ -1,7 +1,7 @@
 {
 	"name": "Bello Pro",
 	"type": "font",
-	"namespace": "spellReferenceProject",
+	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {
 		"fontFamily": "Bello Pro",
@@ -680,5 +680,5 @@
 		},
 		"spacing": 14
 	},
-	"file": "spellReferenceProject/Bello Pro.png"
+	"file": "spellReferenceProject/asset/Bello Pro.png"
 }

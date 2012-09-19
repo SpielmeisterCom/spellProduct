@@ -1,7 +1,7 @@
 {
 	"name": "Comic Sans 25",
 	"type": "font",
-	"namespace": "spellReferenceProject",
+	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {
 		"fontFamily": "Comic Sans MS",
@@ -680,5 +680,5 @@
 		},
 		"spacing": 1
 	},
-	"file": "spellReferenceProject/Comic Sans 25.png"
+	"file": "spellReferenceProject/asset/Comic Sans 25.png"
 }

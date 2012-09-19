@@ -1,7 +1,7 @@
 {
 	"name": "Impact",
 	"type": "font",
-	"namespace": "spellReferenceProject",
+	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {
 		"fontFamily": "Impact",
@@ -680,5 +680,5 @@
 		},
 		"spacing": 1
 	},
-	"file": "spellReferenceProject/Impact.png"
+	"file": "spellReferenceProject/asset/Impact.png"
 }
