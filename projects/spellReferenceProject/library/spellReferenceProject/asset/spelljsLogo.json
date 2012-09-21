@@ -1,5 +1,6 @@
 {
-	"type": "appearance",
+	"type": "asset",
+	"subtype": "appearance",
 	"file": "spellReferenceProject/asset/spelljsLogo.png",
 	"namespace": "spellReferenceProject.asset",
 	"name": "spelljsLogo"

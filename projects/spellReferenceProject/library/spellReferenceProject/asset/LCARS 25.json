@@ -1,6 +1,7 @@
 {
 	"name": "LCARS 25",
-	"type": "font",
+	"type": "asset",
+	"subtype": "font",
 	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {

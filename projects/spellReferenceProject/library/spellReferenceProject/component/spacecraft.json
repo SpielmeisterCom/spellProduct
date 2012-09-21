@@ -1,7 +1,8 @@
 {
 	"name": "spacecraft",
 	"namespace": "spellReferenceProject.component",
-	"type": "componentTemplate",
+	"type": "template",
+	"subtype": "component",
 	"title": "",
 	"doc": "",
 	"attributes": [

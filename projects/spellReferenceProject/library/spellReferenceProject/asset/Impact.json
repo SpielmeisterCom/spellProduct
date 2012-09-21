@@ -1,6 +1,7 @@
 {
 	"name": "Impact",
-	"type": "font",
+	"type": "asset",
+	"subtype": "font",
 	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {

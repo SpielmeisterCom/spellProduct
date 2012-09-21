@@ -29,15 +29,10 @@ define(
 			_.each(
 				inputDefinitions,
 				function( inputDefinition ) {
-					var actionId = _.find(
-						inputDefinition.keyToAction,
-						function( action, key ) {
-							return keyCodes[ key ] === inputEvent.keyCode
-						}
-					)
+					var keyToActionMapAsset = inputDefinition.asset,
+						actionId            = keyToActionMapAsset[ inputEvent.keyCode ]
 
 					if( !actionId ) return
-
 
 					var isExecuting = ( inputEvent.type === 'keydown' )
 

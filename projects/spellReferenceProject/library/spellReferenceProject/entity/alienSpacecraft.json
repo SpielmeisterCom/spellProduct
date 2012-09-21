@@ -1,12 +1,13 @@
 {
 	"name": "alienSpacecraft",
 	"namespace": "spellReferenceProject.entity",
-	"type": "entityTemplate",
+	"type": "template",
+	"subtype": "entity",
 	"config": {
 		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
 		"spell.component.2d.graphics.animatedAppearance": {
-			"assetId": "animation:spellReferenceProject.threeRingsAnimation"
+			"assetId": "animation:spellReferenceProject.asset.threeRingsAnimation"
 		},
 		"spell.component.2d.physics.inertialObject": {
 			"mass": 150

@@ -1,7 +1,8 @@
 {
 	"name": "asteroid",
 	"namespace": "spellReferenceProject.entity",
-	"type": "entityTemplate",
+	"type": "template",
+	"subtype": "entity",
 	"config": {
 		"spell.component.2d.transform": {
 			"scale": [
@@ -11,7 +12,7 @@
 		},
 		"spell.component.visualObject": {},
 		"spell.component.2d.graphics.appearance": {
-			"assetId": "appearance:spellReferenceProject.asteroid1"
+			"assetId": "appearance:spellReferenceProject.asset.asteroid1"
 		},
 		"spell.component.2d.physics.inertialObject": {},
 		"spell.component.physics.collisionSphere": {

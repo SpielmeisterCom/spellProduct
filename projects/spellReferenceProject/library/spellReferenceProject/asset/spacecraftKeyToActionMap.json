@@ -1,5 +1,6 @@
 {
-	"type": "keyToActionMap",
+	"type": "asset",
+	"subtype": "keyToActionMap",
 	"namespace": "spellReferenceProject.asset",
 	"name": "spacecraftKeyToActionMap",
 	"config": {

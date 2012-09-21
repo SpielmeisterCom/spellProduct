@@ -1,9 +1,10 @@
 {
-	"type" : "animation",
+	"type" : "asset",
+	"subtype" : "animation",
 	"namespace" : "spellReferenceProject",
 	"name" : "threeRingsAnimation",
 	"doc" : "",
-	"assetId" : "spriteSheet:spellReferenceProject.threeRingsSpriteSheet",
+	"assetId" : "spriteSheet:spellReferenceProject.asset.threeRingsSpriteSheet",
 	"config" : {
 		"type" : "sprite",
 		"duration" : 2000,

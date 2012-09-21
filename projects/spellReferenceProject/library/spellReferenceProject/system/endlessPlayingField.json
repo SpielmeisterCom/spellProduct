@@ -1,5 +1,6 @@
 {
-	"type" : "systemTemplate",
+	"type" : "template",
+	"subtype" : "system",
 	"namespace" : "spellReferenceProject.system",
 	"name" : "endlessPlayingField",
 

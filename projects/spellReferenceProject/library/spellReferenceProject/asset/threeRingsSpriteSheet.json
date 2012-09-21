@@ -1,5 +1,6 @@
 {
-	"type" : "spriteSheet",
+	"type" : "asset",
+	"subtype" : "spriteSheet",
 	"namespace" : "spellReferenceProject",
 	"name" : "threeRingsSpriteSheet",
 	"doc" : "",
