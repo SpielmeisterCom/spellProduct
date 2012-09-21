@@ -1,0 +1,7 @@
+{
+	"type": "asset",
+	"subtype": "appearance",
+	"file": "spell/asset/defaultTexture.png",
+	"namespace": "spell.asset",
+	"name": "defaultAppearance"
+}

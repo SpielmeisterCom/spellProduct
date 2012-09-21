@@ -1,0 +1,16 @@
+{
+	"name": "propeller",
+	"namespace": "battleblast.component",
+	"type": "template",
+	"subtype": "component",
+	"title": "",
+	"doc": "",
+	"icon": "",
+	"attributes": [
+		{
+			"name": "radPerS",
+			"type": "number",
+			"default": "0"
+		}
+	]
+}

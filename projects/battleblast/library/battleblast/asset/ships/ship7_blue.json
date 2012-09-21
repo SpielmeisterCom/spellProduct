@@ -1,0 +1,8 @@
+{
+    "name": "ship7_blue",
+	"type": "asset",
+	"subtype": "appearance",
+    "namespace": "battleblast.asset.ships",
+    "doc": "",
+    "file": "battleblast/asset/ships/ship7_blue.png"
+}

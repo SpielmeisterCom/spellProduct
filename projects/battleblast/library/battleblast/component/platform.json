@@ -1,0 +1,7 @@
+{
+	"name": "platform",
+	"namespace": "battleblast.component",
+	"type": "template",
+	"subtype": "component",
+	"attributes": []
+}

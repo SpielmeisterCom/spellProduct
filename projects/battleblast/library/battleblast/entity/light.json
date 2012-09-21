@@ -1,0 +1,15 @@
+{
+	"name": "light",
+	"namespace": "battleblast.entity",
+	"type": "template",
+	"subtype": "entity",
+	"config": {
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:battleblast.asset.levels.flying_fantasy.lighton"
+		},
+		"spell.component.visualObject": {},
+		"battleblast.component.light": {},
+		"spell.component.2d.transform": {}
+	},
+	"children": []
+}

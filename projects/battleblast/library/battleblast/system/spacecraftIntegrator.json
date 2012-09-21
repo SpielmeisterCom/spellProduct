@@ -1,0 +1,24 @@
+{
+    "namespace" : "battleblast.system",
+    "name" : "spacecraftIntegrator",
+	"type": "template",
+	"subtype": "system",
+    "input" : [
+        {
+            "name" : "actors",
+            "templateId" : "spell.component.actor"
+        },
+        {
+            "name" : "transforms",
+            "templateId" : "spell.component.2d.transform"
+        },
+        {
+            "name" : "spacecrafts",
+            "templateId" : "battleblast.component.spacecraft"
+        },
+        {
+            "name" : "inertialObjects",
+            "templateId" : "spell.component.2d.physics.inertialObject"
+        }
+    ]
+}

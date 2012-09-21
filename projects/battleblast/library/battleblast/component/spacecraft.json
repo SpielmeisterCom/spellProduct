@@ -1,0 +1,15 @@
+{
+	"name": "spacecraft",
+	"namespace": "battleblast.component",
+	"type": "template",
+	"subtype": "component",
+	"title": "",
+	"doc": "",
+	"attributes": [
+		{
+			"name": "thrusterForce",
+			"type": "number",
+			"default": "0"
+		}
+	]
+}

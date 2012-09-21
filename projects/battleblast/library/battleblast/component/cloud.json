@@ -1,0 +1,21 @@
+{
+	"name": "cloud",
+	"namespace": "battleblast.component",
+	"type": "template",
+	"subtype": "component",
+	"title": "",
+	"doc": "",
+	"icon": "",
+	"attributes": [
+		{
+			"name": "movement",
+			"type": "vec2",
+			"default": "[0,0]"
+		},
+		{
+			"name": "speedFactor",
+			"type": "number",
+			"default": "1"
+		}
+	]
+}

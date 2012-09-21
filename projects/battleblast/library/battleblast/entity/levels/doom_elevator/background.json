@@ -1,0 +1,15 @@
+{
+	"name": "background",
+	"namespace": "battleblast.entity.levels.doom_elevator",
+	"type": "template",
+	"subtype": "entity",
+	"config": {
+        "spell.component.2d.graphics.appearance": {
+            "assetId": "appearance:battleblast.asset.levels.doom_elevator.background.frame_0000"
+        },
+        "spell.component.2d.transform": {},
+		"spell.component.visualObject": {},
+		"battleblast.component.doom_elevator_background_tile": {}
+	},
+	"children": []
+}

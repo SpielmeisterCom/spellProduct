@@ -1,0 +1,8 @@
+{
+	"name": "propeller",
+	"type": "asset",
+	"subtype": "appearance",
+	"namespace": "battleblast.asset.levels.flying_fantasy",
+	"doc": "",
+	"file": "battleblast/asset/levels/flying_fantasy/propeller.png"
+}
