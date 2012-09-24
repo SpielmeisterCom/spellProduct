@@ -1,4 +1,5 @@
 {
+	"type": "project",
 	"config": {
 		"screenMode": "fixed",
 		"screenSize": [
