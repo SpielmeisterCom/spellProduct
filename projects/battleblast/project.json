@@ -106,10 +106,10 @@
 		"spell.component.visualObject",
 		"battleblast.entity.cloud_dark",
 		"battleblast.entity.cloud_light",
-		"battleblast.entity.levels.doom_elevator.background",
-		"battleblast.entity.levels.doom_elevator.elevator",
-		"battleblast.entity.levels.doom_elevator.elevator_floor",
-		"battleblast.entity.levels.doom_elevator.elevator_floor_light",
+		"battleblast.levels.doom_elevator.entity.background",
+		"battleblast.levels.doom_elevator.entity.elevator",
+		"battleblast.levels.doom_elevator.entity.elevator_floor",
+		"battleblast..levels.doom_elevator.entity.elevator_floor_light",
 		"battleblast.entity.light",
 		"battleblast.entity.propeller",
 		"spell.entity.2d.graphics.camera",
@@ -171,7 +171,7 @@
 					"children": [
 						{
 							"name": "bg_top_left",
-							"templateId": "battleblast.entity.levels.doom_elevator.background",
+							"templateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -183,7 +183,7 @@
 						},
 						{
 							"name": "bg_top_right",
-							"templateId": "battleblast.entity.levels.doom_elevator.background",
+							"templateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -199,7 +199,7 @@
 						},
 						{
 							"name": "bg_bottom_left",
-							"templateId": "battleblast.entity.levels.doom_elevator.background",
+							"templateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -215,7 +215,7 @@
 						},
 						{
 							"name": "bg_bottom_right",
-							"templateId": "battleblast.entity.levels.doom_elevator.background",
+							"templateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -233,7 +233,7 @@
 				},
 				{
 					"name": "elevator",
-					"templateId": "battleblast.entity.levels.doom_elevator.elevator",
+					"templateId": "battleblast.levels.doom_elevator.entity.elevator",
 					"config": {
 						"spell.component.2d.transform": {
 							"scale": [

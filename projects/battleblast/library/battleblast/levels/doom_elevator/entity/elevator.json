@@ -1,6 +1,6 @@
 {
 	"name": "elevator",
-	"namespace": "battleblast.entity.levels.doom_elevator",
+	"namespace": "battleblast.levels.doom_elevator.entity",
 	"type": "template",
 	"subtype": "entity",
 	"config": {
@@ -12,7 +12,7 @@
 	"children": [
         {
             "name": "elevator_floor_top_left",
-            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
             "config": {
                 "spell.component.2d.transform": {
                     "scale": [
@@ -28,7 +28,7 @@
         },
         {
             "name": "elevator_floor_top_right",
-            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
             "config": {
                 "spell.component.2d.transform": {
                     "translation": [
@@ -44,7 +44,7 @@
         },
         {
             "name": "elevator_floor_bottom_left",
-            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
             "config": {
                 "spell.component.2d.transform": {
                     "translation": [
@@ -60,7 +60,7 @@
         },
         {
             "name": "elevator_floor_bottom_right",
-            "templateId": "battleblast.entity.levels.doom_elevator.elevator_floor",
+            "templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
             "config": {
                 "spell.component.2d.transform": {
                     "translation": [
