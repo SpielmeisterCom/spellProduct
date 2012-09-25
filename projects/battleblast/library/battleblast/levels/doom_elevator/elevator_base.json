@@ -1,0 +1,8 @@
+{
+	"name": "elevator_base",
+	"type": "asset",
+	"subtype": "appearance",
+	"namespace": "battleblast.levels.doom_elevator",
+	"doc": "",
+	"file": "battleblast/levels/doom_elevator/elevator_base.png"
+}

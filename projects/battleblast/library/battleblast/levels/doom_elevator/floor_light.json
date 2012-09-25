@@ -1,0 +1,8 @@
+{
+	"name": "floor_light",
+	"type": "asset",
+	"subtype": "appearance",
+	"namespace": "battleblast.levels.doom_elevator",
+	"doc": "",
+	"file": "battleblast/levels/doom_elevator/floor_light.png"
+}
