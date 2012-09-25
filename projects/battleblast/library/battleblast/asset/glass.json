@@ -1,8 +1,0 @@
-{
-	"name": "glass",
-	"type": "asset",
-	"subtype": "appearance",
-	"namespace": "battleblast.asset",
-	"doc": "",
-	"file": "battleblast/asset/glass.png"
-}

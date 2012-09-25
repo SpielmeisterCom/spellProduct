@@ -78,7 +78,7 @@
             "name": "shadow",
             "config": {
                 "spell.component.2d.graphics.appearance": {
-                    "assetId": "appearance:battleblast.asset.levels.doom_elevator.shadow"
+                    "assetId": "appearance:battleblast.levels.doom_elevator.shadow"
                 },
                 "spell.component.2d.transform": {
                     "translation": [
@@ -93,7 +93,7 @@
             "name": "floor",
             "config": {
                 "spell.component.2d.graphics.appearance": {
-                    "assetId": "appearance:battleblast.asset.levels.doom_elevator.floor"
+                    "assetId": "appearance:battleblast.levels.doom_elevator.floor"
                 },
                 "spell.component.2d.transform": {
                     "translation": [
@@ -110,7 +110,7 @@
             "name": "door_left",
             "config": {
                 "spell.component.2d.graphics.appearance": {
-                    "assetId": "appearance:battleblast.asset.levels.doom_elevator.door"
+                    "assetId": "appearance:battleblast.levels.doom_elevator.door"
                 },
                 "spell.component.2d.transform": {
                     "translation": [
@@ -131,7 +131,7 @@
             "name": "door_right",
             "config": {
                 "spell.component.2d.graphics.appearance": {
-                    "assetId": "appearance:battleblast.asset.levels.doom_elevator.door"
+                    "assetId": "appearance:battleblast.levels.doom_elevator.door"
                 },
                 "spell.component.2d.transform": {
                     "translation": [

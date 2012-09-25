@@ -31,7 +31,7 @@ define(
                     "spell.component.2d.graphics.appearance",
                     entityId,
                     {
-                        "assetId":  "appearance:battleblast.asset.levels.doom_elevator.background.frame_00" +
+                        "assetId":  "appearance:battleblast.levels.doom_elevator.background.frame_00" +
                                     ( (  frameOffsetInt < 10 ) ? ( "0" + frameOffsetInt ) : frameOffsetInt )
                     }
                 )

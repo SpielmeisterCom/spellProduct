@@ -1,8 +1,0 @@
-{
-	"name": "door",
-	"type": "asset",
-	"subtype": "appearance",
-	"namespace": "battleblast.asset.levels.doom_elevator",
-	"doc": "",
-	"file": "battleblast/asset/levels/doom_elevator/door.png"
-}

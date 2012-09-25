@@ -5,7 +5,7 @@
 	"subtype": "entity",
 	"config": {
 		"spell.component.2d.graphics.appearance": {
-			"assetId": "appearance:battleblast.asset.levels.doom_elevator.floor_light"
+			"assetId": "appearance:battleblast.levels.doom_elevator.floor_light"
 		},
 		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
