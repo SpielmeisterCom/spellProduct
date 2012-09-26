@@ -1,7 +1,7 @@
 {
 	"type" : "asset",
 	"subtype" : "spriteSheet",
-	"namespace" : "spellReferenceProject",
+	"namespace" : "spellReferenceProject.asset",
 	"name" : "threeRingsSpriteSheet",
 	"doc" : "",
 	"file": "spellReferenceProject/asset/threerings.png",

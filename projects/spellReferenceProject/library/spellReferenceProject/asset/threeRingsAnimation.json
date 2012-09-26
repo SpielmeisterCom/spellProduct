@@ -1,7 +1,7 @@
 {
 	"type" : "asset",
 	"subtype" : "animation",
-	"namespace" : "spellReferenceProject",
+	"namespace" : "spellReferenceProject.asset",
 	"name" : "threeRingsAnimation",
 	"doc" : "",
 	"assetId" : "spriteSheet:spellReferenceProject.asset.threeRingsSpriteSheet",
