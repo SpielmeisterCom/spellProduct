@@ -101,7 +101,7 @@
 	"templateIds": [
 		"123",
 		"battleblast.component.cloud",
-		"battleblast.component.doom_elevator_background_tile",
+		"battleblast.levels.doom_elevator.doom_elevator_background_tile",
 		"battleblast.component.light",
 		"battleblast.component.platform",
 		"battleblast.component.propeller",
@@ -130,7 +130,7 @@
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
 		"battleblast.system.animateClouds",
-		"battleblast.system.doom_elevator_background_animation",
+		"battleblast.levels.doom_elevator.doom_elevator_background_animation",
 		"battleblast.system.lightsPulsator",
 		"battleblast.system.platformMover",
 		"battleblast.system.propellerRotationSystem",
@@ -148,7 +148,7 @@
 				"render": [
 					"spell.system.keyInput",
 					"battleblast.system.lightsPulsator",
-					"battleblast.system.doom_elevator_background_animation",
+					"battleblast.levels.doom_elevator.doom_elevator_background_animation",
 					"spell.system.render"
 				]
 			},

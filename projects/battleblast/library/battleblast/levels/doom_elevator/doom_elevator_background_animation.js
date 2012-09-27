@@ -1,5 +1,5 @@
 define(
-	'battleblast/system/doom_elevator_background_animation',
+	'battleblast/levels/doom_elevator/doom_elevator_background_animation',
 	[
 		'spell/functions'
 	],

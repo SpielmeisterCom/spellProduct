@@ -9,7 +9,7 @@
 		},
 		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
-		"battleblast.component.doom_elevator_background_tile": {}
+		"battleblast.levels.doom_elevator.doom_elevator_background_tile": {}
 	},
 	"children": [],
 	"version": 1
