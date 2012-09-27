@@ -1,4 +1,5 @@
 {
+	"version": 1,
 	"type": "project",
 	"name": "spellReferenceProject",
 	"startScene": "Game",

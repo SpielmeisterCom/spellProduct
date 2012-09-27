@@ -4,5 +4,6 @@
 	"subtype": "appearance",
 	"namespace": "battleblast.levels.flying_fantasy",
 	"doc": "",
-	"file": "battleblast/levels/flying_fantasy/lighton.png"
+	"file": "battleblast/levels/flying_fantasy/lighton.png",
+	"version": 1
 }

@@ -1,8 +1,9 @@
 {
-    "name": "ship6_red",
+	"name": "ship6_red",
 	"type": "asset",
 	"subtype": "appearance",
-    "namespace": "battleblast.ships",
-    "doc": "",
-    "file": "battleblast/ships/ship6_red.png"
+	"namespace": "battleblast.ships",
+	"doc": "",
+	"file": "battleblast/ships/ship6_red.png",
+	"version": 1
 }

@@ -33,5 +33,6 @@
 			"radius": 16
 		}
 	},
-	"children": []
+	"children": [],
+	"version": 1
 }

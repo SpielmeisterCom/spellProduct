@@ -1,16 +1,17 @@
 {
-    "namespace" : "battleblast.system",
-    "name" : "platformMover",
+	"namespace": "battleblast.system",
+	"name": "platformMover",
 	"type": "template",
 	"subtype": "system",
-    "input" : [
-        {
-            "name" : "platforms",
-            "templateId" : "battleblast.component.platform"
-        },
-        {
-            "name" : "transforms",
-            "templateId" : "spell.component.2d.transform"
-        }
-    ]
+	"input": [
+		{
+			"name": "platforms",
+			"templateId": "battleblast.component.platform"
+		},
+		{
+			"name": "transforms",
+			"templateId": "spell.component.2d.transform"
+		}
+	],
+	"version": 1
 }

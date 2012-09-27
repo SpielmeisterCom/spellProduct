@@ -681,5 +681,6 @@
 		},
 		"spacing": 25
 	},
-	"file": "battleblast/bellopro.png"
+	"file": "battleblast/bellopro.png",
+	"version": 1
 }

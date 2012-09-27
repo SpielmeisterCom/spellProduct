@@ -4,12 +4,13 @@
 	"type": "template",
 	"subtype": "entity",
 	"config": {
-        "spell.component.2d.graphics.appearance": {
-            "assetId": "appearance:battleblast.levels.doom_elevator.background.frame_0000"
-        },
-        "spell.component.2d.transform": {},
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_0000"
+		},
+		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
 		"battleblast.component.doom_elevator_background_tile": {}
 	},
-	"children": []
+	"children": [],
+	"version": 1
 }

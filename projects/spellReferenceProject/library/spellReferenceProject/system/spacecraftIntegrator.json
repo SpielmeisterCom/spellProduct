@@ -1,25 +1,25 @@
 {
-	"type" : "template",
-	"subtype" : "system",
-	"namespace" : "spellReferenceProject.system",
-	"name" : "spacecraftIntegrator",
-
-	"input" : [
+	"type": "template",
+	"subtype": "system",
+	"namespace": "spellReferenceProject.system",
+	"name": "spacecraftIntegrator",
+	"input": [
 		{
-			"name" : "actors",
-			"templateId" : "spell.component.actor"
+			"name": "actors",
+			"templateId": "spell.component.actor"
 		},
 		{
-			"name" : "transforms",
-			"templateId" : "spell.component.2d.transform"
+			"name": "transforms",
+			"templateId": "spell.component.2d.transform"
 		},
 		{
-			"name" : "spacecrafts",
-			"templateId" : "spellReferenceProject.component.spacecraft"
+			"name": "spacecrafts",
+			"templateId": "spellReferenceProject.component.spacecraft"
 		},
 		{
-			"name" : "inertialObjects",
-			"templateId" : "spell.component.2d.physics.inertialObject"
+			"name": "inertialObjects",
+			"templateId": "spell.component.2d.physics.inertialObject"
 		}
-	]
+	],
+	"version": 1
 }

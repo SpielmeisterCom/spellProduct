@@ -3,5 +3,6 @@
 	"subtype": "appearance",
 	"file": "spellReferenceProject/asset/pixelShip1.png",
 	"namespace": "spellReferenceProject.asset",
-	"name": "pixelShip1"
+	"name": "pixelShip1",
+	"version": 1
 }

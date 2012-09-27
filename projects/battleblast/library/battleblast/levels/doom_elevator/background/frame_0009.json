@@ -4,5 +4,6 @@
 	"subtype": "appearance",
 	"namespace": "battleblast.levels.doom_elevator.background",
 	"doc": "",
-	"file": "battleblast/levels/doom_elevator/background/frame_0009.png"
+	"file": "battleblast/levels/doom_elevator/background/frame_0009.png",
+	"version": 1
 }

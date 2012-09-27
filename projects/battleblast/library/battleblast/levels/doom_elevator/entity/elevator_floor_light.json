@@ -11,5 +11,6 @@
 		"spell.component.visualObject": {},
 		"battleblast.component.light": {}
 	},
-	"children": []
+	"children": [],
+	"version": 1
 }

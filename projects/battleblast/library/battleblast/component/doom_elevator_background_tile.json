@@ -3,5 +3,6 @@
 	"namespace": "battleblast.component",
 	"type": "template",
 	"subtype": "component",
-	"attributes": []
+	"attributes": [],
+	"version": 1
 }

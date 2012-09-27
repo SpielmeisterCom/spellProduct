@@ -4,5 +4,6 @@
 	"subtype": "appearance",
 	"namespace": "battleblast",
 	"doc": "",
-	"file": "battleblast/bg.jpeg"
+	"file": "battleblast/bg.jpeg",
+	"version": 1
 }

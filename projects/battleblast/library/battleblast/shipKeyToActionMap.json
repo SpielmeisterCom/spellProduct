@@ -8,5 +8,6 @@
 		"DOWN_ARROW": "break",
 		"LEFT_ARROW": "steerLeft",
 		"RIGHT_ARROW": "steerRight"
-	}
+	},
+	"version": 1
 }

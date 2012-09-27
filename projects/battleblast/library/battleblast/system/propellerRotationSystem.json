@@ -1,16 +1,17 @@
 {
-    "namespace" : "battleblast.system",
-    "name" : "propellerRotationSystem",
+	"namespace": "battleblast.system",
+	"name": "propellerRotationSystem",
 	"type": "template",
 	"subtype": "system",
-    "input" : [
-        {
-            "name" : "propellers",
-            "templateId" : "battleblast.component.propeller"
-        },
-        {
-            "name" : "transforms",
-            "templateId" : "spell.component.2d.transform"
-        }
-    ]
+	"input": [
+		{
+			"name": "propellers",
+			"templateId": "battleblast.component.propeller"
+		},
+		{
+			"name": "transforms",
+			"templateId": "spell.component.2d.transform"
+		}
+	],
+	"version": 1
 }

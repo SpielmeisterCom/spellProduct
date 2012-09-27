@@ -18,5 +18,6 @@
 		},
 		"spell.component.visualObject": {}
 	},
-	"children": []
+	"children": [],
+	"version": 1
 }

@@ -12,5 +12,6 @@
 			"name": "visualObjects",
 			"templateId": "spell.component.visualObject"
 		}
-	]
+	],
+	"version": 1
 }

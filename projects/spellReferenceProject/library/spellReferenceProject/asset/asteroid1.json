@@ -1,7 +1,8 @@
 {
-	"type" : "asset",
+	"type": "asset",
 	"subtype": "appearance",
 	"file": "spellReferenceProject/asset/asteroid1.png",
 	"namespace": "spellReferenceProject.asset",
-	"name": "asteroid1"
+	"name": "asteroid1",
+	"version": 1
 }

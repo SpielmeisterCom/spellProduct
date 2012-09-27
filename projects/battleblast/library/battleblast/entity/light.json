@@ -11,5 +11,6 @@
 		"battleblast.component.light": {},
 		"spell.component.2d.transform": {}
 	},
-	"children": []
+	"children": [],
+	"version": 1
 }

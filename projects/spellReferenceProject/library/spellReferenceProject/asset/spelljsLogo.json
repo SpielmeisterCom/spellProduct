@@ -3,5 +3,6 @@
 	"subtype": "appearance",
 	"file": "spellReferenceProject/asset/spelljsLogo.png",
 	"namespace": "spellReferenceProject.asset",
-	"name": "spelljsLogo"
+	"name": "spelljsLogo",
+	"version": 1
 }

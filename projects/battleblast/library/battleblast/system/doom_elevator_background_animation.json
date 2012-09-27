@@ -8,5 +8,6 @@
 			"name": "background_tiles",
 			"templateId": "battleblast.component.doom_elevator_background_tile"
 		}
-	]
+	],
+	"version": 1
 }

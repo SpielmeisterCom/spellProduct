@@ -19,5 +19,6 @@
 			"radius": 30
 		}
 	},
-	"children": []
+	"children": [],
+	"version": 1
 }

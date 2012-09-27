@@ -1,6 +1,6 @@
 {
+	"version": 1,
 	"config": {
-		"screenMode": "fixed",
 		"screenSize": [
 			1024,
 			768

@@ -1,17 +1,17 @@
 {
-	"type" : "template",
-	"subtype" : "system",
-	"namespace" : "spellReferenceProject.system",
-	"name" : "aiControl",
-
-	"input" : [
+	"type": "template",
+	"subtype": "system",
+	"namespace": "spellReferenceProject.system",
+	"name": "aiControl",
+	"input": [
 		{
-			"name" : "actors",
-			"templateId" : "spell.component.actor"
+			"name": "actors",
+			"templateId": "spell.component.actor"
 		},
 		{
-			"name" : "transforms",
-			"templateId" : "spell.component.2d.transform"
+			"name": "transforms",
+			"templateId": "spell.component.2d.transform"
 		}
-	]
+	],
+	"version": 1
 }

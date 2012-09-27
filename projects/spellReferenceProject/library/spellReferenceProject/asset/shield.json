@@ -3,5 +3,6 @@
 	"subtype": "appearance",
 	"file": "spellReferenceProject/asset/shield.png",
 	"namespace": "spellReferenceProject.asset",
-	"name": "shield"
+	"name": "shield",
+	"version": 1
 }
