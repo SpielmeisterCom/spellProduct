@@ -3,8 +3,8 @@
 	"name": "spellReferenceProject",
 	"startScene": "Game",
 	"assetIds": [
-		"spell.asset.OpenSans14px",
-		"spell.asset.defaultAppearance",
+		"spell.OpenSans14px",
+		"spell.defaultAppearance",
 		"spellReferenceProject.asset.Bello Pro",
 		"spellReferenceProject.asset.Comic Sans 25",
 		"spellReferenceProject.asset.Impact",
