@@ -1,8 +1,6 @@
 {
-	"name": "glass_broken",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast",
 	"doc": "",
 	"file": "battleblast/glass_broken.png",
 	"version": 1

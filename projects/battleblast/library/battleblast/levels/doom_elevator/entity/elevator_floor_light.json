@@ -1,6 +1,4 @@
 {
-	"name": "elevator_floor_light",
-	"namespace": "battleblast.levels.doom_elevator.entity",
 	"type": "template",
 	"subtype": "entity",
 	"config": {

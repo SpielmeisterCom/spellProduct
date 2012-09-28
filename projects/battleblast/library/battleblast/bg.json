@@ -1,8 +1,6 @@
 {
-	"name": "bg",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast",
 	"doc": "",
 	"file": "battleblast/bg.jpeg",
 	"version": 1

@@ -1,8 +1,6 @@
 {
-	"name": "Press Start 2P 8",
 	"type": "asset",
 	"subtype": "font",
-	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {
 		"fontFamily": "Press Start 2P",

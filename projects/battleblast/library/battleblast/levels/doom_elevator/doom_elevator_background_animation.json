@@ -1,6 +1,4 @@
 {
-	"name": "doom_elevator_background_animation",
-	"namespace": "battleblast.levels.doom_elevator",
 	"type": "template",
 	"subtype": "system",
 	"input": [

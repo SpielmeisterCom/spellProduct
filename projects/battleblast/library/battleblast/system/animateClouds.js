@@ -11,12 +11,12 @@ define(
 	    XorShift32
 	) {
 		'use strict'
-        
-        
+
+
         var maxCloudTextureSize = 512
 		var xSize = 1024
 		var ySize = 768
-            
+
 		var fromX  = ( -maxCloudTextureSize )
 		var fromY  = ( -maxCloudTextureSize )
 		var untilX = ( maxCloudTextureSize + xSize )
@@ -33,7 +33,7 @@ define(
 
 				throw "Type '" + type + "' is not supported"
 			}
-            
+
             layer = layer || 0
 
 
@@ -56,9 +56,9 @@ define(
                     "config": {
                         "spell.component.2d.transform": {
                             "translation": position
-                        },                    
+                        },
                         "spell.component.2d.graphics.appearance": {
-                            "assetId": "appearance:" + type + index
+                            "assetId": "appearance:battleblast.levels.flying_platform.background." + type + index
                         },
                         "spell.component.visualObject": {
                             "layer": layer
@@ -67,7 +67,7 @@ define(
 				} )
 			}
 		}
-            
+
         var animateClouds = function(deltaTimeInMs, cloud, transform ) {
       		var deltaTimeInS = deltaTimeInMs / 1000
 
@@ -88,7 +88,7 @@ define(
 				transform.translation[ 1 ] = ( cloud.movement[ 1 ] > 0 ? fromY : untilY )
 			}
 		}
-           
+
         /**
          * Constructor
          */
@@ -96,7 +96,7 @@ define(
         	this.updateClouds = createEntityEach( this.clouds, [ this.transforms ], animateClouds )
            // this.spell = spell
 		}
-        
+
         /**
          * Init function gets called when this system is enabled
          */
@@ -109,7 +109,7 @@ define(
          * Cleanup function gets called when this system is disabled
          */
 		CloudAnimationSystem.prototype.cleanUp = function( spell ) {
-    	    
+
 		}
 
         /**

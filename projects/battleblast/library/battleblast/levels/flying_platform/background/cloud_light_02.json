@@ -1,8 +1,6 @@
 {
-	"name": "cloud_light_02",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast.levels.flying_platform.background",
 	"doc": "",
 	"file": "battleblast/levels/flying_platform/background/cloud_light_02.png",
 	"version": 1

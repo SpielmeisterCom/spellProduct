@@ -1,8 +1,6 @@
 {
-	"name": "Bello Pro",
 	"type": "asset",
 	"subtype": "font",
-	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {
 		"fontFamily": "Bello Pro",

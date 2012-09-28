@@ -1,6 +1,4 @@
 {
-	"namespace": "battleblast.system",
-	"name": "propellerRotationSystem",
 	"type": "template",
 	"subtype": "system",
 	"input": [

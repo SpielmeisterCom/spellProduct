@@ -1,8 +1,6 @@
 {
 	"type": "asset",
 	"subtype": "keyToActionMap",
-	"namespace": "spellReferenceProject.asset",
-	"name": "spacecraftKeyToActionMap",
 	"config": {
 		"SPACE": "accelerate",
 		"LEFT_ARROW": "steerLeft",

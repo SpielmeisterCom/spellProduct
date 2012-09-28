@@ -1,8 +1,6 @@
 {
-	"name": "Comic Sans 25",
 	"type": "asset",
 	"subtype": "font",
-	"namespace": "spellReferenceProject.asset",
 	"doc": "",
 	"config": {
 		"fontFamily": "Comic Sans MS",

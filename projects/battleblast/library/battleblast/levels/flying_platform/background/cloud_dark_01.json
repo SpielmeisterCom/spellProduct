@@ -1,8 +1,6 @@
 {
-	"name": "cloud_dark_01",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast.levels.flying_platform.background",
 	"doc": "",
 	"file": "battleblast/levels/flying_platform/background/cloud_dark_01.png",
 	"version": 1

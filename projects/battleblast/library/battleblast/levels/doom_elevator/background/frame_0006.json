@@ -1,8 +1,6 @@
 {
-	"name": "frame_0006",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast.levels.doom_elevator.background",
 	"doc": "",
 	"file": "battleblast/levels/doom_elevator/background/frame_0006.png",
 	"version": 1

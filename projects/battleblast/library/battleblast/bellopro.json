@@ -1,8 +1,6 @@
 {
-	"name": "bellopro",
 	"type": "asset",
 	"subtype": "font",
-	"namespace": "battleblast",
 	"doc": "",
 	"config": {
 		"fontFamily": "Bello Pro",

@@ -1,6 +1,4 @@
 {
-	"namespace": "battleblast.system",
-	"name": "spacecraftIntegrator",
 	"type": "template",
 	"subtype": "system",
 	"input": [

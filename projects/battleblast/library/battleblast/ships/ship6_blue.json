@@ -1,8 +1,6 @@
 {
-	"name": "ship6_blue",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast.ships",
 	"doc": "",
 	"file": "battleblast/ships/ship6_blue.png",
 	"version": 1

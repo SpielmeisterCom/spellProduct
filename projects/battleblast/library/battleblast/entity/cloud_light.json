@@ -1,6 +1,4 @@
 {
-	"name": "cloud_light",
-	"namespace": "battleblast.entity",
 	"type": "template",
 	"subtype": "entity",
 	"config": {

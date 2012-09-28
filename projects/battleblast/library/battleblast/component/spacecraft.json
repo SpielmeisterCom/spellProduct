@@ -1,6 +1,4 @@
 {
-	"name": "spacecraft",
-	"namespace": "battleblast.component",
 	"type": "template",
 	"subtype": "component",
 	"title": "",

@@ -1,6 +1,4 @@
 {
-	"name": "lightsPulsator",
-	"namespace": "battleblast.system",
 	"type": "template",
 	"subtype": "system",
 	"input": [

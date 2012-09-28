@@ -1,8 +1,6 @@
 {
-	"name": "ship4_magenta",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast.ships",
 	"doc": "",
 	"file": "battleblast/ships/ship4_magenta.png",
 	"version": 1

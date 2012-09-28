@@ -2,7 +2,5 @@
 	"type": "asset",
 	"subtype": "appearance",
 	"file": "spellReferenceProject/asset/pixelShip2.png",
-	"namespace": "spellReferenceProject.asset",
-	"name": "pixelShip2",
 	"version": 1
 }

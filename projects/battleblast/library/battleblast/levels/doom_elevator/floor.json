@@ -1,8 +1,6 @@
 {
-	"name": "floor",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast.levels.doom_elevator",
 	"doc": "",
 	"file": "battleblast/levels/doom_elevator/floor.png",
 	"version": 1

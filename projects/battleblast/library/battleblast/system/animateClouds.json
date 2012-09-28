@@ -1,6 +1,4 @@
 {
-	"name": "animateClouds",
-	"namespace": "battleblast.system",
 	"type": "template",
 	"subtype": "system",
 	"input": [

@@ -1,6 +1,4 @@
 {
-	"name": "cloud_dark",
-	"namespace": "battleblast.entity",
 	"type": "template",
 	"subtype": "entity",
 	"config": {

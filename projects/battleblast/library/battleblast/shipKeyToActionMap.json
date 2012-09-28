@@ -1,8 +1,6 @@
 {
 	"type": "asset",
 	"subtype": "keyToActionMap",
-	"namespace": "battleblast",
-	"name": "shipKeyToActionMap",
 	"config": {
 		"UP_ARROW": "accelerate",
 		"DOWN_ARROW": "break",

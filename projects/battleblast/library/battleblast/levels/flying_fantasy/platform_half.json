@@ -1,8 +1,6 @@
 {
-	"name": "platform_half",
 	"type": "asset",
 	"subtype": "appearance",
-	"namespace": "battleblast.levels.flying_fantasy",
 	"doc": "",
 	"file": "battleblast/levels/flying_fantasy/platform_half.png",
 	"version": 1

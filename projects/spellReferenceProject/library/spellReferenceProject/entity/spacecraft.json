@@ -1,6 +1,4 @@
 {
-	"name": "spacecraft",
-	"namespace": "spellReferenceProject.entity",
 	"type": "template",
 	"subtype": "entity",
 	"config": {
