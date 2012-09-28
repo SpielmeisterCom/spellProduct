@@ -7,6 +7,7 @@
 	"name" : "root",
 	"title" : "Root Entity",
 	"doc" : "Entities which do not have a parent entity are considered root entities.",
-	"attributes" : []
+	"attributes" : [],
+	"version": 1
 }
 

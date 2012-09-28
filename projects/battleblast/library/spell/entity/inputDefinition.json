@@ -4,5 +4,6 @@
 	"config": {
 		"spell.component.inputDefinition": {}
 	},
-	"children": []
+	"children": [],
+	"version": 1
 }

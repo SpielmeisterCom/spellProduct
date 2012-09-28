@@ -22,5 +22,6 @@
 			"default": "blank",
 			"doc": "the text string that is displayed"
 		}
-	]
+	],
+	"version": 1
 }

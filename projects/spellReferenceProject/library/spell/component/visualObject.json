@@ -19,5 +19,6 @@
 			"default" : 1.0,
 			"doc" : "the opacity that the entity is drawn with"
 		}
-	]
+	],
+	"version": 1
 }

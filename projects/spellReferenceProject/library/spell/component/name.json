@@ -13,6 +13,7 @@
 			"default" : "",
 			"doc" : "the name of the entity"
 		}
-	]
+	],
+	"version": 1
 }
 

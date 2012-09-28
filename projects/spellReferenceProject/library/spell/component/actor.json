@@ -17,6 +17,7 @@
 			"default" : {},
 			"doc" : "the actions which can be performed by the actor"
 		}
-	]
+	],
+	"version": 1
 }
 

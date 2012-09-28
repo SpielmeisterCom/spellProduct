@@ -16,6 +16,7 @@
 			"type" : "assetId:keyToActionMap",
 			"doc" : "key to action mapping"
 		}
-	]
+	],
+	"version": 1
 }
 

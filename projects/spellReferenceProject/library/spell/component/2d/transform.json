@@ -25,5 +25,6 @@
 			"default" : [ 1, 1 ],
 			"doc" : "scale part of the local origin"
 		}
-	]
+	],
+	"version": 1
 }
