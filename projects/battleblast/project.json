@@ -435,7 +435,7 @@
 							"name": "glass_floor",
 							"config": {
 								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:glass"
+									"assetId": "appearance:battleblast.glass"
 								},
 								"spell.component.2d.transform": {
 									"translation": [
@@ -622,7 +622,7 @@
 					"name": "background_layer0",
 					"config": {
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:bg"
+							"assetId": "appearance:battleblast.bg"
 						},
 						"spell.component.2d.transform": {
 							"scale": [
@@ -644,7 +644,7 @@
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
 							"text": "Hello World!",
-							"assetId": "font:bellopro",
+							"assetId": "font:battleblast.bellopro",
 							"spacing": -28
 						},
 						"spell.component.2d.transform": {
@@ -664,7 +664,7 @@
 					"config": {
 						"spell.component.inputDefinition": {
 							"actorId": "playerControlled",
-							"assetId": "keyToActionMap:shipKeyToActionMap"
+							"assetId": "keyToActionMap:battleblast.shipKeyToActionMap"
 						}
 					}
 				}
