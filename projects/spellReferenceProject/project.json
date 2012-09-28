@@ -526,6 +526,9 @@
 		}
 	],
 	"config": {
-		"screenSize" : [ 1024, 768 ]
+		"screenSize": [
+			1024,
+			768
+		]
 	}
 }

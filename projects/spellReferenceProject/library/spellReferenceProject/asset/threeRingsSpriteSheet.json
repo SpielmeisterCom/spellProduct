@@ -2,7 +2,7 @@
 	"type": "asset",
 	"subtype": "spriteSheet",
 	"doc": "",
-	"file": "spellReferenceProject/asset/threerings.png",
+	"file": "threerings.png",
 	"config": {
 		"textureWidth": 450,
 		"textureHeight": 600,
