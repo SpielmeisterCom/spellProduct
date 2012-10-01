@@ -6,7 +6,6 @@
 			768
 		]
 	},
-	"name": "battleblast",
 	"startScene": "doom_elevator",
 	"assetIds": [
 		"battleblast.bellopro",
