@@ -6,12 +6,13 @@
 			768
 		]
 	},
-	"startScene": "flying_fantasy",
+	"startScene": "doom_elevator",
 	"assetIds": [
 		"battleblast.bellopro",
 		"battleblast.bg",
 		"battleblast.glass",
 		"battleblast.glass_broken",
+		"battleblast.levels.doom_elevator.animations.elevator_starts",
 		"battleblast.levels.doom_elevator.background.frame_0000",
 		"battleblast.levels.doom_elevator.background.frame_0001",
 		"battleblast.levels.doom_elevator.background.frame_0002",
@@ -201,7 +202,7 @@
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
-										768,
+										767,
 										576
 									],
 									"scale": [
@@ -218,7 +219,7 @@
 								"spell.component.2d.transform": {
 									"translation": [
 										256,
-										192
+										193
 									],
 									"scale": [
 										1,
@@ -233,8 +234,8 @@
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
-										768,
-										192
+										767,
+										193
 									],
 									"scale": [
 										-1,
@@ -258,37 +259,12 @@
 								512,
 								384
 							]
-						}
-					},
-					"children": [
-						{
-							"name": "pin_top",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:battleblast.levels.doom_elevator.pin"
-								},
-								"spell.component.2d.transform": {
-									"translation": [
-										0,
-										332
-									]
-								},
-								"spell.component.visualObject": {
-									"layer": 10
-								}
-							}
 						},
-						{
-							"name": "pin_bottom",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:battleblast.levels.doom_elevator.pin"
-								},
-								"spell.component.2d.transform": {},
-								"spell.component.visualObject": {}
-							}
+						"spell.component.2d.graphics.keyFrameAnimation": {
+							"assetId": "keyFrameAnimation:battleblast.levels.doom_elevator.animations.elevator_starts",
+							"looped": true
 						}
-					]
+					}
 				},
 				{
 					"name": "spelljs logo",
