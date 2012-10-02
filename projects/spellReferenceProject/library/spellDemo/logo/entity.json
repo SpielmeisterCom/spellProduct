@@ -1,0 +1,25 @@
+{
+	"type": "template",
+	"subtype": "entity",
+	"config": {
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {}
+	},
+	"children": [
+		{
+			"name": "appearance",
+			"config": {
+				"spell.component.2d.transform": {},
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:spellDemo.logo.appearance"
+				},
+				"spell.component.2d.graphics.keyFrameAnimation": {
+					"assetId": "keyFrameAnimation:spellDemo.logo.animation",
+					"looped": true
+				},
+				"spell.component.visualObject": {}
+			}
+		}
+	],
+	"version": 1
+}

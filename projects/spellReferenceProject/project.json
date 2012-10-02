@@ -5,6 +5,8 @@
 	"assetIds": [
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
+		"spellDemo.logo.animation",
+		"spellDemo.logo.appearance",
 		"spellReferenceProject.asset.Bello Pro",
 		"spellReferenceProject.asset.Comic Sans 25",
 		"spellReferenceProject.asset.Impact",
@@ -16,7 +18,6 @@
 		"spellReferenceProject.asset.pixelShip2",
 		"spellReferenceProject.asset.shield",
 		"spellReferenceProject.asset.spacecraftKeyToActionMap",
-		"spellReferenceProject.asset.spelljsLogo",
 		"spellReferenceProject.asset.threeRingsAnimation",
 		"spellReferenceProject.asset.threeRingsSpriteSheet"
 	],
@@ -24,6 +25,7 @@
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.keyFrameAnimation",
 		"spell.component.2d.graphics.textAppearance",
 		"spell.component.2d.physics.inertialObject",
 		"spell.component.2d.transform",
@@ -37,9 +39,11 @@
 		"spellReferenceProject.component.spacecraft",
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
+		"spellDemo.logo.entity",
 		"spellReferenceProject.entity.alienSpacecraft",
 		"spellReferenceProject.entity.asteroid",
 		"spellReferenceProject.entity.spacecraft",
+		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.render",
 		"spellReferenceProject.system.aiControl",
@@ -47,6 +51,7 @@
 		"spellReferenceProject.system.endlessPlayingField",
 		"spellReferenceProject.system.spacecraftIntegrator"
 	],
+	"type": "project",
 	"scenes": [
 		{
 			"name": "Game",
@@ -59,6 +64,7 @@
 					"spellReferenceProject.system.spacecraftIntegrator",
 					"spellReferenceProject.system.collisionDetector",
 					"spellReferenceProject.system.endlessPlayingField",
+					"spell.system.keyFrameAnimation",
 					"spell.system.render"
 				]
 			},
@@ -356,11 +362,12 @@
 				},
 				{
 					"name": "spelljs logo",
+					"templateId": "spellDemo.logo.entity",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
-								950,
-								25
+								935,
+								35
 							],
 							"scale": [
 								0.75,
@@ -368,10 +375,8 @@
 							]
 						},
 						"spell.component.visualObject": {
-							"layer": 2
-						},
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:spellReferenceProject.asset.spelljsLogo"
+							"layer": 2,
+							"opacity": 1
 						}
 					}
 				},
@@ -491,7 +496,7 @@
 					}
 				},
 				{
-					"name": "Speilmeister",
+					"name": "Spielmeister",
 					"config": {
 						"spell.component.2d.graphics.textAppearance": {
 							"assetId": "font:spellReferenceProject.asset.Bello Pro",
