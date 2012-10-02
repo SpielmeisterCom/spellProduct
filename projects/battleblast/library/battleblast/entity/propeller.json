@@ -1,12 +1,10 @@
 {
+	"version": 1,
 	"type": "template",
 	"subtype": "entity",
 	"config": {
-		"battleblast.component.propeller": {
-			"radPerS": 7
-		},
 		"spell.component.2d.graphics.appearance": {
-			"assetId": "appearance:battleblast.levels.flying_fantasy.propeller"
+			"assetId": "appearance:battleblast.levels.flying_fantasy.propeller.appearance"
 		},
 		"spell.component.2d.transform": {
 			"scale": [
@@ -14,8 +12,11 @@
 				1
 			]
 		},
-		"spell.component.visualObject": {}
+		"spell.component.visualObject": {},
+		"spell.component.2d.graphics.keyFrameAnimation": {
+			"assetId": "keyFrameAnimation:battleblast.levels.flying_fantasy.propeller.animation",
+			"looped": true
+		}
 	},
-	"children": [],
-	"version": 1
+	"children": []
 }

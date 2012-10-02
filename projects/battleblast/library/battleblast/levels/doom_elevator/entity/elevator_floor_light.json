@@ -1,4 +1,5 @@
 {
+	"version": 1,
 	"type": "template",
 	"subtype": "entity",
 	"config": {
@@ -7,8 +8,10 @@
 		},
 		"spell.component.2d.transform": {},
 		"spell.component.visualObject": {},
-		"battleblast.component.light": {}
+		"spell.component.2d.graphics.keyFrameAnimation": {
+			"assetId": "keyFrameAnimation:battleblast.levels.doom_elevator.entity.elevator_floor_light_animation",
+			"looped": true
+		}
 	},
-	"children": [],
-	"version": 1
+	"children": []
 }

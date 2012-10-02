@@ -6,7 +6,7 @@
 			768
 		]
 	},
-	"startScene": "doom_elevator",
+	"startScene": "flying_fantasy",
 	"assetIds": [
 		"battleblast.bellopro",
 		"battleblast.bg",
@@ -44,13 +44,15 @@
 		"battleblast.levels.doom_elevator.background.frame_0029",
 		"battleblast.levels.doom_elevator.door",
 		"battleblast.levels.doom_elevator.elevator_base",
+		"battleblast.levels.doom_elevator.entity.elevator_floor_light_animation",
 		"battleblast.levels.doom_elevator.floor",
 		"battleblast.levels.doom_elevator.floor_light",
 		"battleblast.levels.doom_elevator.pin",
 		"battleblast.levels.doom_elevator.shadow",
 		"battleblast.levels.flying_fantasy.lighton",
 		"battleblast.levels.flying_fantasy.platform_half",
-		"battleblast.levels.flying_fantasy.propeller",
+		"battleblast.levels.flying_fantasy.propeller.animation",
+		"battleblast.levels.flying_fantasy.propeller.appearance",
 		"battleblast.levels.flying_platform.background.cloud_dark_01",
 		"battleblast.levels.flying_platform.background.cloud_dark_02",
 		"battleblast.levels.flying_platform.background.cloud_dark_03",
@@ -101,9 +103,6 @@
 	],
 	"templateIds": [
 		"battleblast.component.cloud",
-		"battleblast.component.light",
-		"battleblast.component.platform",
-		"battleblast.component.propeller",
 		"battleblast.component.spacecraft",
 		"battleblast.levels.doom_elevator.doom_elevator_background_tile",
 		"spell.component.2d.graphics.animatedAppearance",
@@ -133,9 +132,6 @@
 		"spellDemo.logo.entity",
 		"battleblast.levels.doom_elevator.doom_elevator_background_animation",
 		"battleblast.system.animateClouds",
-		"battleblast.system.lightsPulsator",
-		"battleblast.system.platformMover",
-		"battleblast.system.propellerRotationSystem",
 		"battleblast.system.spacecraftIntegrator",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
@@ -150,7 +146,6 @@
 				"update": [],
 				"render": [
 					"spell.system.keyInput",
-					"battleblast.system.lightsPulsator",
 					"battleblast.levels.doom_elevator.doom_elevator_background_animation",
 					"spell.system.keyFrameAnimation",
 					"spell.system.render"
@@ -325,9 +320,6 @@
 				"render": [
 					"spell.system.keyInput",
 					"battleblast.system.spacecraftIntegrator",
-					"battleblast.system.lightsPulsator",
-					"battleblast.system.platformMover",
-					"battleblast.system.propellerRotationSystem",
 					"battleblast.system.animateClouds",
 					"spell.system.keyFrameAnimation",
 					"spell.system.render"
@@ -372,8 +364,7 @@
 								400
 							],
 							"rotation": 0
-						},
-						"battleblast.component.platform": {}
+						}
 					},
 					"children": [
 						{
@@ -485,9 +476,6 @@
 												470,
 												240
 											]
-										},
-										"battleblast.component.propeller": {
-											"radPerS": -7
 										}
 									}
 								},
@@ -500,9 +488,6 @@
 												-470,
 												240
 											]
-										},
-										"battleblast.component.propeller": {
-											"radPerS": 7
 										}
 									}
 								},
@@ -515,9 +500,6 @@
 												-470,
 												-420
 											]
-										},
-										"battleblast.component.propeller": {
-											"radPerS": -7
 										}
 									}
 								},
