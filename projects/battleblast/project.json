@@ -262,7 +262,7 @@
 								384
 							]
 						},
-						"spell.component.2d.graphics.keyFrameAnimation": {
+						"spell.component.animation.keyFrameAnimation": {
 							"assetId": "keyFrameAnimation:battleblast.levels.doom_elevator.animations.elevator_starts",
 							"looped": true
 						}
