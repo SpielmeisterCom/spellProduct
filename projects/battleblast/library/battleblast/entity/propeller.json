@@ -13,7 +13,7 @@
 			]
 		},
 		"spell.component.visualObject": {},
-		"spell.component.2d.graphics.keyFrameAnimation": {
+		"spell.component.animation.keyFrameAnimation": {
 			"assetId": "keyFrameAnimation:battleblast.levels.flying_fantasy.propeller.animation",
 			"looped": true,
 			"replaySpeed": 0.75

@@ -111,11 +111,11 @@
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
-		"spell.component.2d.graphics.keyFrameAnimation",
 		"spell.component.2d.graphics.textAppearance",
 		"spell.component.2d.physics.inertialObject",
 		"spell.component.2d.transform",
 		"spell.component.actor",
+		"spell.component.animation.keyFrameAnimation",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
@@ -354,7 +354,7 @@
 										0
 									]
 								},
-								"spell.component.2d.graphics.keyFrameAnimation": {
+								"spell.component.animation.keyFrameAnimation": {
 									"assetId": "keyFrameAnimation:battleblast.levels.flying_fantasy.platformAnimation"
 								}
 							},
@@ -469,7 +469,7 @@
 														240
 													]
 												},
-												"spell.component.2d.graphics.keyFrameAnimation": {
+												"spell.component.animation.keyFrameAnimation": {
 													"reversed": true
 												}
 											}
@@ -496,7 +496,7 @@
 														-420
 													]
 												},
-												"spell.component.2d.graphics.keyFrameAnimation": {
+												"spell.component.animation.keyFrameAnimation": {
 													"reversed": true
 												}
 											}

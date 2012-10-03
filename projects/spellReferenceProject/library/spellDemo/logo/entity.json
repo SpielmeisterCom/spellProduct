@@ -13,7 +13,7 @@
 				"spell.component.2d.graphics.appearance": {
 					"assetId": "appearance:spellDemo.logo.appearance"
 				},
-				"spell.component.2d.graphics.keyFrameAnimation": {
+				"spell.component.animation.keyFrameAnimation": {
 					"assetId": "keyFrameAnimation:spellDemo.logo.animation",
 					"looped": true
 				},

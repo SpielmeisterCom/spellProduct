@@ -25,7 +25,7 @@
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
-		"spell.component.2d.graphics.keyFrameAnimation",
+		"spell.component.animation.keyFrameAnimation",
 		"spell.component.2d.graphics.textAppearance",
 		"spell.component.2d.physics.inertialObject",
 		"spell.component.2d.transform",

@@ -8,7 +8,7 @@
 		},
 		"spell.component.visualObject": {},
 		"spell.component.2d.transform": {},
-		"spell.component.2d.graphics.keyFrameAnimation": {
+		"spell.component.animation.keyFrameAnimation": {
 			"assetId": "keyFrameAnimation:battleblast.levels.flying_fantasy.light_animation",
 			"replaySpeed": 2
 		}
