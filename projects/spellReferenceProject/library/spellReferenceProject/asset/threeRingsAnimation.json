@@ -6,7 +6,6 @@
 	"config": {
 		"type": "sprite",
 		"duration": 2000,
-		"looped": true,
 		"frameIds": [
 			0,
 			1,
