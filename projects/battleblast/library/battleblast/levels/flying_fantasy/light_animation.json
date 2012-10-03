@@ -1,0 +1,38 @@
+{
+	"version": 1,
+	"type": "asset",
+	"subtype": "keyFrameAnimation",
+	"animate": {
+		"spell.component.visualObject": {
+			"opacity": {
+				"keyFrames": [
+					{
+						"time": 0,
+						"value": 0.5
+					},
+					{
+						"time": 250,
+						"value": 1,
+						"interpolation": "CubicIn"
+					},
+					{
+						"time": 500,
+						"value": 0.5,
+						"interpolation": "CubicOut"
+					},
+					{
+						"time": 750,
+						"value": 1,
+						"interpolation": "CubicIn"
+					},
+					{
+						"time": 1000,
+						"value": 0.5,
+						"interpolation": "CubicOut"
+					}
+				]
+			}
+		}
+	},
+	"length": 3000
+}

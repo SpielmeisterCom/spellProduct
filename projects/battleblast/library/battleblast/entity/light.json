@@ -7,7 +7,11 @@
 			"assetId": "appearance:battleblast.levels.flying_fantasy.lighton"
 		},
 		"spell.component.visualObject": {},
-		"spell.component.2d.transform": {}
+		"spell.component.2d.transform": {},
+		"spell.component.2d.graphics.keyFrameAnimation": {
+			"assetId": "keyFrameAnimation:battleblast.levels.flying_fantasy.light_animation",
+			"replaySpeed": 2
+		}
 	},
 	"children": []
 }

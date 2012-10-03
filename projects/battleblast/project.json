@@ -50,7 +50,9 @@
 		"battleblast.levels.doom_elevator.floor_light",
 		"battleblast.levels.doom_elevator.pin",
 		"battleblast.levels.doom_elevator.shadow",
+		"battleblast.levels.flying_fantasy.light_animation",
 		"battleblast.levels.flying_fantasy.lighton",
+		"battleblast.levels.flying_fantasy.platformAnimation",
 		"battleblast.levels.flying_fantasy.platform_half",
 		"battleblast.levels.flying_fantasy.propeller.animation",
 		"battleblast.levels.flying_fantasy.propeller.appearance",
@@ -344,264 +346,280 @@
 					},
 					"children": [
 						{
-							"name": "player",
+							"name": "animationContainer",
 							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:battleblast.ships.ship1_blue"
-								},
-								"spell.component.2d.transform": {
-									"translation": [
-										200,
-										200
-									]
-								},
-								"spell.component.visualObject": {
-									"layer": 10
-								},
-								"spell.component.2d.physics.inertialObject": {},
-								"spell.component.actor": {
-									"actions": {
-										"accelerate": {
-											"executing": false
-										},
-										"break": {
-											"executing": false
-										},
-										"steerLeft": {
-											"executing": false
-										},
-										"steerRight": {
-											"executing": false
-										}
-									},
-									"id": "playerControlled"
-								},
-								"battleblast.component.spacecraft": {
-									"thrusterForce": 100
-								}
-							}
-						},
-						{
-							"name": "platform_left",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:battleblast.levels.flying_fantasy.platform_half"
-								},
-								"spell.component.2d.transform": {
-									"translation": [
-										-269,
-										0
-									],
-									"scale": [
-										1,
-										1
-									]
-								},
-								"spell.component.visualObject": {
-									"layer": 2
-								}
-							}
-						},
-						{
-							"name": "platform_right",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:battleblast.levels.flying_fantasy.platform_half"
-								},
-								"spell.component.2d.transform": {
-									"scale": [
-										-1,
-										1
-									],
-									"translation": [
-										269,
-										0
-									]
-								},
-								"spell.component.visualObject": {
-									"layer": 2
-								}
-							}
-						},
-						{
-							"name": "glass_floor",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:battleblast.glass"
-								},
 								"spell.component.2d.transform": {
 									"translation": [
 										0,
-										-12
+										0
 									]
 								},
-								"spell.component.visualObject": {
-									"opacity": 0.6
-								}
-							}
-						},
-						{
-							"name": "propellers",
-							"children": [
-								{
-									"name": "propeller_top_right",
-									"templateId": "battleblast.entity.propeller",
-									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												470,
-												240
-											]
-										},
-										"spell.component.2d.graphics.keyFrameAnimation": {
-											"reversed": true
-										}
-									}
-								},
-								{
-									"name": "propeller_top_left",
-									"templateId": "battleblast.entity.propeller",
-									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												-470,
-												240
-											]
-										}
-									}
-								},
-								{
-									"name": "propeller_bottom_left",
-									"templateId": "battleblast.entity.propeller",
-									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												-470,
-												-420
-											]
-										},
-										"spell.component.2d.graphics.keyFrameAnimation": {
-											"reversed": true
-										}
-									}
-								},
-								{
-									"name": "propeller_bottom_right",
-									"templateId": "battleblast.entity.propeller",
-									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												470,
-												-420
-											]
-										}
-									}
-								}
-							]
-						},
-						{
-							"name": "lights",
-							"config": {
-								"spell.component.visualObject": {
-									"layer": 10
+								"spell.component.2d.graphics.keyFrameAnimation": {
+									"assetId": "keyFrameAnimation:battleblast.levels.flying_fantasy.platformAnimation"
 								}
 							},
 							"children": [
 								{
-									"name": "light1",
-									"templateId": "battleblast.entity.light",
+									"name": "player",
 									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.ships.ship1_blue"
+										},
 										"spell.component.2d.transform": {
 											"translation": [
-												-386,
-												297
+												200,
+												200
 											]
+										},
+										"spell.component.visualObject": {
+											"layer": 10
+										},
+										"spell.component.2d.physics.inertialObject": {},
+										"spell.component.actor": {
+											"actions": {
+												"accelerate": {
+													"executing": false
+												},
+												"break": {
+													"executing": false
+												},
+												"steerLeft": {
+													"executing": false
+												},
+												"steerRight": {
+													"executing": false
+												}
+											},
+											"id": "playerControlled"
+										},
+										"battleblast.component.spacecraft": {
+											"thrusterForce": 100
 										}
 									}
 								},
 								{
-									"name": "light2",
-									"templateId": "battleblast.entity.light",
+									"name": "platform_left",
 									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.levels.flying_fantasy.platform_half"
+										},
 										"spell.component.2d.transform": {
 											"translation": [
-												-29,
-												299
+												-269,
+												0
+											],
+											"scale": [
+												1,
+												1
 											]
+										},
+										"spell.component.visualObject": {
+											"layer": 2
 										}
 									}
 								},
 								{
-									"name": "light3",
-									"templateId": "battleblast.entity.light",
+									"name": "platform_right",
 									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.levels.flying_fantasy.platform_half"
+										},
 										"spell.component.2d.transform": {
+											"scale": [
+												-1,
+												1
+											],
 											"translation": [
-												28,
-												299
+												269,
+												0
 											]
+										},
+										"spell.component.visualObject": {
+											"layer": 2
 										}
 									}
 								},
 								{
-									"name": "light4",
-									"templateId": "battleblast.entity.light",
+									"name": "glass_floor",
 									"config": {
+										"spell.component.2d.graphics.appearance": {
+											"assetId": "appearance:battleblast.glass"
+										},
 										"spell.component.2d.transform": {
 											"translation": [
-												385,
-												297
+												0,
+												-12
 											]
+										},
+										"spell.component.visualObject": {
+											"opacity": 0.6
 										}
 									}
 								},
 								{
-									"name": "light5",
-									"templateId": "battleblast.entity.light",
-									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												384,
-												-322
-											]
+									"name": "propellers",
+									"children": [
+										{
+											"name": "propeller_top_right",
+											"templateId": "battleblast.entity.propeller",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														470,
+														240
+													]
+												},
+												"spell.component.2d.graphics.keyFrameAnimation": {
+													"reversed": true
+												}
+											}
+										},
+										{
+											"name": "propeller_top_left",
+											"templateId": "battleblast.entity.propeller",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														-470,
+														240
+													]
+												}
+											}
+										},
+										{
+											"name": "propeller_bottom_left",
+											"templateId": "battleblast.entity.propeller",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														-470,
+														-420
+													]
+												},
+												"spell.component.2d.graphics.keyFrameAnimation": {
+													"reversed": true
+												}
+											}
+										},
+										{
+											"name": "propeller_bottom_right",
+											"templateId": "battleblast.entity.propeller",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														470,
+														-420
+													]
+												}
+											}
 										}
-									}
+									]
 								},
 								{
-									"name": "light6",
-									"templateId": "battleblast.entity.light",
+									"name": "lights",
 									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												28,
-												-319
-											]
+										"spell.component.visualObject": {
+											"layer": 10
 										}
-									}
-								},
-								{
-									"name": "light7",
-									"templateId": "battleblast.entity.light",
-									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												-29,
-												-319
-											]
+									},
+									"children": [
+										{
+											"name": "light1",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														-386,
+														297
+													]
+												}
+											}
+										},
+										{
+											"name": "light2",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														-29,
+														299
+													]
+												}
+											}
+										},
+										{
+											"name": "light3",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														28,
+														299
+													]
+												}
+											}
+										},
+										{
+											"name": "light4",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														385,
+														297
+													]
+												}
+											}
+										},
+										{
+											"name": "light5",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														384,
+														-322
+													]
+												}
+											}
+										},
+										{
+											"name": "light6",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														28,
+														-319
+													]
+												}
+											}
+										},
+										{
+											"name": "light7",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														-29,
+														-319
+													]
+												}
+											}
+										},
+										{
+											"name": "light8",
+											"templateId": "battleblast.entity.light",
+											"config": {
+												"spell.component.2d.transform": {
+													"translation": [
+														-386,
+														-323
+													]
+												}
+											}
 										}
-									}
-								},
-								{
-									"name": "light8",
-									"templateId": "battleblast.entity.light",
-									"config": {
-										"spell.component.2d.transform": {
-											"translation": [
-												-386,
-												-323
-											]
-										}
-									}
+									]
 								}
 							]
 						}
