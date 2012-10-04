@@ -1,7 +1,6 @@
 {
 	"version": 1,
-	"type": "template",
-	"subtype": "entity",
+	"type": "entity",
 	"config": {
 		"spell.component.2d.graphics.appearance": {
 			"assetId": "appearance:battleblast.levels.flying_fantasy.lighton"

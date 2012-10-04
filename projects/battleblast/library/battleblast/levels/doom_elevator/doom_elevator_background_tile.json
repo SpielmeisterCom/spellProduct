@@ -1,6 +1,5 @@
 {
-	"type": "template",
-	"subtype": "component",
+	"type": "component",
 	"attributes": [],
 	"version": 1
 }

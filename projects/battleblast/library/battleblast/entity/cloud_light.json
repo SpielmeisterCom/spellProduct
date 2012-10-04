@@ -1,6 +1,5 @@
 {
-	"type": "template",
-	"subtype": "entity",
+	"type": "entity",
 	"config": {
 		"battleblast.component.cloud": {
 			"movement": [

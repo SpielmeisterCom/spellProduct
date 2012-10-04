@@ -1,6 +1,5 @@
 {
-	"type": "template",
-	"subtype": "system",
+	"type": "system",
 	"input": [
 		{
 			"name": "actors",
