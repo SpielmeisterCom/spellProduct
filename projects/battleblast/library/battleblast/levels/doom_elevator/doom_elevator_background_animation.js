@@ -12,34 +12,52 @@ define(
 		 * private
 		 */
 
-        var frameOffset = 0,
-	        frameCount = 30,
-	        entityId   = undefined,
-            frameOffsetInt = 0
+        var animationLengthInMs = 1000,
+			numFrames           = 30,
+			frameDuration       = Math.floor( animationLengthInMs / numFrames ),
+			replaySpeed         = 1.0,
+			offsetInMs          = 0
+
+
+		var createOffsetInMs = function( deltaTimeInMs, animationLengthInMs, offsetInMs, replaySpeed ) {
+			offsetInMs += deltaTimeInMs * replaySpeed
+
+			return offsetInMs > animationLengthInMs ?
+				offsetInMs % animationLengthInMs :
+				offsetInMs
+		}
+
+		var createFrameIndex = function( offsetInMs, frameDuration ) {
+			var index = Math.max(
+				Math.round( offsetInMs / frameDuration ) - 1,
+				0
+			)
+
+			return index < 10 ? "0" + index : "" + index
+		}
 
 		var init = function( spell ) { }
 
 		var cleanUp = function( spell ) {}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
+			offsetInMs = createOffsetInMs( deltaTimeInMs, animationLengthInMs, offsetInMs, replaySpeed )
 
-            frameOffsetInt = parseInt( frameOffset, 10 )
+			var backgroundTiles = this.backgroundTiles,
+				entityManager   = spell.EntityManager,
+				frameIndex      = createFrameIndex( offsetInMs, frameDuration )
 
-            for (entityId in this.background_tiles) {
+			for( var id in backgroundTiles ) {
+				var backgroundTile = backgroundTiles[ id ]
 
-                this.spell.EntityManager.updateComponent(
-                    "spell.component.2d.graphics.appearance",
-                    entityId,
-                    {
-                        "assetId":  "appearance:battleblast.levels.doom_elevator.background.frame_00" +
-                                    ( (  frameOffsetInt < 10 ) ? ( "0" + frameOffsetInt ) : frameOffsetInt )
-                    }
-                )
-            }
-
-            //this animations runs with 60fps, so just increase
-            //the frame count for every frame processed
-			frameOffset = (frameOffset + 0.4) % frameCount
+				entityManager.updateComponent(
+					"spell.component.2d.graphics.appearance",
+					id,
+					{
+						"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_00" + frameIndex
+					}
+				)
+			}
 		}
 
 		/**

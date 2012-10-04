@@ -3,7 +3,7 @@
 	"subtype": "system",
 	"input": [
 		{
-			"name": "background_tiles",
+			"name": "backgroundTiles",
 			"templateId": "battleblast.levels.doom_elevator.doom_elevator_background_tile"
 		}
 	],
