@@ -1,5 +1,5 @@
 {
-	"type": "entity",
+	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.graphics.appearance": {
 			"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_0000"

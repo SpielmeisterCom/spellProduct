@@ -1,6 +1,6 @@
 {
 	"version": 1,
-	"type": "entity",
+	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.graphics.appearance": {
 			"assetId": "appearance:battleblast.levels.flying_fantasy.propeller.appearance"
