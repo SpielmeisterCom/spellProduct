@@ -9,7 +9,7 @@
 	"children": [
 		{
 			"name": "elevator_floor_top_left",
-			"templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
+			"entityTemplateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
 			"config": {
 				"spell.component.2d.transform": {
 					"scale": [
@@ -25,7 +25,7 @@
 		},
 		{
 			"name": "elevator_floor_top_right",
-			"templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
+			"entityTemplateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [
@@ -41,7 +41,7 @@
 		},
 		{
 			"name": "elevator_floor_bottom_left",
-			"templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
+			"entityTemplateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [
@@ -57,7 +57,7 @@
 		},
 		{
 			"name": "elevator_floor_bottom_right",
-			"templateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
+			"entityTemplateId": "battleblast.levels.doom_elevator.entity.elevator_floor",
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [

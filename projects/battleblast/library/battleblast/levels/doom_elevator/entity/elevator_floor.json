@@ -13,7 +13,7 @@
 	"children": [
 		{
 			"name": "light",
-			"templateId": "battleblast.levels.doom_elevator.entity.elevator_floor_light",
+			"entityTemplateId": "battleblast.levels.doom_elevator.entity.elevator_floor_light",
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [

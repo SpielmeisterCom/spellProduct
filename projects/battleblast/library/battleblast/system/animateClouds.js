@@ -52,7 +52,7 @@ define(
 				var index = "_0" + ( 1 + ( i % 6 ) )
 
 				var entityId = spell.EntityManager.createEntity( {
-                    "templateId": "battleblast.entity." + type,
+                    "entityTemplateId": "battleblast.entity." + type,
                     "config": {
                         "spell.component.2d.transform": {
                             "translation": position

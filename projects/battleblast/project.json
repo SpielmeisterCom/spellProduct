@@ -157,7 +157,7 @@
 			"entities": [
 				{
 					"name": "camera",
-					"templateId": "spell.entity.2d.graphics.camera",
+					"entityTemplateId": "spell.entity.2d.graphics.camera",
 					"config": {
 						"spell.component.2d.graphics.camera": {
 							"active": true,
@@ -188,7 +188,7 @@
 					"children": [
 						{
 							"name": "bg_top_left",
-							"templateId": "battleblast.levels.doom_elevator.entity.background",
+							"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -200,7 +200,7 @@
 						},
 						{
 							"name": "bg_top_right",
-							"templateId": "battleblast.levels.doom_elevator.entity.background",
+							"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -216,7 +216,7 @@
 						},
 						{
 							"name": "bg_bottom_left",
-							"templateId": "battleblast.levels.doom_elevator.entity.background",
+							"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -232,7 +232,7 @@
 						},
 						{
 							"name": "bg_bottom_right",
-							"templateId": "battleblast.levels.doom_elevator.entity.background",
+							"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
 							"config": {
 								"spell.component.2d.transform": {
 									"translation": [
@@ -250,7 +250,7 @@
 				},
 				{
 					"name": "elevator",
-					"templateId": "battleblast.levels.doom_elevator.entity.elevator",
+					"entityTemplateId": "battleblast.levels.doom_elevator.entity.elevator",
 					"config": {
 						"spell.component.2d.transform": {
 							"scale": [
@@ -270,7 +270,7 @@
 				},
 				{
 					"name": "spelljs logo",
-					"templateId": "spellDemo.logo.entity",
+					"entityTemplateId": "spellDemo.logo.entity",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -306,7 +306,7 @@
 			"entities": [
 				{
 					"name": "camera",
-					"templateId": "spell.entity.2d.graphics.camera",
+					"entityTemplateId": "spell.entity.2d.graphics.camera",
 					"config": {
 						"spell.component.2d.graphics.camera": {
 							"height": 768,
@@ -461,7 +461,7 @@
 									"children": [
 										{
 											"name": "propeller_top_right",
-											"templateId": "battleblast.entity.propeller",
+											"entityTemplateId": "battleblast.entity.propeller",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -476,7 +476,7 @@
 										},
 										{
 											"name": "propeller_top_left",
-											"templateId": "battleblast.entity.propeller",
+											"entityTemplateId": "battleblast.entity.propeller",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -488,7 +488,7 @@
 										},
 										{
 											"name": "propeller_bottom_left",
-											"templateId": "battleblast.entity.propeller",
+											"entityTemplateId": "battleblast.entity.propeller",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -503,7 +503,7 @@
 										},
 										{
 											"name": "propeller_bottom_right",
-											"templateId": "battleblast.entity.propeller",
+											"entityTemplateId": "battleblast.entity.propeller",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -525,7 +525,7 @@
 									"children": [
 										{
 											"name": "light1",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -537,7 +537,7 @@
 										},
 										{
 											"name": "light2",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -549,7 +549,7 @@
 										},
 										{
 											"name": "light3",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -561,7 +561,7 @@
 										},
 										{
 											"name": "light4",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -573,7 +573,7 @@
 										},
 										{
 											"name": "light5",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -585,7 +585,7 @@
 										},
 										{
 											"name": "light6",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -597,7 +597,7 @@
 										},
 										{
 											"name": "light7",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -609,7 +609,7 @@
 										},
 										{
 											"name": "light8",
-											"templateId": "battleblast.entity.light",
+											"entityTemplateId": "battleblast.entity.light",
 											"config": {
 												"spell.component.2d.transform": {
 													"translation": [
@@ -667,7 +667,7 @@
 				},
 				{
 					"name": "keymapping",
-					"templateId": "spell.entity.inputDefinition",
+					"entityTemplateId": "spell.entity.inputDefinition",
 					"config": {
 						"spell.component.inputDefinition": {
 							"actorId": "playerControlled",
@@ -677,7 +677,7 @@
 				},
 				{
 					"name": "spelljs logo",
-					"templateId": "spellDemo.logo.entity",
+					"entityTemplateId": "spellDemo.logo.entity",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [

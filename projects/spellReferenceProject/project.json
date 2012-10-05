@@ -71,7 +71,7 @@
 			"entities": [
 				{
 					"name": "spacecraft1",
-					"templateId": "spellReferenceProject.entity.spacecraft",
+					"entityTemplateId": "spellReferenceProject.entity.spacecraft",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -124,7 +124,7 @@
 				},
 				{
 					"name": "spacecraft2",
-					"templateId": "spellReferenceProject.entity.spacecraft",
+					"entityTemplateId": "spellReferenceProject.entity.spacecraft",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -193,7 +193,7 @@
 				},
 				{
 					"name": "alienSpacecraft1",
-					"templateId": "spellReferenceProject.entity.alienSpacecraft",
+					"entityTemplateId": "spellReferenceProject.entity.alienSpacecraft",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -212,7 +212,7 @@
 				},
 				{
 					"name": "asteroid1",
-					"templateId": "spellReferenceProject.entity.asteroid",
+					"entityTemplateId": "spellReferenceProject.entity.asteroid",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -231,7 +231,7 @@
 				},
 				{
 					"name": "asteroid2",
-					"templateId": "spellReferenceProject.entity.asteroid",
+					"entityTemplateId": "spellReferenceProject.entity.asteroid",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -256,7 +256,7 @@
 				},
 				{
 					"name": "asteroid3",
-					"templateId": "spellReferenceProject.entity.asteroid",
+					"entityTemplateId": "spellReferenceProject.entity.asteroid",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -281,7 +281,7 @@
 				},
 				{
 					"name": "asteroid4",
-					"templateId": "spellReferenceProject.entity.asteroid",
+					"entityTemplateId": "spellReferenceProject.entity.asteroid",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -306,7 +306,7 @@
 				},
 				{
 					"name": "asteroid5",
-					"templateId": "spellReferenceProject.entity.asteroid",
+					"entityTemplateId": "spellReferenceProject.entity.asteroid",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -331,7 +331,7 @@
 				},
 				{
 					"name": "camera",
-					"templateId": "spell.entity.2d.graphics.camera",
+					"entityTemplateId": "spell.entity.2d.graphics.camera",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -352,7 +352,7 @@
 				},
 				{
 					"name": "player key input to actor/action mapping",
-					"templateId": "spell.entity.inputDefinition",
+					"entityTemplateId": "spell.entity.inputDefinition",
 					"config": {
 						"spell.component.inputDefinition": {
 							"actorId": "playerControlled",
@@ -362,7 +362,7 @@
 				},
 				{
 					"name": "spelljs logo",
-					"templateId": "spellDemo.logo.entity",
+					"entityTemplateId": "spellDemo.logo.entity",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -382,7 +382,7 @@
 				},
 				{
 					"name": "alienSpacecraft2",
-					"templateId": "spellReferenceProject.entity.alienSpacecraft",
+					"entityTemplateId": "spellReferenceProject.entity.alienSpacecraft",
 					"config": {
 						"spell.component.2d.transform": {
 							"scale": [
