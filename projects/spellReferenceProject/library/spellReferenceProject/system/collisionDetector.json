@@ -3,15 +3,15 @@
 	"input": [
 		{
 			"name": "transforms",
-			"templateId": "spell.component.2d.transform"
+			"componentId": "spell.component.2d.transform"
 		},
 		{
 			"name": "inertialObjects",
-			"templateId": "spell.component.2d.physics.inertialObject"
+			"componentId": "spell.component.2d.physics.inertialObject"
 		},
 		{
 			"name": "collisionSpheres",
-			"templateId": "spell.component.physics.collisionSphere"
+			"componentId": "spell.component.physics.collisionSphere"
 		}
 	],
 	"version": 1

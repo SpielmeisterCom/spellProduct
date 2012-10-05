@@ -3,11 +3,11 @@
 	"input": [
 		{
 			"name": "clouds",
-			"templateId": "battleblast.component.cloud"
+			"componentId": "battleblast.component.cloud"
 		},
 		{
 			"name": "transforms",
-			"templateId": "spell.component.2d.transform"
+			"componentId": "spell.component.2d.transform"
 		}
 	],
 	"version": 1

@@ -3,11 +3,11 @@
 	"input": [
 		{
 			"name": "transforms",
-			"templateId": "spell.component.2d.transform"
+			"componentId": "spell.component.2d.transform"
 		},
 		{
 			"name": "inertialObjects",
-			"templateId": "spell.component.2d.physics.inertialObject"
+			"componentId": "spell.component.2d.physics.inertialObject"
 		}
 	],
 	"version": 1

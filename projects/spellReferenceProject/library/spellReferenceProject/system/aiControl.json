@@ -3,11 +3,11 @@
 	"input": [
 		{
 			"name": "actors",
-			"templateId": "spell.component.actor"
+			"componentId": "spell.component.actor"
 		},
 		{
 			"name": "transforms",
-			"templateId": "spell.component.2d.transform"
+			"componentId": "spell.component.2d.transform"
 		}
 	],
 	"version": 1
