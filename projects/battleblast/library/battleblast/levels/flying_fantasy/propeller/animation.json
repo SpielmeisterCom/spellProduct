@@ -2,21 +2,23 @@
 	"version": 1,
 	"type": "asset",
 	"subtype": "keyFrameAnimation",
-	"animate": {
-		"spell.component.2d.transform": {
-			"rotation": {
-				"keyFrames": [
-					{
-						"time": 0,
-						"value": 0
-					},
-					{
-						"time": 1000,
-						"value": 6.2831
-					}
-				]
+	"config": {
+		"animate": {
+			"spell.component.2d.transform": {
+				"rotation": {
+					"keyFrames": [
+						{
+							"time": 0,
+							"value": 0
+						},
+						{
+							"time": 1000,
+							"value": 6.2831
+						}
+					]
+				}
 			}
-		}
-	},
-	"length": 1000
+		},
+		"length": 1000
+	}
 }
