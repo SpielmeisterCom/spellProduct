@@ -1,5 +1,6 @@
 {
 	"version": 1,
+	"type": "project",
 	"config": {
 		"screenSize": [
 			1024,
@@ -140,7 +141,6 @@
 		"spell.system.keyInput",
 		"spell.system.render"
 	],
-	"type": "project",
 	"scenes": [
 		{
 			"name": "doom_elevator",
