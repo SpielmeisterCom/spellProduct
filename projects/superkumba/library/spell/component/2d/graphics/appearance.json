@@ -1,0 +1,14 @@
+{
+	"type": "component",
+	"readonly": true,
+	"title": "2D Static Appearance",
+	"attributes": [
+		{
+			"name": "assetId",
+			"type": "assetId:appearance",
+			"default": "appearance:spell.defaultAppearance",
+			"doc": "the appearance asset used for rendering"
+		}
+	],
+	"version": 1
+}

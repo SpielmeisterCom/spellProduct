@@ -1,0 +1,11 @@
+{
+	"type": "system",
+	"readonly": true,
+	"input": [
+		{
+			"name": "keyFrameAnimations",
+			"componentId": "spell.component.animation.keyFrameAnimation"
+		}
+	],
+	"version": 1
+}

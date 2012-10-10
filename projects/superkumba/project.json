@@ -1,0 +1,175 @@
+{
+	"version": 1,
+	"config": {},
+	"startScene": "Scene1",
+	"assetIds": [
+		"ground_high_end_left",
+		"ground_high_end_right",
+		"pickup_super_star",
+		"spell.OpenSans14px",
+		"spell.defaultAppearance",
+		"superkumba.actor.kiba.dead",
+		"superkumba.actor.kiba.jumping",
+		"superkumba.actor.kiba.rolling",
+		"superkumba.actor.kiba.running",
+		"superkumba.actor.kiba.spritesheet",
+		"superkumba.actor.kumba.dead",
+		"superkumba.actor.kumba.jumping",
+		"superkumba.actor.kumba.rolling",
+		"superkumba.actor.kumba.running",
+		"superkumba.actor.kumba.spritesheet",
+		"superkumba.actor.mosquito.dead",
+		"superkumba.actor.mosquito.flying",
+		"superkumba.actor.mosquito.spritesheet",
+		"superkumba.actor.snake.dead",
+		"superkumba.actor.snake.idle",
+		"superkumba.actor.snake.spritesheet",
+		"superkumba.background.bg_layer2",
+		"superkumba.background.bg_layer3",
+		"superkumba.background.bg_layer4",
+		"superkumba.decor.cloud01",
+		"superkumba.decor.cloud02",
+		"superkumba.decor.cloud03",
+		"superkumba.decor.cloud04",
+		"superkumba.decor.decor_grass01",
+		"superkumba.decor.decor_grass02",
+		"superkumba.decor.palm01",
+		"superkumba.decor.palm01_back",
+		"superkumba.decor.palm02",
+		"superkumba.decor.palm02_back",
+		"superkumba.decor.palm03",
+		"superkumba.decor.palm03_back",
+		"superkumba.level.grant_slant_down",
+		"superkumba.level.ground_high",
+		"superkumba.level.ground_low",
+		"superkumba.level.ground_low_end_right",
+		"superkumba.level.ground_slant_up",
+		"superkumba.level.platform_short",
+		"superkumba.level.platform_wide",
+		"superkumba.obstacles.obstacle_spike_platform",
+		"superkumba.pickups.pickup_banana",
+		"superkumba.pickups.pickup_coconut",
+		"superkumba.pickups.pickup_super_banana"
+	],
+	"templateIds": [
+		"spell.component.2d.graphics.animatedAppearance",
+		"spell.component.2d.graphics.appearance",
+		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.physics.inertialObject",
+		"spell.component.2d.transform",
+		"spell.component.actor",
+		"spell.component.animation.keyFrameAnimation",
+		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.root",
+		"spell.component.inputDefinition",
+		"spell.component.name",
+		"spell.component.physics.collisionSphere",
+		"spell.component.visualObject",
+		"spell.entity.2d.graphics.camera",
+		"spell.entity.inputDefinition",
+		"spell.system.keyFrameAnimation",
+		"spell.system.keyInput",
+		"spell.system.render"
+	],
+	"type": "project",
+	"scenes": [
+		{
+			"name": "Scene1",
+			"scriptId": "spell/scene/default",
+			"systems": {
+				"update": [],
+				"render": [
+					"spell.system.keyInput",
+					"spell.system.render"
+				]
+			},
+			"entities": [
+				{
+					"name": "camera",
+					"entityTemplateId": "spell.entity.2d.graphics.camera",
+					"config": {
+						"spell.component.2d.graphics.camera": {
+							"active": true,
+							"width": 700,
+							"height": 500,
+							"clearUnsafeArea": true
+						}
+					}
+				},
+				{
+					"name": "background",
+					"config": {
+						"spell.component.2d.transform": {},
+						"spell.component.visualObject": {}
+					},
+					"children": [
+						{
+							"name": "sky",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:superkumba.background.bg_layer4"
+								},
+								"spell.component.2d.transform": {},
+								"spell.component.visualObject": {}
+							}
+						},
+						{
+							"name": "grass",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:superkumba.background.bg_layer2"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										1,
+										1
+									],
+									"translation": [
+										0,
+										-175
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 3
+								}
+							}
+						},
+						{
+							"name": "mountain",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:superkumba.background.bg_layer3"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										1,
+										1
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 2
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "player",
+					"config": {
+						"spell.component.2d.graphics.animatedAppearance": {
+							"assetId": "animation:superkumba.actor.snake.idle"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.visualObject": {}
+					}
+				}
+			]
+		}
+	]
+}
