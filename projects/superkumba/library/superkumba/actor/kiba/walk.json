@@ -1,0 +1,30 @@
+{
+	"version": 1,
+	"type": "asset",
+	"subtype": "keyFrameAnimation",
+	"config": {
+		"animate": {
+			"spell.component.2d.transform": {
+				"translation": {
+					"keyFrames": [
+						{
+							"time": 0,
+							"value": [
+								-370,
+								-180
+							]
+						},
+						{
+							"time": 8000,
+							"value": [
+								370,
+								-180
+							]
+						}
+					]
+				}
+			}
+		},
+		"length": 8000
+	}
+}

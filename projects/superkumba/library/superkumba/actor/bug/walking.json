@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "type": "asset",
+    "subtype": "animation",
+    "assetId": "spriteSheet:superkumba.actor.bug.spritesheet",
+    "config": {
+        "type": "sprite",
+        "duration": "1000",
+        "frameIds": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+        ]
+    }
+}

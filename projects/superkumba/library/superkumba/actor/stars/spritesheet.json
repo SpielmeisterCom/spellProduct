@@ -1,0 +1,12 @@
+{
+	"version": 1,
+	"type": "asset",
+	"subtype": "spriteSheet",
+	"config": {
+		"textureWidth": "1024",
+		"textureHeight": "1024",
+		"frameWidth": "200",
+		"frameHeight": "200"
+	},
+	"file": "spritesheet.png"
+}
