@@ -31,73 +31,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="project.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="25" selection-start="760" selection-end="760" vertical-scroll-proportion="0.48668033">
+            <state line="33" column="25" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rolling.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kiba/rolling.json">
+      <file leaf-file-name="walk.json" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kiba/walk.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="4" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0">
+            <state line="19" column="36" selection-start="322" selection-end="322" vertical-scroll-proportion="0.37025642">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="running.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kiba/running.json">
+      <file leaf-file-name="walking.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/mouse/walking.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="60" selection-end="120" vertical-scroll-proportion="0.0">
+            <state line="17" column="1" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="spritesheet.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kiba/spritesheet.json">
+        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/spritesheet.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="13" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spritesheet.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/spritesheet.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="walking.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/walking.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="15" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="dead.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kumba/dead.json">
+        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/dead.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="60" selection-end="121" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jumping.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kumba/jumping.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="4" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rolling.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kumba/rolling.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="4" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="running.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kumba/running.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="4" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+            <state line="4" column="48" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -122,10 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/library/superkumba/actors/kiba/running.json" />
-        <option value="$PROJECT_DIR$/library/superkumba/actors/kiba/rolling.json" />
-        <option value="$PROJECT_DIR$/library/superkumba/actors/kiba/jumping.json" />
-        <option value="$PROJECT_DIR$/library/superkumba/actors/kiba/dead.json" />
         <option value="$PROJECT_DIR$/library/superkumba/actors/snake/spritesheet.json" />
         <option value="$PROJECT_DIR$/library/superkumba/actors/kumba/dead.json" />
         <option value="$PROJECT_DIR$/library/superkumba/actors/kumba/jumping.json" />
@@ -138,12 +123,16 @@
         <option value="$PROJECT_DIR$/library/superkumba/actors/snake/dead.json" />
         <option value="$PROJECT_DIR$/library/superkumba/actors/snake/idle.json" />
         <option value="$PROJECT_DIR$/project.json" />
+        <option value="$PROJECT_DIR$/library/walk.json" />
+        <option value="$PROJECT_DIR$/library/superkumba/actor/mouse/walking.json" />
+        <option value="$PROJECT_DIR$/library/superkumba/actor/bug/dead.json" />
+        <option value="$PROJECT_DIR$/library/superkumba/actor/bug/walking.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2510" />
-    <option name="y" value="132" />
+    <option name="x" value="2110" />
+    <option name="y" value="120" />
     <option name="width" value="1855" />
     <option name="height" value="1153" />
   </component>
@@ -204,20 +193,6 @@
               <option name="myItemId" value="library" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="superkumba" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -242,62 +217,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="actor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="snake" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mosquito" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superkumba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kumba" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -327,6 +246,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="superkumba" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="superkumba" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -341,14 +274,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/library/superkumba/actor/bug" />
       <recent name="$PROJECT_DIR$/library/superkumba/player/kumba" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/library/superkumba/actors/snake" />
-      <recent name="$PROJECT_DIR$/library/superkumba/actors/mosquito" />
-      <recent name="$PROJECT_DIR$/library/superkumba/player/kumba" />
-      <recent name="$PROJECT_DIR$/library/superkumba/player/kiba" />
-      <recent name="$PROJECT_DIR$/library/superkumba/player" />
+      <recent name="$PROJECT_DIR$/library/superkumba/actor/kiba" />
+      <recent name="$PROJECT_DIR$/library/superkumba/pickups" />
+      <recent name="$PROJECT_DIR$/library/superkumba/level" />
+      <recent name="$PROJECT_DIR$/library/superkumba/actor/stars" />
+      <recent name="$PROJECT_DIR$/library/superkumba/actor/bug" />
     </key>
   </component>
   <component name="RunManager">
@@ -363,7 +297,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2510" y="132" width="1855" height="1153" extended-state="0" />
+    <frame x="2110" y="120" width="1855" height="1153" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -440,55 +374,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/mosquito/dead.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="46" selection-start="60" selection-end="128" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/mosquito/flying.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/mosquito/spritesheet.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/snake/dead.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="44" selection-start="60" selection-end="125" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/snake/idle.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/snake/spritesheet.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kiba/rolling.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="4" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kiba/running.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="60" selection-end="120" vertical-scroll-proportion="0.0">
@@ -547,7 +432,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="25" selection-start="760" selection-end="760" vertical-scroll-proportion="0.48668033">
+        <state line="33" column="25" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/mouse/walking.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="1" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/spritesheet.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/spritesheet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/dead.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="48" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/stars/spritesheet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/bug/walking.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="15" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/superkumba/actor/kiba/walk.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="36" selection-start="322" selection-end="322" vertical-scroll-proportion="0.37025642">
           <folding />
         </state>
       </provider>

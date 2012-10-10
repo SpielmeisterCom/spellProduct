@@ -2,10 +2,9 @@
 	"version": 1,
 	"type": "asset",
 	"subtype": "animation",
-    "assetId": "spriteSheet:superkumba.actor.kiba.spritesheet",
-    "config": {
+	"config": {
 		"type": "sprite",
-		"duration": "1000",
+		"duration": "500",
 		"frameIds": [
 			"18",
 			"19",
@@ -35,5 +34,6 @@
 			"43",
 			"44"
 		]
-	}
+	},
+	"assetId": "spriteSheet:superkumba.actor.kiba.spritesheet"
 }

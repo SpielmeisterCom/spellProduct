@@ -3,16 +3,17 @@
 	"config": {},
 	"startScene": "Scene1",
 	"assetIds": [
-		"ground_high_end_left",
-		"ground_high_end_right",
-		"pickup_super_star",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
+		"superkumba.actor.bug.dead",
+		"superkumba.actor.bug.spritesheet",
+		"superkumba.actor.bug.walking",
 		"superkumba.actor.kiba.dead",
 		"superkumba.actor.kiba.jumping",
 		"superkumba.actor.kiba.rolling",
 		"superkumba.actor.kiba.running",
 		"superkumba.actor.kiba.spritesheet",
+		"superkumba.actor.kiba.walk",
 		"superkumba.actor.kumba.dead",
 		"superkumba.actor.kumba.jumping",
 		"superkumba.actor.kumba.rolling",
@@ -21,9 +22,15 @@
 		"superkumba.actor.mosquito.dead",
 		"superkumba.actor.mosquito.flying",
 		"superkumba.actor.mosquito.spritesheet",
+		"superkumba.actor.mosquito.up_and_down",
+		"superkumba.actor.mouse.dead",
+		"superkumba.actor.mouse.spritesheet",
+		"superkumba.actor.mouse.walking",
 		"superkumba.actor.snake.dead",
 		"superkumba.actor.snake.idle",
 		"superkumba.actor.snake.spritesheet",
+		"superkumba.actor.stars.particle",
+		"superkumba.actor.stars.spritesheet",
 		"superkumba.background.bg_layer2",
 		"superkumba.background.bg_layer3",
 		"superkumba.background.bg_layer4",
@@ -41,6 +48,8 @@
 		"superkumba.decor.palm03_back",
 		"superkumba.level.grant_slant_down",
 		"superkumba.level.ground_high",
+		"superkumba.level.ground_high_end_left",
+		"superkumba.level.ground_high_end_right",
 		"superkumba.level.ground_low",
 		"superkumba.level.ground_low_end_right",
 		"superkumba.level.ground_slant_up",
@@ -49,7 +58,8 @@
 		"superkumba.obstacles.obstacle_spike_platform",
 		"superkumba.pickups.pickup_banana",
 		"superkumba.pickups.pickup_coconut",
-		"superkumba.pickups.pickup_super_banana"
+		"superkumba.pickups.pickup_super_banana",
+		"superkumba.pickups.pickup_super_star"
 	],
 	"templateIds": [
 		"spell.component.2d.graphics.animatedAppearance",
@@ -81,6 +91,7 @@
 				"update": [],
 				"render": [
 					"spell.system.keyInput",
+					"spell.system.keyFrameAnimation",
 					"spell.system.render"
 				]
 			},
@@ -158,7 +169,7 @@
 					"name": "player",
 					"config": {
 						"spell.component.2d.graphics.animatedAppearance": {
-							"assetId": "animation:superkumba.actor.snake.idle"
+							"assetId": "animation:superkumba.actor.mosquito.flying"
 						},
 						"spell.component.2d.transform": {
 							"scale": [
@@ -166,7 +177,32 @@
 								1
 							]
 						},
-						"spell.component.visualObject": {}
+						"spell.component.visualObject": {},
+						"spell.component.animation.keyFrameAnimation": {
+							"assetId": "keyFrameAnimation:superkumba.actor.mosquito.up_and_down"
+						}
+					}
+				},
+				{
+					"name": "test",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								-370,
+								-180
+							],
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.visualObject": {},
+						"spell.component.2d.graphics.animatedAppearance": {
+							"assetId": "animation:superkumba.actor.kiba.running"
+						},
+						"spell.component.animation.keyFrameAnimation": {
+							"assetId": "keyFrameAnimation:superkumba.actor.kiba.walk"
+						}
 					}
 				}
 			]
