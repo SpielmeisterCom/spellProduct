@@ -1,0 +1,11 @@
+{
+	"version": 1,
+	"type": "asset",
+	"subtype": "keyToActionMap",
+	"config": {
+		"LEFT_ARROW": "left",
+		"RIGHT_ARROW": "right",
+		"UP_ARROW": "jump",
+		"DOWN_ARROW": "roll"
+	}
+}

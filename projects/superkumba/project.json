@@ -46,6 +46,7 @@
 		"superkumba.decor.palm02_back",
 		"superkumba.decor.palm03",
 		"superkumba.decor.palm03_back",
+		"superkumba.keyboard_map",
 		"superkumba.level.grant_slant_down",
 		"superkumba.level.ground_high",
 		"superkumba.level.ground_high_end_left",
@@ -80,7 +81,8 @@
 		"spell.entity.inputDefinition",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
-		"spell.system.render"
+		"spell.system.render",
+		"superkumba.playerMover"
 	],
 	"type": "project",
 	"scenes": [
@@ -92,6 +94,7 @@
 				"render": [
 					"spell.system.keyInput",
 					"spell.system.keyFrameAnimation",
+					"superkumba.playerMover",
 					"spell.system.render"
 				]
 			},
@@ -166,7 +169,7 @@
 					]
 				},
 				{
-					"name": "player",
+					"name": "fly",
 					"config": {
 						"spell.component.2d.graphics.animatedAppearance": {
 							"assetId": "animation:superkumba.actor.mosquito.flying"
@@ -184,7 +187,7 @@
 					}
 				},
 				{
-					"name": "test",
+					"name": "player",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
@@ -202,6 +205,13 @@
 						},
 						"spell.component.animation.keyFrameAnimation": {
 							"assetId": "keyFrameAnimation:superkumba.actor.kiba.walk"
+						},
+						"spell.component.inputDefinition": {
+							"assetId": "keyToActionMap:superkumba.keyboard_map",
+							"actorId": "player"
+						},
+						"spell.component.actor": {
+							"id": "player"
 						}
 					}
 				}

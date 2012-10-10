@@ -1,0 +1,10 @@
+{
+	"version": 1,
+	"type": "system",
+	"input": [
+		{
+			"name": "actors",
+			"componentId": "spell.component.actor"
+		}
+	]
+}
