@@ -10,3 +10,6 @@
 [submodule "modules/ace"]
 	path = modules/ace
 	url = https://github.com/Spielmeister/ace.git
+[submodule "modules/extjs"]
+	path = modules/extjs
+	url = https://github.com/Spielmeister/extjs.git
