@@ -10,6 +10,3 @@
 [submodule "modules/ace"]
 	path = modules/ace
 	url = https://github.com/Spielmeister/ace.git
-[submodule "modules/requirejs"]
-	path = modules/requirejs
-	url = https://github.com/Spielmeister/requirejs.git
