@@ -21,10 +21,6 @@ define(
 			tmp = vec2.create()
 
 
-		var init = function( spell ) { }
-
-		var cleanUp = function( spell ) {}
-
 		var applyActionsToSpacecraftIter = function( deltaTimeInS, spacecraft, actor, inertialObject, transform ) {
 			var actions = actor.actions
 
@@ -66,6 +62,8 @@ define(
 			vec2.add( tmp, transform.translation )
 		}
 
+		var init = function( spell ) {}
+
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var deltaTimeInS = deltaTimeInMs / 1000
 
@@ -84,8 +82,10 @@ define(
 		}
 
 		SpacecraftIntegrator.prototype = {
-			cleanUp : cleanUp,
 			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : process
 		}
 

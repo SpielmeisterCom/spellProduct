@@ -6,27 +6,26 @@ define(
 	function(
 		_
 	) {
-		"use strict"
-		
-        var cleanUp = function( spell ) {
-            
-        }
-        
+		'use strict'
+
+
         var init = function( spell ) {
-            
+
         }
-        
+
         var process = function( spell ) {
-            
+
         }
-        
+
         var playerMover = function( spell ) {
 
 		}
 
 		playerMover.prototype = {
-			cleanUp : cleanUp,
 			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : process
 		}
 

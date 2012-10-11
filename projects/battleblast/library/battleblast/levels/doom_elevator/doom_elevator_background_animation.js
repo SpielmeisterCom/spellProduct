@@ -36,9 +36,7 @@ define(
 			return index < 10 ? "0" + index : "" + index
 		}
 
-		var init = function( spell ) { }
-
-		var cleanUp = function( spell ) {}
+		var init = function( spell ) {}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			offsetInMs = createOffsetInMs( deltaTimeInMs, animationLengthInMs, offsetInMs, replaySpeed )
@@ -69,8 +67,10 @@ define(
 		}
 
 		BackgroundAnimationSystem.prototype = {
-			cleanUp : cleanUp,
 			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : process
 		}
 

@@ -22,10 +22,6 @@ define(
 			tmp                = vec2.create()
 
 
-		var init = function( spell ) { }
-
-		var cleanUp = function( spell ) {}
-
 		var resolveCollision = function( positionA, collisionSphereA, inertialObjectA, positionB, collisionSphereB, inertialObjectB ) {
 			var dn = vec2.create()
 			vec2.subtract( positionA, positionB, dn )
@@ -134,6 +130,8 @@ define(
 			}
 		}
 
+		var init = function( spell ) { }
+
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			resolveCollisions( this.transforms, this.collisionSpheres, this.inertialObjects )
 		}
@@ -146,8 +144,10 @@ define(
 		var CollisionDetector = function( spell ) {}
 
 		CollisionDetector.prototype = {
-			cleanUp : cleanUp,
 			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : process
 		}
 
