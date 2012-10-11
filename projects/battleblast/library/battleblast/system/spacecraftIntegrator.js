@@ -23,8 +23,6 @@ define(
 
 		var init = function( spell ) { }
 
-		var cleanUp = function( spell ) {}
-
 		var applyActionsToSpacecraftIter = function( deltaTimeInS, spacecraft, actor, inertialObject, transform ) {
 			var actions = actor.actions
 
@@ -113,8 +111,10 @@ define(
 		}
 
 		SpacecraftIntegrator.prototype = {
-			cleanUp : cleanUp,
 			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : process
 		}
 

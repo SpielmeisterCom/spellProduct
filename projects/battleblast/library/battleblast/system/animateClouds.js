@@ -89,34 +89,29 @@ define(
 			}
 		}
 
-        /**
-         * Constructor
-         */
-        var CloudAnimationSystem = function( spell ) {
-        	this.updateClouds = createEntityEach( this.clouds, [ this.transforms ], animateClouds )
-           // this.spell = spell
-		}
+		var init = function( spell ) {
+			this.updateClouds = createEntityEach( this.clouds, [ this.transforms ], animateClouds )
 
-        /**
-         * Init function gets called when this system is enabled
-         */
-		CloudAnimationSystem.prototype.init = function( spell ) {
 			createClouds( spell, 55, "cloud_dark", -2 )
 			createClouds( spell, 35, "cloud_light", -1 )
 		}
 
-        /**
-         * Cleanup function gets called when this system is disabled
-         */
-		CloudAnimationSystem.prototype.cleanUp = function( spell ) {
-
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
+			this.updateClouds( deltaTimeInMs )
 		}
 
         /**
-         * The process function get called every frame
+         * Constructor
          */
-		CloudAnimationSystem.prototype.process = function( spell, timeInMs, deltaTimeInMs ) {
-    		this.updateClouds( deltaTimeInMs )
+        var CloudAnimationSystem = function( spell ) {
+		}
+
+		CloudAnimationSystem.prototype = {
+			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
+			process : process
 		}
 
 		return CloudAnimationSystem

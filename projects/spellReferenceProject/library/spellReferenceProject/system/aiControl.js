@@ -21,11 +21,6 @@ define(
 			tmp            = vec2.create()
 
 
-		var init = function( spell ) { }
-
-		var cleanUp = function( spell ) {}
-
-
 		var isAIControlled = function( actor ) {
 			return actor.id === 'aiControlled'
 		}
@@ -98,6 +93,8 @@ define(
 			)
 		}
 
+		var init = function( spell ) {}
+
 
 		/**
 		 * public
@@ -106,8 +103,10 @@ define(
 		var AIControl = function( spell ) {}
 
 		AIControl.prototype = {
-			cleanUp : cleanUp,
 			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : updateActors
 		}
 

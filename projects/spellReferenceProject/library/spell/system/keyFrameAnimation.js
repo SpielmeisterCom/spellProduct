@@ -30,7 +30,7 @@ define(
 		}
 
 		var getEasingFunction = function( name ) {
-			if( !name ) name = 'LinearInOut'
+			if( !name ) name = 'Linear'
 
 			var fn = Easing[ name ]
 
@@ -73,8 +73,6 @@ define(
 		}
 
 		var init = function( spell ) {}
-
-		var cleanUp = function( spell ) {}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var entityManager      = this.entityManager,
@@ -122,7 +120,7 @@ define(
 							continue
 						}
 
-						if( !keyFrameIdA ) {
+						if( keyFrameIdA === undefined ) {
 							// set to last key frame value
 							setValue( component, attributeId, keyFrames[ keyFrames.length - 1 ].value )
 
@@ -155,8 +153,10 @@ define(
 		}
 
 		KeyFrameAnimation.prototype = {
-			cleanUp : cleanUp,
-			init    : init,
+			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : process
 		}
 

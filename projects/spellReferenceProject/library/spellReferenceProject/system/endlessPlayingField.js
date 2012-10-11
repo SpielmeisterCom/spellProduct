@@ -22,10 +22,6 @@ define(
 			bottomBorder        = 0 - border
 
 
-		var init = function( spell ) { }
-
-		var cleanUp = function( spell ) {}
-
 		var updatePositionIter = function( transform, inertialObject ) {
 			if( !inertialObject ) return
 
@@ -49,6 +45,8 @@ define(
 			}
 		}
 
+		var init = function( spell ) {}
+
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			this.updatePosition()
 		}
@@ -63,8 +61,10 @@ define(
 		}
 
 		EndlessPlayingField.prototype = {
-			cleanUp : cleanUp,
 			init : init,
+			destroy : function() {},
+			activate : function() {},
+			deactivate : function() {},
 			process : process
 		}
 
