@@ -12,7 +12,8 @@
 							"value": [
 								0,
 								0
-							]
+							],
+							"interpolation": "Linear"
 						},
 						{
 							"time": 2000,
@@ -27,7 +28,8 @@
 							"value": [
 								0,
 								0
-							]
+							],
+							"interpolation": "Linear"
 						}
 					]
 				}

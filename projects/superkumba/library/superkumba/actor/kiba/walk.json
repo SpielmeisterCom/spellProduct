@@ -12,19 +12,49 @@
 							"value": [
 								-370,
 								-180
-							]
+							],
+							"interpolation": "Linear"
 						},
 						{
 							"time": 4000,
 							"value": [
 								370,
 								-180
-							]
+							],
+							"interpolation": "CubicInOut"
+						},
+						{
+							"time": 7000,
+							"value": [
+								-370,
+								-180
+							],
+							"interpolation": "CubicInOut"
+						}
+					]
+				},
+				"scale": {
+					"keyFrames": [
+						{
+							"time": 0,
+							"value": [
+								1,
+								1
+							],
+							"interpolation": "None"
+						},
+						{
+							"time": 4000,
+							"value": [
+								-1,
+								1
+							],
+							"interpolation": "None"
 						}
 					]
 				}
 			}
 		},
-		"length": 4000
+		"length": 7000
 	}
 }
