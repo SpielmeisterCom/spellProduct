@@ -1,0 +1,12 @@
+{
+	"version": 1,
+	"type": "asset",
+	"subtype": "spriteSheet",
+	"config": {
+		"textureWidth": "500",
+		"textureHeight": "500",
+		"frameWidth": "100",
+		"frameHeight": "100"
+	},
+	"file": "tiles.png"
+}
