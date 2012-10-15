@@ -88,7 +88,7 @@
 	"scenes": [
 		{
 			"name": "Scene1",
-			"scriptId": "spell/scene/default",
+			"scriptId": "spell.scene.default",
 			"systems": {
 				"update": [],
 				"render": [
