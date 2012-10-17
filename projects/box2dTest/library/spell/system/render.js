@@ -104,6 +104,7 @@ define(
 			appearances,
 			animatedAppearances,
 			textAppearances,
+			tilemaps,
 			childrenComponents,
 			visualObjects,
 			deltaTimeInMs,
@@ -129,7 +130,7 @@ define(
 						context.setGlobalAlpha( visualObjectOpacity )
 					}
 
-					var appearance = appearances[ id ] || animatedAppearances[ id ] || textAppearances[ id ]
+					var appearance = appearances[ id ] || animatedAppearances[ id ] || tilemaps[ id ] || textAppearances[ id ]
 
 					if( appearance ) {
 						var asset   = appearance.asset,
@@ -151,6 +152,46 @@ define(
 							// text appearance
 							drawText( context, asset, texture, 0, 0, appearance.text, appearance.spacing )
 
+						} else if( asset.type === '2dTileMap' ) {
+							// 2d tilemap
+							var assetFrameDimensions = asset.frameDimensions,
+								assetNumFrames       = asset.numFrames
+
+							appearance.offset = createOffset(
+								deltaTimeInMs,
+								appearance.offset,
+								appearance.replaySpeed,
+								assetNumFrames,
+								asset.frameDuration,
+								appearance.looped
+							)
+
+							var frameId = Math.round( appearance.offset * ( assetNumFrames - 1 ) ),
+								frameOffset = asset.frameOffsets[ frameId ]
+
+							context.save()
+							{
+								context.scale( assetFrameDimensions )
+								var maxX = asset.tilemapDimensions[0]- 1,
+									maxY = asset.tilemapDimensions[1]- 1
+
+								for ( var y = 0; y <= maxY ; y++ ) {
+									for ( var x = 0; x <= maxX; x++ ) {
+
+										if (!asset.tilemapData[ y ] ||
+											asset.tilemapData[ y ][ x ] === null) {
+											continue
+										}
+
+										var frameId = asset.tilemapData[ y ][ x ],
+											frameOffset = asset.frameOffsets[ frameId ]
+
+										context.drawSubTexture( texture, frameOffset[ 0 ], frameOffset[ 1 ], assetFrameDimensions[ 0 ], assetFrameDimensions[ 1 ], x, maxY-y, 1, 1 )
+									}
+								}
+
+							}
+							context.restore()
 						} else if( asset.type === 'animation' ) {
 							// animated appearance
 							var assetFrameDimensions = asset.frameDimensions,
@@ -350,7 +391,7 @@ define(
 					mat3.ortho( 0, screenSize[ 0 ], 0, screenSize[ 1 ], tmpMat3 )
 					context.setViewMatrix( tmpMat3 )
 
-					context.setFillStyleColor( clearColor )
+					context.setColor( clearColor )
 
 					if( offset[ 0 ] > 0 ) {
 						context.fillRect( 0, 0, offset[ 0 ], screenSize[ 1 ] )
@@ -398,6 +439,7 @@ define(
 				this.appearances,
 				this.animatedAppearances,
 				this.textAppearances,
+				this.tilemaps,
 				this.childrenComponents,
 				this.visualObjects
 			)

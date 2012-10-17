@@ -2,6 +2,10 @@ define(
 	'spell/system/render',
 	[
 		'spell/client/2d/graphics/drawCoordinateGrid',
+		'spell/client/2d/graphics/physics/drawBox',
+		'spell/client/2d/graphics/physics/drawCircle',
+		'spell/client/2d/graphics/physics/drawPoint',
+		'spell/client/2d/graphics/physics/drawOrigin',
 		'spell/client/2d/graphics/drawText',
 		'spell/client/2d/graphics/drawTitleSafeOutline',
 		'spell/client/util/createComprisedRectangle',
@@ -17,6 +21,10 @@ define(
 	],
 	function(
 		drawCoordinateGrid,
+		drawPhysicsBox,
+		drawPhysicsCircle,
+		drawPhysicsPoint,
+		drawPhysicsOrigin,
 		drawText,
 		drawTitleSafeOutline,
 		createComprisedRectangle,
@@ -40,7 +48,9 @@ define(
 		var tmpVec2          = vec2.create(),
 			tmpMat3          = mat3.identity(),
 			clearColor       = vec4.create( [ 0, 0, 0, 1 ] ),
+			markerColor      = vec4.create( [ 0.45, 0.45, 0.45, 1 ] ),
 			debugFontAssetId = 'font:spell.OpenSans14px',
+			drawDebugShapes  = true,
 			currentCameraId
 
 		var roundVec2 = function( v ) {
@@ -94,6 +104,7 @@ define(
 			appearances,
 			animatedAppearances,
 			textAppearances,
+			tilemaps,
 			childrenComponents,
 			visualObjects,
 			deltaTimeInMs,
@@ -106,7 +117,7 @@ define(
 			context.save()
 			{
 				if( transform ) {
-					// object to world space transformation go here
+					// object to world space transformations go here
 					context.translate( transform.translation )
 					context.rotate( transform.rotation )
 					context.scale( transform.scale )
@@ -119,7 +130,7 @@ define(
 						context.setGlobalAlpha( visualObjectOpacity )
 					}
 
-					var appearance = appearances[ id ] || animatedAppearances[ id ] || textAppearances[ id ]
+					var appearance = appearances[ id ] || animatedAppearances[ id ] || tilemaps[ id ] || textAppearances[ id ]
 
 					if( appearance ) {
 						var asset   = appearance.asset,
@@ -141,6 +152,46 @@ define(
 							// text appearance
 							drawText( context, asset, texture, 0, 0, appearance.text, appearance.spacing )
 
+						} else if( asset.type === '2dTileMap' ) {
+							// 2d tilemap
+							var assetFrameDimensions = asset.frameDimensions,
+								assetNumFrames       = asset.numFrames
+
+							appearance.offset = createOffset(
+								deltaTimeInMs,
+								appearance.offset,
+								appearance.replaySpeed,
+								assetNumFrames,
+								asset.frameDuration,
+								appearance.looped
+							)
+
+							var frameId = Math.round( appearance.offset * ( assetNumFrames - 1 ) ),
+								frameOffset = asset.frameOffsets[ frameId ]
+
+							context.save()
+							{
+								context.scale( assetFrameDimensions )
+								var maxX = asset.tilemapDimensions[0]- 1,
+									maxY = asset.tilemapDimensions[1]- 1
+
+								for ( var y = 0; y <= maxY ; y++ ) {
+									for ( var x = 0; x <= maxX; x++ ) {
+
+										if (!asset.tilemapData[ y ] ||
+											asset.tilemapData[ y ][ x ] === null) {
+											continue
+										}
+
+										var frameId = asset.tilemapData[ y ][ x ],
+											frameOffset = asset.frameOffsets[ frameId ]
+
+										context.drawSubTexture( texture, frameOffset[ 0 ], frameOffset[ 1 ], assetFrameDimensions[ 0 ], assetFrameDimensions[ 1 ], x, maxY-y, 1, 1 )
+									}
+								}
+
+							}
+							context.restore()
 						} else if( asset.type === 'animation' ) {
 							// animated appearance
 							var assetFrameDimensions = asset.frameDimensions,
@@ -180,6 +231,37 @@ define(
 						next( deltaTimeInMs, childrenIds[ i ], next )
 					}
 				}
+			}
+			context.restore()
+		}
+
+		var drawDebug = function( context, childrenComponents, debugBoxes, debugCircles, transforms, deltaTimeInMs, id, next ) {
+			var debugBox    = debugBoxes[ id ],
+				debugCircle = debugCircles[ id ],
+				transform   = transforms[ id ]
+
+			if( !debugBox && !debugCircle ) return
+
+			context.save()
+			{
+				if( transform ) {
+					// object to world space transformations go here
+					context.translate( transform.translation )
+					context.rotate( transform.rotation )
+				}
+
+				if( debugBox ) {
+					drawPhysicsBox( context, debugBox.width, debugBox.height, debugBox.color, 1 )
+
+				} else {
+					drawPhysicsCircle( context, debugCircle.radius, debugCircle.color, 1 )
+				}
+
+				context.setColor( markerColor )
+				drawPhysicsPoint( context, 0.2 )
+
+				context.setLineColor( markerColor )
+				drawPhysicsOrigin( context, 0.25 )
 			}
 			context.restore()
 		}
@@ -237,6 +319,7 @@ define(
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var cameras                 = this.cameras,
 				context                 = this.context,
+				debug                   = !!this.debug,
 				drawVisualObjectPartial = this.drawVisualObjectPartial,
 				screenSize              = this.screenSize,
 				screenAspectRatio       = this.debug && this.debug.screenAspectRatio ? this.debug.screenAspectRatio : screenSize[ 0 ] / screenSize[ 1 ]
@@ -265,12 +348,28 @@ define(
 				_.keys( this.transforms )
 			)
 
+			// draw scene
+			var sortedVisualObjects = createSortedByLayer( this.visualObjects, rootTransforms )
+
 			_.each(
-				createSortedByLayer( this.visualObjects, rootTransforms ),
+				sortedVisualObjects,
 				function( id ) {
 					drawVisualObjectPartial( deltaTimeInMs, id, drawVisualObjectPartial )
 				}
 			)
+
+			if( debug &&
+				drawDebugShapes ) {
+
+				var drawDebugPartial = this.drawDebugPartial
+
+				_.each(
+					sortedVisualObjects,
+					function( id ) {
+						drawDebugPartial( deltaTimeInMs, id, drawDebugPartial )
+					}
+				)
+			}
 
 			// clear unsafe area
 			if( camera && camera.clearUnsafeArea && cameraTransform ) {
@@ -292,7 +391,7 @@ define(
 					mat3.ortho( 0, screenSize[ 0 ], 0, screenSize[ 1 ], tmpMat3 )
 					context.setViewMatrix( tmpMat3 )
 
-					context.setFillStyleColor( clearColor )
+					context.setColor( clearColor )
 
 					if( offset[ 0 ] > 0 ) {
 						context.fillRect( 0, 0, offset[ 0 ], screenSize[ 1 ] )
@@ -306,7 +405,7 @@ define(
 				context.restore()
 			}
 
-			if( this.debug &&
+			if( debug &&
 				effectiveCameraDimensions &&
 				cameraTransform ) {
 
@@ -340,9 +439,22 @@ define(
 				this.appearances,
 				this.animatedAppearances,
 				this.textAppearances,
+				this.tilemaps,
 				this.childrenComponents,
 				this.visualObjects
 			)
+
+			if( this.debug ) {
+				this.drawDebugPartial = _.bind(
+					drawDebug,
+					null,
+					this.context,
+					this.childrenComponents,
+					this.debugBoxes,
+					this.debugCircles,
+					this.transforms
+				)
+			}
 
 			var eventManager = spell.eventManager,
 				context      = this.context,
