@@ -88,19 +88,22 @@ define(
 			process: function( spell, timeInMs, deltaTimeInMs ) {
 				if( this.inputEvents.length === 0 ) return
 
-				var event = this.inputEvents[ 0 ]
+				var entityManager = spell.EntityManager
+					event         = this.inputEvents[ 0 ]
 
 				if( event.type === 'keydown' &&
 					event.keyCode === keyCodes[ 'RIGHT_ARROW' ] ) {
 
-					var components = spell.EntityManager.getComponentDictionaryById( 'spell.component.box2d.simpleBox' )
+					var components = entityManager.getComponentDictionaryById( 'spell.component.box2d.simpleBox' )
 
 					if( _.size( components ) === 0 ) return
 
 					var id = _.find(
 						_.keys( components ),
 						function( id ) {
-							return id.charAt( 0 ) !== '_'
+							var name = entityManager.getComponentById( 'spell.component.name', id )
+
+							return name.value === ''
 						}
 					)
 
