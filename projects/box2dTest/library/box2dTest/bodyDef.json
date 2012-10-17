@@ -1,0 +1,29 @@
+{
+	"version": 1,
+	"type": "component",
+	"title": "",
+	"doc": "",
+	"icon": "",
+	"attributes": [
+		{
+			"name": "type",
+			"type": "string",
+			"default": "dynamic"
+		},
+		{
+			"name": "shapeWidth",
+			"type": "number",
+			"default": 2
+		},
+		{
+			"name": "shapeHeight",
+			"type": "number",
+			"default": 2
+		},
+		{
+			"name": "radius",
+			"type": "number",
+			"default": 1
+		}
+	]
+}

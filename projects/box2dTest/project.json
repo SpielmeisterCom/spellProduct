@@ -1,0 +1,194 @@
+{
+	"version": 1,
+	"config": {},
+	"startScene": "Scene1",
+	"assetIds": [
+		"box2dTest.crate_wood_1",
+		"box2dTest.crate_wood_2",
+		"spell.OpenSans14px",
+		"spell.defaultAppearance"
+	],
+	"templateIds": [
+		"box2dTest.bodyDef",
+		"box2dTest.fixtureDef",
+		"spell.component.2d.graphics.animatedAppearance",
+		"spell.component.2d.graphics.appearance",
+		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.debug.box",
+		"spell.component.2d.graphics.debug.circle",
+		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.physics.inertialObject",
+		"spell.component.2d.transform",
+		"spell.component.actor",
+		"spell.component.animation.keyFrameAnimation",
+		"spell.component.box2d.simpleBox",
+		"spell.component.box2d.simpleSphere",
+		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.root",
+		"spell.component.inputDefinition",
+		"spell.component.name",
+		"spell.component.physics.collisionSphere",
+		"spell.component.visualObject",
+		"box2dTest.smallCrate",
+		"spell.entity.2d.graphics.camera",
+		"spell.entity.inputDefinition",
+		"box2dTest.bodyTest",
+		"spell.system.box2D",
+		"spell.system.keyFrameAnimation",
+		"spell.system.keyInput",
+		"spell.system.render"
+	],
+	"type": "project",
+	"scenes": [
+		{
+			"name": "Scene1",
+			"scriptId": "spell/scene/default",
+			"systems": {
+				"update": [],
+				"render": [
+					"box2dTest.bodyTest",
+					"spell.system.keyInput",
+					"spell.system.box2D",
+					"spell.system.render"
+				]
+			},
+			"entities": [
+				{
+					"name": "camera",
+					"entityTemplateId": "spell.entity.2d.graphics.camera",
+					"config": {
+						"spell.component.2d.graphics.camera": {
+							"active": true,
+							"height": 40,
+							"width": 60
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								0,
+								15
+							]
+						}
+					}
+				},
+				{
+					"name": "bigBox",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								0,
+								20
+							],
+							"scale": [
+								0.078,
+								0.078
+							]
+						},
+						"spell.component.visualObject": {},
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:box2dTest.crate_wood_1"
+						},
+						"spell.component.box2d.simpleBox": {
+							"dimensions": [
+								5,
+								5
+							]
+						}
+					}
+				},
+				{
+					"name": "ground",
+					"config": {
+						"spell.component.2d.transform": {},
+						"spell.component.visualObject": {},
+						"spell.component.box2d.simpleBox": {
+							"dimensions": [
+								30,
+								2
+							],
+							"type": "static"
+						}
+					}
+				},
+				{
+					"name": "sphere",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								-3,
+								35
+							]
+						},
+						"spell.component.box2d.simpleSphere": {
+							"radius": 2,
+							"restitution": 0.3,
+							"density": 2
+						}
+					}
+				},
+				{
+					"name": "tinyBox",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								-13,
+								2
+							],
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.box2d.simpleBox": {
+							"dimensions": [
+								1,
+								1
+							],
+							"friction": 0.9,
+							"restitution": 0.5
+						}
+					}
+				},
+				{
+					"name": "smallBox",
+					"entityTemplateId": "box2dTest.smallCrate",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:box2dTest.crate_wood_2"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								0.031,
+								0.031
+							],
+							"translation": [
+								3,
+								30
+							]
+						}
+					}
+				},
+				{
+					"name": "hint",
+					"config": {
+						"spell.component.2d.graphics.textAppearance": {
+							"text": "press left, right arrow to create and destroy boxes"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								0.1,
+								0.1
+							],
+							"translation": [
+								-25,
+								30
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 2
+						}
+					}
+				}
+			]
+		}
+	]
+}

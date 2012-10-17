@@ -1,0 +1,8 @@
+{
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.inputDefinition": {}
+	},
+	"children": [],
+	"version": 1
+}

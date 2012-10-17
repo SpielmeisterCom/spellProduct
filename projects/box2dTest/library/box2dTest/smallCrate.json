@@ -1,0 +1,22 @@
+{
+	"version": 1,
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.graphics.appearance": {
+			"assetId": "appearance:box2dTest.crate_wood_2"
+		},
+		"spell.component.2d.transform": {
+			"scale": [
+				0.031,
+				0.031
+			],
+			"translation": [
+				0,
+				0
+			]
+		},
+		"spell.component.box2d.simpleBox": {},
+		"spell.component.visualObject": {}
+	},
+	"children": []
+}
