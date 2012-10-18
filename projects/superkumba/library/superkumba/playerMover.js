@@ -10,7 +10,7 @@ define(
 
 
         var init = function( spell ) {
-
+spell.logger.log("test")
         }
 
         var process = function( spell ) {

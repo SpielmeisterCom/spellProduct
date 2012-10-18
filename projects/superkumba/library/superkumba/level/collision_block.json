@@ -1,0 +1,15 @@
+{
+	"version": 1,
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.transform": {},
+		"spell.component.box2d.simpleBox": {
+			"type": "static",
+			"dimensions": [
+				100,
+				100
+			]
+		}
+	},
+	"children": []
+}

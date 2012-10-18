@@ -56,21 +56,28 @@
 		"superkumba.level.ground_slant_up",
 		"superkumba.level.platform_short",
 		"superkumba.level.platform_wide",
+		"superkumba.level.tiles",
 		"superkumba.obstacles.obstacle_spike_platform",
 		"superkumba.pickups.pickup_banana",
 		"superkumba.pickups.pickup_coconut",
 		"superkumba.pickups.pickup_super_banana",
-		"superkumba.pickups.pickup_super_star"
+		"superkumba.pickups.pickup_super_star",
+		"test"
 	],
 	"templateIds": [
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.debug.box",
+		"spell.component.2d.graphics.debug.circle",
 		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.graphics.tilemap",
 		"spell.component.2d.physics.inertialObject",
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
+		"spell.component.box2d.simpleBox",
+		"spell.component.box2d.simpleSphere",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
@@ -79,6 +86,9 @@
 		"spell.component.visualObject",
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
+		"superkumba.level.collision_block",
+		"createTilePhysics",
+		"spell.system.box2D",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.render",
@@ -95,6 +105,8 @@
 					"spell.system.keyInput",
 					"spell.system.keyFrameAnimation",
 					"superkumba.playerMover",
+					"createTilePhysics",
+					"spell.system.box2D",
 					"spell.system.render"
 				]
 			},
@@ -107,14 +119,29 @@
 							"active": true,
 							"width": 700,
 							"height": 500,
-							"clearUnsafeArea": true
+							"clearUnsafeArea": false
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								2,
+								2
+							],
+							"translation": [
+								700,
+								600
+							]
 						}
 					}
 				},
 				{
 					"name": "background",
 					"config": {
-						"spell.component.2d.transform": {},
+						"spell.component.2d.transform": {
+							"translation": [
+								500,
+								300
+							]
+						},
 						"spell.component.visualObject": {}
 					},
 					"children": [
@@ -124,7 +151,12 @@
 								"spell.component.2d.graphics.appearance": {
 									"assetId": "appearance:superkumba.background.bg_layer4"
 								},
-								"spell.component.2d.transform": {},
+								"spell.component.2d.transform": {
+									"translation": [
+										0,
+										0
+									]
+								},
 								"spell.component.visualObject": {}
 							}
 						},
@@ -191,8 +223,8 @@
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
-								-370,
-								-180
+								50,
+								250
 							],
 							"scale": [
 								1,
@@ -212,8 +244,33 @@
 						},
 						"spell.component.actor": {
 							"id": "player"
+						},
+						"spell.component.box2d.simpleBox": {
+							"dimensions": [
+								20,
+								100
+							]
 						}
 					}
+				},
+				{
+					"name": "level",
+					"config": {
+						"spell.component.visualObject": {},
+						"spell.component.2d.transform": {}
+					},
+					"children": [
+						{
+							"name": "tiles",
+							"config": {
+								"spell.component.2d.graphics.tilemap": {
+									"assetId": "2dTileMap:test"
+								},
+								"spell.component.2d.transform": {},
+								"spell.component.visualObject": {}
+							}
+						}
+					]
 				}
 			]
 		}
