@@ -48,7 +48,7 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			init: function( spell ) {
-
+				
 			},
 
 			/**
@@ -57,7 +57,7 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			destroy: function( spell ) {
-
+				
 			},
 
 			/**
@@ -66,7 +66,7 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			activate: function( spell ) {
-
+				
 			},
 
 			/**
@@ -88,11 +88,11 @@ define(
 			process: function( spell, timeInMs, deltaTimeInMs ) {
 				if( this.inputEvents.length === 0 ) return
 
-				var entityManager = spell.EntityManager
+				var entityManager = spell.EntityManager,
 					event         = this.inputEvents[ 0 ]
 
 				if( event.type === 'keydown' &&
-					event.keyCode === keyCodes[ 'RIGHT_ARROW' ] ) {
+					event.keyCode === keyCodes.RIGHT_ARROW ) {
 
 					var components = entityManager.getComponentDictionaryById( 'spell.component.box2d.simpleBox' )
 
@@ -112,7 +112,7 @@ define(
 					spell.EntityManager.removeEntity( id )
 
 				} else if( event.type === 'keydown' &&
-					event.keyCode === keyCodes[ 'LEFT_ARROW' ] ) {
+					event.keyCode === keyCodes.LEFT_ARROW ) {
 
 					spell.EntityManager.createEntity( {
 						entityTemplateId : 'box2dTest.smallCrate',
