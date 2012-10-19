@@ -48,7 +48,7 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			init: function( spell ) {
-				
+
 			},
 
 			/**
@@ -57,7 +57,7 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			destroy: function( spell ) {
-				
+
 			},
 
 			/**
@@ -66,7 +66,7 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			activate: function( spell ) {
-				
+
 			},
 
 			/**
@@ -122,6 +122,23 @@ define(
 							}
 						}
 					} )
+
+				} else if( event.type === 'keydown' &&
+					event.keyCode === keyCodes.UP_ARROW ) {
+
+					var id = spell.EntityManager.getEntityIdsByName( 'bigBox' )[ 0 ]
+
+					if( id ) {
+						spell.EntityManager.addComponent(
+							id,
+							{
+								componentId : 'spell.component.box2d.applyImpulse',
+								config : {
+									impulse : [ 0, 1000 ]
+								}
+							}
+						)
+					}
 				}
 			}
 		}

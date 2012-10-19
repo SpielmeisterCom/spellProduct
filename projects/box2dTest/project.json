@@ -17,10 +17,14 @@
 		"spell.component.2d.graphics.debug.box",
 		"spell.component.2d.graphics.debug.circle",
 		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.graphics.tilemap",
 		"spell.component.2d.physics.inertialObject",
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
+		"spell.component.box2d.applyForce",
+		"spell.component.box2d.applyImpulse",
+		"spell.component.box2d.applyTorque",
 		"spell.component.box2d.simpleBox",
 		"spell.component.box2d.simpleSphere",
 		"spell.component.entityComposite.children",
@@ -91,7 +95,10 @@
 							"dimensions": [
 								5,
 								5
-							]
+							],
+							"friction": 0.9,
+							"restitution": 0,
+							"density": 3
 						}
 					}
 				},
@@ -164,6 +171,16 @@
 								3,
 								30
 							]
+						},
+						"spell.component.box2d.applyForce": {
+							"force": [
+								0,
+								0
+							],
+							"point": [
+								0,
+								0
+							]
 						}
 					}
 				},
@@ -186,6 +203,25 @@
 						"spell.component.visualObject": {
 							"layer": 2
 						}
+					}
+				},
+				{
+					"name": "hint2",
+					"config": {
+						"spell.component.2d.graphics.textAppearance": {
+							"text": "press up arrow to apply impulse to \"bigBox\""
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								0.1,
+								0.1
+							],
+							"translation": [
+								-25,
+								28
+							]
+						},
+						"spell.component.visualObject": {}
 					}
 				}
 			]
