@@ -126,7 +126,7 @@ define(
 				} else if( event.type === 'keydown' &&
 					event.keyCode === keyCodes.UP_ARROW ) {
 
-					var id = spell.EntityManager.getEntityIdsByName( 'bigBox' )[ 0 ]
+					var id = spell.EntityManager.getEntityIdsByName( 'mario' )[ 0 ]
 
 					if( id ) {
 						spell.EntityManager.addComponent(
@@ -134,7 +134,7 @@ define(
 							{
 								componentId : 'spell.component.box2d.applyImpulse',
 								config : {
-									impulse : [ 0, 1000 ]
+									impulse : [ 0, 700 ]
 								}
 							}
 						)

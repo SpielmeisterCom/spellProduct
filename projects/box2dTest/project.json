@@ -5,6 +5,7 @@
 	"assetIds": [
 		"box2dTest.crate_wood_1",
 		"box2dTest.crate_wood_2",
+		"box2dTest.mario_8bit",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance"
 	],
@@ -63,42 +64,43 @@
 					"config": {
 						"spell.component.2d.graphics.camera": {
 							"active": true,
-							"height": 40,
-							"width": 60
+							"height": 16,
+							"width": 24
 						},
 						"spell.component.2d.transform": {
 							"translation": [
 								0,
-								15
+								7
 							]
 						}
 					}
 				},
 				{
-					"name": "bigBox",
+					"name": "mario",
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
 								0,
-								20
+								5
 							],
 							"scale": [
-								0.078,
-								0.078
+								0.008333333,
+								0.008333333
 							]
 						},
 						"spell.component.visualObject": {},
 						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:box2dTest.crate_wood_1"
+							"assetId": "appearance:box2dTest.mario_8bit"
 						},
 						"spell.component.box2d.simpleBox": {
 							"dimensions": [
-								5,
-								5
+								1,
+								1.4
 							],
-							"friction": 0.9,
-							"restitution": 0,
-							"density": 3
+							"friction": 1,
+							"restitution": 0.1,
+							"density": 65,
+							"fixedRotation": true
 						}
 					}
 				},
@@ -121,7 +123,7 @@
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
-								-3,
+								-10,
 								35
 							]
 						},
