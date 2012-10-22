@@ -1,0 +1,10 @@
+{
+	"version": 1,
+	"type": "system",
+	"input": [
+		{
+			"name": "transforms",
+			"componentId": "spell.component.2d.transform"
+		}
+	]
+}

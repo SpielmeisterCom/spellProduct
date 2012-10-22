@@ -76,6 +76,9 @@
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
+		"spell.component.box2d.applyForce",
+		"spell.component.box2d.applyImpulse",
+		"spell.component.box2d.applyTorque",
 		"spell.component.box2d.simpleBox",
 		"spell.component.box2d.simpleSphere",
 		"spell.component.entityComposite.children",
@@ -92,6 +95,7 @@
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.render",
+		"superkumba.cameraMover",
 		"superkumba.playerMover"
 	],
 	"type": "project",
@@ -102,11 +106,12 @@
 			"systems": {
 				"update": [],
 				"render": [
+					"superkumba.playerMover",
 					"spell.system.keyInput",
 					"spell.system.keyFrameAnimation",
-					"superkumba.playerMover",
 					"createTilePhysics",
 					"spell.system.box2D",
+					"superkumba.cameraMover",
 					"spell.system.render"
 				]
 			},
@@ -155,6 +160,10 @@
 									"translation": [
 										0,
 										0
+									],
+									"scale": [
+										10,
+										10
 									]
 								},
 								"spell.component.visualObject": {}
@@ -168,11 +177,11 @@
 								},
 								"spell.component.2d.transform": {
 									"scale": [
-										1,
-										1
+										2,
+										2
 									],
 									"translation": [
-										0,
+										200,
 										-175
 									]
 								},
@@ -189,8 +198,8 @@
 								},
 								"spell.component.2d.transform": {
 									"scale": [
-										1,
-										1
+										2,
+										2
 									]
 								},
 								"spell.component.visualObject": {
@@ -210,12 +219,13 @@
 							"scale": [
 								1,
 								1
+							],
+							"translation": [
+								900,
+								700
 							]
 						},
-						"spell.component.visualObject": {},
-						"spell.component.animation.keyFrameAnimation": {
-							"assetId": "keyFrameAnimation:superkumba.actor.mosquito.up_and_down"
-						}
+						"spell.component.visualObject": {}
 					}
 				},
 				{
@@ -248,8 +258,11 @@
 						"spell.component.box2d.simpleBox": {
 							"dimensions": [
 								20,
-								100
-							]
+								90
+							],
+							"fixedRotation": true,
+							"restitution": 0,
+							"density": 2
 						}
 					}
 				},
@@ -257,7 +270,12 @@
 					"name": "level",
 					"config": {
 						"spell.component.visualObject": {},
-						"spell.component.2d.transform": {}
+						"spell.component.2d.transform": {
+							"scale": [
+								1,
+								1
+							]
+						}
 					},
 					"children": [
 						{
