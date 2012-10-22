@@ -2,7 +2,7 @@
 	"version": 1,
 	"config": {},
 	"startScene": "Scene1",
-	"assetIds": [
+	"libraryIds": [
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
 		"superkumba.actor.bug.dead",
@@ -62,9 +62,7 @@
 		"superkumba.pickups.pickup_coconut",
 		"superkumba.pickups.pickup_super_banana",
 		"superkumba.pickups.pickup_super_star",
-		"test"
-	],
-	"templateIds": [
+		"test",
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",

@@ -133,9 +133,9 @@ define(
 				b2bodyDef   = new b2BodyDef
 
 			b2bodyDef.fixedRotation = simpleBoxOrSphere.fixedRotation
+			b2bodyDef.type          = simpleBoxOrSphere.type === 'dynamic' ? b2Body.b2_dynamicBody : b2Body.b2_staticBody
 			b2bodyDef.position.x    = translation[ 0 ]
 			b2bodyDef.position.y    = translation[ 1 ]
-			b2bodyDef.type          = simpleBoxOrSphere.type === 'dynamic' ? b2Body.b2_dynamicBody : b2Body.b2_staticBody
 			b2bodyDef.userData      = entityId
 
 			world.CreateBody( b2bodyDef ).CreateFixture( b2fixtureDef )

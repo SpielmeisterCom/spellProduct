@@ -2,7 +2,7 @@
 	"version": 1,
 	"type": "project",
 	"startScene": "Game",
-	"assetIds": [
+	"libraryIds": [
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
 		"spellDemo.logo.animation",
@@ -19,9 +19,7 @@
 		"spellReferenceProject.asset.shield",
 		"spellReferenceProject.asset.spacecraftKeyToActionMap",
 		"spellReferenceProject.asset.threeRingsAnimation",
-		"spellReferenceProject.asset.threeRingsSpriteSheet"
-	],
-	"templateIds": [
+		"spellReferenceProject.asset.threeRingsSpriteSheet",
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",

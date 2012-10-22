@@ -28,8 +28,16 @@
 		},
 		{
 			"name": "type",
-			"type": "string",
+			"type": {
+				"name": "enum",
+				"values": [ "dynamic", "static" ]
+			},
 			"default": "dynamic"
+		},
+		{
+			"name": "fixedRotation",
+			"type": "boolean",
+			"default": false
 		}
 	]
 }
