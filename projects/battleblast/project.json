@@ -7,7 +7,7 @@
 		]
 	},
 	"startScene": "doom_elevator",
-	"assetIds": [
+	"libraryIds": [
 		"battleblast.bellopro",
 		"battleblast.bg",
 		"battleblast.glass",
@@ -102,9 +102,7 @@
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
 		"spellDemo.logo.animation",
-		"spellDemo.logo.appearance"
-	],
-	"templateIds": [
+		"spellDemo.logo.appearance",
 		"battleblast.component.cloud",
 		"battleblast.component.spacecraft",
 		"battleblast.levels.doom_elevator.doom_elevator_background_tile",

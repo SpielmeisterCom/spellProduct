@@ -2,16 +2,12 @@
 	"version": 1,
 	"config": {},
 	"startScene": "Scene1",
-	"assetIds": [
+	"libraryIds": [
 		"box2dTest.crate_wood_1",
 		"box2dTest.crate_wood_2",
 		"box2dTest.mario_8bit",
 		"spell.OpenSans14px",
-		"spell.defaultAppearance"
-	],
-	"templateIds": [
-		"box2dTest.bodyDef",
-		"box2dTest.fixtureDef",
+		"spell.defaultAppearance",
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
