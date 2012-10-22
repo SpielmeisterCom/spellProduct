@@ -1,6 +1,5 @@
 {
 	"version": 1,
-	"type": "project",
 	"config": {
 		"screenSize": [
 			1024,
@@ -112,11 +111,19 @@
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.debug.box",
+		"spell.component.2d.graphics.debug.circle",
 		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.graphics.tilemap",
 		"spell.component.2d.physics.inertialObject",
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
+		"spell.component.box2d.applyForce",
+		"spell.component.box2d.applyImpulse",
+		"spell.component.box2d.applyTorque",
+		"spell.component.box2d.simpleBox",
+		"spell.component.box2d.simpleSphere",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
@@ -137,10 +144,12 @@
 		"battleblast.levels.doom_elevator.doom_elevator_background_animation",
 		"battleblast.system.animateClouds",
 		"battleblast.system.spacecraftIntegrator",
+		"spell.system.box2D",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.render"
 	],
+	"type": "project",
 	"scenes": [
 		{
 			"name": "doom_elevator",
