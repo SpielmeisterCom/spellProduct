@@ -100,7 +100,8 @@
 							"friction": 1,
 							"restitution": 0.1,
 							"density": 65,
-							"fixedRotation": true
+							"fixedRotation": true,
+							"type": "dynamic"
 						}
 					}
 				},
