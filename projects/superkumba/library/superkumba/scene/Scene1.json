@@ -135,16 +135,13 @@
 						250
 					],
 					"scale": [
-						1,
-						1
+						1.15,
+						1.15
 					]
 				},
 				"spell.component.visualObject": {},
 				"spell.component.2d.graphics.animatedAppearance": {
 					"assetId": "animation:superkumba.actor.kiba.running"
-				},
-				"spell.component.animation.keyFrameAnimation": {
-					"assetId": "keyFrameAnimation:superkumba.actor.kiba.walk"
 				},
 				"spell.component.inputDefinition": {
 					"assetId": "keyToActionMap:superkumba.keyboard_map",
@@ -160,7 +157,14 @@
 					],
 					"fixedRotation": true,
 					"restitution": 0,
-					"density": 2
+					"density": 2,
+					"friction": 0
+				},
+				"spell.component.box2d.applyForce": {
+					"force": [
+						0,
+						0
+					]
 				}
 			}
 		},
