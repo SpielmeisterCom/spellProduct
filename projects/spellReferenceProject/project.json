@@ -50,7 +50,7 @@
 		"spellReferenceProject.system.spacecraftIntegrator"
 	],
 	"scenes": [
-		"spellReferenceProject.scenes.Game"
+		"spellReferenceProject.scene.Game"
 	],
 	"config": {
 		"screenSize": [

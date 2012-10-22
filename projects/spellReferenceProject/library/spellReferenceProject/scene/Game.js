@@ -1,5 +1,5 @@
 define(
-	'spellReferenceProject/scenes/Game',
+	'spellReferenceProject/scene/Game',
 	[
 		'spell/functions'
 	],
