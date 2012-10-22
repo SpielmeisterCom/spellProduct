@@ -1,8 +1,50 @@
 {
 	"version": 1,
-	"type": "project",
-	"startScene": "spellReferenceProject.scenes.Game",
+	"config": {
+		"screenSize": [
+			1024,
+			768
+		]
+	},
+	"startScene": "spellReferenceProject.scene.Game",
 	"libraryIds": [
+		"spell.component.2d.graphics.animatedAppearance",
+		"spell.component.2d.graphics.appearance",
+		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.debug.box",
+		"spell.component.2d.graphics.debug.circle",
+		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.graphics.tilemap",
+		"spell.component.2d.physics.inertialObject",
+		"spell.component.2d.transform",
+		"spell.component.actor",
+		"spell.component.animation.keyFrameAnimation",
+		"spell.component.box2d.applyForce",
+		"spell.component.box2d.applyImpulse",
+		"spell.component.box2d.applyTorque",
+		"spell.component.box2d.simpleBox",
+		"spell.component.box2d.simpleSphere",
+		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.root",
+		"spell.component.inputDefinition",
+		"spell.component.name",
+		"spell.component.physics.collisionSphere",
+		"spell.component.visualObject",
+		"spellReferenceProject.component.spacecraft",
+		"spell.entity.2d.graphics.camera",
+		"spell.entity.inputDefinition",
+		"spellDemo.logo.entity",
+		"spellReferenceProject.entity.alienSpacecraft",
+		"spellReferenceProject.entity.asteroid",
+		"spellReferenceProject.entity.spacecraft",
+		"spell.system.box2D",
+		"spell.system.keyFrameAnimation",
+		"spell.system.keyInput",
+		"spell.system.render",
+		"spellReferenceProject.system.aiControl",
+		"spellReferenceProject.system.collisionDetector",
+		"spellReferenceProject.system.endlessPlayingField",
+		"spellReferenceProject.system.spacecraftIntegrator",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
 		"spellDemo.logo.animation",
@@ -20,42 +62,10 @@
 		"spellReferenceProject.asset.spacecraftKeyToActionMap",
 		"spellReferenceProject.asset.threeRingsAnimation",
 		"spellReferenceProject.asset.threeRingsSpriteSheet",
-		"spell.component.2d.graphics.animatedAppearance",
-		"spell.component.2d.graphics.appearance",
-		"spell.component.2d.graphics.camera",
-		"spell.component.animation.keyFrameAnimation",
-		"spell.component.2d.graphics.textAppearance",
-		"spell.component.2d.physics.inertialObject",
-		"spell.component.2d.transform",
-		"spell.component.actor",
-		"spell.component.entityComposite.children",
-		"spell.component.entityComposite.root",
-		"spell.component.inputDefinition",
-		"spell.component.name",
-		"spell.component.physics.collisionSphere",
-		"spell.component.visualObject",
-		"spellReferenceProject.component.spacecraft",
-		"spell.entity.2d.graphics.camera",
-		"spell.entity.inputDefinition",
-		"spellDemo.logo.entity",
-		"spellReferenceProject.entity.alienSpacecraft",
-		"spellReferenceProject.entity.asteroid",
-		"spellReferenceProject.entity.spacecraft",
-		"spell.system.keyFrameAnimation",
-		"spell.system.keyInput",
-		"spell.system.render",
-		"spellReferenceProject.system.aiControl",
-		"spellReferenceProject.system.collisionDetector",
-		"spellReferenceProject.system.endlessPlayingField",
-		"spellReferenceProject.system.spacecraftIntegrator"
-	],
-	"scenes": [
 		"spellReferenceProject.scene.Game"
 	],
-	"config": {
-		"screenSize": [
-			1024,
-			768
-		]
-	}
+	"type": "project",
+	"scenes": [
+		"spellReferenceProject.scene.Game"
+	]
 }

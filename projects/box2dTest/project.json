@@ -1,13 +1,8 @@
 {
 	"version": 1,
 	"config": {},
-	"startScene": "Scene1",
+	"startScene": "box2dTest.scene.Scene1",
 	"libraryIds": [
-		"box2dTest.crate_wood_1",
-		"box2dTest.crate_wood_2",
-		"box2dTest.mario_8bit",
-		"spell.OpenSans14px",
-		"spell.defaultAppearance",
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
@@ -37,193 +32,16 @@
 		"spell.system.box2D",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
-		"spell.system.render"
+		"spell.system.render",
+		"box2dTest.crate_wood_1",
+		"box2dTest.crate_wood_2",
+		"box2dTest.mario_8bit",
+		"spell.OpenSans14px",
+		"spell.defaultAppearance",
+		"box2dTest.scene.Scene1"
 	],
 	"type": "project",
 	"scenes": [
-		{
-			"name": "Scene1",
-			"scriptId": "spell/scene/default",
-			"systems": {
-				"update": [],
-				"render": [
-					"box2dTest.bodyTest",
-					"spell.system.keyInput",
-					"spell.system.box2D",
-					"spell.system.render"
-				]
-			},
-			"entities": [
-				{
-					"name": "camera",
-					"entityTemplateId": "spell.entity.2d.graphics.camera",
-					"config": {
-						"spell.component.2d.graphics.camera": {
-							"active": true,
-							"height": 16,
-							"width": 24
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								0,
-								7
-							]
-						}
-					}
-				},
-				{
-					"name": "mario",
-					"config": {
-						"spell.component.2d.transform": {
-							"translation": [
-								0,
-								5
-							],
-							"scale": [
-								0.008333333,
-								0.008333333
-							]
-						},
-						"spell.component.visualObject": {},
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:box2dTest.mario_8bit"
-						},
-						"spell.component.box2d.simpleBox": {
-							"dimensions": [
-								1,
-								1.4
-							],
-							"friction": 1,
-							"restitution": 0.1,
-							"density": 65,
-							"fixedRotation": true,
-							"type": "dynamic"
-						}
-					}
-				},
-				{
-					"name": "ground",
-					"config": {
-						"spell.component.2d.transform": {},
-						"spell.component.visualObject": {},
-						"spell.component.box2d.simpleBox": {
-							"dimensions": [
-								30,
-								2
-							],
-							"type": "static"
-						}
-					}
-				},
-				{
-					"name": "sphere",
-					"config": {
-						"spell.component.2d.transform": {
-							"translation": [
-								-10,
-								35
-							]
-						},
-						"spell.component.box2d.simpleSphere": {
-							"radius": 2,
-							"restitution": 0.3,
-							"density": 2
-						}
-					}
-				},
-				{
-					"name": "tinyBox",
-					"config": {
-						"spell.component.2d.transform": {
-							"translation": [
-								-13,
-								2
-							],
-							"scale": [
-								1,
-								1
-							]
-						},
-						"spell.component.box2d.simpleBox": {
-							"dimensions": [
-								1,
-								1
-							],
-							"friction": 0.9,
-							"restitution": 0.5
-						}
-					}
-				},
-				{
-					"name": "smallBox",
-					"entityTemplateId": "box2dTest.smallCrate",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:box2dTest.crate_wood_2"
-						},
-						"spell.component.2d.transform": {
-							"scale": [
-								0.031,
-								0.031
-							],
-							"translation": [
-								3,
-								30
-							]
-						},
-						"spell.component.box2d.applyForce": {
-							"force": [
-								0,
-								0
-							],
-							"point": [
-								0,
-								0
-							]
-						}
-					}
-				},
-				{
-					"name": "hint",
-					"config": {
-						"spell.component.2d.graphics.textAppearance": {
-							"text": "press left, right arrow to create and destroy boxes"
-						},
-						"spell.component.2d.transform": {
-							"scale": [
-								0.1,
-								0.1
-							],
-							"translation": [
-								-25,
-								30
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 2
-						}
-					}
-				},
-				{
-					"name": "hint2",
-					"config": {
-						"spell.component.2d.graphics.textAppearance": {
-							"text": "press up arrow to apply impulse to \"bigBox\""
-						},
-						"spell.component.2d.transform": {
-							"scale": [
-								0.1,
-								0.1
-							],
-							"translation": [
-								-25,
-								28
-							]
-						},
-						"spell.component.visualObject": {}
-					}
-				}
-			]
-		}
+		"box2dTest.scene.Scene1"
 	]
 }

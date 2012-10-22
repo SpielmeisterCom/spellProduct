@@ -1,0 +1,148 @@
+{
+	"version": 1,
+	"type": "scene",
+	"systems": {
+		"update": [],
+		"render": [
+			"spell.system.keyInput",
+			"battleblast.levels.doom_elevator.doom_elevator_background_animation",
+			"spell.system.keyFrameAnimation",
+			"spell.system.render"
+		]
+	},
+	"entities": [
+		{
+			"name": "camera",
+			"entityTemplateId": "spell.entity.2d.graphics.camera",
+			"config": {
+				"spell.component.2d.graphics.camera": {
+					"active": true,
+					"height": 625,
+					"width": 853,
+					"clearUnsafeArea": false
+				},
+				"spell.component.2d.transform": {
+					"scale": [
+						1,
+						1
+					],
+					"translation": [
+						512,
+						384
+					]
+				}
+			}
+		},
+		{
+			"name": "background",
+			"config": {
+				"spell.component.visualObject": {
+					"layer": -1
+				},
+				"spell.component.2d.transform": {}
+			},
+			"children": [
+				{
+					"name": "bg_top_left",
+					"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								256,
+								576
+							]
+						}
+					}
+				},
+				{
+					"name": "bg_top_right",
+					"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								767,
+								576
+							],
+							"scale": [
+								-1,
+								1
+							]
+						}
+					}
+				},
+				{
+					"name": "bg_bottom_left",
+					"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								256,
+								193
+							],
+							"scale": [
+								1,
+								-1
+							]
+						}
+					}
+				},
+				{
+					"name": "bg_bottom_right",
+					"entityTemplateId": "battleblast.levels.doom_elevator.entity.background",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								767,
+								193
+							],
+							"scale": [
+								-1,
+								-1
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "elevator",
+			"entityTemplateId": "battleblast.levels.doom_elevator.entity.elevator",
+			"config": {
+				"spell.component.2d.transform": {
+					"scale": [
+						1,
+						1
+					],
+					"translation": [
+						512,
+						384
+					]
+				},
+				"spell.component.animation.keyFrameAnimation": {
+					"assetId": "keyFrameAnimation:battleblast.levels.doom_elevator.animations.elevator_starts",
+					"looped": true
+				}
+			}
+		},
+		{
+			"name": "spelljs logo",
+			"entityTemplateId": "spellDemo.logo.entity",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						850,
+						110
+					],
+					"scale": [
+						0.75,
+						0.75
+					]
+				},
+				"spell.component.visualObject": {
+					"layer": 4,
+					"opacity": 1
+				}
+			}
+		}
+	]
+}

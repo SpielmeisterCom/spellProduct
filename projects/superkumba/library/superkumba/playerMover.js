@@ -31,18 +31,17 @@ define(
 			} else if( event.type === 'keydown' &&
 				event.keyCode === keyCodes.UP_ARROW ) {
 				impulse = [0, 2]
-
 			}
 	
-		var id = spell.EntityManager.getEntityIdsByName( 'player' )[ 0 ]
+			var id = spell.EntityManager.getEntityIdsByName( 'player' )[ 0 ]
 
-		if( id  && impulse ) {
-			spell.EntityManager.addComponent(
+			if( id  && impulse ) {
+				spell.EntityManager.addComponent(
 					id,
-						{
-							componentId : 'spell.component.box2d.applyImpulse',
-							config : {
-								impulse : impulse
+					{
+						componentId : 'spell.component.box2d.applyImpulse',
+						config : {
+							impulse : impulse
 						}
 					}
 				)

@@ -1,0 +1,192 @@
+{
+	"version": 1,
+	"type": "scene",
+	"systems": {
+		"update": [],
+		"render": [
+			"superkumba.playerMover",
+			"spell.system.keyInput",
+			"spell.system.keyFrameAnimation",
+			"createTilePhysics",
+			"spell.system.box2D",
+			"superkumba.cameraMover",
+			"spell.system.render"
+		]
+	},
+	"entities": [
+		{
+			"name": "camera",
+			"entityTemplateId": "spell.entity.2d.graphics.camera",
+			"config": {
+				"spell.component.2d.graphics.camera": {
+					"active": true,
+					"width": 700,
+					"height": 500,
+					"clearUnsafeArea": false
+				},
+				"spell.component.2d.transform": {
+					"scale": [
+						2,
+						2
+					],
+					"translation": [
+						700,
+						600
+					]
+				}
+			}
+		},
+		{
+			"name": "background",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						500,
+						300
+					]
+				},
+				"spell.component.visualObject": {}
+			},
+			"children": [
+				{
+					"name": "sky",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.background.bg_layer4"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								0,
+								0
+							],
+							"scale": [
+								10,
+								10
+							]
+						},
+						"spell.component.visualObject": {}
+					}
+				},
+				{
+					"name": "grass",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.background.bg_layer2"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								2,
+								2
+							],
+							"translation": [
+								200,
+								-175
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 3
+						}
+					}
+				},
+				{
+					"name": "mountain",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.background.bg_layer3"
+						},
+						"spell.component.2d.transform": {
+							"scale": [
+								2,
+								2
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": 2
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "fly",
+			"config": {
+				"spell.component.2d.graphics.animatedAppearance": {
+					"assetId": "animation:superkumba.actor.mosquito.flying"
+				},
+				"spell.component.2d.transform": {
+					"scale": [
+						1,
+						1
+					],
+					"translation": [
+						900,
+						700
+					]
+				},
+				"spell.component.visualObject": {}
+			}
+		},
+		{
+			"name": "player",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						50,
+						250
+					],
+					"scale": [
+						1,
+						1
+					]
+				},
+				"spell.component.visualObject": {},
+				"spell.component.2d.graphics.animatedAppearance": {
+					"assetId": "animation:superkumba.actor.kiba.running"
+				},
+				"spell.component.animation.keyFrameAnimation": {
+					"assetId": "keyFrameAnimation:superkumba.actor.kiba.walk"
+				},
+				"spell.component.inputDefinition": {
+					"assetId": "keyToActionMap:superkumba.keyboard_map",
+					"actorId": "player"
+				},
+				"spell.component.actor": {
+					"id": "player"
+				},
+				"spell.component.box2d.simpleBox": {
+					"dimensions": [
+						20,
+						90
+					],
+					"fixedRotation": true,
+					"restitution": 0,
+					"density": 2
+				}
+			}
+		},
+		{
+			"name": "level",
+			"config": {
+				"spell.component.visualObject": {},
+				"spell.component.2d.transform": {
+					"scale": [
+						1,
+						1
+					]
+				}
+			},
+			"children": [
+				{
+					"name": "tiles",
+					"config": {
+						"spell.component.2d.graphics.tilemap": {
+							"assetId": "2dTileMap:test"
+						},
+						"spell.component.2d.transform": {},
+						"spell.component.visualObject": {}
+					}
+				}
+			]
+		}
+	]
+}
