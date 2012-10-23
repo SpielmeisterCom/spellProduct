@@ -30,7 +30,7 @@ define(
 
 		var awakeColor      = [ 0.82, 0.76, 0.07 ],
 			notAwakeColor   = [ 0.27, 0.25, 0.02 ],
-			scaleFactor     = 100,
+			scaleFactor     = 1,
 			maxVelocity     = 10
 
 		var isSphereShape = function( bodyDef ) {
@@ -245,15 +245,13 @@ define(
 
 				// check max velocity constraint
 				var velocityVec2 = body.GetLinearVelocity(),
-					velocity = velocityVec2.Length()
+					velocity     = velocityVec2.Length()
 
-				if ( velocity > 0 && velocity >  maxVelocity ) {
-					velocityVec2.x = (maxVelocity / velocity) * velocityVec2.x
-					velocityVec2.y = (maxVelocity / velocity) * velocityVec2.y
-					body.SetLinearVelocity( velocityVec2 );
+				if( velocity > 0 && velocity >  maxVelocity ) {
+					velocityVec2.x = maxVelocity / velocity * velocityVec2.x
+					velocityVec2.y = maxVelocity / velocity * velocityVec2.y
+					body.SetLinearVelocity( velocityVec2 )
 				}
-
-
 			}
 		}
 
