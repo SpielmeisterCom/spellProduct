@@ -6,5 +6,13 @@
 			"name": "tilemaps",
 			"componentId": "spell.component.2d.graphics.tilemap"
 		}
+	],
+	"config": [
+		{
+			"name": "active",
+			"type": "boolean",
+			"default": true,
+			"doc": "if active is false the system will be skipped during processing"
+		}
 	]
 }

@@ -14,5 +14,13 @@
 			"componentId": "spell.component.physics.collisionSphere"
 		}
 	],
-	"version": 1
+	"version": 1,
+	"config": [
+		{
+			"name": "active",
+			"type": "boolean",
+			"default": true,
+			"doc": "if active is false the system will be skipped during processing"
+		}
+	]
 }
