@@ -4,10 +4,30 @@
 	"systems": {
 		"update": [],
 		"render": [
-			"spell.system.keyInput",
-			"battleblast.levels.doom_elevator.doom_elevator_background_animation",
-			"spell.system.keyFrameAnimation",
-			"spell.system.render"
+			{
+				"id": "spell.system.keyInput",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "battleblast.levels.doom_elevator.doom_elevator_background_animation",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.keyFrameAnimation",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.render",
+				"config": {
+					"active": true
+				}
+			}
 		]
 	},
 	"entities": [

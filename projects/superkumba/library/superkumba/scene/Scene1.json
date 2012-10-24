@@ -4,13 +4,48 @@
 	"systems": {
 		"update": [],
 		"render": [
-			"superkumba.playerMover",
-			"spell.system.keyInput",
-			"spell.system.keyFrameAnimation",
-			"createTilePhysics",
-			"spell.system.box2D",
-			"superkumba.cameraMover",
-			"spell.system.render"
+			{
+				"id": "superkumba.playerMover",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.keyInput",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.keyFrameAnimation",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "createTilePhysics",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.box2D",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "superkumba.cameraMover",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.render",
+				"config": {
+					"active": true
+				}
+			}
 		]
 	},
 	"entities": [

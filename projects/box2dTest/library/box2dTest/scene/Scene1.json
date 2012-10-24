@@ -4,10 +4,30 @@
 	"systems": {
 		"update": [],
 		"render": [
-			"box2dTest.bodyTest",
-			"spell.system.keyInput",
-			"spell.system.box2D",
-			"spell.system.render"
+			{
+				"id": "box2dTest.bodyTest",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.keyInput",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.box2D",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.render",
+				"config": {
+					"active": true
+				}
+			}
 		]
 	},
 	"entities": [

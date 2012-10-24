@@ -4,13 +4,48 @@
 	"systems": {
 		"update": [],
 		"render": [
-			"spell.system.keyInput",
-			"spellReferenceProject.system.aiControl",
-			"spellReferenceProject.system.spacecraftIntegrator",
-			"spellReferenceProject.system.collisionDetector",
-			"spellReferenceProject.system.endlessPlayingField",
-			"spell.system.keyFrameAnimation",
-			"spell.system.render"
+			{
+				"id": "spell.system.keyInput",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spellReferenceProject.system.aiControl",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spellReferenceProject.system.spacecraftIntegrator",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spellReferenceProject.system.collisionDetector",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spellReferenceProject.system.endlessPlayingField",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.keyFrameAnimation",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.render",
+				"config": {
+					"active": true
+				}
+			}
 		]
 	},
 	"entities": [

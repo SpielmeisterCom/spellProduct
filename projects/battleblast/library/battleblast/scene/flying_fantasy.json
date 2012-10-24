@@ -4,11 +4,36 @@
 	"systems": {
 		"update": [],
 		"render": [
-			"spell.system.keyInput",
-			"battleblast.system.spacecraftIntegrator",
-			"battleblast.system.animateClouds",
-			"spell.system.keyFrameAnimation",
-			"spell.system.render"
+			{
+				"id": "spell.system.keyInput",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "battleblast.system.spacecraftIntegrator",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "battleblast.system.animateClouds",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.keyFrameAnimation",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "spell.system.render",
+				"config": {
+					"active": true
+				}
+			}
 		]
 	},
 	"entities": [
