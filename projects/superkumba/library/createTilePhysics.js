@@ -17,23 +17,40 @@ define(
 		var createPhysicEntities = function( spell, tilemapComponent ) {
 			var tilemapData			= tilemapComponent.asset.tilemapData,
 				tilemapDimensions	= tilemapComponent.asset.tilemapDimensions,
-				frameDimensions		= tilemapComponent.asset.frameDimensions
+				frameDimensions		= tilemapComponent.asset.frameDimensions,
+				connectedTiles		= 0,
+				maxX				= tilemapDimensions[ 0 ],
+				maxY				= tilemapDimensions[ 1 ]
 				
-				for ( var y = 0; y < tilemapDimensions[1]; y++) {
-					for (var x = 0; x < tilemapDimensions[0]; x++) {
+				for ( var y = 0; y < maxY; y++) {
+					for (var x = 0; x < maxX; x++) {
 						
-						if ( tilemapData [ y ] [ x ] !== null ) {
+						connectedTiles = 0
+						
+						//find out how many connected tiles are in this row
+						while (
+							((x + connectedTiles) < maxX) &&
+							tilemapData [ y ] [ x + connectedTiles ] !== null
+						) {
+							connectedTiles++
+						}
 
+						if ( connectedTiles > 0 ) {
+							x = x + connectedTiles - 1
+							
 							spell.EntityManager.createEntity({
 								entityTemplateId: 'superkumba.level.collision_block',
 								config: {
 									"spell.component.box2d.simpleBox": {
-										"dimensions": frameDimensions
+										"dimensions": [
+											connectedTiles * frameDimensions[ 0 ],
+											frameDimensions[ 1 ]
+										]
 									},
 									"spell.component.2d.transform": {
 										"translation": [ 
-											50 + x * frameDimensions[0], 
-											-50 + tilemapDimensions[1] * frameDimensions[1] - y * frameDimensions[1] 
+											( x + 1 - connectedTiles / 2 ) * frameDimensions[0],
+											-50 + tilemapDimensions[1] * frameDimensions[1] - y * frameDimensions[1]
 										]
 									}
 								}
