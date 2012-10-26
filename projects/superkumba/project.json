@@ -19,6 +19,7 @@
 		"spell.component.box2d.applyTorque",
 		"spell.component.box2d.applyVelocity",
 		"spell.component.box2d.simpleBox",
+		"spell.component.box2d.simplePlayer",
 		"spell.component.box2d.simpleSphere",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",

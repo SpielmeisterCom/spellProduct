@@ -37,6 +37,10 @@ define(
 			return !!bodyDef.radius
 		}
 
+		var isPlayerShape = function( bodyDef ) {
+			return !bodyDef.type
+		}
+
 		var getBodyById = function( world, entityId ) {
 			for( var body = world.GetBodyList(); body; body = body.m_next ) {
 				if( entityId === body.GetUserData() ) {
@@ -46,28 +50,28 @@ define(
 		}
 
 		var createBody = function( spell, worldToPhysicsScale, debug, world, entityId, entity ) {
-			var simpleBoxOrSphere = entity[ 'spell.component.box2d.simpleBox' ] || entity[ 'spell.component.box2d.simpleSphere' ],
-				transform         = entity[ 'spell.component.2d.transform' ]
+			var simpleBody = entity[ 'spell.component.box2d.simpleBox' ] || entity[ 'spell.component.box2d.simpleSphere' ] || entity[ 'spell.component.box2d.simplePlayer' ],
+				transform  = entity[ 'spell.component.2d.transform' ]
 
-			if( !simpleBoxOrSphere || !transform ) return
+			if( !simpleBody || !transform ) return
 
-			createBox2DBody( worldToPhysicsScale, world, entityId, simpleBoxOrSphere, transform )
+			createBox2DBody( worldToPhysicsScale, world, entityId, simpleBody, transform )
 
 			if( debug ) {
 				var componentId,
 					config
 
-				if( isSphereShape( simpleBoxOrSphere ) ) {
+				if( isSphereShape( simpleBody ) ) {
 					componentId = 'spell.component.2d.graphics.debug.circle'
 					config = {
-						radius : simpleBoxOrSphere.radius
+						radius : simpleBody.radius
 					}
 
 				} else {
 					componentId = 'spell.component.2d.graphics.debug.box'
 					config = {
-						width : simpleBoxOrSphere.dimensions[ 0 ],
-						height : simpleBoxOrSphere.dimensions[ 1 ]
+						width : simpleBody.dimensions[ 0 ],
+						height : simpleBody.dimensions[ 1 ]
 					}
 				}
 
@@ -94,64 +98,58 @@ define(
 
 		// public
 
-		var init = function( spell ) {
-			var gravity = new b2Vec2( 0, -10 ),
-				doSleep = true
+		var addFixtures = function( worldToPhysicsScale, body, entityId, simpleBody ) {
+			var fixtureDef = new b2FixtureDef()
 
-			var world = new b2World( gravity, doSleep )
+			fixtureDef.density     = simpleBody.density
+			fixtureDef.friction    = simpleBody.friction
+			fixtureDef.restitution = simpleBody.restitution
 
-			// TODO: continue
-			var contactListener = new b2ContactListener()
+			if( isPlayerShape( simpleBody ) ) {
+				var halfWidth  = simpleBody.dimensions[ 0 ] / 2 * worldToPhysicsScale,
+					halfHeight = simpleBody.dimensions[ 1 ] / 2 * worldToPhysicsScale
 
-			contactListener.BeginContact = function( contact, manifold ) {
-			   console.originalLog( arguments )
-			}
+				// main shape
+				fixtureDef.shape = new b2PolygonShape()
+				fixtureDef.shape.SetAsBox( halfWidth, halfHeight )
+				body.CreateFixture( fixtureDef )
 
-			world.SetContactListener( contactListener )
+				// foot sensor shape
+				var radius         = halfWidth,
+					footFixtureDef = new b2FixtureDef()
 
-			this.world = world
-		}
+				footFixtureDef.isSensor = true
+				footFixtureDef.userData = { type : 'footSensor', id : entityId }
+				footFixtureDef.shape = new b2CircleShape( radius )
+				footFixtureDef.shape.SetLocalPosition( new b2Vec2( 0, -1 * halfHeight ) )
 
-		var activate = function( spell ) {
-			this.entityCreatedHandler = _.bind( createBody, null, spell, this.worldToPhysicsScale, this.debug, this.world )
-			this.entityDestroyHandler = _.bind( this.removedEntities.push, this.removedEntities )
+				body.CreateFixture( footFixtureDef )
 
-			spell.eventManager.subscribe( Events.ENTITY_CREATED, this.entityCreatedHandler )
-			spell.eventManager.subscribe( Events.ENTITY_DESTROYED, this.entityDestroyHandler )
-		}
-
-		var deactivate = function( spell ) {
-			spell.eventManager.unsubscribe( Events.ENTITY_CREATED, this.entityCreatedHandler )
-			spell.eventManager.unsubscribe( Events.ENTITY_DESTROYED, this.entityDestroyHandler )
-		}
-
-		var createBox2DBody = function( worldToPhysicsScale, world, entityId, simpleBoxOrSphere, transform ) {
-			// fixture
-			var b2fixtureDef = new b2FixtureDef
-
-			b2fixtureDef.density     = simpleBoxOrSphere.density
-			b2fixtureDef.friction    = simpleBoxOrSphere.friction
-			b2fixtureDef.restitution = simpleBoxOrSphere.restitution
-
-			if( isSphereShape( simpleBoxOrSphere ) ) {
-				b2fixtureDef.shape = new b2CircleShape( simpleBoxOrSphere.radius )
+			} else if( isSphereShape( simpleBody ) ) {
+				fixtureDef.shape = new b2CircleShape( simpleBody.radius * worldToPhysicsScale )
+				body.CreateFixture( fixtureDef )
 
 			} else {
-				b2fixtureDef.shape = new b2PolygonShape
-				b2fixtureDef.shape.SetAsBox( simpleBoxOrSphere.dimensions[ 0 ] / 2 * worldToPhysicsScale, simpleBoxOrSphere.dimensions[ 1 ] / 2 * worldToPhysicsScale )
+				fixtureDef.shape = new b2PolygonShape()
+				fixtureDef.shape.SetAsBox( simpleBody.dimensions[ 0 ] / 2 * worldToPhysicsScale, simpleBody.dimensions[ 1 ] / 2 * worldToPhysicsScale )
+				body.CreateFixture( fixtureDef )
 			}
+		}
 
+		var createBox2DBody = function( worldToPhysicsScale, world, entityId, simpleBody, transform ) {
 			// body
 			var translation = transform.translation,
-				b2bodyDef   = new b2BodyDef
+				bodyDef     = new b2BodyDef()
 
-			b2bodyDef.fixedRotation = simpleBoxOrSphere.fixedRotation
-			b2bodyDef.type          = simpleBoxOrSphere.type === 'dynamic' ? b2Body.b2_dynamicBody : b2Body.b2_staticBody
-			b2bodyDef.position.x    = translation[ 0 ] * worldToPhysicsScale
-			b2bodyDef.position.y    = translation[ 1 ] * worldToPhysicsScale
-			b2bodyDef.userData      = entityId
+			bodyDef.fixedRotation = simpleBody.fixedRotation || true
+			bodyDef.type          = simpleBody.type === 'static' ? b2Body.b2_staticBody : b2Body.b2_dynamicBody
+			bodyDef.position.x    = translation[ 0 ] * worldToPhysicsScale
+			bodyDef.position.y    = translation[ 1 ] * worldToPhysicsScale
+			bodyDef.userData      = entityId
 
-			world.CreateBody( b2bodyDef ).CreateFixture( b2fixtureDef )
+			var body = world.CreateBody( bodyDef )
+
+			addFixtures( worldToPhysicsScale, body, entityId, simpleBody )
 		}
 
 		var simulate = function( world, deltaTimeInMs ) {
@@ -159,7 +157,7 @@ define(
 			world.ClearForces()
 		}
 
-		var transferState = function( worldToPhysicsScale, world, simpleBoxes, simpleSpheres, transforms ) {
+		var transferState = function( worldToPhysicsScale, world, simpleBoxes, simpleSpheres, simplePlayers, transforms ) {
 			for( var body = world.GetBodyList(); body; body = body.m_next ) {
 				var id = body.GetUserData()
 
@@ -173,10 +171,10 @@ define(
 				transform.rotation = body.GetAngle() * -1
 
 				var velocityVec2 = body.GetLinearVelocity(),
-					simpleAny    = simpleBoxes[ id ] || simpleSpheres [ id ]
+					simpleBody   = simpleBoxes[ id ] || simpleSpheres [ id ] || simplePlayers[ id ]
 
-				simpleAny.velocity[ 0 ] = velocityVec2.x / worldToPhysicsScale
-				simpleAny.velocity[ 1 ] = velocityVec2.y / worldToPhysicsScale
+				simpleBody.velocity[ 0 ] = velocityVec2.x / worldToPhysicsScale
+				simpleBody.velocity[ 1 ] = velocityVec2.y / worldToPhysicsScale
 			}
 		}
 
@@ -192,30 +190,36 @@ define(
 			}
 		}
 
-		var updateJumpAndRunActors = function( world, jumpAndRunActors ) {
-			for( var contact = world.GetContactList(); contact; contact = contact.m_next ) {
-				var bodyA = contact.GetFixtureA().GetBody(),
-					bodyB = contact.GetFixtureB().GetBody()
+		var updateJumpAndRunActors = function( world, jumpAndRunActors, isGroundedQueue, isNotGroundedQueue ) {
+			var numIsGrounded    = isGroundedQueue.length,
+				numIsNotGrounded = isNotGroundedQueue.length
 
-				var idA = bodyA.GetUserData(),
-					idB = bodyB.GetUserData()
+			for( var i = 0; i < numIsGrounded; i++ ) {
+				var id = isGroundedQueue[ i ]
 
-				for( var id in jumpAndRunActors ) {
-					if( id === idA ) {
-						debugger
-						var jumpAndRunActor = jumpAndRunActors[ id ]
+				var jumpAndRunActor = jumpAndRunActors[ id ]
 
-						jumpAndRunActor.isGrounded = true
-
-					} else if( idB ) {
-						var jumpAndRunActor = jumpAndRunActors[ id ]
-
-						jumpAndRunActor.isGrounded = true
-
-					} else {
-						jumpAndRunActor.isGrounded = false
-					}
+				if( jumpAndRunActor ) {
+					jumpAndRunActor.isGrounded = true
 				}
+			}
+
+			if( numIsGrounded ) {
+				isGroundedQueue.length = 0
+			}
+
+			for( var i = 0; i < numIsNotGrounded; i++ ) {
+				var id = isNotGroundedQueue[ i ]
+
+				var jumpAndRunActor = jumpAndRunActors[ id ]
+
+				if( jumpAndRunActor ) {
+					jumpAndRunActor.isGrounded = false
+				}
+			}
+
+			if( numIsNotGrounded ) {
+				isNotGroundedQueue.length = 0
 			}
 		}
 
@@ -299,22 +303,73 @@ define(
 			}
 		}
 
-		var process = function( spell, timeInMs, deltaTimeInMs ) {
-			var world               = this.world,
-				transforms          = this.transforms,
-				removedEntities     = this.removedEntities,
-				worldToPhysicsScale = this.worldToPhysicsScale
+		var createFootSensorContactListener = function( isGroundedQueue, isNotGroundeQueue ) {
+			var contactListener = new b2ContactListener()
 
-			if( removedEntities.length ) {
-				destroyBodies( world, removedEntities )
-				removedEntities.length = 0
+			var createFootSensorContactHandler = function( callback ) {
+				return function( contact, manifold ) {
+					var userDataA = contact.GetFixtureA().GetUserData(),
+						userDataB = contact.GetFixtureB().GetUserData()
+
+					var id = ( userDataA && userDataA.type === 'footSensor' ?
+						userDataA.id :
+						( userDataB && userDataB.type === 'footSensor' ?
+							userDataB.id :
+							undefined
+						)
+					)
+
+					if( id ) {
+						callback( id )
+					}
+				}
+			}
+
+			contactListener.BeginContact = createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) )
+			contactListener.EndContact = createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) )
+
+			return contactListener
+		}
+
+		var init = function( spell ) {
+			var gravity = new b2Vec2( 0, -10 ),
+				doSleep = true
+
+			this.world = new b2World( gravity, doSleep )
+			this.world.SetContactListener(
+				createFootSensorContactListener( this.isGroundedQueue, this.isNotGroundedQueue )
+			)
+		}
+
+		var activate = function( spell ) {
+			this.entityCreatedHandler = _.bind( createBody, null, spell, this.worldToPhysicsScale, this.debug, this.world )
+			this.entityDestroyHandler = _.bind( this.removedEntitiesQueue.push, this.removedEntitiesQueue )
+
+			spell.eventManager.subscribe( Events.ENTITY_CREATED, this.entityCreatedHandler )
+			spell.eventManager.subscribe( Events.ENTITY_DESTROYED, this.entityDestroyHandler )
+		}
+
+		var deactivate = function( spell ) {
+			spell.eventManager.unsubscribe( Events.ENTITY_CREATED, this.entityCreatedHandler )
+			spell.eventManager.unsubscribe( Events.ENTITY_DESTROYED, this.entityDestroyHandler )
+		}
+
+		var process = function( spell, timeInMs, deltaTimeInMs ) {
+			var world                = this.world,
+				transforms           = this.transforms,
+				removedEntitiesQueue = this.removedEntitiesQueue,
+				worldToPhysicsScale  = this.worldToPhysicsScale
+
+			if( removedEntitiesQueue.length ) {
+				destroyBodies( world, removedEntitiesQueue )
+				removedEntitiesQueue.length = 0
 			}
 
 			applyInfluence( spell.EntityManager, worldToPhysicsScale, world, this.applyForces, this.applyTorques, this.applyImpulses, this.applyVelocities )
 			simulate( world, deltaTimeInMs )
 
-//			updateJumpAndRunActors( world, this.jumpAndRunActors )
-			transferState( worldToPhysicsScale, world, this.simpleBoxes, this.simpleSpheres, transforms )
+			updateJumpAndRunActors( world, this.jumpAndRunActors, this.isGroundedQueue, this.isNotGroundedQueue )
+			transferState( worldToPhysicsScale, world, this.simpleBoxes, this.simpleSpheres, this.simplePlayers, transforms )
 
 			if( this.debug ) {
 				updateDebug( world, this.debugBoxes, this.debugCircles, transforms )
@@ -325,9 +380,11 @@ define(
 			this.debug = !!spell.configurationManager.debug
 			this.entityCreatedHandler
 			this.entityDestroyHandler
-			this.removedEntities = []
 			this.world
 			this.worldToPhysicsScale = this.config.scale
+			this.removedEntitiesQueue = []
+			this.isGroundedQueue = []
+			this.isNotGroundedQueue = []
 		}
 
 		Box2DSystem.prototype = {

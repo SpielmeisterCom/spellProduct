@@ -204,23 +204,21 @@
 						}
 					}
 				},
-				"spell.component.box2d.simpleBox": {
-					"dimensions": [
-						30,
-						80
-					],
-					"fixedRotation": true,
-					"restitution": 0,
-					"density": 1,
-					"friction": 0.02
-				},
 				"spell.component.box2d.applyForce": {
 					"force": [
 						0,
 						0
 					]
 				},
-				"spellStaged.jumpAndRun.actor": {}
+				"spellStaged.jumpAndRun.actor": {},
+				"spell.component.box2d.simplePlayer": {
+					"dimensions": [
+						30,
+						80
+					],
+					"friction": 0.02,
+					"restitution": 0
+				}
 			}
 		},
 		{
