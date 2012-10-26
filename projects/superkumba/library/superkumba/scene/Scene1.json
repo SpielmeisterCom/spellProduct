@@ -45,7 +45,7 @@
 				"id": "spell.system.render",
 				"config": {
 					"active": true,
-					"debug": true
+					"debug": false
 				}
 			}
 		]
@@ -97,8 +97,8 @@
 								0
 							],
 							"scale": [
-								10,
-								10
+								5,
+								5
 							]
 						},
 						"spell.component.visualObject": {}
@@ -112,12 +112,12 @@
 						},
 						"spell.component.2d.transform": {
 							"scale": [
-								2,
-								2
+								1.83,
+								1.83
 							],
 							"translation": [
 								200,
-								-175
+								-150
 							]
 						},
 						"spell.component.visualObject": {
@@ -133,8 +133,8 @@
 						},
 						"spell.component.2d.transform": {
 							"scale": [
-								2,
-								2
+								1,
+								1
 							]
 						},
 						"spell.component.visualObject": {
@@ -160,7 +160,10 @@
 						700
 					]
 				},
-				"spell.component.visualObject": {}
+				"spell.component.visualObject": {},
+				"spell.component.animation.keyFrameAnimation": {
+					"assetId": "keyFrameAnimation:superkumba.actor.mosquito.up_and_down"
+				}
 			}
 		},
 		{

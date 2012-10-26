@@ -10,31 +10,28 @@
 						{
 							"time": 0,
 							"value": [
-								0,
-								0
-							],
-							"interpolation": "Linear"
+								900,
+								700
+							]
 						},
 						{
-							"time": 2000,
+							"time": 1500,
 							"value": [
-								0,
-								-220
-							],
-							"interpolation": "BounceIn"
+								900,
+								430
+							]
 						},
 						{
-							"time": 4000,
+							"time": 3000,
 							"value": [
-								0,
-								0
-							],
-							"interpolation": "Linear"
+								900,
+								700
+							]
 						}
 					]
 				}
 			}
 		},
-		"length": 4000
+		"length": 3000
 	}
 }
