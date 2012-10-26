@@ -81,18 +81,18 @@ define(
 				transforms              = this.transforms,
 				simpleBoxes             = this.simpleBoxes,
 				simpleSpheres           = this.simpleSpheres,
+				simplePlayers           = this.simplePlayers,
 				jumpActionStartedQueue  = this.jumpActionStartedQueue,
 				rightActionStartedQueue = this.rightActionStartedQueue,
 				rightActionStoppedQueue = this.rightActionStoppedQueue,
 				leftActionStartedQueue  = this.leftActionStartedQueue,
 				leftActionStoppedQueue  = this.leftActionStoppedQueue
 
-			var playerEntityId = entityManager.getEntityIdsByName( 'player' )[ 0 ],
-				actor          = actors[ playerEntityId ]
+			var playerEntityId  = entityManager.getEntityIdsByName( 'player' )[ 0 ],
+				jumpAndRunActor = this.jumpAndRunActors[ playerEntityId ],
+				actor           = actors[ playerEntityId ]
 
 			if( jumpActionStartedQueue.length > 0 ) {
-				var jumpAndRunActor = this.jumpAndRunActors[ playerEntityId ]
-
 				jumpActionStartedQueue.length = 0
 
 				if( jumpAndRunActor.isGrounded ) {
@@ -114,7 +114,14 @@ define(
 			}
 
 			if( rightActionStartedQueue.length > 0 ) {
-				startMovingX( entityManager, playerEntityId, 50, 25 )
+				this.wantsToMove = true
+
+				startMovingX(
+					entityManager,
+					playerEntityId,
+					50,
+					jumpAndRunActor.isGrounded ? 75 : 25
+				)
 
 				updateDirection( transforms[ playerEntityId ], true )
 				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.running' )
@@ -122,7 +129,14 @@ define(
 				rightActionStartedQueue.length = 0
 
 			} else if( leftActionStartedQueue.length > 0 ) {
-				startMovingX( entityManager, playerEntityId, -50, -25 )
+				this.wantsToMove = true
+
+				startMovingX(
+					entityManager,
+					playerEntityId,
+					-50,
+					jumpAndRunActor.isGrounded ? -75 : -25
+				)
 
 				updateDirection( transforms[ playerEntityId ], false )
 				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.running' )
@@ -133,6 +147,8 @@ define(
 			if( rightActionStoppedQueue.length > 0 ||
 				leftActionStoppedQueue.length > 0 ) {
 
+				this.wantsToMove = false
+
 				// stop movement force
 				entityManager.updateComponent(
 					'spell.component.box2d.applyForce',
@@ -142,10 +158,27 @@ define(
 					}
 				)
 
-//				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.standing' )
-
 				rightActionStoppedQueue.length = 0
 				leftActionStoppedQueue.length = 0
+			}
+
+			if( !this.wantsToMove &&
+				jumpAndRunActor.isGrounded ) {
+
+				// apply dampening
+				var simplePlayer = simplePlayers[ playerEntityId ]
+
+				entityManager.addComponent(
+					playerEntityId,
+					{
+						componentId : 'spell.component.box2d.applyVelocity',
+						config : {
+							velocity : [ simplePlayer.velocity[ 0 ] * 0.8, simplePlayer.velocity[ 1 ] ]
+						}
+					}
+				)
+
+				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.standing' )
 			}
         }
 
@@ -171,7 +204,7 @@ define(
 
 
         var PlayerMover = function( spell ) {
-			this.noXMovementInMs = 0
+			this.wantsToMove = false
 			this.lastJump = 0
 		}
 

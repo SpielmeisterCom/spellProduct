@@ -27,6 +27,10 @@
 			"componentId": "spell.component.box2d.simpleSphere"
 		},
 		{
+			"name": "simplePlayers",
+			"componentId": "spell.component.box2d.simplePlayer"
+		},
+		{
 			"name": "jumpAndRunActors",
 			"componentId": "spellStaged.jumpAndRun.actor"
 		}
