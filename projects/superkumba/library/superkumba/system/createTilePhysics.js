@@ -42,7 +42,7 @@ define(
 						if ( connectedTiles > 0 ) {
 							x = x + connectedTiles - 1
 
-							spell.EntityManager.createEntity({
+							var entityId = spell.EntityManager.createEntity({
 								entityTemplateId: 'superkumba.level.collision_block',
 								config: {
 									"spell.component.box2d.simpleBox": {
@@ -59,6 +59,8 @@ define(
 									}
 								}
 							})
+							
+							this.entitiesCreated.push( entityId )
 						}
 					}
 				}
@@ -72,6 +74,7 @@ define(
 		 */
 		var createTilePhysics = function( spell ) {
 			this.initialized = false
+			this.entitiesCreated = []
 		}
 
 		createTilePhysics.prototype = {
@@ -81,10 +84,15 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			init: function( spell ) {
+				var me = this
+				
 				spell.eventManager.subscribe(
 					[ Events.ASSET_UPDATED, '2dTileMap' ],
 					function( assetId ) {
-						spell.logger.log( 'asset ' + assetId + ' updated' )
+						me.prototype.destroy.call(me, spell)
+						for (var entityId in me.tilemaps) {
+							createPhysicEntities.call(me, spell, me.tilemaps[ entityId ] )
+						}
 					}
 				)
 			},
@@ -95,7 +103,11 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			destroy: function( spell ) {
-
+				
+				//remove all entities which were created by this system
+				_.each( this.entitiesCreated, function( entityId ) {
+					spell.EntityManager.removeEntity( entityId )	
+				})
 			},
 
 			/**
@@ -126,7 +138,7 @@ define(
 			process: function( spell, timeInMs, deltaTimeInMs ) {
 				if ( ! this.initialized ) {
 					for (var entityId in this.tilemaps) {
-						createPhysicEntities( spell, this.tilemaps[ entityId ] )
+						createPhysicEntities.call(this, spell, this.tilemaps[ entityId ] )
 					}
 
 					this.initialized = true
