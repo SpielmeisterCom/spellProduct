@@ -91,22 +91,26 @@ define(
 				actor          = actors[ playerEntityId ]
 
 			if( jumpActionStartedQueue.length > 0 ) {
-				entityManager.addComponent(
-					playerEntityId,
-					{
-						componentId : 'spell.component.box2d.applyImpulse',
-						config : {
-							impulse : [ 0, 130 ]
-						}
-					}
-				)
-
-				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.jumping', false, 0.4 )
+				var jumpAndRunActor = this.jumpAndRunActors[ playerEntityId ]
 
 				jumpActionStartedQueue.length = 0
 
-				// only one impulse component at a time is allowed
-				return
+				if( jumpAndRunActor.isGrounded ) {
+					entityManager.addComponent(
+						playerEntityId,
+						{
+							componentId : 'spell.component.box2d.applyImpulse',
+							config : {
+								impulse : [ 0, 130 ]
+							}
+						}
+					)
+
+					updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.jumping', false, 0.4 )
+
+					// only one impulse component at a time is allowed
+					return
+				}
 			}
 
 			if( rightActionStartedQueue.length > 0 ) {
