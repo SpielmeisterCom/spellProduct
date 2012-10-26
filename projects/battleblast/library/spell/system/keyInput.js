@@ -1,11 +1,13 @@
 define(
 	'spell/system/keyInput',
 	[
+		'spell/shared/util/Events',
 		'spell/shared/util/input/keyCodes',
 
 		'spell/functions'
 	],
 	function(
+		Events,
 		keyCodes,
 
 		_
@@ -17,40 +19,37 @@ define(
 		 * private
 		 */
 
-		var processEvent = function( actors, inputDefinitions ) {
-			var inputEvent = this
+		var updateActors = function( actors, eventManager, actorId, actionId, isExecuting ) {
+			for( var id in actors ) {
+				var actor  = actors[ id ],
+					action = actor.actions[ actionId ]
 
-			_.each(
-				inputDefinitions,
-				function( inputDefinition ) {
-					var keyToActionMapAsset = inputDefinition.asset,
-						actionId            = keyToActionMapAsset[ inputEvent.keyCode ]
+				if( action &&
+					actor.id === actorId &&
+					action.executing !== isExecuting ) { // only changes in action state are interesting
 
-					if( !actionId ) return
+					action.executing = isExecuting
 
-					var isExecuting = ( inputEvent.type === 'keydown' )
-
-					_.each(
-						actors,
-						function( actor ) {
-							var action = actor.actions[ actionId ]
-
-							if( !action ||
-								action.executing === isExecuting || // only changes in action state are interesting
-								actor.id !== inputDefinition.actorId ) {
-
-								return
-							}
-
-							action.executing = isExecuting
-						}
+					eventManager.publish(
+						[ isExecuting ? Events.ACTION_STARTED : Events.ACTION_STOPPED, actionId ],
+						[ id ]
 					)
 				}
-			)
+			}
 		}
 
-		var init = function( spell ) {
-			this.inputManager.init()
+		var processEvent = function( eventManager, inputEvent, actors, inputDefinitions ) {
+			for( var id in inputDefinitions ) {
+				var inputDefinition     = inputDefinitions[ id ],
+					keyToActionMapAsset = inputDefinition.asset,
+					actionId            = keyToActionMapAsset[ inputEvent.keyCode ]
+
+				if( actionId ) {
+					var isExecuting = ( inputEvent.type === 'keydown' )
+
+					updateActors( actors, eventManager, inputDefinition.actorId, actionId, isExecuting )
+				}
+			}
 		}
 
 		/**
@@ -61,9 +60,16 @@ define(
 		 * @param deltaTimeInMs
 		 */
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
-			_.invoke( this.inputEvents, processEvent, this.actors, this.inputDefinitions )
+			var actors           = this.actors,
+				eventManager     = spell.eventManager,
+				inputEvents      = spell.inputEvents,
+				inputDefinitions = this.inputDefinitions
 
-			this.inputEvents.length = 0
+			for( var i = 0, numInputEvents = inputEvents.length; i < numInputEvents; i++ ) {
+				processEvent( eventManager, inputEvents[ i ], actors, inputDefinitions )
+			}
+
+			inputEvents.length = 0
 		}
 
 
@@ -71,16 +77,17 @@ define(
 		 * public
 		 */
 
-		var KeyInput = function( spell ) {
-			this.inputEvents  = spell.inputEvents
-			this.inputManager = spell.inputManager
-		}
+		var KeyInput = function( spell ) {}
 
 		KeyInput.prototype = {
-			init : init,
-			destroy : function() {},
-			activate : function() {},
-			deactivate : function() {},
+			init : function( spell ) {
+				spell.inputManager.init()
+			},
+			destroy : function( spell ) {
+				spell.inputManager.destroy()
+			},
+			activate : function( spell ) {},
+			deactivate : function( spell ) {},
 			process : process
 		}
 

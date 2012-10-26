@@ -1,0 +1,30 @@
+{
+	"version": 1,
+	"type": "system",
+	"config": [
+		{
+			"name": "active",
+			"type": "boolean",
+			"default": true,
+			"doc": "if active is false the system will be skipped during processing"
+		}
+	],
+	"input": [
+		{
+			"name": "actors",
+			"componentId": "spell.component.actor"
+		},
+		{
+			"name": "transforms",
+			"componentId": "spell.component.2d.transform"
+		},
+		{
+			"name": "simpleBoxes",
+			"componentId": "spell.component.box2d.simpleBox"
+		},
+		{
+			"name": "simpleSpheres",
+			"componentId": "spell.component.box2d.simpleSphere"
+		}
+	]
+}

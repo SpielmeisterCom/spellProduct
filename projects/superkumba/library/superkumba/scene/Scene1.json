@@ -5,13 +5,32 @@
 		"update": [],
 		"render": [
 			{
-				"id": "superkumba.playerMover",
+				"id": "spell.system.keyInput",
 				"config": {
 					"active": true
 				}
 			},
 			{
-				"id": "spell.system.keyInput",
+				"id": "superkumba.system.createTilePhysics",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "superkumba.system.box2D",
+				"config": {
+					"active": true,
+					"scale": 0.01
+				}
+			},
+			{
+				"id": "superkumba.system.playerMover",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "superkumba.system.cameraMover",
 				"config": {
 					"active": true
 				}
@@ -23,27 +42,10 @@
 				}
 			},
 			{
-				"id": "createTilePhysics",
-				"config": {
-					"active": true
-				}
-			},
-			{
-				"id": "spell.system.box2D",
-				"config": {
-					"active": true
-				}
-			},
-			{
-				"id": "superkumba.cameraMover",
-				"config": {
-					"active": true
-				}
-			},
-			{
 				"id": "spell.system.render",
 				"config": {
-					"active": true
+					"active": true,
+					"debug": true
 				}
 			}
 		]
@@ -170,8 +172,8 @@
 						250
 					],
 					"scale": [
-						1.15,
-						1.15
+						1,
+						1
 					]
 				},
 				"spell.component.visualObject": {},
@@ -183,24 +185,39 @@
 					"actorId": "player"
 				},
 				"spell.component.actor": {
-					"id": "player"
+					"id": "player",
+					"actions": {
+						"jump": {
+							"executing": false
+						},
+						"left": {
+							"executing": false
+						},
+						"right": {
+							"executing": false
+						},
+						"roll": {
+							"executing": false
+						}
+					}
 				},
 				"spell.component.box2d.simpleBox": {
 					"dimensions": [
-						20,
-						90
+						30,
+						80
 					],
 					"fixedRotation": true,
 					"restitution": 0,
-					"density": 2,
-					"friction": 0
+					"density": 1,
+					"friction": 0.02
 				},
 				"spell.component.box2d.applyForce": {
 					"force": [
 						0,
 						0
 					]
-				}
+				},
+				"spellStaged.jumpAndRun.actor": {}
 			}
 		},
 		{

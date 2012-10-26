@@ -1,0 +1,13 @@
+{
+	"version": 1,
+	"type": "asset",
+	"subtype": "animation",
+	"config": {
+		"type": "sprite",
+		"duration": "100",
+		"frameIds": [
+			"61"
+		]
+	},
+	"assetId": "spriteSheet:superkumba.actor.kiba.spritesheet"
+}

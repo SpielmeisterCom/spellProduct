@@ -1,0 +1,15 @@
+{
+	"version": 1,
+	"type": "component",
+	"title": "",
+	"doc": "",
+	"icon": "",
+	"attributes": [
+		{
+			"name": "isGrounded",
+			"default": false,
+			"type": "boolean",
+			"doc": "true when the actor is standing on ground"
+		}
+	]
+}
