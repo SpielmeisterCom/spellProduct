@@ -7,7 +7,7 @@
 		"height": "9",
 		"tileLayerData": [
 			[
-				null,
+				1,
 				null,
 				null,
 				null,
@@ -24,7 +24,7 @@
 			],
 			[
 				null,
-				null,
+				1,
 				null,
 				null,
 				null,
@@ -84,7 +84,7 @@
 				null,
 				null,
 				null,
-				null
+				1
 			],
 			[
 				null,
@@ -99,7 +99,7 @@
 				2,
 				null,
 				null,
-				null,
+				1,
 				null
 			],
 			[
@@ -114,7 +114,7 @@
 				4,
 				5,
 				null,
-				null,
+				1,
 				null,
 				null
 			],
