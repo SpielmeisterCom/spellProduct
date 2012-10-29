@@ -305,7 +305,6 @@ define(
 		var init = function( spell ) {
 			var eventManager = spell.eventManager
 
-			// registering event handlers
 			this.screenResizeHandler = _.bind(
 				function( size ) {
 					var aspectRatio = ( this.debugSettings && this.debugSettings.screenAspectRatio !== undefined ?
