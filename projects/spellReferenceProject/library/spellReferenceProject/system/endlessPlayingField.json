@@ -6,8 +6,12 @@
 			"componentId": "spell.component.2d.transform"
 		},
 		{
-			"name": "inertialObjects",
-			"componentId": "spell.component.2d.physics.inertialObject"
+			"name": "simpleBoxes",
+			"componentId": "spell.component.box2d.simpleBox"
+		},
+		{
+			"name": "simpleSpheres",
+			"componentId": "spell.component.box2d.simpleSphere"
 		}
 	],
 	"version": 1,

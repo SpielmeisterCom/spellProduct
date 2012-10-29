@@ -1,17 +1,8 @@
 define(
 	'spellReferenceProject/system/endlessPlayingField',
-	[
-		'spell/shared/util/createEntityEach'
-	],
-	function(
-		createEntityEach
-	) {
+	function() {
 		'use strict'
 
-
-		/**
-		 * private
-		 */
 
 		var playingFieldSize    = [ 1024, 768 ],
 			border              = 100,
@@ -21,34 +12,52 @@ define(
 			topBorder           = playingFieldSize[ 1 ] + border,
 			bottomBorder        = 0 - border
 
+		var updatePosition = function( entityManager, simpleBodies, transforms ) {
+			for( var id in simpleBodies ) {
+				var transform = transforms[ id ],
+					position  = transform.translation,
+					updated   = true
 
-		var updatePositionIter = function( transform, inertialObject ) {
-			if( !inertialObject ) return
+				if( position[ 0 ] > rightBorder ) {
+					position[ 0 ] = leftBorder + wrapOffset
 
-			var position = transform.translation
+				} else if( position[ 0 ] < leftBorder ) {
+					position[ 0 ] = rightBorder - wrapOffset
 
-			if( position[ 0 ] > rightBorder ) {
-				position[ 0 ] = leftBorder
-				position[ 1 ] += wrapOffset
+				} else if( position[ 1 ] > topBorder ) {
+					position[ 1 ] = bottomBorder + wrapOffset
 
-			} else if( position[ 0 ] < leftBorder ) {
-				position[ 0 ] = rightBorder
-				position[ 1 ] -= wrapOffset
+				} else if( position[ 1 ] < bottomBorder ) {
+					position[ 1 ] = topBorder - wrapOffset
 
-			} else if( position[ 1 ] > topBorder ) {
-				position[ 0 ] += wrapOffset
-				position[ 1 ] = bottomBorder
+				} else {
+					var updated = false
+				}
 
-			} else if( position[ 1 ] < bottomBorder ) {
-				position[ 0 ] -= wrapOffset
-				position[ 1 ] = topBorder
+				if( updated ) {
+					entityManager.addComponent(
+						id,
+						{
+							componentId : 'spell.component.box2d.setPosition',
+							config : {
+								value : position
+							}
+						}
+					)
+				}
 			}
 		}
 
 		var init = function( spell ) {}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
-			this.updatePosition()
+			var entityManager = spell.EntityManager,
+				simpleBoxes   = this.simpleBoxes,
+				simpleSpheres = this.simpleSpheres,
+				transforms    = this.transforms
+
+			updatePosition( entityManager, simpleBoxes, transforms )
+			updatePosition( entityManager, simpleSpheres, transforms )
 		}
 
 
@@ -56,9 +65,7 @@ define(
 		 * public
 		 */
 
-		var EndlessPlayingField = function( spell ) {
-			this.updatePosition = createEntityEach( this.transforms, [ this.inertialObjects ], updatePositionIter )
-		}
+		var EndlessPlayingField = function( spell ) {}
 
 		EndlessPlayingField.prototype = {
 			init : init,

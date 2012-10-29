@@ -1,4 +1,5 @@
 {
+	"version": 1,
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.transform": {
@@ -6,10 +7,6 @@
 				4,
 				4
 			]
-		},
-		"spell.component.visualObject": {},
-		"spell.component.2d.graphics.appearance": {
-			"assetId": "appearance:spellReferenceProject.asset.pixelShip1"
 		},
 		"spell.component.actor": {
 			"actions": {
@@ -25,11 +22,18 @@
 			}
 		},
 		"spellReferenceProject.component.spacecraft": {},
-		"spell.component.2d.physics.inertialObject": {},
-		"spell.component.physics.collisionSphere": {
-			"radius": 16
-		}
+		"spell.component.box2d.simpleSphere": {}
 	},
-	"children": [],
-	"version": 1
+	"children": [
+		{
+			"name": "fuselage",
+			"config": {
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:spellReferenceProject.asset.pixelShip1"
+				},
+				"spell.component.2d.transform": {},
+				"spell.component.visualObject": {}
+			}
+		}
+	]
 }

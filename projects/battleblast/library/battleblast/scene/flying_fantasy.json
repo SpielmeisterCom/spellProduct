@@ -107,7 +107,6 @@
 								"spell.component.visualObject": {
 									"layer": 10
 								},
-								"spell.component.2d.physics.inertialObject": {},
 								"spell.component.actor": {
 									"actions": {
 										"accelerate": {

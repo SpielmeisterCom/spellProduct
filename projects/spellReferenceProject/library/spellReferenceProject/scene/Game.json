@@ -1,6 +1,6 @@
 {
-	"type": "scene",
 	"version": 1,
+	"type": "scene",
 	"systems": {
 		"update": [],
 		"render": [
@@ -23,9 +23,14 @@
 				}
 			},
 			{
-				"id": "spellReferenceProject.system.collisionDetector",
+				"id": "spell.system.box2D",
 				"config": {
-					"active": true
+					"active": true,
+					"gravity": [
+						0,
+						0
+					],
+					"scale": 0.01
 				}
 			},
 			{
@@ -43,14 +48,36 @@
 			{
 				"id": "spell.system.render",
 				"config": {
-					"active": true
+					"active": true,
+					"debug": false
 				}
 			}
 		]
 	},
 	"entities": [
 		{
-			"name": "spacecraft1",
+			"name": "camera",
+			"entityTemplateId": "spell.entity.2d.graphics.camera",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						512,
+						384
+					],
+					"scale": [
+						1,
+						1
+					]
+				},
+				"spell.component.2d.graphics.camera": {
+					"width": 1024,
+					"height": 768,
+					"active": true
+				}
+			}
+		},
+		{
+			"name": "spacecraft (ai)",
 			"entityTemplateId": "spellReferenceProject.entity.spacecraft",
 			"config": {
 				"spell.component.2d.transform": {
@@ -59,24 +86,17 @@
 						128
 					]
 				},
-				"spell.component.2d.graphics.appearance": {
-					"assetId": "appearance:spellReferenceProject.asset.pixelShip2"
-				},
 				"spell.component.actor": {
 					"id": "aiControlled"
 				},
 				"spellReferenceProject.component.spacecraft": {
-					"thrusterForce": 300
+					"thrusterForce": 25
 				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 3
+				"spell.component.box2d.simpleSphere": {
+					"radius": 43
 				},
-				"spell.component.visualObject": {
-					"opacity": 1
-				},
-				"spell.component.physics.collisionSphere": {
-					"radius": 35
-				}
+				"spell.component.box2d.applyForce": {},
+				"spell.component.box2d.applyTorque": {}
 			},
 			"children": [
 				{
@@ -85,7 +105,7 @@
 						"spell.component.2d.transform": {
 							"translation": [
 								0,
-								-0.5
+								0
 							],
 							"scale": [
 								0.28,
@@ -99,11 +119,21 @@
 							"assetId": "appearance:spellReferenceProject.asset.shield"
 						}
 					}
+				},
+				{
+					"name": "fuselage",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:spellReferenceProject.asset.pixelShip2"
+						},
+						"spell.component.2d.transform": {},
+						"spell.component.visualObject": {}
+					}
 				}
 			]
 		},
 		{
-			"name": "spacecraft2",
+			"name": "spacecraft (player)",
 			"entityTemplateId": "spellReferenceProject.entity.spacecraft",
 			"config": {
 				"spell.component.2d.transform": {
@@ -117,15 +147,13 @@
 					"id": "playerControlled"
 				},
 				"spellReferenceProject.component.spacecraft": {
-					"thrusterForce": 175
+					"thrusterForce": 15
 				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 1,
-					"velocity": [
-						10,
-						2
-					]
-				}
+				"spell.component.box2d.simpleSphere": {
+					"radius": 23
+				},
+				"spell.component.box2d.applyForce": {},
+				"spell.component.box2d.applyTorque": {}
 			},
 			"children": [
 				{
@@ -172,196 +200,7 @@
 			]
 		},
 		{
-			"name": "alienSpacecraft1",
-			"entityTemplateId": "spellReferenceProject.entity.alienSpacecraft",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						700,
-						100
-					]
-				},
-				"spell.component.2d.physics.inertialObject": {
-					"velocity": [
-						-10,
-						40
-					],
-					"mass": 5
-				}
-			}
-		},
-		{
-			"name": "asteroid1",
-			"entityTemplateId": "spellReferenceProject.entity.asteroid",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						600,
-						500
-					]
-				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 100,
-					"velocity": [
-						-4,
-						-2
-					]
-				}
-			}
-		},
-		{
-			"name": "asteroid2",
-			"entityTemplateId": "spellReferenceProject.entity.asteroid",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						725,
-						650
-					]
-				},
-				"spell.component.2d.graphics.appearance": {
-					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
-				},
-				"spell.component.physics.collisionSphere": {
-					"radius": 13
-				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 12,
-					"velocity": [
-						6,
-						3
-					]
-				}
-			}
-		},
-		{
-			"name": "asteroid3",
-			"entityTemplateId": "spellReferenceProject.entity.asteroid",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						300,
-						700
-					]
-				},
-				"spell.component.2d.graphics.appearance": {
-					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
-				},
-				"spell.component.physics.collisionSphere": {
-					"radius": 13
-				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 12,
-					"velocity": [
-						2,
-						-8
-					]
-				}
-			}
-		},
-		{
-			"name": "asteroid4",
-			"entityTemplateId": "spellReferenceProject.entity.asteroid",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						250,
-						350
-					]
-				},
-				"spell.component.2d.graphics.appearance": {
-					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
-				},
-				"spell.component.physics.collisionSphere": {
-					"radius": 13
-				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 12,
-					"velocity": [
-						-10,
-						-3
-					]
-				}
-			}
-		},
-		{
-			"name": "asteroid5",
-			"entityTemplateId": "spellReferenceProject.entity.asteroid",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						25,
-						75
-					]
-				},
-				"spell.component.2d.graphics.appearance": {
-					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
-				},
-				"spell.component.physics.collisionSphere": {
-					"radius": 13
-				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 12,
-					"velocity": [
-						-5,
-						-2
-					]
-				}
-			}
-		},
-		{
-			"name": "camera",
-			"entityTemplateId": "spell.entity.2d.graphics.camera",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						512,
-						384
-					],
-					"scale": [
-						1,
-						1
-					]
-				},
-				"spell.component.2d.graphics.camera": {
-					"width": 1024,
-					"height": 768,
-					"active": true
-				}
-			}
-		},
-		{
-			"name": "player key input to actor/action mapping",
-			"entityTemplateId": "spell.entity.inputDefinition",
-			"config": {
-				"spell.component.inputDefinition": {
-					"actorId": "playerControlled",
-					"assetId": "keyToActionMap:spellReferenceProject.asset.spacecraftKeyToActionMap"
-				}
-			}
-		},
-		{
-			"name": "spelljs logo",
-			"entityTemplateId": "spellDemo.logo.entity",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						935,
-						35
-					],
-					"scale": [
-						0.75,
-						0.75
-					]
-				},
-				"spell.component.visualObject": {
-					"layer": 2,
-					"opacity": 1
-				}
-			}
-		},
-		{
-			"name": "alienSpacecraft2",
+			"name": "alienSpacecraft (big)",
 			"entityTemplateId": "spellReferenceProject.entity.alienSpacecraft",
 			"config": {
 				"spell.component.2d.transform": {
@@ -379,16 +218,6 @@
 					"offset": 500,
 					"replaySpeed": 0.75
 				},
-				"spell.component.2d.physics.inertialObject": {
-					"mass": 10,
-					"velocity": [
-						-1,
-						10
-					]
-				},
-				"spell.component.physics.collisionSphere": {
-					"radius": 90
-				},
 				"spell.component.actor": {
 					"id": "aiControlled",
 					"actions": {
@@ -405,6 +234,9 @@
 				},
 				"spellReferenceProject.component.spacecraft": {
 					"thrusterForce": 300
+				},
+				"spell.component.box2d.simpleSphere": {
+					"radius": 85
 				}
 			},
 			"children": [
@@ -424,11 +256,145 @@
 							"opacity": 0.33
 						}
 					}
+				},
+				{
+					"name": "fuselage",
+					"config": {
+						"spell.component.2d.graphics.animatedAppearance": {},
+						"spell.component.2d.transform": {},
+						"spell.component.visualObject": {}
+					}
 				}
 			]
 		},
 		{
-			"name": "text",
+			"name": "alienSpacecraft (small)",
+			"entityTemplateId": "spellReferenceProject.entity.alienSpacecraft",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						700,
+						100
+					]
+				},
+				"spell.component.box2d.simpleSphere": {
+					"radius": 34
+				}
+			},
+			"children": [
+				{
+					"name": "fuselage",
+					"config": {
+						"spell.component.2d.graphics.animatedAppearance": {},
+						"spell.component.2d.transform": {},
+						"spell.component.visualObject": {}
+					}
+				}
+			]
+		},
+		{
+			"name": "asteroid (big)",
+			"entityTemplateId": "spellReferenceProject.entity.asteroid",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						600,
+						500
+					],
+					"scale": [
+						4,
+						4
+					]
+				},
+				"spell.component.box2d.simpleSphere": {
+					"radius": 30
+				}
+			},
+			"children": [
+				{
+					"name": "body",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:spellReferenceProject.asset.asteroid1"
+						},
+						"spell.component.2d.transform": {},
+						"spell.component.visualObject": {}
+					}
+				}
+			]
+		},
+		{
+			"name": "asteroid2",
+			"entityTemplateId": "spellReferenceProject.entity.asteroid",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						725,
+						650
+					]
+				},
+				"spell.component.box2d.simpleSphere": {
+					"radius": 14
+				}
+			}
+		},
+		{
+			"name": "asteroid3",
+			"entityTemplateId": "spellReferenceProject.entity.asteroid",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						300,
+						700
+					]
+				},
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
+				}
+			}
+		},
+		{
+			"name": "asteroid4",
+			"entityTemplateId": "spellReferenceProject.entity.asteroid",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						250,
+						350
+					]
+				},
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
+				}
+			}
+		},
+		{
+			"name": "asteroid5",
+			"entityTemplateId": "spellReferenceProject.entity.asteroid",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						25,
+						75
+					]
+				},
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
+				}
+			}
+		},
+		{
+			"name": "player key input to actor/action mapping",
+			"entityTemplateId": "spell.entity.inputDefinition",
+			"config": {
+				"spell.component.inputDefinition": {
+					"actorId": "playerControlled",
+					"assetId": "keyToActionMap:spellReferenceProject.asset.spacecraftKeyToActionMap"
+				}
+			}
+		},
+		{
+			"name": "demo label",
 			"config": {
 				"spell.component.2d.graphics.textAppearance": {
 					"text": "Asteroid Demo",
@@ -452,7 +418,7 @@
 			}
 		},
 		{
-			"name": "message",
+			"name": "instructions",
 			"config": {
 				"spell.component.2d.graphics.textAppearance": {
 					"assetId": "font:spellReferenceProject.asset.Press Start 2P 8",
@@ -476,33 +442,22 @@
 			}
 		},
 		{
-			"name": "Spielmeister",
+			"name": "spelljs logo",
+			"entityTemplateId": "spellDemo.logo.entity",
 			"config": {
-				"spell.component.2d.graphics.textAppearance": {
-					"assetId": "font:spellReferenceProject.asset.Bello Pro",
-					"text": "We let the world play together!",
-					"spacing": -18
-				},
 				"spell.component.2d.transform": {
-					"scale": [
-						1,
-						1
-					],
 					"translation": [
-						100,
-						100
+						935,
+						35
 					],
-					"rotation": 195
+					"scale": [
+						0.75,
+						0.75
+					]
 				},
 				"spell.component.visualObject": {
-					"layer": -1,
-					"opacity": 0.75
-				},
-				"spell.component.2d.physics.inertialObject": {
-					"velocity": [
-						150,
-						-100
-					]
+					"layer": 2,
+					"opacity": 1
 				}
 			}
 		}

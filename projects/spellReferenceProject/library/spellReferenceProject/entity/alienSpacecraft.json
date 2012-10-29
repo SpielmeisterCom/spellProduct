@@ -1,18 +1,22 @@
 {
+	"version": 1,
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.transform": {},
-		"spell.component.visualObject": {},
-		"spell.component.2d.graphics.animatedAppearance": {
-			"assetId": "animation:spellReferenceProject.asset.threeRingsAnimation"
-		},
-		"spell.component.2d.physics.inertialObject": {
-			"mass": 150
-		},
-		"spell.component.physics.collisionSphere": {
+		"spell.component.box2d.simpleSphere": {
 			"radius": 30
 		}
 	},
-	"children": [],
-	"version": 1
+	"children": [
+		{
+			"name": "fuselage",
+			"config": {
+				"spell.component.2d.graphics.animatedAppearance": {
+					"assetId": "animation:spellReferenceProject.asset.threeRingsAnimation"
+				},
+				"spell.component.2d.transform": {},
+				"spell.component.visualObject": {}
+			}
+		}
+	]
 }

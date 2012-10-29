@@ -1,15 +1,6 @@
 define(
 	'spellReferenceProject/system/spacecraftIntegrator',
-	[
-		'spell/shared/util/createEntityEach',
-
-		'spell/math/vec2'
-	],
-	function(
-		createEntityEach,
-
-		vec2
-	) {
+	function() {
 		'use strict'
 
 
@@ -17,49 +8,53 @@ define(
 		 * private
 		 */
 
-		var spacecraftRotationSpeed = 1.75,
-			tmp = vec2.create()
+		var spacecraftTorque = 1
 
+		var applyActionsToSpacecrafts = function( entityManager, deltaTimeInS, actors, spacecrafts, transforms ) {
+			for( var id in actors ) {
+				var actions    = actors[ id ].actions,
+					transform  = transforms[ id ],
+					spacecraft = spacecrafts[ id ]
 
-		var applyActionsToSpacecraftIter = function( deltaTimeInS, spacecraft, actor, inertialObject, transform ) {
-			var actions = actor.actions
-
-			var rotationDirection = ( actions.steerLeft.executing ?
-				-1 :
-				actions.steerRight.executing ?
+				var rotationDirection = ( actions.steerLeft.executing ?
 					1 :
+					( actions.steerRight.executing ?
+						-1 :
+						0
+					)
+				)
+
+				// torque
+				var torque = ( rotationDirection ?
+					spacecraftTorque * rotationDirection :
 					0
-			)
+				)
 
-			if( rotationDirection ) {
-				transform.rotation += deltaTimeInS * spacecraftRotationSpeed * rotationDirection
-			}
+				entityManager.updateComponent(
+					'spell.component.box2d.applyTorque',
+					id,
+					{
+						torque : torque
+					}
+				)
 
-			if( actions.accelerate.executing ) {
+				// force
 				var rotation      = transform.rotation,
 					thrusterForce = spacecraft.thrusterForce
 
-				// f
-				vec2.set(
-					[
-						Math.sin( rotation ) * thrusterForce,
-						Math.cos( rotation ) * thrusterForce
-					],
-					tmp
+				var force = ( actions.accelerate.executing ?
+					[ Math.sin( rotation ) * thrusterForce, Math.cos( rotation ) * thrusterForce ] :
+					[ 0, 0 ]
 				)
 
-				// v = v + dv; dv = da * dt; da = f / m
-				vec2.add(
-					vec2.scale( tmp, deltaTimeInS / inertialObject.mass ),
-					inertialObject.velocity
+				entityManager.updateComponent(
+					'spell.component.box2d.applyForce',
+					id,
+					{
+						force : force
+					}
 				)
 			}
-		}
-
-		var updateInertialObjectIter = function( deltaTimeInS, inertialObject, transform ) {
-			// ds, tmp := deltaPosition
-			vec2.scale( inertialObject.velocity, deltaTimeInS, tmp )
-			vec2.add( tmp, transform.translation )
 		}
 
 		var init = function( spell ) {}
@@ -67,8 +62,7 @@ define(
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var deltaTimeInS = deltaTimeInMs / 1000
 
-			this.updateSpacecrafts( deltaTimeInS )
-			this.updateInertialObjects( deltaTimeInS )
+			applyActionsToSpacecrafts( spell.EntityManager, deltaTimeInMs, this.actors, this.spacecrafts, this.transforms )
 		}
 
 
@@ -76,10 +70,7 @@ define(
 		 * public
 		 */
 
-		var SpacecraftIntegrator = function( spell ) {
-			this.updateSpacecrafts     = createEntityEach( this.spacecrafts, [ this.actors, this.inertialObjects, this.transforms ], applyActionsToSpacecraftIter )
-			this.updateInertialObjects = createEntityEach( this.inertialObjects, this.transforms, updateInertialObjectIter )
-		}
+		var SpacecraftIntegrator = function( spell ) {}
 
 		SpacecraftIntegrator.prototype = {
 			init : init,

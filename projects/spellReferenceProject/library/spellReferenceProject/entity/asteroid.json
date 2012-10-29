@@ -1,4 +1,5 @@
 {
+	"version": 1,
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.transform": {
@@ -8,14 +9,20 @@
 			]
 		},
 		"spell.component.visualObject": {},
-		"spell.component.2d.graphics.appearance": {
-			"assetId": "appearance:spellReferenceProject.asset.asteroid1"
-		},
-		"spell.component.2d.physics.inertialObject": {},
-		"spell.component.physics.collisionSphere": {
-			"radius": 30
+		"spell.component.box2d.simpleSphere": {
+			"radius": 14
 		}
 	},
-	"children": [],
-	"version": 1
+	"children": [
+		{
+			"name": "body",
+			"config": {
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:spellReferenceProject.asset.asteroid2"
+				},
+				"spell.component.2d.transform": {},
+				"spell.component.visualObject": {}
+			}
+		}
+	]
 }

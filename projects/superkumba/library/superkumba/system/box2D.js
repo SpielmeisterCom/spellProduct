@@ -55,7 +55,7 @@ define(
 
 			if( !simpleBody || !transform ) return
 
-			createBox2DBody( worldToPhysicsScale, world, entityId, simpleBody, transform )
+			createBox2DBody( world, worldToPhysicsScale, entityId, simpleBody, transform )
 
 			if( debug ) {
 				var componentId,
@@ -136,7 +136,7 @@ define(
 			}
 		}
 
-		var createBox2DBody = function( worldToPhysicsScale, world, entityId, simpleBody, transform ) {
+		var createBox2DBody = function( world, worldToPhysicsScale, entityId, simpleBody, transform ) {
 			// body
 			var translation = transform.translation,
 				bodyDef     = new b2BodyDef()
@@ -157,7 +157,7 @@ define(
 			world.ClearForces()
 		}
 
-		var transferState = function( worldToPhysicsScale, world, simpleBoxes, simpleSpheres, simplePlayers, transforms ) {
+		var transferState = function( world, worldToPhysicsScale, simpleBoxes, simpleSpheres, simplePlayers, transforms ) {
 			for( var body = world.GetBodyList(); body; body = body.m_next ) {
 				var id = body.GetUserData()
 
@@ -223,7 +223,7 @@ define(
 			}
 		}
 
-		var applyInfluence = function( entityManager, worldToPhysicsScale, world, applyForces, applyTorques, applyImpulses, applyVelocities ) {
+		var applyInfluence = function( entityManager, world, worldToPhysicsScale, applyForces, applyTorques, applyImpulses, applyVelocities ) {
 			for( var body = world.GetBodyList(); body; body = body.m_next ) {
 				var id = body.GetUserData()
 
@@ -365,11 +365,11 @@ define(
 				removedEntitiesQueue.length = 0
 			}
 
-			applyInfluence( spell.EntityManager, worldToPhysicsScale, world, this.applyForces, this.applyTorques, this.applyImpulses, this.applyVelocities )
+			applyInfluence( spell.EntityManager, world, worldToPhysicsScale, this.applyForces, this.applyTorques, this.applyImpulses, this.applyVelocities )
 			simulate( world, deltaTimeInMs )
 
 			updateJumpAndRunActors( world, this.jumpAndRunActors, this.isGroundedQueue, this.isNotGroundedQueue )
-			transferState( worldToPhysicsScale, world, this.simpleBoxes, this.simpleSpheres, this.simplePlayers, transforms )
+			transferState( world, worldToPhysicsScale, this.simpleBoxes, this.simpleSpheres, this.simplePlayers, transforms )
 
 			if( this.debug ) {
 				updateDebug( world, this.debugBoxes, this.debugCircles, transforms )
