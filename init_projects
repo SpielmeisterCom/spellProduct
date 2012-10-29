@@ -2,6 +2,6 @@
 
 for PROJECT in `ls -1 projects`
 do
-	sappre init -d projects/$PROJECT
+	modules/spellCore/sappre init -d projects/$PROJECT
 done
 
