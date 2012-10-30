@@ -88,7 +88,7 @@ define(
 			process: function( spell, timeInMs, deltaTimeInMs ) {
 				if( this.inputEvents.length === 0 ) return
 
-				var entityManager = spell.EntityManager,
+				var entityManager = spell.entityManager,
 					event         = this.inputEvents[ 0 ]
 
 				if( event.type === 'keydown' &&
@@ -109,12 +109,12 @@ define(
 
 					if( !id ) return
 
-					spell.EntityManager.removeEntity( id )
+					spell.entityManager.removeEntity( id )
 
 				} else if( event.type === 'keydown' &&
 					event.keyCode === keyCodes.LEFT_ARROW ) {
 
-					spell.EntityManager.createEntity( {
+					spell.entityManager.createEntity( {
 						entityTemplateId : 'box2dTest.smallCrate',
 						config : {
 							"spell.component.2d.transform" : {
@@ -126,10 +126,10 @@ define(
 				} else if( event.type === 'keydown' &&
 					event.keyCode === keyCodes.UP_ARROW ) {
 
-					var id = spell.EntityManager.getEntityIdsByName( 'mario' )[ 0 ]
+					var id = spell.entityManager.getEntityIdsByName( 'mario' )[ 0 ]
 
 					if( id ) {
-						spell.EntityManager.addComponent(
+						spell.entityManager.addComponent(
 							id,
 							{
 								componentId : 'spell.component.box2d.applyImpulse',

@@ -62,7 +62,7 @@ define(
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var deltaTimeInS = deltaTimeInMs / 1000
 
-			applyActionsToSpacecrafts( spell.EntityManager, deltaTimeInMs, this.actors, this.spacecrafts, this.transforms )
+			applyActionsToSpacecrafts( spell.entityManager, deltaTimeInMs, this.actors, this.spacecrafts, this.transforms )
 		}
 
 

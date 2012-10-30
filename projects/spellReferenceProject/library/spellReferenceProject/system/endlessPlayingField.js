@@ -51,7 +51,7 @@ define(
 		var init = function( spell ) {}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
-			var entityManager = spell.EntityManager,
+			var entityManager = spell.entityManager,
 				simpleBoxes   = this.simpleBoxes,
 				simpleSpheres = this.simpleSpheres,
 				transforms    = this.transforms

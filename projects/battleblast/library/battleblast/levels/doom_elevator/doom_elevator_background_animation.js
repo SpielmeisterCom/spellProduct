@@ -42,7 +42,7 @@ define(
 			offsetInMs = createOffsetInMs( deltaTimeInMs, animationLengthInMs, offsetInMs, replaySpeed )
 
 			var backgroundTiles = this.backgroundTiles,
-				entityManager   = spell.EntityManager,
+				entityManager   = spell.entityManager,
 				frameIndex      = createFrameIndex( offsetInMs, frameDuration )
 
 			for( var id in backgroundTiles ) {

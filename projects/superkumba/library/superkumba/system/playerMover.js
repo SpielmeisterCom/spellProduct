@@ -75,7 +75,7 @@ define(
 		}
 
         var process = function( spell, timeInMs, deltaTimeInMs ) {
-			var entityManager           = spell.EntityManager,
+			var entityManager           = spell.entityManager,
 				actors                  = this.actors,
 				animatedAppearances     = this.animatedAppearances,
 				transforms              = this.transforms,

@@ -42,7 +42,7 @@ define(
 						if ( connectedTiles > 0 ) {
 							x = x + connectedTiles - 1
 
-							var entityId = spell.EntityManager.createEntity({
+							var entityId = spell.entityManager.createEntity({
 								entityTemplateId: 'superkumba.level.collision_block',
 								config: {
 									"spell.component.box2d.simpleBox": {
@@ -106,7 +106,7 @@ define(
 				
 				//remove all entities which were created by this system
 				_.each( this.entitiesCreated, function( entityId ) {
-					spell.EntityManager.removeEntity( entityId )	
+					spell.entityManager.removeEntity( entityId )
 				})
 			},
 

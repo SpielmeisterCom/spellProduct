@@ -75,7 +75,7 @@ define(
 					}
 				}
 
-				spell.EntityManager.addComponent(
+				spell.entityManager.addComponent(
 					entityId,
 					{
 						componentId : componentId,
@@ -365,7 +365,7 @@ define(
 				removedEntitiesQueue.length = 0
 			}
 
-			applyInfluence( spell.EntityManager, world, worldToPhysicsScale, this.applyForces, this.applyTorques, this.applyImpulses, this.applyVelocities )
+			applyInfluence( spell.entityManager, world, worldToPhysicsScale, this.applyForces, this.applyTorques, this.applyImpulses, this.applyVelocities )
 			simulate( world, deltaTimeInMs )
 
 			updateJumpAndRunActors( world, this.jumpAndRunActors, this.isGroundedQueue, this.isNotGroundedQueue )

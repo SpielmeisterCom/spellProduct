@@ -70,8 +70,8 @@ define(
 			 * @param {Object} [deltaTimeInMs] The elapsed time in ms.
 			 */
 			process: function( spell, timeInMs, deltaTimeInMs ) {
-				var camera = spell.EntityManager.getEntityIdsByName( 'camera' )[0],
-				    player = spell.EntityManager.getEntityIdsByName( 'player' )[0]
+				var camera = spell.entityManager.getEntityIdsByName( 'camera' )[0],
+				    player = spell.entityManager.getEntityIdsByName( 'player' )[0]
 
 				    this.transforms[ camera ].translation[ 0 ] = this.transforms[ player ].translation[ 0 ]
 				    this.transforms[ camera ].translation[ 1 ] = this.transforms[ player ].translation[ 1 ]
