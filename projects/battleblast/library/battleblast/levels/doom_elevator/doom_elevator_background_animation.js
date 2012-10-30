@@ -49,8 +49,8 @@ define(
 				var backgroundTile = backgroundTiles[ id ]
 
 				entityManager.updateComponent(
-					"spell.component.2d.graphics.appearance",
 					id,
+					"spell.component.2d.graphics.appearance",
 					{
 						"assetId": "appearance:battleblast.levels.doom_elevator.background.frame_00" + frameIndex
 					}

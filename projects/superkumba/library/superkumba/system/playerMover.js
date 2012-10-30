@@ -37,17 +37,15 @@ define(
 		var startMovingX = function( entityManager, playerEntityId, force, impulse ) {
 			entityManager.addComponent(
 				playerEntityId,
+				'spell.component.box2d.applyImpulse',
 				{
-					componentId : 'spell.component.box2d.applyImpulse',
-					config : {
-						impulse : [ impulse, 0 ]
-					}
+					impulse : [ impulse, 0 ]
 				}
 			)
 
 			entityManager.updateComponent(
-				'spell.component.box2d.applyForce',
 				playerEntityId,
+				'spell.component.box2d.applyForce',
 				{
 					force : [ force, 0 ]
 				}
@@ -63,8 +61,8 @@ define(
 			if( looped === undefined ) looped = true
 
 			entityManager.updateComponent(
-				'spell.component.2d.graphics.animatedAppearance',
 				entityId,
+				'spell.component.2d.graphics.animatedAppearance',
 				{
 					assetId : assetId,
 					offset : 0,
@@ -98,11 +96,9 @@ define(
 				if( jumpAndRunActor.isGrounded ) {
 					entityManager.addComponent(
 						playerEntityId,
+						'spell.component.box2d.applyImpulse',
 						{
-							componentId : 'spell.component.box2d.applyImpulse',
-							config : {
-								impulse : [ 0, 130 ]
-							}
+							impulse : [ 0, 130 ]
 						}
 					)
 
@@ -151,8 +147,8 @@ define(
 
 				// stop movement force
 				entityManager.updateComponent(
-					'spell.component.box2d.applyForce',
 					playerEntityId,
+					'spell.component.box2d.applyForce',
 					{
 						force : [ 0, 0 ]
 					}
@@ -170,11 +166,9 @@ define(
 
 				entityManager.addComponent(
 					playerEntityId,
+					'spell.component.box2d.applyVelocity',
 					{
-						componentId : 'spell.component.box2d.applyVelocity',
-						config : {
-							velocity : [ simplePlayer.velocity[ 0 ] * 0.8, simplePlayer.velocity[ 1 ] ]
-						}
+						velocity : [ simplePlayer.velocity[ 0 ] * 0.8, simplePlayer.velocity[ 1 ] ]
 					}
 				)
 

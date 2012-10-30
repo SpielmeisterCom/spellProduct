@@ -131,11 +131,9 @@ define(
 					if( id ) {
 						spell.entityManager.addComponent(
 							id,
+							'spell.component.box2d.applyImpulse',
 							{
-								componentId : 'spell.component.box2d.applyImpulse',
-								config : {
-									impulse : [ 0, 700 ]
-								}
+								impulse : [ 0, 700 ]
 							}
 						)
 					}

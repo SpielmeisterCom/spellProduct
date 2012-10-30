@@ -37,11 +37,9 @@ define(
 				if( updated ) {
 					entityManager.addComponent(
 						id,
+						'spell.component.box2d.setPosition',
 						{
-							componentId : 'spell.component.box2d.setPosition',
-							config : {
-								value : position
-							}
+							value : position
 						}
 					)
 				}
