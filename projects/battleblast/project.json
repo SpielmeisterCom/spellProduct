@@ -6,7 +6,7 @@
 			768
 		]
 	},
-	"startScene": "battleblast.scene.flying_fantasy",
+	"startScene": "battleblast.scene.doom_elevator",
 	"type": "project",
 	"scenes": [
 		"battleblast.scene.doom_elevator",
