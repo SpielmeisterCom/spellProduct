@@ -6,12 +6,8 @@
 			"componentId": "spell.component.2d.transform"
 		},
 		{
-			"name": "simpleBoxes",
-			"componentId": "spell.component.box2d.simpleBox"
-		},
-		{
-			"name": "simpleSpheres",
-			"componentId": "spell.component.box2d.simpleSphere"
+			"name": "bodies",
+			"componentId": "spell.component.physics.body"
 		}
 	],
 	"version": 1,

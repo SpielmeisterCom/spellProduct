@@ -1,0 +1,25 @@
+{
+	"version": 1,
+	"type": "component",
+	"readonly": true,
+	"title": "Physics Fixture",
+	"doc": "",
+    "icon": "/images/icons/component_physics_box.png",
+    "attributes": [
+		{
+			"name": "density",
+			"type": "number",
+			"default": 1
+		},
+		{
+			"name": "friction",
+			"type": "number",
+			"default": 0.5
+		},
+		{
+			"name": "restitution",
+			"type": "number",
+			"default": 0.2
+		}
+	]
+}

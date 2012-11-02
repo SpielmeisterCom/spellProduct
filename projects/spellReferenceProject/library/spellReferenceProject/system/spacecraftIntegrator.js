@@ -32,7 +32,7 @@ define(
 
 				entityManager.updateComponent(
 					id,
-					'spell.component.box2d.applyTorque',
+					'spell.component.physics.applyTorque',
 					{
 						torque : torque
 					}
@@ -49,7 +49,7 @@ define(
 
 				entityManager.updateComponent(
 					id,
-					'spell.component.box2d.applyForce',
+					'spell.component.physics.applyForce',
 					{
 						force : force
 					}

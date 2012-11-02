@@ -9,7 +9,9 @@
 			]
 		},
 		"spell.component.visualObject": {},
-		"spell.component.box2d.simpleSphere": {
+		"spell.component.physics.body": {},
+		"spell.component.physics.fixture": {},
+		"spell.component.physics.shape.circle": {
 			"radius": 14
 		}
 	},

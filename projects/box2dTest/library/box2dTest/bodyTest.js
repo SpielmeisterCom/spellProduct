@@ -94,7 +94,7 @@ define(
 				if( event.type === 'keydown' &&
 					event.keyCode === keyCodes.RIGHT_ARROW ) {
 
-					var components = entityManager.getComponentDictionaryById( 'spell.component.box2d.simpleBox' )
+					var components = entityManager.getComponentDictionaryById( 'spell.component.physics.body' )
 
 					if( _.size( components ) === 0 ) return
 
@@ -131,7 +131,7 @@ define(
 					if( id ) {
 						spell.entityManager.addComponent(
 							id,
-							'spell.component.box2d.applyImpulse',
+							'spell.component.physics.applyImpulse',
 							{
 								impulse : [ 0, 700 ]
 							}

@@ -1,0 +1,28 @@
+{
+	"version": 1,
+	"type": "component",
+	"readonly": true,
+	"title": "Physics Body",
+	"doc": "",
+    "icon": "/images/icons/component_physics_box.png",
+    "attributes": [
+		{
+			"name": "type",
+			"type": {
+				"name": "enum",
+				"values": [ "dynamic", "static" ]
+			},
+			"default": "dynamic"
+		},
+		{
+			"name": "fixedRotation",
+			"type": "boolean",
+			"default": false
+		},
+		{
+			"name": "velocity",
+			"type": "vec2",
+			"default": [ 0, 0 ]
+		}
+	]
+}

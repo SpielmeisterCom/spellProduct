@@ -45,7 +45,9 @@ define(
 							var entityId = spell.entityManager.createEntity({
 								entityTemplateId: 'superkumba.level.collision_block',
 								config: {
-									"spell.component.box2d.simpleBox": {
+									"spell.component.physics.body": {},
+									"spell.component.physics.fixture": {},
+									"spell.component.physics.shape.box": {
 										"dimensions": [
 											connectedTiles * frameDimensions[ 0 ],
 											frameDimensions[ 1 ]
@@ -59,7 +61,7 @@ define(
 									}
 								}
 							})
-							
+
 							this.entitiesCreated.push( entityId )
 						}
 					}
@@ -85,7 +87,7 @@ define(
 			 */
 			init: function( spell ) {
 				var me = this
-				
+
 				spell.eventManager.subscribe(
 					[ Events.ASSET_UPDATED, '2dTileMap' ],
 					function( assetId ) {
@@ -103,7 +105,7 @@ define(
 		 	 * @param {Object} [spell] The spell object.
 			 */
 			destroy: function( spell ) {
-				
+
 				//remove all entities which were created by this system
 				_.each( this.entitiesCreated, function( entityId ) {
 					spell.entityManager.removeEntity( entityId )

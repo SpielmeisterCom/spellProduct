@@ -15,7 +15,11 @@
 				0
 			]
 		},
-		"spell.component.box2d.simpleBox": {},
+		"spell.component.physics.body": {},
+		"spell.component.physics.fixture": {},
+		"spell.component.physics.shape.box": {
+			"dimensions" : [ 2, 2 ]
+		},
 		"spell.component.visualObject": {}
 	},
 	"children": []

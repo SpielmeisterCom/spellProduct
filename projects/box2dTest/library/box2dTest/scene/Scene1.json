@@ -1,6 +1,46 @@
 {
 	"version": 1,
 	"type": "scene",
+	"libraryIds": [
+		"spell.component.2d.graphics.animatedAppearance",
+		"spell.component.2d.graphics.appearance",
+		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.debug.box",
+		"spell.component.2d.graphics.debug.circle",
+		"spell.component.2d.graphics.textAppearance",
+		"spell.component.2d.graphics.tilemap",
+		"spell.component.2d.transform",
+		"spell.component.actor",
+		"spell.component.animation.keyFrameAnimation",
+		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.root",
+		"spell.component.inputDefinition",
+		"spell.component.name",
+		"spell.component.physics.applyForce",
+		"spell.component.physics.applyImpulse",
+		"spell.component.physics.applyTorque",
+		"spell.component.physics.applyVelocity",
+		"spell.component.physics.body",
+		"spell.component.physics.fixture",
+		"spell.component.physics.setPosition",
+		"spell.component.physics.shape.box",
+		"spell.component.physics.shape.circle",
+		"spell.component.physics.shape.jumpAndRunPlayer",
+		"spell.component.visualObject",
+		"box2dTest.smallCrate",
+		"spell.entity.2d.graphics.camera",
+		"spell.entity.inputDefinition",
+		"box2dTest.bodyTest",
+		"spell.system.physics",
+		"spell.system.keyFrameAnimation",
+		"spell.system.keyInput",
+		"spell.system.render",
+		"box2dTest.crate_wood_1",
+		"box2dTest.crate_wood_2",
+		"box2dTest.mario_8bit",
+		"spell.OpenSans14px",
+		"spell.defaultAppearance"
+	],
 	"systems": {
 		"update": [],
 		"render": [
@@ -17,15 +57,21 @@
 				}
 			},
 			{
-				"id": "spell.system.box2D",
+				"id": "spell.system.physics",
 				"config": {
-					"active": true
+					"active": true,
+					"gravity": [
+						0,
+						-10
+					],
+					"scale": 1
 				}
 			},
 			{
 				"id": "spell.system.render",
 				"config": {
-					"active": true
+					"active": true,
+					"debug": false
 				}
 			}
 		]
@@ -65,16 +111,19 @@
 				"spell.component.2d.graphics.appearance": {
 					"assetId": "appearance:box2dTest.mario_8bit"
 				},
-				"spell.component.box2d.simpleBox": {
+				"spell.component.physics.body": {
+					"fixedRotation": true
+				},
+				"spell.component.physics.fixture": {
+					"friction": 1,
+					"restitution": 0.1,
+					"density": 65
+				},
+				"spell.component.physics.shape.box": {
 					"dimensions": [
 						1,
 						1.4
-					],
-					"friction": 1,
-					"restitution": 0.1,
-					"density": 65,
-					"fixedRotation": true,
-					"type": "dynamic"
+					]
 				}
 			}
 		},
@@ -83,12 +132,16 @@
 			"config": {
 				"spell.component.2d.transform": {},
 				"spell.component.visualObject": {},
-				"spell.component.box2d.simpleBox": {
+				"spell.component.physics.body": {
+					"fixedRotation": true,
+					"type": "static"
+				},
+				"spell.component.physics.fixture": {},
+				"spell.component.physics.shape.box": {
 					"dimensions": [
 						30,
 						2
-					],
-					"type": "static"
+					]
 				}
 			}
 		},
@@ -101,10 +154,13 @@
 						35
 					]
 				},
-				"spell.component.box2d.simpleSphere": {
-					"radius": 2,
+				"spell.component.physics.body": {},
+				"spell.component.physics.fixture": {
 					"restitution": 0.3,
 					"density": 2
+				},
+				"spell.component.physics.shape.circle": {
+					"radius": 2
 				}
 			}
 		},
@@ -121,14 +177,12 @@
 						1
 					]
 				},
-				"spell.component.box2d.simpleBox": {
-					"dimensions": [
-						1,
-						1
-					],
+				"spell.component.physics.body": {},
+				"spell.component.physics.fixture": {
 					"friction": 0.9,
 					"restitution": 0.5
-				}
+				},
+				"spell.component.physics.shape.box": {}
 			}
 		},
 		{
@@ -148,7 +202,7 @@
 						30
 					]
 				},
-				"spell.component.box2d.applyForce": {
+				"spell.component.physics.applyForce": {
 					"force": [
 						0,
 						0
@@ -200,46 +254,5 @@
 				"spell.component.visualObject": {}
 			}
 		}
-	],
-	"libraryIds": [
-		"box2dTest.bodyDef",
-		"box2dTest.fixtureDef",
-		"spell.component.2d.graphics.animatedAppearance",
-		"spell.component.2d.graphics.appearance",
-		"spell.component.2d.graphics.camera",
-		"spell.component.2d.graphics.debug.box",
-		"spell.component.2d.graphics.debug.circle",
-		"spell.component.2d.graphics.textAppearance",
-		"spell.component.2d.graphics.tilemap",
-		"spell.component.2d.transform",
-		"spell.component.actor",
-		"spell.component.animation.keyFrameAnimation",
-		"spell.component.box2d.applyForce",
-		"spell.component.box2d.applyImpulse",
-		"spell.component.box2d.applyTorque",
-		"spell.component.box2d.applyVelocity",
-		"spell.component.box2d.setPosition",
-		"spell.component.box2d.simpleBox",
-		"spell.component.box2d.simplePlayer",
-		"spell.component.box2d.simpleSphere",
-		"spell.component.entityComposite.children",
-		"spell.component.entityComposite.root",
-		"spell.component.inputDefinition",
-		"spell.component.name",
-		"spell.component.visualObject",
-		"box2dTest.smallCrate",
-		"spell.entity.2d.graphics.camera",
-		"spell.entity.inputDefinition",
-		"box2dTest.bodyTest",
-		"spell.system.box2D",
-		"spell.system.keyFrameAnimation",
-		"spell.system.keyInput",
-		"spell.system.render",
-		"box2dTest.crate_wood_1",
-		"box2dTest.crate_wood_2",
-		"box2dTest.mario_8bit",
-		"spell.OpenSans14px",
-		"spell.defaultAppearance",
-		"box2dTest.scene.Scene1"
 	]
 }

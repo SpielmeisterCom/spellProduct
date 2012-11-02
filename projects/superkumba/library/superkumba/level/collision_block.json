@@ -3,13 +3,17 @@
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.transform": {},
-		"spell.component.box2d.simpleBox": {
-			"type": "static",
+		"spell.component.physics.body": {
+			"type": "static"
+		},
+		"spell.component.physics.fixture": {
+			"restitution": 0
+		},
+		"spell.component.physics.shape.box": {
 			"dimensions": [
 				100,
 				100
-			],
-			"restitution": 0
+			]
 		}
 	},
 	"children": []

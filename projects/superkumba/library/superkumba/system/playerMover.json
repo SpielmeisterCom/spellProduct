@@ -19,16 +19,12 @@
 			"componentId": "spell.component.2d.transform"
 		},
 		{
-			"name": "simpleBoxes",
-			"componentId": "spell.component.box2d.simpleBox"
+			"name": "bodies",
+			"componentId": "spell.component.physics.body"
 		},
 		{
-			"name": "simpleSpheres",
-			"componentId": "spell.component.box2d.simpleSphere"
-		},
-		{
-			"name": "simplePlayers",
-			"componentId": "spell.component.box2d.simplePlayer"
+			"name": "jumpAndRunPlayerShapes",
+			"componentId": "spell.component.physics.shape.jumpAndRunPlayer"
 		},
 		{
 			"name": "jumpAndRunActors",

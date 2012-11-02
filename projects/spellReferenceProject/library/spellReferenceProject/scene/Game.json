@@ -12,14 +12,6 @@
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
-		"spell.component.box2d.applyForce",
-		"spell.component.box2d.applyImpulse",
-		"spell.component.box2d.applyTorque",
-		"spell.component.box2d.applyVelocity",
-		"spell.component.box2d.setPosition",
-		"spell.component.box2d.simpleBox",
-		"spell.component.box2d.simplePlayer",
-		"spell.component.box2d.simpleSphere",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
@@ -32,7 +24,7 @@
 		"spellReferenceProject.entity.alienSpacecraft",
 		"spellReferenceProject.entity.asteroid",
 		"spellReferenceProject.entity.spacecraft",
-		"spell.system.box2D",
+		"spell.system.physics",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.render",
@@ -80,7 +72,7 @@
 				}
 			},
 			{
-				"id": "spell.system.box2D",
+				"id": "spell.system.physics",
 				"config": {
 					"active": true,
 					"gravity": [
@@ -149,11 +141,11 @@
 				"spellReferenceProject.component.spacecraft": {
 					"thrusterForce": 25
 				},
-				"spell.component.box2d.simpleSphere": {
+				"spell.component.physics.shape.circle": {
 					"radius": 43
 				},
-				"spell.component.box2d.applyForce": {},
-				"spell.component.box2d.applyTorque": {}
+				"spell.component.physics.applyForce": {},
+				"spell.component.physics.applyTorque": {}
 			},
 			"children": [
 				{
@@ -206,11 +198,11 @@
 				"spellReferenceProject.component.spacecraft": {
 					"thrusterForce": 15
 				},
-				"spell.component.box2d.simpleSphere": {
+				"spell.component.physics.shape.circle": {
 					"radius": 23
 				},
-				"spell.component.box2d.applyForce": {},
-				"spell.component.box2d.applyTorque": {}
+				"spell.component.physics.applyForce": {},
+				"spell.component.physics.applyTorque": {}
 			},
 			"children": [
 				{
@@ -292,7 +284,7 @@
 				"spellReferenceProject.component.spacecraft": {
 					"thrusterForce": 300
 				},
-				"spell.component.box2d.simpleSphere": {
+				"spell.component.physics.shape.circle": {
 					"radius": 85
 				}
 			},
@@ -334,7 +326,7 @@
 						100
 					]
 				},
-				"spell.component.box2d.simpleSphere": {
+				"spell.component.physics.shape.circle": {
 					"radius": 34
 				}
 			},
@@ -363,7 +355,7 @@
 						4
 					]
 				},
-				"spell.component.box2d.simpleSphere": {
+				"spell.component.physics.shape.circle": {
 					"radius": 30
 				}
 			},
@@ -390,7 +382,7 @@
 						650
 					]
 				},
-				"spell.component.box2d.simpleSphere": {
+				"spell.component.physics.shape.circle": {
 					"radius": 14
 				}
 			}

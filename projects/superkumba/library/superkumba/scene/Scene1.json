@@ -17,7 +17,7 @@
 				}
 			},
 			{
-				"id": "superkumba.system.box2D",
+				"id": "superkumba.system.physics",
 				"config": {
 					"active": true,
 					"scale": 0.01
@@ -204,20 +204,25 @@
 						}
 					}
 				},
-				"spell.component.box2d.applyForce": {
+				"spell.component.physics.applyForce": {
 					"force": [
 						0,
 						0
 					]
 				},
 				"spellStaged.jumpAndRun.actor": {},
-				"spell.component.box2d.simplePlayer": {
+				"spell.component.physics.body": {
+					"fixedRotation" : true
+				},
+				"spell.component.physics.fixture": {
+					"friction": 0.02,
+					"restitution": 0
+				},
+				"spell.component.physics.shape.jumpAndRunPlayer": {
 					"dimensions": [
 						30,
 						80
-					],
-					"friction": 0.02,
-					"restitution": 0
+					]
 				}
 			}
 		},
@@ -257,13 +262,10 @@
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
-		"spell.component.box2d.applyForce",
-		"spell.component.box2d.applyImpulse",
-		"spell.component.box2d.applyTorque",
-		"spell.component.box2d.applyVelocity",
-		"spell.component.box2d.simpleBox",
-		"spell.component.box2d.simplePlayer",
-		"spell.component.box2d.simpleSphere",
+		"spell.component.physics.applyForce",
+		"spell.component.physics.applyImpulse",
+		"spell.component.physics.applyTorque",
+		"spell.component.physics.applyVelocity",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
@@ -273,11 +275,11 @@
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
 		"superkumba.level.collision_block",
-		"spell.system.box2D",
+		"spell.system.physics",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.render",
-		"superkumba.system.box2D",
+		"superkumba.system.physics",
 		"superkumba.system.cameraMover",
 		"superkumba.system.createTilePhysics",
 		"superkumba.system.playerMover",

@@ -12,8 +12,8 @@ define(
 			topBorder           = playingFieldSize[ 1 ] + border,
 			bottomBorder        = 0 - border
 
-		var updatePosition = function( entityManager, simpleBodies, transforms ) {
-			for( var id in simpleBodies ) {
+		var updatePosition = function( entityManager, bodies, transforms ) {
+			for( var id in bodies ) {
 				var transform = transforms[ id ],
 					position  = transform.translation,
 					updated   = true
@@ -37,7 +37,7 @@ define(
 				if( updated ) {
 					entityManager.addComponent(
 						id,
-						'spell.component.box2d.setPosition',
+						'spell.component.physics.setPosition',
 						{
 							value : position
 						}
@@ -50,12 +50,10 @@ define(
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var entityManager = spell.entityManager,
-				simpleBoxes   = this.simpleBoxes,
-				simpleSpheres = this.simpleSpheres,
+				bodies        = this.bodies,
 				transforms    = this.transforms
 
-			updatePosition( entityManager, simpleBoxes, transforms )
-			updatePosition( entityManager, simpleSpheres, transforms )
+			updatePosition( entityManager, bodies, transforms )
 		}
 
 

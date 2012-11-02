@@ -37,7 +37,7 @@ define(
 		var startMovingX = function( entityManager, playerEntityId, force, impulse ) {
 			entityManager.addComponent(
 				playerEntityId,
-				'spell.component.box2d.applyImpulse',
+				'spell.component.physics.applyImpulse',
 				{
 					impulse : [ impulse, 0 ]
 				}
@@ -45,7 +45,7 @@ define(
 
 			entityManager.updateComponent(
 				playerEntityId,
-				'spell.component.box2d.applyForce',
+				'spell.component.physics.applyForce',
 				{
 					force : [ force, 0 ]
 				}
@@ -77,9 +77,7 @@ define(
 				actors                  = this.actors,
 				animatedAppearances     = this.animatedAppearances,
 				transforms              = this.transforms,
-				simpleBoxes             = this.simpleBoxes,
-				simpleSpheres           = this.simpleSpheres,
-				simplePlayers           = this.simplePlayers,
+				bodies                  = this.bodies,
 				jumpActionStartedQueue  = this.jumpActionStartedQueue,
 				rightActionStartedQueue = this.rightActionStartedQueue,
 				rightActionStoppedQueue = this.rightActionStoppedQueue,
@@ -96,7 +94,7 @@ define(
 				if( jumpAndRunActor.isGrounded ) {
 					entityManager.addComponent(
 						playerEntityId,
-						'spell.component.box2d.applyImpulse',
+						'spell.component.physics.applyImpulse',
 						{
 							impulse : [ 0, 130 ]
 						}
@@ -148,7 +146,7 @@ define(
 				// stop movement force
 				entityManager.updateComponent(
 					playerEntityId,
-					'spell.component.box2d.applyForce',
+					'spell.component.physics.applyForce',
 					{
 						force : [ 0, 0 ]
 					}
@@ -162,13 +160,13 @@ define(
 				jumpAndRunActor.isGrounded ) {
 
 				// apply dampening
-				var simplePlayer = simplePlayers[ playerEntityId ]
+				var body = bodies[ playerEntityId ]
 
 				entityManager.addComponent(
 					playerEntityId,
-					'spell.component.box2d.applyVelocity',
+					'spell.component.physics.applyVelocity',
 					{
-						velocity : [ simplePlayer.velocity[ 0 ] * 0.8, simplePlayer.velocity[ 1 ] ]
+						velocity : [ body.velocity[ 0 ] * 0.8, body.velocity[ 1 ] ]
 					}
 				)
 
