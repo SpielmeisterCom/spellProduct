@@ -64,8 +64,8 @@ echo Stripping down export...
 rm -Rf $DEST_DIR/spellCore/docs $DEST_DIR/spellCore/misc
 
 #echo Reinitializing demo projects...
-#for PROJECT in $(ls "$DEST_DIR/projects"); do
-#  cd $DEST_DIR/projects/$PROJECT
-#  ../../spellCore/sappre init
-#  cd $CUR_DIR
-#done
+for PROJECT in $(ls "$DEST_DIR/projects"); do
+  cd $DEST_DIR/projects/$PROJECT
+  ../../spellCore/sappre init
+  cd $CUR_DIR
+done
