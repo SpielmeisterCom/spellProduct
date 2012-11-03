@@ -13,3 +13,6 @@
 [submodule "modules/extjs"]
 	path = modules/extjs
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/extjs.git
+[submodule "modules/jsduck"]
+	path = modules/jsduck
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/jsduck.git
