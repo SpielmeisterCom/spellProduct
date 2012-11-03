@@ -1,15 +1,15 @@
 [submodule "modules/spellCore"]
 	path = modules/spellCore
-	url = git@git.spielmeister.com:spellCore.git
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellcore.git 
 [submodule "modules/spellFlash"]
 	path = modules/spellFlash
-	url = git@git.spielmeister.com:spellFlash.git
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellflash.git
 [submodule "modules/spellEd"]
 	path = modules/spellEd
-	url = git@git.spielmeister.com:spellEd.git
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spelled.git
 [submodule "modules/ace"]
 	path = modules/ace
 	url = https://github.com/Spielmeister/ace.git
 [submodule "modules/extjs"]
 	path = modules/extjs
-	url = https://github.com/Spielmeister/extjs.git
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/extjs.git
