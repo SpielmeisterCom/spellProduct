@@ -1,15 +1,21 @@
 #!/bin/sh
 
-VERSION=$(cat VERSION)
+VERSION=$1
+if [ -z "VERSION" ] ; then
+    echo "Usage: $0 <VERSION>"
+    exit -1
+fi
+
 CUR_DIR=$(pwd)
-DEST_DIR=generated/$VERSION
+DEST_DIR=build
 
 echo Building version $VERSION
 
-if [ -d $DEST_DIR ]; then
-	echo Destination dir $DEST_DIR already exists, purging directory!
-	rm -Rf $DEST_DIR
-fi
+echo Purging build directory...
+rm -Rf $DEST_DIR/*
+
+
+echo $VERSION >$DEST_DIR/VERSION
 
 echo Preparing deploy directory $DEST_DIR...
 

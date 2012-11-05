@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=$(cat VERSION)
+VERSION=$(cat build/VERSION)
 
 cd modules/spellEd
 git add public/app-configuration.js
