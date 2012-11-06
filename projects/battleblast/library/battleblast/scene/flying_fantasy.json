@@ -43,7 +43,6 @@
 		"spellDemo.logo.entity",
 		"battleblast.levels.doom_elevator.doom_elevator_background_animation",
 		"battleblast.system.animateClouds",
-		"spell.system.box2D",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.physics",

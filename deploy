@@ -1,7 +1,7 @@
 #!/bin/sh
 
-VERSION=$(cat VERSION)
-DEST_DIR=generated/$VERSION
+VERSION=$(cat build/VERSION)
+DEST_DIR=build
 HOST=spelled.spielmeister.com
 
 if [ ! -d $DEST_DIR ]; then
@@ -9,14 +9,17 @@ if [ ! -d $DEST_DIR ]; then
 	exit 0 
 fi
 
+echo Creating directory on host $HOST
+ssh root@$HOST "mkdir /opt/spellEngine/$VERSION"
+
 echo Deploying version $VERSION on host $HOST
-rsync -avzC --delete $DEST_DIR root@$HOST:/opt/spellEngine
+rsync -avzC --delete $DEST_DIR/* root@$HOST:/opt/spellEngine/$VERSION
 
 echo Symlinking "latest" to version $VERSION
 ssh root@$HOST "rm /opt/spellEngine/latest && ln -sf /opt/spellEngine/$VERSION /opt/spellEngine/latest"
 
 echo Syncing user and tools...
-rsync -vz live-server/* VERSION root@$HOST:/root
+rsync -vz live-server/* build/VERSION root@$HOST:/root
 
 echo Recreating vhosts and restarting apache...
 ssh root@$HOST "cd /root && ./generate_vhosts_and_users"
