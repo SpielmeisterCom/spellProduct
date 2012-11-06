@@ -38,7 +38,7 @@ define(
 		 * @param {Object} [spell] The spell object.
 		 */
 		var BodyTest = function( spell ) {
-			this.inputEvents = spell.inputEvents
+			this.inputEvents = spell.inputManager.getInputEvents()
 		}
 
 		BodyTest.prototype = {
