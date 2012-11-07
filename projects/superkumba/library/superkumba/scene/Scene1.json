@@ -186,7 +186,10 @@
 						300
 					]
 				},
-				"spell.component.visualObject": {}
+				"spell.component.visualObject": {
+					"opacity": 1,
+					"layer": 0
+				}
 			},
 			"children": [
 				{
@@ -264,7 +267,9 @@
 						700
 					]
 				},
-				"spell.component.visualObject": {},
+				"spell.component.visualObject": {
+					"layer": 2
+				},
 				"spell.component.animation.keyFrameAnimation": {
 					"assetId": "keyFrameAnimation:superkumba.actor.mosquito.up_and_down"
 				}
@@ -283,7 +288,9 @@
 						1
 					]
 				},
-				"spell.component.visualObject": {},
+				"spell.component.visualObject": {
+					"layer": 2
+				},
 				"spell.component.2d.graphics.animatedAppearance": {
 					"assetId": "animation:superkumba.actor.kiba.running"
 				},
@@ -333,7 +340,9 @@
 		{
 			"name": "level",
 			"config": {
-				"spell.component.visualObject": {},
+				"spell.component.visualObject": {
+					"layer": 1
+				},
 				"spell.component.2d.transform": {
 					"scale": [
 						1,
