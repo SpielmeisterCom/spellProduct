@@ -6,9 +6,13 @@
 define(
 	'spell/system/debug/camera',
 	[
+		'spell/math/vec2',
+		'spell/math/mat3',
 		'spell/functions'
 	],
 	function(
+		vec2,
+		mat3,
 		_
 		) {
 		'use strict'
@@ -36,7 +40,7 @@ define(
 		}
 
 
-		var processEvent = function ( event ) {
+		var processEvent = function ( spell, event ) {
 
 			if ( event.type == 'mousewheel' ) {
 				//zoom camera in and out on mousewheel event
@@ -58,6 +62,8 @@ define(
 				if ( window !== undefined )
 					window.focus()
 
+				var worldPosition = spell.renderingContext.transformScreenToWorld( event.position )
+
 				var currentTranslation = this.transforms[ this.editorCameraEntityId ].translation,
 					currentScale = this.transforms[ this.editorCameraEntityId ].scale
 
@@ -72,11 +78,11 @@ define(
 
 				this.lastMousePosition = [ event.position[ 0 ], event.position[ 1 ] ]
 
-			} else if ( event.type == 'keydown' && ( event.keyCode == 17 || event.keyCode == 91 ) ) { //strg or cmd
+			} else if ( event.type == 'mousedown' ) {
 				this.lastMousePosition  = null
 				this.draggingEnabled    = true
 
-			} else if ( event.type == 'keyup' && ( event.keyCode == 17 || event.keyCode == 91 ) ) { //strg or cmd
+			} else if ( event.type == 'mouseup' ) {
 				this.lastMousePosition  = null
 				this.draggingEnabled    = false
 			}
@@ -174,7 +180,7 @@ define(
 				var inputEvents      = spell.inputManager.getInputEvents()
 				for( var i = 0, numInputEvents = inputEvents.length; i < numInputEvents; i++ ) {
 
-					processEvent.call( this, inputEvents[ i ] )
+					processEvent.call( this, spell, inputEvents[ i ] )
 
 				}
 			}
