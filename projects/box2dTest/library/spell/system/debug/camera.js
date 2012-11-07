@@ -42,8 +42,8 @@ define(
 				//zoom camera in and out on mousewheel event
 				var currentScale = this.transforms[ this.editorCameraEntityId ].scale
 
-				currentScale[0] = currentScale[0] + ( 0.5 * event.direction * -1 )
-				currentScale[1] = currentScale[1] + ( 0.5 * event.direction * -1 )
+				currentScale[0] = currentScale[0] + ( 0.75 * event.direction * -1 )
+				currentScale[1] = currentScale[1] + ( 0.75 * event.direction * -1 )
 
 				if (currentScale[0] < 0.5) {
 					currentScale[0] = 0.5
@@ -52,6 +52,33 @@ define(
 				if (currentScale[1] < 0.5) {
 					currentScale[1] = 0.5
 				}
+
+			} else if ( event.type == 'mousemove' && this.draggingEnabled ) {
+
+				if ( window !== undefined )
+					window.focus()
+
+				var currentTranslation = this.transforms[ this.editorCameraEntityId ].translation,
+					currentScale = this.transforms[ this.editorCameraEntityId ].scale
+
+				if ( this.lastMousePosition === null ) {
+					//first sample of mouse movement
+					this.lastMousePosition = [ event.position[ 0 ], event.position[ 1 ] ]
+					return
+				}
+
+				currentTranslation[ 0 ] -= ( event.position[ 0 ] - this.lastMousePosition[ 0 ] ) * currentScale[ 0 ]
+				currentTranslation[ 1 ] += ( event.position[ 1 ] - this.lastMousePosition[ 1 ] ) * currentScale[ 1 ]
+
+				this.lastMousePosition = [ event.position[ 0 ], event.position[ 1 ] ]
+
+			} else if ( event.type == 'keydown' && ( event.keyCode == 17 || event.keyCode == 91 ) ) { //strg or cmd
+				this.lastMousePosition  = null
+				this.draggingEnabled    = true
+
+			} else if ( event.type == 'keyup' && ( event.keyCode == 17 || event.keyCode == 91 ) ) { //strg or cmd
+				this.lastMousePosition  = null
+				this.draggingEnabled    = false
 			}
 		}
 
@@ -62,7 +89,8 @@ define(
 		 * @param {Object} [spell] The spell object.
 		 */
 		var camera = function( spell ) {
-
+			this.lastMousePosition = null
+			this.draggingEnabled = false
 		}
 
 		camera.prototype = {
