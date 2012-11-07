@@ -111,14 +111,15 @@ define(
 
 					spell.entityManager.removeEntity( id )
 
-				} else if( event.type === 'keydown' &&
-					event.keyCode === keyCodes.LEFT_ARROW ) {
+				} else if( event.type === 'mousedown'  ) {
+
+					var worldPosition = spell.renderingContext.transformScreenToWorld( event.position )
 
 					spell.entityManager.createEntity( {
 						entityTemplateId : 'box2dTest.smallCrate',
 						config : {
 							"spell.component.2d.transform" : {
-								"translation" : createSpawnPosition()
+								"translation" : worldPosition
 							}
 						}
 					} )

@@ -31,6 +31,7 @@
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
 		"box2dTest.bodyTest",
+		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.physics",
@@ -218,7 +219,7 @@
 			"name": "hint",
 			"config": {
 				"spell.component.2d.graphics.textAppearance": {
-					"text": "press left, right arrow to create and destroy boxes"
+					"text": "use mouse button to create boxes"
 				},
 				"spell.component.2d.transform": {
 					"scale": [
