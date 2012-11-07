@@ -1,6 +1,11 @@
 {
 	"version": 1,
-	"config": {},
+	"config": {
+		"screenSize": [
+			"595",
+			"425"
+		]
+	},
 	"startScene": "superkumba.scene.Scene1",
 	"type": "project",
 	"scenes": [
