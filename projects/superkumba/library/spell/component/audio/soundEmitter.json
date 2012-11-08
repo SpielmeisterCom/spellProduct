@@ -1,13 +1,13 @@
 {
 	"version": 1,
 	"type": "component",
-	"title": "",
+	"title": "Sound",
 	"doc": "",
-	"icon": "",
+	"icon": "/images/icons/asset-sound.png",
 	"attributes": [
 		{
 			"name": "assetId",
-			"default": "sound:defaultSound",
+			"default": "sound:spell.defaultSound",
 			"type": "assetId:sound"
 		},
 		{
