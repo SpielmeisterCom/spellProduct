@@ -170,6 +170,12 @@
 					"active": true,
 					"debug": false
 				}
+			},
+			{
+				"id": "spell.system.audio",
+				"config": {
+					"active": true
+				}
 			}
 		]
 	},

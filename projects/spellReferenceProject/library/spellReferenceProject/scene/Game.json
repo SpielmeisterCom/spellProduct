@@ -109,6 +109,12 @@
 					"active": true,
 					"debug": false
 				}
+			},
+			{
+				"id": "spell.system.audio",
+				"config": {
+					"active": true
+				}
 			}
 		]
 	},
@@ -321,7 +327,7 @@
 						"spell.component.2d.graphics.animatedAppearance": {},
 						"spell.component.2d.transform": {},
 						"spell.component.visualObject": {}
-					}
+				}
 				}
 			]
 		},
@@ -346,7 +352,7 @@
 						"spell.component.2d.graphics.animatedAppearance": {},
 						"spell.component.2d.transform": {},
 						"spell.component.visualObject": {}
-					}
+			}
 				}
 			]
 		},
@@ -377,8 +383,8 @@
 						},
 						"spell.component.2d.transform": {},
 						"spell.component.visualObject": {}
+						}
 					}
-				}
 			]
 		},
 		{
