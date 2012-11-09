@@ -26,41 +26,40 @@ define(
 				maxX				= tilemapDimensions[ 0 ],
 				maxY				= tilemapDimensions[ 1 ]
 
-				for ( var y = 0; y < maxY; y++) {
-					for (var x = 0; x < maxX; x++) {
-
+				for( var y = 0; y < maxY; y++ ) {
+					for( var x = 0; x < maxX; x++ ) {
 						connectedTiles = 0
 
-						//find out how many connected tiles are in this row
-						while (
-							((x + connectedTiles) < maxX) &&
+						// find out how many connected tiles are in this row
+						while(
+							( ( x + connectedTiles ) < maxX ) &&
 							tilemapData [ y ] [ x + connectedTiles ] !== null
 						) {
 							connectedTiles++
 						}
 
-						if ( connectedTiles > 0 ) {
+						if( connectedTiles > 0 ) {
 							x = x + connectedTiles - 1
 
-							var entityId = spell.entityManager.createEntity({
+							var entityId = spell.entityManager.createEntity( {
 								entityTemplateId: 'superkumba.level.collision_block',
 								config: {
 									"spell.component.physics.body": {},
 									"spell.component.physics.fixture": {},
 									"spell.component.physics.shape.box": {
-										"dimensions": [
+										dimensions: [
 											connectedTiles * frameDimensions[ 0 ],
 											frameDimensions[ 1 ]
 										]
 									},
 									"spell.component.2d.transform": {
-										"translation": [
-											( x + 1 - connectedTiles / 2 ) * frameDimensions[0],
-											-50 + tilemapDimensions[1] * frameDimensions[1] - y * frameDimensions[1]
+										translation: [
+											( x + 1 - connectedTiles / 2 ) * frameDimensions[ 0 ],
+											frameDimensions[ 1 ] / -2 + tilemapDimensions[ 1 ] * frameDimensions[ 1 ] - y * frameDimensions[ 1 ]
 										]
 									}
 								}
-							})
+							} )
 
 							this.entitiesCreated.push( entityId )
 						}
@@ -91,9 +90,9 @@ define(
 				spell.eventManager.subscribe(
 					[ Events.ASSET_UPDATED, '2dTileMap' ],
 					function( assetId ) {
-						me.prototype.destroy.call(me, spell)
-						for (var entityId in me.tilemaps) {
-							createPhysicEntities.call(me, spell, me.tilemaps[ entityId ] )
+						me.prototype.destroy.call( me, spell )
+						for( var entityId in me.tilemaps ) {
+							createPhysicEntities.call( me, spell, me.tilemaps[ entityId ] )
 						}
 					}
 				)
@@ -138,9 +137,9 @@ define(
 			 * @param {Object} [deltaTimeInMs] The elapsed time in ms.
 			 */
 			process: function( spell, timeInMs, deltaTimeInMs ) {
-				if ( ! this.initialized ) {
-					for (var entityId in this.tilemaps) {
-						createPhysicEntities.call(this, spell, this.tilemaps[ entityId ] )
+				if( !this.initialized ) {
+					for( var entityId in this.tilemaps ) {
+						createPhysicEntities.call( this, spell, this.tilemaps[ entityId ] )
 					}
 
 					this.initialized = true

@@ -3,10 +3,10 @@
 	"type": "asset",
 	"subtype": "spriteSheet",
 	"config": {
-		"textureWidth": "500",
-		"textureHeight": "500",
-		"frameWidth": "100",
-		"frameHeight": "100"
+		"textureWidth": 320,
+		"textureHeight": 320,
+		"frameWidth": 64,
+		"frameHeight": 64
 	},
 	"file": "tiles.png"
 }

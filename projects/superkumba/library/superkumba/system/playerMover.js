@@ -20,6 +20,8 @@ define(
 		'use strict'
 
 
+		var playerAppearanceName = 'playerAppearance'
+
 		var toCamelCase = function( it ) {
 			return it.replace(
 				/([A-Z]+)/g,
@@ -56,12 +58,12 @@ define(
 			transform.scale[ 0 ] = transform.scale[ 0 ] * rightward ? 1 : -1
 		}
 
-		var updateAppearance = function( entityManager, entityId, assetId, looped, replaySpeed ) {
+		var updateAppearance = function( entityManager, entityName, assetId, looped, replaySpeed ) {
 			if( !replaySpeed ) replaySpeed = 1
 			if( looped === undefined ) looped = true
 
 			entityManager.updateComponent(
-				entityId,
+				entityManager.getEntityIdsByName( entityName )[ 0 ],
 				'spell.component.2d.graphics.animatedAppearance',
 				{
 					assetId : assetId,
@@ -75,7 +77,6 @@ define(
         var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var entityManager           = spell.entityManager,
 				actors                  = this.actors,
-				animatedAppearances     = this.animatedAppearances,
 				transforms              = this.transforms,
 				bodies                  = this.bodies,
 				jumpActionStartedQueue  = this.jumpActionStartedQueue,
@@ -86,21 +87,22 @@ define(
 
 			var playerEntityId  = entityManager.getEntityIdsByName( 'player' )[ 0 ],
 				jumpAndRunActor = this.jumpAndRunActors[ playerEntityId ],
+				isGrounded      = jumpAndRunActor.isGrounded,
 				actor           = actors[ playerEntityId ]
 
 			if( jumpActionStartedQueue.length > 0 ) {
 				jumpActionStartedQueue.length = 0
 
-				if( jumpAndRunActor.isGrounded ) {
+				if( isGrounded ) {
 					entityManager.addComponent(
 						playerEntityId,
 						'spell.component.physics.applyImpulse',
 						{
-							impulse : [ 0, 130 ]
+							impulse : [ 0, 75 ]
 						}
 					)
 
-					updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.jumping', false, 0.4 )
+					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.jumping', false, 0.4 )
 
 					// only one impulse component at a time is allowed
 					return
@@ -110,30 +112,36 @@ define(
 			if( rightActionStartedQueue.length > 0 ) {
 				this.wantsToMove = true
 
-				startMovingX(
-					entityManager,
-					playerEntityId,
-					50,
-					jumpAndRunActor.isGrounded ? 75 : 25
-				)
+				if( isGrounded ) {
+					startMovingX(
+						entityManager,
+						playerEntityId,
+						25,
+						isGrounded ? 30 : 15
+					)
+
+					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
+				}
 
 				updateDirection( transforms[ playerEntityId ], true )
-				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.running' )
 
 				rightActionStartedQueue.length = 0
 
 			} else if( leftActionStartedQueue.length > 0 ) {
 				this.wantsToMove = true
 
-				startMovingX(
-					entityManager,
-					playerEntityId,
-					-50,
-					jumpAndRunActor.isGrounded ? -75 : -25
-				)
+				if( isGrounded ) {
+					startMovingX(
+						entityManager,
+						playerEntityId,
+						-25,
+						isGrounded ? -30 : -15
+					)
+
+					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
+				}
 
 				updateDirection( transforms[ playerEntityId ], false )
-				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.running' )
 
 				leftActionStartedQueue.length = 0
 			}
@@ -157,7 +165,7 @@ define(
 			}
 
 			if( !this.wantsToMove &&
-				jumpAndRunActor.isGrounded ) {
+				isGrounded ) {
 
 				// apply dampening
 				var body = bodies[ playerEntityId ]
@@ -166,11 +174,11 @@ define(
 					playerEntityId,
 					'spell.component.physics.applyVelocity',
 					{
-						velocity : [ body.velocity[ 0 ] * 0.8, body.velocity[ 1 ] ]
+						velocity : [ body.velocity[ 0 ] * 0.9, body.velocity[ 1 ] ]
 					}
 				)
 
-				updateAppearance( entityManager, playerEntityId, 'animation:superkumba.actor.kiba.standing' )
+				updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
 			}
         }
 

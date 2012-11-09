@@ -31,6 +31,8 @@
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
 		"superkumba.level.collision_block",
+		"superkumba.level.icePlate",
+		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.physics",
@@ -90,6 +92,7 @@
 		"superkumba.level.ground_high_end_right",
 		"superkumba.level.ground_low",
 		"superkumba.level.ground_low_end_right",
+		"superkumba.level.ground_low_ice",
 		"superkumba.level.ground_slant_up",
 		"superkumba.level.platform_short",
 		"superkumba.level.platform_wide",
@@ -117,17 +120,6 @@
 				}
 			},
 			{
-				"id": "superkumba.system.physics",
-				"config": {
-					"active": true,
-					"gravity": [
-						0,
-						-10
-					],
-					"scale": 0.01
-				}
-			},
-			{
 				"id": "superkumba.system.playerMover",
 				"config": {
 					"active": true
@@ -149,7 +141,18 @@
 				"id": "spell.system.render",
 				"config": {
 					"active": true,
-					"debug": false
+					"debug": true
+				}
+			},
+			{
+				"id": "superkumba.system.physics",
+				"config": {
+					"active": true,
+					"gravity": [
+						0,
+						-10
+					],
+					"scale": 0.01
 				}
 			},
 			{
@@ -167,14 +170,14 @@
 			"config": {
 				"spell.component.2d.graphics.camera": {
 					"active": true,
-					"width": 700,
-					"height": 500,
+					"width": 900,
+					"height": 600,
 					"clearUnsafeArea": false
 				},
 				"spell.component.2d.transform": {
 					"scale": [
-						2,
-						2
+						1,
+						1
 					],
 					"translation": [
 						700,
@@ -182,80 +185,6 @@
 					]
 				}
 			}
-		},
-		{
-			"name": "background",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						500,
-						300
-					]
-				},
-				"spell.component.visualObject": {
-					"opacity": 1,
-					"layer": 0
-				}
-			},
-			"children": [
-				{
-					"name": "sky",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:superkumba.background.bg_layer4"
-						},
-						"spell.component.2d.transform": {
-							"translation": [
-								0,
-								0
-							],
-							"scale": [
-								5,
-								5
-							]
-						},
-						"spell.component.visualObject": {}
-					}
-				},
-				{
-					"name": "grass",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:superkumba.background.bg_layer2"
-						},
-						"spell.component.2d.transform": {
-							"scale": [
-								1.83,
-								1.83
-							],
-							"translation": [
-								200,
-								-150
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 3
-						}
-					}
-				},
-				{
-					"name": "mountain",
-					"config": {
-						"spell.component.2d.graphics.appearance": {
-							"assetId": "appearance:superkumba.background.bg_layer3"
-						},
-						"spell.component.2d.transform": {
-							"scale": [
-								1,
-								1
-							]
-						},
-						"spell.component.visualObject": {
-							"layer": 2
-						}
-					}
-				}
-			]
 		},
 		{
 			"name": "fly",
@@ -297,9 +226,6 @@
 				"spell.component.visualObject": {
 					"layer": 2
 				},
-				"spell.component.2d.graphics.animatedAppearance": {
-					"assetId": "animation:superkumba.actor.kiba.running"
-				},
 				"spell.component.inputDefinition": {
 					"assetId": "keyToActionMap:superkumba.keyboard_map",
 					"actorId": "player"
@@ -333,21 +259,44 @@
 				},
 				"spell.component.physics.fixture": {
 					"friction": 0.02,
-					"restitution": 0
+					"restitution": 0,
+					"density": 1
 				},
 				"spell.component.physics.shape.jumpAndRunPlayer": {
 					"dimensions": [
 						30,
-						80
+						50
 					]
 				}
-			}
+			},
+			"children": [
+				{
+					"name": "playerAppearance",
+					"config": {
+						"spell.component.2d.graphics.animatedAppearance": {
+							"assetId": "animation:superkumba.actor.kiba.running"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								5,
+								4
+							],
+							"scale": [
+								0.7,
+								0.7
+							]
+						},
+						"spell.component.visualObject": {}
+					}
+				}
+			]
 		},
 		{
 			"name": "level",
 			"config": {
 				"spell.component.visualObject": {
-					"layer": 1
+					"layer": 1,
+					"opacity": 1
 				},
 				"spell.component.2d.transform": {
 					"scale": [
@@ -364,10 +313,110 @@
 							"assetId": "2dTileMap:test"
 						},
 						"spell.component.2d.transform": {},
-						"spell.component.visualObject": {}
+						"spell.component.visualObject": {
+							"opacity": 1
+						}
 					}
+				},
+				{
+					"name": "background",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								500,
+								300
+							]
+						},
+						"spell.component.visualObject": {
+							"opacity": 1,
+							"layer": 0
+						}
+					},
+					"children": [
+						{
+							"name": "sky",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:superkumba.background.bg_layer4"
+								},
+								"spell.component.2d.transform": {
+									"translation": [
+										0,
+										0
+									],
+									"scale": [
+										5,
+										5
+									]
+								},
+								"spell.component.visualObject": {}
+							}
+						},
+						{
+							"name": "grass",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:superkumba.background.bg_layer2"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										1.83,
+										1.83
+									],
+									"translation": [
+										200,
+										-150
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 3
+								}
+							}
+						},
+						{
+							"name": "mountain",
+							"config": {
+								"spell.component.2d.graphics.appearance": {
+									"assetId": "appearance:superkumba.background.bg_layer3"
+								},
+								"spell.component.2d.transform": {
+									"scale": [
+										1,
+										1
+									]
+								},
+								"spell.component.visualObject": {
+									"layer": 2
+								}
+							}
+						}
+					]
 				}
 			]
+		},
+		{
+			"name": "icePlate",
+			"entityTemplateId": "superkumba.level.icePlate",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						-32,
+						96
+					]
+				}
+			}
+		},
+		{
+			"name": "icePlate2",
+			"entityTemplateId": "superkumba.level.icePlate",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						-96,
+						96
+					]
+				}
+			}
 		}
 	]
 }

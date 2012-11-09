@@ -21,6 +21,7 @@ define(
 			createB2Vec2            = Box2D.Common.Math.createB2Vec2,
 			createB2World           = Box2D.Dynamics.createB2World,
 			createB2FixtureDef      = Box2D.Dynamics.createB2FixtureDef,
+			createB2DebugDraw       = Box2D.Dynamics.createB2DebugDraw,
 			createB2Body            = Box2D.Dynamics.createB2Body,
 			b2Body                  = Box2D.Dynamics.b2Body,
 			createB2BodyDef         = Box2D.Dynamics.createB2BodyDef,
@@ -28,11 +29,9 @@ define(
 			createB2PolygonShape    = Box2D.Collision.Shapes.createB2PolygonShape,
 			createB2CircleShape     = Box2D.Collision.Shapes.createB2CircleShape
 
-		var awakeColor      = [ 0.82, 0.76, 0.07 ],
-			notAwakeColor   = [ 0.27, 0.25, 0.02 ],
-			maxVelocity     = 20
-
-
+		var awakeColor    = [ 0.82, 0.76, 0.07 ],
+			notAwakeColor = [ 0.27, 0.25, 0.02 ],
+			maxVelocity   = 20
 
 		var updateJumpAndRunActors = function( world, jumpAndRunActors, isGroundedQueue, isNotGroundedQueue ) {
 			var numIsGrounded    = isGroundedQueue.length,
@@ -46,6 +45,8 @@ define(
 				if( jumpAndRunActor ) {
 					jumpAndRunActor.isGrounded = true
 				}
+
+				console.log( 'isGrounded: true' )
 			}
 
 			if( numIsGrounded ) {
@@ -60,6 +61,8 @@ define(
 				if( jumpAndRunActor ) {
 					jumpAndRunActor.isGrounded = false
 				}
+
+				console.log( 'isGrounded: false' )
 			}
 
 			if( numIsNotGrounded ) {
@@ -87,9 +90,21 @@ define(
 				}
 			}
 
+			var log = function( next, contact, manifold ) {
+				console.log( 'endContact' )
+				next( contact, manifold )
+			}
+
+//			return createB2ContactListener(
+//				createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) ),
+//				createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ),
+//				null,
+//				null
+//			)
+
 			return createB2ContactListener(
 				createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) ),
-				createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ),
+				_.bind( log, null, createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ) ),
 				null,
 				null
 			)
@@ -138,6 +153,8 @@ define(
 						height : boxesqueShape.dimensions[ 1 ]
 					}
 				}
+
+				debugger
 
 				spell.entityManager.addComponent(
 					entityId,
@@ -193,28 +210,39 @@ define(
 
 			} else if( playerShape ) {
 				var halfWidth  = playerShape.dimensions[ 0 ] / 2 * worldToPhysicsScale,
-					halfHeight = playerShape.dimensions[ 1 ] / 2 * worldToPhysicsScale
+					footRadius = halfWidth,
+					halfHeight = playerShape.dimensions[ 1 ] / 2 * worldToPhysicsScale - footRadius / 2
 
 				// main shape
 				fixtureDef.shape = createB2PolygonShape()
-				fixtureDef.shape.SetAsBox( halfWidth, halfHeight )
+				fixtureDef.shape.SetAsOrientedBox( halfWidth, halfHeight, createB2Vec2( 0, footRadius / 2 ) )
 
 				bodyDef.CreateFixture( fixtureDef )
 
-				// foot sensor shape
-				var radius         = halfWidth,
-					footFixtureDef = createB2FixtureDef()
+				// foot shape
+				var footFixtureDef = createB2FixtureDef()
 
-//				footFixtureDef.density     = fixture.density
-//				footFixtureDef.friction    = fixture.friction
-//				footFixtureDef.restitution = fixture.restitution
-
-				footFixtureDef.isSensor = true
-				footFixtureDef.userData = { type : 'footSensor', id : entityId }
-				footFixtureDef.shape = createB2CircleShape( radius )
-				footFixtureDef.shape.SetLocalPosition( createB2Vec2( 0, -1 * halfHeight ) )
+				footFixtureDef.density     = fixture.density / 2
+				footFixtureDef.friction    = fixture.friction
+				footFixtureDef.restitution = fixture.restitution
+				footFixtureDef.shape       = createB2CircleShape( footRadius )
+				footFixtureDef.shape.SetLocalPosition( createB2Vec2( 0, halfHeight * -1 + footRadius / 2 ) )
 
 				bodyDef.CreateFixture( footFixtureDef )
+
+				// foot sensor shape
+				var footSensorFixtureDef = createB2FixtureDef()
+
+//				footSensorFixtureDef.density     = fixture.density
+//				footSensorFixtureDef.friction    = fixture.friction
+//				footSensorFixtureDef.restitution = fixture.restitution
+
+				footSensorFixtureDef.isSensor = true
+				footSensorFixtureDef.userData = { type : 'footSensor', id : entityId }
+				footSensorFixtureDef.shape    = createB2CircleShape( footRadius )
+				footSensorFixtureDef.shape.SetLocalPosition( createB2Vec2( 0, halfHeight * -1 + footRadius / 2.5 ) )
+
+				bodyDef.CreateFixture( footSensorFixtureDef )
 			}
 		}
 
@@ -227,6 +255,7 @@ define(
 		var simulate = function( world, deltaTimeInMs ) {
 			world.Step( deltaTimeInMs / 1000, 10, 8 )
 			world.ClearForces()
+			world.DrawDebugData()
 		}
 
 		var transferState = function( world, worldToPhysicsScale, bodies, transforms ) {
@@ -250,7 +279,7 @@ define(
 			}
 		}
 
-		var updateDebug = function( world, debugBoxes, debugCircles, transforms ) {
+		var updateDebug = function( world, debugBoxes, debugCircles ) {
 			for( var body = world.GetBodyList(); body; body = body.GetNext() ) {
 				var id = body.GetUserData()
 
@@ -350,15 +379,15 @@ define(
 				}
 
 
-				// check max velocity constraint
-				var velocityVec2 = body.GetLinearVelocity(),
-					velocity     = velocityVec2.Length()
-
-				if( velocity > 0 && velocity >  maxVelocity ) {
-					velocityVec2.x = maxVelocity / velocity * velocityVec2.x
-					velocityVec2.y = maxVelocity / velocity * velocityVec2.y
-					body.SetLinearVelocity( velocityVec2 )
-				}
+//				// check max velocity constraint
+//				var velocityVec2 = body.GetLinearVelocity(),
+//					velocity     = velocityVec2.Length()
+//
+//				if( velocity > 0 && velocity >  maxVelocity ) {
+//					velocityVec2.x = maxVelocity / velocity * velocityVec2.x
+//					velocityVec2.y = maxVelocity / velocity * velocityVec2.y
+//					body.SetLinearVelocity( velocityVec2 )
+//				}
 			}
 		}
 
@@ -373,6 +402,16 @@ define(
 			this.world.SetContactListener(
 				createFootSensorContactListener( this.isGroundedQueue, this.isNotGroundedQueue )
 			)
+
+//			var debugDraw = createB2DebugDraw(),
+//				context   = spell.renderingContext.context
+//
+//			if( context ) {
+//				debugDraw.SetSprite( context )
+//				debugDraw.SetDrawScale( 0.01 )
+//
+//				this.world.SetDebugDraw( debugDraw )
+//			}
 		}
 
 		var activate = function( spell ) {
@@ -406,8 +445,10 @@ define(
 			transferState( world, worldToPhysicsScale, this.bodies, transforms )
 
 			if( this.debug ) {
-				updateDebug( world, this.debugBoxes, this.debugCircles, transforms )
+				updateDebug( world, this.debugBoxes, this.debugCircles )
 			}
+
+//			world.DrawDebugData()
 		}
 
 		var Physics = function( spell ) {

@@ -11,8 +11,8 @@
 		},
 		"spell.component.physics.shape.box": {
 			"dimensions": [
-				100,
-				100
+				64,
+				64
 			]
 		}
 	},
