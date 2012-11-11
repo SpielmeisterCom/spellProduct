@@ -3,10 +3,10 @@
 	"type": "asset",
 	"subtype": "spriteSheet",
 	"config": {
-		"textureWidth": "256",
-		"textureHeight": "384",
-		"frameWidth": "64",
+		"textureWidth": "896",
+		"textureHeight": "64",
+		"frameWidth": "128",
 		"frameHeight": "64"
 	},
-	"file": "tiles.png"
+	"file": "jumppad.png"
 }
