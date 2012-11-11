@@ -43,10 +43,9 @@ define(
 				var jumpAndRunActor = jumpAndRunActors[ id ]
 
 				if( jumpAndRunActor ) {
-					jumpAndRunActor.isGrounded = true
+					jumpAndRunActor.numContacts++
+					jumpAndRunActor.isGrounded = jumpAndRunActor.numContacts > 0
 				}
-
-				console.log( 'isGrounded: true' )
 			}
 
 			if( numIsGrounded ) {
@@ -59,10 +58,9 @@ define(
 				var jumpAndRunActor = jumpAndRunActors[ id ]
 
 				if( jumpAndRunActor ) {
-					jumpAndRunActor.isGrounded = false
+					jumpAndRunActor.numContacts--
+					jumpAndRunActor.isGrounded = jumpAndRunActor.numContacts > 0
 				}
-
-				console.log( 'isGrounded: false' )
 			}
 
 			if( numIsNotGrounded ) {
@@ -90,21 +88,21 @@ define(
 				}
 			}
 
-			var log = function( next, contact, manifold ) {
-				console.log( 'endContact' )
-				next( contact, manifold )
-			}
-
+//			var log = function( next, contact, manifold ) {
+//				console.log( 'endContact' )
+//				next( contact, manifold )
+//			}
+//
 //			return createB2ContactListener(
 //				createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) ),
-//				createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ),
+//				_.bind( log, null, createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ) ),
 //				null,
 //				null
 //			)
 
 			return createB2ContactListener(
 				createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) ),
-				_.bind( log, null, createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ) ),
+				createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ),
 				null,
 				null
 			)
@@ -153,8 +151,6 @@ define(
 						height : boxesqueShape.dimensions[ 1 ]
 					}
 				}
-
-				debugger
 
 				spell.entityManager.addComponent(
 					entityId,
@@ -215,7 +211,7 @@ define(
 
 				// main shape
 				fixtureDef.shape = createB2PolygonShape()
-				fixtureDef.shape.SetAsOrientedBox( halfWidth, halfHeight, createB2Vec2( 0, footRadius / 2 ) )
+				fixtureDef.shape.SetAsOrientedBox( halfWidth * 0.95, halfHeight, createB2Vec2( 0, footRadius / 2 ) )
 
 				bodyDef.CreateFixture( fixtureDef )
 

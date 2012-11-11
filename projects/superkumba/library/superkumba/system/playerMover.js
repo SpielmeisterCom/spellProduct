@@ -98,7 +98,7 @@ define(
 						playerEntityId,
 						'spell.component.physics.applyImpulse',
 						{
-							impulse : [ 0, 75 ]
+							impulse : [ 0, 72 ]
 						}
 					)
 
