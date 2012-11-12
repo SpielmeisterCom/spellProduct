@@ -51,6 +51,10 @@
 			"componentId": "spellStaged.jumpAndRun.actor"
 		},
 		{
+			"name": "platforms",
+			"componentId": "spellStaged.jumpAndRun.platform"
+		},
+		{
 			"name": "debugBoxes",
 			"componentId": "spell.component.2d.graphics.debug.box"
 		},

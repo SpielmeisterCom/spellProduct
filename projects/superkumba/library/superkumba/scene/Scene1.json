@@ -12,6 +12,7 @@
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
+		"spell.component.audio.soundEmitter",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
@@ -28,10 +29,12 @@
 		"spell.component.physics.shape.jumpAndRunPlayer",
 		"spell.component.visualObject",
 		"spellStaged.jumpAndRun.actor",
+		"spellStaged.jumpAndRun.platform",
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
 		"superkumba.level.collision_block",
 		"superkumba.level.icePlate",
+		"spell.system.audio",
 		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
@@ -43,6 +46,7 @@
 		"superkumba.system.playerMover",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
+		"spell.defaultSound",
 		"superkumba.actor.bug.dead",
 		"superkumba.actor.bug.spritesheet",
 		"superkumba.actor.bug.walking",
@@ -97,6 +101,18 @@
 		"superkumba.level.platform_short",
 		"superkumba.level.platform_wide",
 		"superkumba.level.tiles",
+		"superkumba.level.wipfelwald.background.paralax_far",
+		"superkumba.level.wipfelwald.background.paralax_palms",
+		"superkumba.level.wipfelwald.decor.decor_grass_1",
+		"superkumba.level.wipfelwald.decor.decor_grass_2",
+		"superkumba.level.wipfelwald.decor.decor_grass_3",
+		"superkumba.level.wipfelwald.decor.decor_palm_tree_1",
+		"superkumba.level.wipfelwald.decor.decor_palm_tree_2",
+		"superkumba.level.wipfelwald.decor.decor_palm_tree_3",
+		"superkumba.level.wipfelwald.objects.ground_spike",
+		"superkumba.level.wipfelwald.objects.jumppad_animation",
+		"superkumba.level.wipfelwald.objects.jumppad_spritesheet",
+		"superkumba.level.wipfelwald.objects.moving_plattform",
 		"superkumba.obstacles.obstacle_spike_platform",
 		"superkumba.pickups.pickup_banana",
 		"superkumba.pickups.pickup_coconut",
@@ -120,6 +136,23 @@
 				}
 			},
 			{
+				"id": "spell.system.keyFrameAnimation",
+				"config": {
+					"active": true
+				}
+			},
+			{
+				"id": "superkumba.system.physics",
+				"config": {
+					"active": true,
+					"gravity": [
+						0,
+						-10
+					],
+					"scale": 0.01
+				}
+			},
+			{
 				"id": "superkumba.system.playerMover",
 				"config": {
 					"active": true
@@ -132,27 +165,10 @@
 				}
 			},
 			{
-				"id": "spell.system.keyFrameAnimation",
-				"config": {
-					"active": true
-				}
-			},
-			{
 				"id": "spell.system.render",
 				"config": {
 					"active": true,
 					"debug": true
-				}
-			},
-			{
-				"id": "superkumba.system.physics",
-				"config": {
-					"active": true,
-					"gravity": [
-						0,
-						-10
-					],
-					"scale": 0.01
 				}
 			},
 			{
@@ -183,30 +199,6 @@
 						700,
 						600
 					]
-				}
-			}
-		},
-		{
-			"name": "fly",
-			"config": {
-				"spell.component.2d.graphics.animatedAppearance": {
-					"assetId": "animation:superkumba.actor.mosquito.flying"
-				},
-				"spell.component.2d.transform": {
-					"scale": [
-						1,
-						1
-					],
-					"translation": [
-						900,
-						700
-					]
-				},
-				"spell.component.visualObject": {
-					"layer": 2
-				},
-				"spell.component.animation.keyFrameAnimation": {
-					"assetId": "keyFrameAnimation:superkumba.actor.mosquito.up_and_down"
 				}
 			}
 		},
@@ -255,7 +247,8 @@
 				},
 				"spellStaged.jumpAndRun.actor": {},
 				"spell.component.physics.body": {
-					"fixedRotation": true
+					"fixedRotation": true,
+					"type": "dynamic"
 				},
 				"spell.component.physics.fixture": {
 					"friction": 0.02,
@@ -292,6 +285,48 @@
 			]
 		},
 		{
+			"name": "platform1",
+			"config": {
+				"spell.component.2d.graphics.appearance": {},
+				"spell.component.physics.fixture": {
+					"restitution": 0
+				},
+				"spell.component.physics.shape.box": {
+					"dimensions": [
+						192,
+						64
+					]
+				},
+				"spell.component.visualObject": {
+					"layer": 2
+				},
+				"spellStaged.jumpAndRun.platform": {
+					"waypointA": [
+						0,
+						0
+					],
+					"waypointB": [
+						0,
+						100
+					],
+					"duration": 1000
+				},
+				"spell.component.2d.transform": {
+					"translation": [
+						-250,
+						96
+					],
+					"scale": [
+						3,
+						1
+					]
+				},
+				"spell.component.physics.body": {
+					"type": "kinematic"
+				}
+			}
+		},
+		{
 			"name": "level",
 			"config": {
 				"spell.component.visualObject": {
@@ -323,8 +358,8 @@
 					"config": {
 						"spell.component.2d.transform": {
 							"translation": [
-								500,
-								300
+								0,
+								0
 							]
 						},
 						"spell.component.visualObject": {
@@ -341,12 +376,12 @@
 								},
 								"spell.component.2d.transform": {
 									"translation": [
-										0,
-										0
+										500,
+										500
 									],
 									"scale": [
-										5,
-										5
+										2,
+										2
 									]
 								},
 								"spell.component.visualObject": {}
@@ -360,12 +395,12 @@
 								},
 								"spell.component.2d.transform": {
 									"scale": [
-										1.83,
-										1.83
+										1,
+										1
 									],
 									"translation": [
-										200,
-										-150
+										380.5,
+										175
 									]
 								},
 								"spell.component.visualObject": {
@@ -383,6 +418,10 @@
 									"scale": [
 										1,
 										1
+									],
+									"translation": [
+										478.5,
+										175
 									]
 								},
 								"spell.component.visualObject": {

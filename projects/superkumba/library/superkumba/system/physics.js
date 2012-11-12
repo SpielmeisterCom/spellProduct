@@ -2,6 +2,8 @@ define(
 	'superkumba/system/physics',
 	[
 		'spell/Defines',
+		'spell/math/util',
+		'spell/math/vec2',
 		'spell/shared/util/Events',
 		'spell/shared/util/platform/PlatformKit',
 
@@ -9,6 +11,8 @@ define(
 	],
 	function(
 		Defines,
+		mathUtil,
+		vec2,
 		Events,
 		PlatformKit,
 
@@ -16,6 +20,8 @@ define(
 	) {
 		'use strict'
 
+
+		var modulo = mathUtil.modulo
 
 		var Box2D                   = PlatformKit.Box2D,
 			createB2Vec2            = Box2D.Common.Math.createB2Vec2,
@@ -31,7 +37,8 @@ define(
 
 		var awakeColor    = [ 0.82, 0.76, 0.07 ],
 			notAwakeColor = [ 0.27, 0.25, 0.02 ],
-			maxVelocity   = 20
+			maxVelocity   = 20,
+			tmpVec2       = vec2.create()
 
 		var updateJumpAndRunActors = function( world, jumpAndRunActors, isGroundedQueue, isNotGroundedQueue ) {
 			var numIsGrounded    = isGroundedQueue.length,
@@ -170,12 +177,22 @@ define(
 			}
 		}
 
+		var getBodyType = function( type ) {
+			return type === 'static' ? b2Body.b2_staticBody :
+				type === 'dynamic' ? b2Body.b2_dynamicBody :
+					type === 'kinematic' ? b2Body.b2_kinematicBody :
+						undefined
+		}
+
 		var createBodyDef = function( world, worldToPhysicsScale, entityId, body, transform ) {
 			var translation = transform.translation,
-				bodyDef    = createB2BodyDef()
+				bodyDef     = createB2BodyDef(),
+				type        = getBodyType( body.type )
+
+			if( type === undefined ) return
 
 			bodyDef.fixedRotation = body.fixedRotation
-			bodyDef.type          = body.type === 'dynamic' ? b2Body.b2_dynamicBody : b2Body.b2_staticBody
+			bodyDef.type          = type
 			bodyDef.position.x    = translation[ 0 ] * worldToPhysicsScale
 			bodyDef.position.y    = translation[ 1 ] * worldToPhysicsScale
 			bodyDef.userData      = entityId
@@ -244,6 +261,8 @@ define(
 
 		var createPhysicsObject = function( world, worldToPhysicsScale, entityId, body, fixture, boxShape, circleShape, playerShape, transform ) {
 			var bodyDef = createBodyDef( world, worldToPhysicsScale, entityId, body, transform )
+
+			if( !bodyDef ) return
 
 			addShape( world, worldToPhysicsScale, entityId, bodyDef, fixture, boxShape, circleShape, playerShape )
 		}
@@ -387,6 +406,45 @@ define(
 			}
 		}
 
+		var updatePlatforms = function( deltaTimeInMs, world, worldToPhysicsScale, platforms, transforms ) {
+			for( var id in platforms ) {
+				var platform = platforms[ id ]
+				if( !platform.moving ) return
+
+				var transform = transforms[ id ]
+				if( !transform ) return
+
+				var duration = platform.duration
+				if( !duration ) return
+
+				if( !platform.origin ) {
+					platform.origin = vec2.create()
+					vec2.set( transform.translation, platform.origin )
+				}
+
+				var origin = platform.origin
+
+				var body = getBodyById( world, id )
+				if( !body ) return
+
+				var offsetInMs = modulo( Math.round( platform.offset + deltaTimeInMs ), platform.duration ),
+					offset     = offsetInMs / duration,
+					t          = ( offset <= 0.5 ? offset : 1 - offset ) * 2
+
+				platform.offset = offsetInMs
+
+				vec2.lerp( platform.waypointA, platform.waypointB, t, tmpVec2 )
+				vec2.add( origin, tmpVec2 )
+				vec2.scale( tmpVec2, worldToPhysicsScale )
+
+				var currentPosition = body.GetPosition(),
+					dx              = tmpVec2[ 0 ] - currentPosition.x,
+					dy              = tmpVec2[ 1 ] - currentPosition.y
+
+				body.SetLinearVelocity( createB2Vec2( dx, dy ) )
+			}
+		}
+
 		var init = function( spell ) {
 			var doSleep = true
 
@@ -434,7 +492,9 @@ define(
 				removedEntitiesQueue.length = 0
 			}
 
+			updatePlatforms( deltaTimeInMs, world, worldToPhysicsScale, this.platforms, this.transforms )
 			applyInfluence( spell.entityManager, world, worldToPhysicsScale, this.applyForces, this.applyTorques, this.applyImpulses, this.applyVelocities, this.setPositions )
+
 			simulate( world, deltaTimeInMs )
 
 			updateJumpAndRunActors( world, this.jumpAndRunActors, this.isGroundedQueue, this.isNotGroundedQueue )
