@@ -42,7 +42,7 @@ define(
 		var startMovingX = function( entityManager, playerEntityId, isGrounded, isMovingX, direction ) {
 			if( direction === 0 ) return
 
-			var force = ( isGrounded ? 75 : 50 ) * direction
+			var force = ( isGrounded ? 130 : 50 ) * direction
 
 			entityManager.updateComponent(
 				playerEntityId,
@@ -109,7 +109,7 @@ define(
 						playerEntityId,
 						'spell.component.physics.applyImpulse',
 						{
-							impulse : [ 0, 71 ]
+							impulse : [ 0, 60 ]
 						}
 					)
 

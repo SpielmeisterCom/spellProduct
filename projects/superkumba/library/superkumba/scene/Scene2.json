@@ -248,12 +248,12 @@
 				},
 				"spell.component.physics.shape.jumpAndRunPlayer": {
 					"dimensions": [
-						30,
+						25,
 						50
 					]
 				},
 				"spellStaged.jumpAndRun.actor": {
-					"maxVelocityX": 4,
+					"maxVelocityX": 3,
 					"maxVelocityY": 7
 				}
 			}
