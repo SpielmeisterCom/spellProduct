@@ -6,12 +6,14 @@
 define(
 	'superkumba/system/playerMover',
 	[
+		'spell/math/util',
 		'spell/shared/util/Events',
 		'spell/shared/util/input/keyCodes',
 
 		'spell/functions'
 	],
 	function(
+		mathUtil,
 		Events,
 		keyCodes,
 
@@ -20,7 +22,8 @@ define(
 		'use strict'
 
 
-		var playerAppearanceName = 'playerAppearance'
+		var playerAppearanceName = 'playerAppearance',
+			sign                 = mathUtil.sign
 
 		var toCamelCase = function( it ) {
 			return it.replace(
@@ -36,9 +39,10 @@ define(
 			)
 		}
 
-		var startMovingX = function( entityManager, playerEntityId, isGrounded, isMovingX, rightward ) {
-			var direction = rightward ? 1 : -1
-			var force     = ( isGrounded ? 75 : 50 ) * direction
+		var startMovingX = function( entityManager, playerEntityId, isGrounded, isMovingX, direction ) {
+			if( direction === 0 ) return
+
+			var force = ( isGrounded ? 75 : 50 ) * direction
 
 			entityManager.updateComponent(
 				playerEntityId,
@@ -49,8 +53,14 @@ define(
 			)
 		}
 
-		var updateDirection = function( transform, rightward ) {
-			transform.scale[ 0 ] = transform.scale[ 0 ] * rightward ? 1 : -1
+		var updateDirection = function( transform, direction ) {
+			if( direction === 0 ) return
+
+			var scale = transform.scale[ 0 ]
+
+			if( sign( scale ) === sign( direction ) ) return
+
+			transform.scale[ 0 ] *= -1
 		}
 
 		var updateAppearance = function( entityManager, entityName, assetId, looped, replaySpeed ) {
@@ -85,8 +95,12 @@ define(
 				isGrounded      = jumpAndRunActor.isGrounded,
 				isMovingX       = jumpAndRunActor.isMovingX,
 				isMovingY       = jumpAndRunActor.isMovingY,
-				actor           = actors[ playerEntityId ]
+				actor           = actors[ playerEntityId ],
+				wantsMoveRight  = actor.actions.right.executing,
+				wantsMoveLeft   = actor.actions.left.executing,
+				direction
 
+			// jumping
 			if( jumpActionStartedQueue.length > 0 ) {
 				jumpActionStartedQueue.length = 0
 
@@ -106,14 +120,12 @@ define(
 				}
 			}
 
+			// movement in x direction
 			if( rightActionStartedQueue.length > 0 ) {
-				this.wantsToMove = true
+				direction = 1
 
-				var rightward = true
-
-				updateDirection( transforms[ playerEntityId ], rightward )
-
-				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, rightward )
+				updateDirection( transforms[ playerEntityId ], direction )
+				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, direction )
 
 				if( isGrounded ) {
 					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
@@ -122,13 +134,10 @@ define(
 				rightActionStartedQueue.length = 0
 
 			} else if( leftActionStartedQueue.length > 0 ) {
-				this.wantsToMove = true
+				direction = -1
 
-				var rightward = false
-
-				updateDirection( transforms[ playerEntityId ], rightward )
-
-				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, rightward )
+				updateDirection( transforms[ playerEntityId ], direction )
+				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, direction )
 
 				if( isGrounded ) {
 					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
@@ -137,13 +146,13 @@ define(
 				leftActionStartedQueue.length = 0
 
 			} else if( isGrounded &&
-				!this.wantsToMove ) {
-
-				var dampeningFactor = 0.12
+				!wantsMoveRight &&
+				!wantsMoveLeft ) {
 
 				// apply dampening
-				var body = bodies[ playerEntityId ],
-					velocityX = body.velocity[ 0 ] * ( 1 - dampeningFactor )
+				var dampeningFactor = 0.12,
+					body            = bodies[ playerEntityId ],
+					velocityX       = body.velocity[ 0 ] * ( 1 - dampeningFactor )
 
 				entityManager.addComponent(
 					playerEntityId,
@@ -161,12 +170,11 @@ define(
 				}
 			}
 
-			if( rightActionStoppedQueue.length > 0 ||
-				leftActionStoppedQueue.length > 0 ) {
+			// stop movement force
+			if( ( rightActionStoppedQueue.length > 0 || leftActionStoppedQueue.length > 0 ) &&
+				!wantsMoveRight &&
+				!wantsMoveLeft ) {
 
-				this.wantsToMove = false
-
-				// stop movement force
 				entityManager.updateComponent(
 					playerEntityId,
 					'spell.component.physics.applyForce',
@@ -202,7 +210,6 @@ define(
 
 
         var PlayerMover = function( spell ) {
-			this.wantsToMove = false
 			this.lastJump = 0
 		}
 
