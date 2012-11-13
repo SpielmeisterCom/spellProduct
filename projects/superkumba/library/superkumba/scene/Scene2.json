@@ -37,6 +37,7 @@
 		"superkumba.level.icePlate",
 		"spell.system.audio",
 		"spell.system.debug.camera",
+		"spell.system.globalTransformUpdater",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.physics",
@@ -52,7 +53,6 @@
 		"superkumba.actor.bug.spritesheet",
 		"superkumba.actor.bug.walking",
 		"superkumba.actor.kiba.dead",
-		"superkumba.actor.kiba.jumping",
 		"superkumba.actor.kiba.rolling",
 		"superkumba.actor.kiba.running",
 		"superkumba.actor.kiba.spritesheet",
@@ -120,7 +120,8 @@
 		"superkumba.pickups.pickup_coconut",
 		"superkumba.pickups.pickup_super_banana",
 		"superkumba.pickups.pickup_super_star",
-		"test"
+		"test",
+		"superkumba.actor.kiba.jumping"
 	],
 	"systems": {
 		"update": [],
@@ -253,7 +254,7 @@
 					]
 				},
 				"spellStaged.jumpAndRun.actor": {
-					"maxVelocityX": 3,
+					"maxVelocityX": 2.75,
 					"maxVelocityY": 7
 				}
 			}

@@ -39,16 +39,16 @@ define(
 			)
 		}
 
-		var startMovingX = function( entityManager, playerEntityId, isGrounded, isMovingX, direction ) {
+		var startMovingX = function( entityManager, playerEntityId, isGrounded, isRolling, isMovingX, direction ) {
 			if( direction === 0 ) return
 
-			var force = ( isGrounded ? 130 : 50 ) * direction
+			var force = ( isGrounded ? ( isRolling ? 180 : 130 ) : 50 )
 
 			entityManager.updateComponent(
 				playerEntityId,
 				'spell.component.physics.applyForce',
 				{
-					force : [ force, 0 ]
+					force : [ force * direction, 0 ]
 				}
 			)
 		}
@@ -79,6 +79,12 @@ define(
 			)
 		}
 
+		var getAppearanceAssetId = function( rolling ) {
+			return rolling ?
+				'animation:superkumba.actor.kiba.rolling' :
+				'animation:superkumba.actor.kiba.running'
+		}
+
         var process = function( spell, timeInMs, deltaTimeInMs ) {
 			var entityManager           = spell.entityManager,
 				actors                  = this.actors,
@@ -88,7 +94,9 @@ define(
 				rightActionStartedQueue = this.rightActionStartedQueue,
 				rightActionStoppedQueue = this.rightActionStoppedQueue,
 				leftActionStartedQueue  = this.leftActionStartedQueue,
-				leftActionStoppedQueue  = this.leftActionStoppedQueue
+				leftActionStoppedQueue  = this.leftActionStoppedQueue,
+				rollActionStartedQueue  = this.rollActionStartedQueue,
+				rollActionStoppedQueue  = this.rollActionStoppedQueue
 
 			var playerEntityId  = entityManager.getEntityIdsByName( 'player' )[ 0 ],
 				jumpAndRunActor = this.jumpAndRunActors[ playerEntityId ],
@@ -98,13 +106,14 @@ define(
 				actor           = actors[ playerEntityId ],
 				wantsMoveRight  = actor.actions.right.executing,
 				wantsMoveLeft   = actor.actions.left.executing,
+				isRolling       = actor.actions.roll.executing,
 				direction
 
-			// jumping
-			if( jumpActionStartedQueue.length > 0 ) {
-				jumpActionStartedQueue.length = 0
+			if( isGrounded ) {
+				// jumping
+				if( jumpActionStartedQueue.length > 0 ) {
+					jumpActionStartedQueue.length = 0
 
-				if( isGrounded ) {
 					entityManager.addComponent(
 						playerEntityId,
 						'spell.component.physics.applyImpulse',
@@ -118,6 +127,23 @@ define(
 					isGrounded = false
 				}
 
+				// start rolling
+				if( rollActionStartedQueue.length > 0 ) {
+					rollActionStartedQueue.length = 0
+
+					updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
+
+					jumpAndRunActor.maxVelocityX = 3.5
+				}
+			}
+
+			// end rolling
+			if( rollActionStoppedQueue.length > 0 ) {
+				rollActionStoppedQueue.length = 0
+
+				updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
+
+				jumpAndRunActor.maxVelocityX = 2.75
 			}
 
 			// movement in x direction
@@ -125,10 +151,10 @@ define(
 				direction = 1
 
 				updateDirection( transforms[ playerEntityId ], direction )
-				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, direction )
+				startMovingX( entityManager, playerEntityId, isGrounded, isRolling, isMovingX, direction )
 
 				if( isGrounded ) {
-					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
+					updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
 				}
 
 				rightActionStartedQueue.length = 0
@@ -137,10 +163,10 @@ define(
 				direction = -1
 
 				updateDirection( transforms[ playerEntityId ], direction )
-				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, direction )
+				startMovingX( entityManager, playerEntityId, isGrounded, isRolling, isMovingX, direction )
 
 				if( isGrounded ) {
-					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
+					updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
 				}
 
 				leftActionStartedQueue.length = 0
@@ -174,7 +200,7 @@ define(
 				if( jumpAndRunActor.justLanded &&
 					( wantsMoveRight || wantsMoveLeft ) ) {
 
-					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
+					updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
 				}
 			}
 
@@ -231,7 +257,9 @@ define(
 						{ action : 'right', event : Events.ACTION_STARTED },
 						{ action : 'right', event : Events.ACTION_STOPPED },
 						{ action : 'left',  event : Events.ACTION_STARTED },
-						{ action : 'left',  event : Events.ACTION_STOPPED }
+						{ action : 'left',  event : Events.ACTION_STOPPED },
+						{ action : 'roll',  event : Events.ACTION_STARTED },
+						{ action : 'roll',  event : Events.ACTION_STOPPED }
 					]
 				)
 			},
