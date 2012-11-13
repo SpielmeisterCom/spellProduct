@@ -262,7 +262,7 @@ define(
 
 				// main shape
 				fixtureDef.shape = createB2PolygonShape()
-				fixtureDef.shape.SetAsOrientedBox( halfWidth * 0.95, halfHeight, createB2Vec2( 0, footRadius / 2 ) )
+				fixtureDef.shape.SetAsOrientedBox( halfWidth * 0.9, halfHeight, createB2Vec2( 0, footRadius / 2 ) )
 
 				bodyDef.CreateFixture( fixtureDef )
 
@@ -286,8 +286,8 @@ define(
 
 				footSensorFixtureDef.isSensor = true
 				footSensorFixtureDef.userData = { type : 'footSensor', id : entityId }
-				footSensorFixtureDef.shape    = createB2CircleShape( footRadius )
-				footSensorFixtureDef.shape.SetLocalPosition( createB2Vec2( 0, halfHeight * -1 + footRadius / 2 ) )
+				footSensorFixtureDef.shape    = createB2CircleShape( footRadius * 0.9 )
+				footSensorFixtureDef.shape.SetLocalPosition( createB2Vec2( 0, halfHeight * -1 + footRadius / 2.5 ) )
 
 				bodyDef.CreateFixture( footSensorFixtureDef )
 			}
