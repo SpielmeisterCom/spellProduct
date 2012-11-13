@@ -188,19 +188,8 @@
 			"config": {
 				"spell.component.2d.graphics.camera": {
 					"active": true,
-					"width": 900,
 					"height": 600,
-					"clearUnsafeArea": false
-				},
-				"spell.component.2d.transform": {
-					"scale": [
-						1,
-						1
-					],
-					"translation": [
-						700,
-						600
-					]
+					"width": 900
 				}
 			}
 		},
@@ -210,186 +199,83 @@
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [
-						50,
-						250
-					]
-				}
-			}
-		},
-		{
-			"name": "platform1",
-			"config": {
-				"spell.component.2d.graphics.appearance": {
-					"assetId": "appearance:superkumba.level.wipfelwald.objects.moving_plattform"
-				},
-				"spell.component.physics.fixture": {
-					"restitution": 0
-				},
-				"spell.component.physics.shape.box": {
-					"dimensions": [
-						192,
-						64
-					]
-				},
-				"spell.component.visualObject": {
-					"layer": 2
-				},
-				"spellStaged.jumpAndRun.platform": {
-					"waypointA": [
-						0,
-						-100
-					],
-					"waypointB": [
-						0,
-						200
-					],
-					"duration": 5000
-				},
-				"spell.component.2d.transform": {
-					"translation": [
-						-250,
-						96
+						250,
+						350
 					],
 					"scale": [
 						1,
 						1
 					]
 				},
+				"spell.component.visualObject": {
+					"layer": 2
+				},
+				"spell.component.inputDefinition": {
+					"assetId": "keyToActionMap:superkumba.keyboard_map",
+					"actorId": "player"
+				},
+				"spell.component.actor": {
+					"id": "player",
+					"actions": {
+						"jump": {
+							"executing": false
+						},
+						"left": {
+							"executing": false
+						},
+						"right": {
+							"executing": false
+						},
+						"roll": {
+							"executing": false
+						}
+					}
+				},
+				"spell.component.physics.applyForce": {
+					"force": [
+						0,
+						0
+					]
+				},
 				"spell.component.physics.body": {
-					"type": "kinematic"
+					"fixedRotation": true,
+					"type": "dynamic"
+				},
+				"spell.component.physics.fixture": {
+					"friction": 0.02,
+					"restitution": 0,
+					"density": 1
+				},
+				"spell.component.physics.shape.jumpAndRunPlayer": {
+					"dimensions": [
+						30,
+						50
+					]
+				},
+				"spellStaged.jumpAndRun.actor": {
+					"maxVelocityX": 4,
+					"maxVelocityY": 7
 				}
 			}
 		},
 		{
 			"name": "level",
 			"config": {
-				"spell.component.visualObject": {
-					"layer": 1,
-					"opacity": 1
-				},
-				"spell.component.2d.transform": {
-					"scale": [
-						1,
-						1
-					]
-				}
+				"spell.component.2d.transform": {},
+				"spell.component.visualObject": {}
 			},
 			"children": [
 				{
 					"name": "tiles",
 					"config": {
 						"spell.component.2d.graphics.tilemap": {
-							"assetId": "2dTileMap:test"
+							"assetId": "2dTileMap:superkumba.level.testLevel1"
 						},
 						"spell.component.2d.transform": {},
-						"spell.component.visualObject": {
-							"opacity": 1
-						}
+						"spell.component.visualObject": {}
 					}
-				},
-				{
-					"name": "background",
-					"config": {
-						"spell.component.2d.transform": {
-							"translation": [
-								0,
-								0
-							]
-						},
-						"spell.component.visualObject": {
-							"opacity": 1,
-							"layer": 0
-						}
-					},
-					"children": [
-						{
-							"name": "sky",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:superkumba.background.bg_layer4"
-								},
-								"spell.component.2d.transform": {
-									"translation": [
-										500,
-										500
-									],
-									"scale": [
-										2,
-										2
-									]
-								},
-								"spell.component.visualObject": {}
-							}
-						},
-						{
-							"name": "grass",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:superkumba.background.bg_layer2"
-								},
-								"spell.component.2d.transform": {
-									"scale": [
-										1,
-										1
-									],
-									"translation": [
-										380.5,
-										175
-									]
-								},
-								"spell.component.visualObject": {
-									"layer": 3
-								}
-							}
-						},
-						{
-							"name": "mountain",
-							"config": {
-								"spell.component.2d.graphics.appearance": {
-									"assetId": "appearance:superkumba.background.bg_layer3"
-								},
-								"spell.component.2d.transform": {
-									"scale": [
-										1,
-										1
-									],
-									"translation": [
-										478.5,
-										175
-									]
-								},
-								"spell.component.visualObject": {
-									"layer": 2
-								}
-							}
-						}
-					]
 				}
 			]
-		},
-		{
-			"name": "icePlate",
-			"entityTemplateId": "superkumba.level.icePlate",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						-32,
-						96
-					]
-				}
-			}
-		},
-		{
-			"name": "icePlate2",
-			"entityTemplateId": "superkumba.level.icePlate",
-			"config": {
-				"spell.component.2d.transform": {
-					"translation": [
-						-96,
-						96
-					]
-				}
-			}
 		}
 	]
 }

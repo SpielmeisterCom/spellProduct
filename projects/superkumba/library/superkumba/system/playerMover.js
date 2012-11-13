@@ -36,14 +36,9 @@ define(
 			)
 		}
 
-		var startMovingX = function( entityManager, playerEntityId, force, impulse ) {
-			entityManager.addComponent(
-				playerEntityId,
-				'spell.component.physics.applyImpulse',
-				{
-					impulse : [ impulse, 0 ]
-				}
-			)
+		var startMovingX = function( entityManager, playerEntityId, isGrounded, isMovingX, rightward ) {
+			var direction = rightward ? 1 : -1
+			var force     = ( isGrounded ? 75 : 50 ) * direction
 
 			entityManager.updateComponent(
 				playerEntityId,
@@ -88,6 +83,8 @@ define(
 			var playerEntityId  = entityManager.getEntityIdsByName( 'player' )[ 0 ],
 				jumpAndRunActor = this.jumpAndRunActors[ playerEntityId ],
 				isGrounded      = jumpAndRunActor.isGrounded,
+				isMovingX       = jumpAndRunActor.isMovingX,
+				isMovingY       = jumpAndRunActor.isMovingY,
 				actor           = actors[ playerEntityId ]
 
 			if( jumpActionStartedQueue.length > 0 ) {
@@ -98,7 +95,7 @@ define(
 						playerEntityId,
 						'spell.component.physics.applyImpulse',
 						{
-							impulse : [ 0, 72 ]
+							impulse : [ 0, 71 ]
 						}
 					)
 
@@ -112,38 +109,53 @@ define(
 			if( rightActionStartedQueue.length > 0 ) {
 				this.wantsToMove = true
 
-				if( isGrounded ) {
-					startMovingX(
-						entityManager,
-						playerEntityId,
-						25,
-						isGrounded ? 30 : 15
-					)
+				var rightward = true
 
+				updateDirection( transforms[ playerEntityId ], rightward )
+
+				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, rightward )
+
+				if( isGrounded ) {
 					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
 				}
-
-				updateDirection( transforms[ playerEntityId ], true )
 
 				rightActionStartedQueue.length = 0
 
 			} else if( leftActionStartedQueue.length > 0 ) {
 				this.wantsToMove = true
 
-				if( isGrounded ) {
-					startMovingX(
-						entityManager,
-						playerEntityId,
-						-25,
-						isGrounded ? -30 : -15
-					)
+				var rightward = false
 
+				updateDirection( transforms[ playerEntityId ], rightward )
+
+				startMovingX( entityManager, playerEntityId, isGrounded, isMovingX, rightward )
+
+				if( isGrounded ) {
 					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
 				}
 
-				updateDirection( transforms[ playerEntityId ], false )
-
 				leftActionStartedQueue.length = 0
+
+			} else if( isGrounded &&
+				!this.wantsToMove ) {
+
+				var dampeningFactor = 0.12
+
+				// apply dampening
+				var body = bodies[ playerEntityId ]
+
+				entityManager.addComponent(
+					playerEntityId,
+					'spell.component.physics.applyVelocity',
+					{
+						velocity : [
+							body.velocity[ 0 ] * ( 1 - dampeningFactor ) ,
+							body.velocity[ 1 ]
+						]
+					}
+				)
+
+				updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
 			}
 
 			if( rightActionStoppedQueue.length > 0 ||
@@ -162,23 +174,6 @@ define(
 
 				rightActionStoppedQueue.length = 0
 				leftActionStoppedQueue.length = 0
-			}
-
-			if( !this.wantsToMove &&
-				isGrounded ) {
-
-				// apply dampening
-				var body = bodies[ playerEntityId ]
-
-				entityManager.addComponent(
-					playerEntityId,
-					'spell.component.physics.applyVelocity',
-					{
-						velocity : [ body.velocity[ 0 ] * 0.9, body.velocity[ 1 ] ]
-					}
-				)
-
-				updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
 			}
         }
 

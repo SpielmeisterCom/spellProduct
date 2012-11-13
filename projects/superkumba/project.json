@@ -6,9 +6,10 @@
 			"425"
 		]
 	},
-	"startScene": "superkumba.scene.Scene1",
+	"startScene": "superkumba.scene.Scene2",
 	"type": "project",
 	"scenes": [
-		"superkumba.scene.Scene1"
+		"superkumba.scene.Scene1",
+		"superkumba.scene.Scene2"
 	]
 }

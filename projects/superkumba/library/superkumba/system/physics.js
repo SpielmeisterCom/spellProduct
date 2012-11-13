@@ -23,6 +23,9 @@ define(
 
 		var modulo = mathUtil.modulo
 
+		var VELOCITY_THRESHOLD_X = 0.05,
+			VELOCITY_THRESHOLD_Y = 0.05
+
 		var Box2D                   = PlatformKit.Box2D,
 			createB2Vec2            = Box2D.Common.Math.createB2Vec2,
 			createB2World           = Box2D.Dynamics.createB2World,
@@ -37,15 +40,16 @@ define(
 
 		var awakeColor    = [ 0.82, 0.76, 0.07 ],
 			notAwakeColor = [ 0.27, 0.25, 0.02 ],
-			maxVelocity   = 20,
 			tmpVec2       = vec2.create()
 
-		var updateJumpAndRunActors = function( world, jumpAndRunActors, isGroundedQueue, isNotGroundedQueue ) {
+		var updateJumpAndRunActors = function( world, worldToPhysicsScale, jumpAndRunActors, isGroundedQueue, isNotGroundedQueue ) {
 			var numIsGrounded    = isGroundedQueue.length,
-				numIsNotGrounded = isNotGroundedQueue.length
+				numIsNotGrounded = isNotGroundedQueue.length,
+				id
 
+			// updating isGrounded
 			for( var i = 0; i < numIsGrounded; i++ ) {
-				var id = isGroundedQueue[ i ]
+				id = isGroundedQueue[ i ]
 
 				var jumpAndRunActor = jumpAndRunActors[ id ]
 
@@ -60,7 +64,7 @@ define(
 			}
 
 			for( var i = 0; i < numIsNotGrounded; i++ ) {
-				var id = isNotGroundedQueue[ i ]
+				id = isNotGroundedQueue[ i ]
 
 				var jumpAndRunActor = jumpAndRunActors[ id ]
 
@@ -72,6 +76,29 @@ define(
 
 			if( numIsNotGrounded ) {
 				isNotGroundedQueue.length = 0
+			}
+
+			for( id in jumpAndRunActors ) {
+				var body = getBodyById( world, id )
+				if( !body ) continue
+
+				var jumpAndRunActor = jumpAndRunActors[ id ]
+				if( !jumpAndRunActor ) continue
+
+				var velocity = body.GetLinearVelocity()
+
+				// updating isMoving
+				jumpAndRunActor.isMovingX = Math.abs( velocity.x ) >= VELOCITY_THRESHOLD_X
+				jumpAndRunActor.isMovingY = Math.abs( velocity.y ) >= VELOCITY_THRESHOLD_Y
+
+				// clamping velocity to range
+				var maxVelocityX = jumpAndRunActor.maxVelocityX,
+					maxVelocityY = jumpAndRunActor.maxVelocityY
+
+				velocity.x = mathUtil.clamp( velocity.x, -maxVelocityX, maxVelocityX )
+				velocity.y = mathUtil.clamp( velocity.y, -maxVelocityY, maxVelocityY )
+
+				body.SetLinearVelocity( velocity )
 			}
 		}
 
@@ -392,17 +419,6 @@ define(
 
 					entityManager.removeComponent( id, 'spell.component.physics.setPosition' )
 				}
-
-
-//				// check max velocity constraint
-//				var velocityVec2 = body.GetLinearVelocity(),
-//					velocity     = velocityVec2.Length()
-//
-//				if( velocity > 0 && velocity >  maxVelocity ) {
-//					velocityVec2.x = maxVelocity / velocity * velocityVec2.x
-//					velocityVec2.y = maxVelocity / velocity * velocityVec2.y
-//					body.SetLinearVelocity( velocityVec2 )
-//				}
 			}
 		}
 
@@ -497,7 +513,7 @@ define(
 
 			simulate( world, deltaTimeInMs )
 
-			updateJumpAndRunActors( world, this.jumpAndRunActors, this.isGroundedQueue, this.isNotGroundedQueue )
+			updateJumpAndRunActors( world, worldToPhysicsScale, this.jumpAndRunActors, this.isGroundedQueue, this.isNotGroundedQueue )
 			transferState( world, worldToPhysicsScale, this.bodies, transforms )
 
 			if( this.debug ) {
