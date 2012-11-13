@@ -142,20 +142,23 @@ define(
 				var dampeningFactor = 0.12
 
 				// apply dampening
-				var body = bodies[ playerEntityId ]
+				var body = bodies[ playerEntityId ],
+					velocityX = body.velocity[ 0 ] * ( 1 - dampeningFactor )
 
 				entityManager.addComponent(
 					playerEntityId,
 					'spell.component.physics.applyVelocity',
 					{
 						velocity : [
-							body.velocity[ 0 ] * ( 1 - dampeningFactor ) ,
+							velocityX,
 							body.velocity[ 1 ]
 						]
 					}
 				)
 
-				updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
+				if( Math.abs( velocityX ) <= 0.3 ) {
+					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
+				}
 			}
 
 			if( rightActionStoppedQueue.length > 0 ||
