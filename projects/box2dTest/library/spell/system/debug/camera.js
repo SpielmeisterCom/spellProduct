@@ -14,8 +14,9 @@ define(
 		vec2,
 		mat3,
 		_
-		) {
+	) {
 		'use strict'
+
 
 		var getActiveCameraId = function( cameras ) {
 			if( !cameras || _.size( cameras ) === 0 ) return
@@ -55,56 +56,93 @@ define(
 			return leftX <= rotatedX && rotatedX <= rightX && topY <= rotatedY && rotatedY <= bottomY
 		}
 
+		var calculateOutlineBoxDimensions = function( entityId ) {
+			var width = 0,
+				height = 0
+
+			if ( this.appearances[ entityId ] &&
+				this.appearances[ entityId ].asset &&
+				this.appearances[ entityId ].asset.resource &&
+			    this.appearances[ entityId ].asset.resource.dimensions ) {
+
+			    //entity has a static appearance
+				width = this.appearances[ entityId ].asset.resource.dimensions[ 0 ]
+				height = this.appearances[ entityId ].asset.resource.dimensions[ 1 ]
+
+
+
+			} else if ( this.animatedAppearances[ entityId ] &&
+				this.animatedAppearances[ entityId ].asset &&
+				this.animatedAppearances[ entityId ].asset.frameDimensions ) {
+
+				//entity has an animated appearance
+				width = this.animatedAppearances[ entityId ].asset.frameDimensions[ 0 ],
+				height = this.animatedAppearances[ entityId ].asset.frameDimensions[ 1 ]
+
+			}
+
+			//camera, physics only entites?
+
+			//apply scale factor
+			if ( this.transforms[ entityId ] ) {
+				width *= this.transforms[ entityId ].globalScale[ 0 ]
+				height *= this.transforms[ entityId ].globalScale[ 1 ]
+			}
+
+			return [ width, height ]
+		}
+
 		var findEntitiesAtPosition = function( worldPosition ) {
-			var context = this.spell.renderingContext
+			var spell = this.spell,
+				ctx   = this.spell.renderingContext,
+				me    = this
 
-			// TODO: corect handling of sub entities
 			_.each(
+
 				this.transforms,
-				function( transform ) {
+				function( transform, id ) {
 
-					if( isPointInRect( worldPosition, transform.translation, 100, 100, transform.rotation ) ) {
-						context.save()
-						context.translate( transform.translation )
-						context.rotate( transform.rotation )
+					var entityDimensions = calculateOutlineBoxDimensions.call( me, id )
 
-						context.setLineColor( [ 1, 0, 0, 1 ] )
-						context.drawRect( 0, 0, 100, 100, 1 )
-						context.restore()
+					if ( isPointInRect( worldPosition, transform.globalTranslation, entityDimensions[ 0 ], entityDimensions[ 1 ], transform.globalRotation ) ) {
+						ctx.save()
+						ctx.translate( transform.globalTranslation )
+						ctx.rotate( transform.globalRotation )
+
+						ctx.setLineColor( [ 1,0,0,1 ] )
+						ctx.drawRect( 0, 0, entityDimensions[ 0 ], entityDimensions[ 1 ], 1)
+						ctx.restore()
 					}
 				}
 			)
 		}
 
-		var processEvent = function( spell, event ) {
-			if( event.type === 'mousewheel' ) {
-				// zoom camera in and out on mousewheel event
+		var processEvent = function ( spell, event ) {
+
+			if ( event.type == 'mousewheel' ) {
+				//zoom camera in and out on mousewheel event
 				var currentScale = this.transforms[ this.editorCameraEntityId ].scale
 
-				currentScale[ 0 ] = currentScale[ 0 ] + ( 0.75 * event.direction * -1 )
-				currentScale[ 1 ] = currentScale[ 1 ] + ( 0.75 * event.direction * -1 )
+				currentScale[0] = currentScale[0] + ( 0.75 * event.direction * -1 )
+				currentScale[1] = currentScale[1] + ( 0.75 * event.direction * -1 )
 
-				if( currentScale[ 0 ] < 0.5 ) {
-					currentScale[ 0 ] = 0.5
+				if (currentScale[0] < 0.5) {
+					currentScale[0] = 0.5
 				}
 
-				if( currentScale[ 1 ] < 0.5 ) {
-					currentScale[ 1 ] = 0.5
+				if (currentScale[1] < 0.5) {
+					currentScale[1] = 0.5
 				}
 
-			} else if( event.type === 'mousemove' ) {
-				if( window !== undefined ) {
-					window.focus()
-				}
-
+			} else if ( event.type == 'mousemove' ) {
 				this.currentWorldPosition = spell.renderingContext.transformScreenToWorld( event.position )
 
-				if( this.draggingEnabled ) {
+				if ( this.draggingEnabled ) {
 					var currentTranslation = this.transforms[ this.editorCameraEntityId ].translation,
-						currentScale       = this.transforms[ this.editorCameraEntityId ].scale
+						currentScale = this.transforms[ this.editorCameraEntityId ].scale
 
-					if( this.lastMousePosition === null ) {
-						// first sample of mouse movement
+					if ( this.lastMousePosition === null ) {
+						//first sample of mouse movement
 						this.lastMousePosition = [ event.position[ 0 ], event.position[ 1 ] ]
 						return
 					}
@@ -115,13 +153,13 @@ define(
 
 				this.lastMousePosition = [ event.position[ 0 ], event.position[ 1 ] ]
 
-			} else if( event.type === 'mousedown' ) {
-				this.lastMousePosition = null
-				this.draggingEnabled   = true
+			} else if ( event.type == 'mousedown' ) {
+				this.lastMousePosition  = null
+				this.draggingEnabled    = true
 
-			} else if( event.type === 'mouseup' ) {
-				this.lastMousePosition = null
-				this.draggingEnabled   = false
+			} else if ( event.type == 'mouseup' ) {
+				this.lastMousePosition  = null
+				this.draggingEnabled    = false
 			}
 		}
 
@@ -132,10 +170,10 @@ define(
 		 * @param {Object} [spell] The spell object.
 		 */
 		var camera = function( spell ) {
-			this.spell                = spell
-			this.lastMousePosition    = null
-			this.currentWorldPosition = null
-			this.draggingEnabled      = false
+			this.spell                  = spell
+			this.lastMousePosition      = null
+			this.currentWorldPosition   = null
+			this.draggingEnabled        = false
 		}
 
 		camera.prototype = {
@@ -163,17 +201,36 @@ define(
 			 * @param {Object} [spell] The spell object.
 			 */
 			activate: function( spell ) {
+				var lastActiveCameraTransform,
+					lastActiveCamera
+
 				//find current active camera
 				this.lastActiveCameraId = getActiveCameraId( this.cameras )
 
-				spell.entityManager.updateComponent(
-					this.lastActiveCameraId,
-					'spell.component.2d.graphics.camera', {
-					'active': false
-				})
+				if ( this.lastActiveCameraId ) {
+					spell.entityManager.updateComponent(
+						this.lastActiveCameraId,
+						'spell.component.2d.graphics.camera', {
+							'active': false
+						})
 
-				var lastActiveCameraTransform = this.transforms[ this.lastActiveCameraId ]
-				var lastActiveCamera          = this.cameras[ this.lastActiveCameraId ]
+
+					lastActiveCameraTransform = this.transforms[ this.lastActiveCameraId ]
+					lastActiveCamera          = this.cameras[ this.lastActiveCameraId ]
+
+				} else {
+					//no active camera found, so initalize a new one
+					lastActiveCamera = {
+						'width':        768,
+						'height':       1024
+					}
+
+					lastActiveCameraTransform = {
+						'translation':  [ 0, 0 ],
+						'scale':        [ 1, 1 ],
+						'rotation':     0
+					}
+				}
 
 				//create editor camera
 				this.editorCameraEntityId = spell.entityManager.createEntity({
