@@ -40,6 +40,12 @@
 			"default": 1,
 			"type": "number",
 			"doc": "the maximum velocity in y direction"
+		},
+		{
+			"name": "justLanded",
+			"default": false,
+			"type": "boolean",
+			"doc": "if true the actors just landed on solid ground"
 		}
 	]
 }

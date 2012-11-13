@@ -115,9 +115,9 @@ define(
 
 					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.jumping', false, 0.4 )
 
-					// only one impulse component at a time is allowed
-					return
+					isGrounded = false
 				}
+
 			}
 
 			// movement in x direction
@@ -145,28 +145,36 @@ define(
 
 				leftActionStartedQueue.length = 0
 
-			} else if( isGrounded &&
-				!wantsMoveRight &&
-				!wantsMoveLeft ) {
+			} else if( isGrounded ) {
+				if( !wantsMoveRight &&
+					!wantsMoveLeft ) {
 
-				// apply dampening
-				var dampeningFactor = 0.12,
-					body            = bodies[ playerEntityId ],
-					velocityX       = body.velocity[ 0 ] * ( 1 - dampeningFactor )
+					// apply dampening
+					var dampeningFactor = 0.12,
+						body            = bodies[ playerEntityId ],
+						velocityX       = body.velocity[ 0 ] * ( 1 - dampeningFactor )
 
-				entityManager.addComponent(
-					playerEntityId,
-					'spell.component.physics.applyVelocity',
-					{
-						velocity : [
-							velocityX,
-							body.velocity[ 1 ]
-						]
+					entityManager.addComponent(
+						playerEntityId,
+						'spell.component.physics.applyVelocity',
+						{
+							velocity : [
+								velocityX,
+								body.velocity[ 1 ]
+							]
+						}
+					)
+
+					if( Math.abs( velocityX ) <= 0.3 ) {
+						updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
 					}
-				)
 
-				if( Math.abs( velocityX ) <= 0.3 ) {
-					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
+				}
+
+				if( jumpAndRunActor.justLanded &&
+					( wantsMoveRight || wantsMoveLeft ) ) {
+
+					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.running' )
 				}
 			}
 

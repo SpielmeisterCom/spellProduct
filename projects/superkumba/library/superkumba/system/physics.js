@@ -47,6 +47,32 @@ define(
 				numIsNotGrounded = isNotGroundedQueue.length,
 				id
 
+			for( id in jumpAndRunActors ) {
+				var body = getBodyById( world, id )
+				if( !body ) continue
+
+				var jumpAndRunActor = jumpAndRunActors[ id ]
+				if( !jumpAndRunActor ) continue
+
+				var velocity = body.GetLinearVelocity()
+
+				// updating isMoving
+				jumpAndRunActor.isMovingX = Math.abs( velocity.x ) >= VELOCITY_THRESHOLD_X
+				jumpAndRunActor.isMovingY = Math.abs( velocity.y ) >= VELOCITY_THRESHOLD_Y
+
+				// resetting justLanded
+				jumpAndRunActor.justLanded = false
+
+				// clamping velocity to range
+				var maxVelocityX = jumpAndRunActor.maxVelocityX,
+					maxVelocityY = jumpAndRunActor.maxVelocityY
+
+				velocity.x = mathUtil.clamp( velocity.x, -maxVelocityX, maxVelocityX )
+				velocity.y = mathUtil.clamp( velocity.y, -maxVelocityY, maxVelocityY )
+
+				body.SetLinearVelocity( velocity )
+			}
+
 			// updating isGrounded
 			for( var i = 0; i < numIsGrounded; i++ ) {
 				id = isGroundedQueue[ i ]
@@ -54,8 +80,12 @@ define(
 				var jumpAndRunActor = jumpAndRunActors[ id ]
 
 				if( jumpAndRunActor ) {
-					jumpAndRunActor.numContacts++
-					jumpAndRunActor.isGrounded = jumpAndRunActor.numContacts > 0
+					var numContacts    = jumpAndRunActor.numContacts,
+						newNumContacts = numContacts + 1
+
+					jumpAndRunActor.numContacts = newNumContacts
+					jumpAndRunActor.isGrounded  = true
+					jumpAndRunActor.justLanded  = numContacts === 0
 				}
 			}
 
@@ -76,29 +106,6 @@ define(
 
 			if( numIsNotGrounded ) {
 				isNotGroundedQueue.length = 0
-			}
-
-			for( id in jumpAndRunActors ) {
-				var body = getBodyById( world, id )
-				if( !body ) continue
-
-				var jumpAndRunActor = jumpAndRunActors[ id ]
-				if( !jumpAndRunActor ) continue
-
-				var velocity = body.GetLinearVelocity()
-
-				// updating isMoving
-				jumpAndRunActor.isMovingX = Math.abs( velocity.x ) >= VELOCITY_THRESHOLD_X
-				jumpAndRunActor.isMovingY = Math.abs( velocity.y ) >= VELOCITY_THRESHOLD_Y
-
-				// clamping velocity to range
-				var maxVelocityX = jumpAndRunActor.maxVelocityX,
-					maxVelocityY = jumpAndRunActor.maxVelocityY
-
-				velocity.x = mathUtil.clamp( velocity.x, -maxVelocityX, maxVelocityX )
-				velocity.y = mathUtil.clamp( velocity.y, -maxVelocityY, maxVelocityY )
-
-				body.SetLinearVelocity( velocity )
 			}
 		}
 
@@ -121,18 +128,6 @@ define(
 					}
 				}
 			}
-
-//			var log = function( next, contact, manifold ) {
-//				console.log( 'endContact' )
-//				next( contact, manifold )
-//			}
-//
-//			return createB2ContactListener(
-//				createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) ),
-//				_.bind( log, null, createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ) ),
-//				null,
-//				null
-//			)
 
 			return createB2ContactListener(
 				createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) ),
