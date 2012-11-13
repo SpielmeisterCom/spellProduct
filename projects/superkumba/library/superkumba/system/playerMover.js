@@ -109,11 +109,11 @@ define(
 				isRolling       = actor.actions.roll.executing,
 				direction
 
-			if( isGrounded ) {
-				// jumping
-				if( jumpActionStartedQueue.length > 0 ) {
-					jumpActionStartedQueue.length = 0
+			// jumping
+			if( jumpActionStartedQueue.length > 0 ) {
+				jumpActionStartedQueue.length = 0
 
+				if( isGrounded ) {
 					entityManager.addComponent(
 						playerEntityId,
 						'spell.component.physics.applyImpulse',
@@ -126,8 +126,10 @@ define(
 
 					isGrounded = false
 				}
+			}
 
-				// start rolling
+			// start rolling
+			if( isGrounded ) {
 				if( rollActionStartedQueue.length > 0 ) {
 					rollActionStartedQueue.length = 0
 

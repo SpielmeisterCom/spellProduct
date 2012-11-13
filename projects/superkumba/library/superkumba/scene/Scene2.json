@@ -277,6 +277,49 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "platform vertical1",
+			"config": {
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:superkumba.level.wipfelwald.objects.moving_plattform"
+				},
+				"spell.component.2d.transform": {
+					"scale": [
+						1,
+						1
+					],
+					"translation": [
+						850,
+						450
+					]
+				},
+				"spell.component.physics.body": {
+					"type": "kinematic",
+					"fixedRotation": true
+				},
+				"spell.component.physics.fixture": {
+					"restitution": 0
+				},
+				"spell.component.physics.shape.box": {
+					"dimensions": [
+						192,
+						64
+					]
+				},
+				"spell.component.visualObject": {},
+				"spellStaged.jumpAndRun.platform": {
+					"duration": 6000,
+					"waypointA": [
+						0,
+						-100
+					],
+					"waypointB": [
+						0,
+						300
+					]
+				}
+			}
 		}
 	]
 }
