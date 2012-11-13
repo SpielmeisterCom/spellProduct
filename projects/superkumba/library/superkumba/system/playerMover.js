@@ -23,6 +23,7 @@ define(
 
 
 		var playerAppearanceName = 'playerAppearance',
+			JUMP_TIMEOUT_IN_MS   = 100,
 			sign                 = mathUtil.sign
 
 		var toCamelCase = function( it ) {
@@ -98,6 +99,8 @@ define(
 				rollActionStartedQueue  = this.rollActionStartedQueue,
 				rollActionStoppedQueue  = this.rollActionStoppedQueue
 
+			this.jumpTimeout = Math.max( 0, this.jumpTimeout - deltaTimeInMs )
+
 			var playerEntityId  = entityManager.getEntityIdsByName( 'player' )[ 0 ],
 				jumpAndRunActor = this.jumpAndRunActors[ playerEntityId ],
 				isGrounded      = jumpAndRunActor.isGrounded,
@@ -125,20 +128,19 @@ define(
 					updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.jumping', false, 0.4 )
 
 					isGrounded = false
+					this.jumpTimeout = JUMP_TIMEOUT_IN_MS
 				}
 			}
 
-			// start rolling
+			// rolling
 			if( rollActionStartedQueue.length > 0 ) {
 				rollActionStartedQueue.length = 0
 
 				updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
 
-				jumpAndRunActor.maxVelocityX = 3.5
-			}
+				jumpAndRunActor.maxVelocityX = 4
 
-			// end rolling
-			if( rollActionStoppedQueue.length > 0 ) {
+			} else if( rollActionStoppedQueue.length > 0 ) {
 				rollActionStoppedQueue.length = 0
 
 				updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
@@ -171,7 +173,9 @@ define(
 
 				leftActionStartedQueue.length = 0
 
-			} else if( isGrounded ) {
+			} else if( isGrounded &&
+				this.jumpTimeout === 0 ) {
+
 				if( !wantsMoveRight &&
 					!wantsMoveLeft ) {
 
@@ -194,7 +198,6 @@ define(
 					if( Math.abs( velocityX ) <= 0.3 ) {
 						updateAppearance( entityManager, playerAppearanceName, 'animation:superkumba.actor.kiba.standing' )
 					}
-
 				}
 
 				if( jumpAndRunActor.justLanded &&
@@ -244,7 +247,7 @@ define(
 
 
         var PlayerMover = function( spell ) {
-			this.lastJump = 0
+			this.jumpTimeout = 0
 		}
 
 		PlayerMover.prototype = {

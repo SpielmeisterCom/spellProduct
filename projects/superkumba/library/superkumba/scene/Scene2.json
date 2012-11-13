@@ -53,6 +53,7 @@
 		"superkumba.actor.bug.spritesheet",
 		"superkumba.actor.bug.walking",
 		"superkumba.actor.kiba.dead",
+		"superkumba.actor.kiba.jumping",
 		"superkumba.actor.kiba.rolling",
 		"superkumba.actor.kiba.running",
 		"superkumba.actor.kiba.spritesheet",
@@ -120,8 +121,7 @@
 		"superkumba.pickups.pickup_coconut",
 		"superkumba.pickups.pickup_super_banana",
 		"superkumba.pickups.pickup_super_star",
-		"test",
-		"superkumba.actor.kiba.jumping"
+		"test"
 	],
 	"systems": {
 		"update": [],
@@ -145,6 +145,12 @@
 				}
 			},
 			{
+				"id": "superkumba.system.playerMover",
+				"config": {
+					"active": true
+				}
+			},
+			{
 				"id": "superkumba.system.physics",
 				"config": {
 					"active": true,
@@ -153,12 +159,6 @@
 						-10
 					],
 					"scale": 0.01
-				}
-			},
-			{
-				"id": "superkumba.system.playerMover",
-				"config": {
-					"active": true
 				}
 			},
 			{

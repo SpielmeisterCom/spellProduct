@@ -109,6 +109,11 @@ define(
 			}
 		}
 
+//		var log = function( next, contact, manifold ) {
+//			console.log( 'box2d: endContact' )
+//			next( contact, manifold )
+//		}
+
 		var createFootSensorContactListener = function( isGroundedQueue, isNotGroundeQueue ) {
 			var createFootSensorContactHandler = function( callback ) {
 				return function( contact, manifold ) {
@@ -135,6 +140,13 @@ define(
 				null,
 				null
 			)
+
+//			return createB2ContactListener(
+//				createFootSensorContactHandler( _.bind( isGroundedQueue.push, isGroundedQueue ) ),
+//				_.bind( log, null, createFootSensorContactHandler( _.bind( isNotGroundeQueue.push, isNotGroundeQueue ) ) ),
+//				null,
+//				null
+//			)
 		}
 
 		var getBodyById = function( world, entityId ) {
@@ -275,7 +287,7 @@ define(
 				footSensorFixtureDef.isSensor = true
 				footSensorFixtureDef.userData = { type : 'footSensor', id : entityId }
 				footSensorFixtureDef.shape    = createB2CircleShape( footRadius )
-				footSensorFixtureDef.shape.SetLocalPosition( createB2Vec2( 0, halfHeight * -1 + footRadius / 2.5 ) )
+				footSensorFixtureDef.shape.SetLocalPosition( createB2Vec2( 0, halfHeight * -1 + footRadius / 2 ) )
 
 				bodyDef.CreateFixture( footSensorFixtureDef )
 			}
@@ -292,7 +304,7 @@ define(
 		var simulate = function( world, deltaTimeInMs ) {
 			world.Step( deltaTimeInMs / 1000, 10, 8 )
 			world.ClearForces()
-			world.DrawDebugData()
+//			world.DrawDebugData()
 		}
 
 		var transferState = function( world, worldToPhysicsScale, bodies, transforms ) {
@@ -503,8 +515,8 @@ define(
 				removedEntitiesQueue.length = 0
 			}
 
-			updatePlatforms( deltaTimeInMs, world, worldToPhysicsScale, this.platforms, this.transforms )
 			applyInfluence( spell.entityManager, world, worldToPhysicsScale, this.applyForces, this.applyTorques, this.applyImpulses, this.applyVelocities, this.setPositions )
+			updatePlatforms( deltaTimeInMs, world, worldToPhysicsScale, this.platforms, this.transforms )
 
 			simulate( world, deltaTimeInMs )
 
