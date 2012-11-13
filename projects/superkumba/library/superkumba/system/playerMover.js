@@ -129,14 +129,12 @@ define(
 			}
 
 			// start rolling
-			if( isGrounded ) {
-				if( rollActionStartedQueue.length > 0 ) {
-					rollActionStartedQueue.length = 0
+			if( rollActionStartedQueue.length > 0 ) {
+				rollActionStartedQueue.length = 0
 
-					updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
+				updateAppearance( entityManager, playerAppearanceName, getAppearanceAssetId( isRolling ) )
 
-					jumpAndRunActor.maxVelocityX = 3.5
-				}
+				jumpAndRunActor.maxVelocityX = 3.5
 			}
 
 			// end rolling
