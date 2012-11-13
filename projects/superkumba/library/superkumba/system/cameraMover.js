@@ -71,10 +71,28 @@ define(
 			 */
 			process: function( spell, timeInMs, deltaTimeInMs ) {
 				var camera = spell.entityManager.getEntityIdsByName( 'camera' )[0],
-				    player = spell.entityManager.getEntityIdsByName( 'player' )[0]
+				    player = spell.entityManager.getEntityIdsByName( 'player' )[0],
+				    cameraTranslation = this.transforms[ camera ].translation,
+				    playerTranslation = this.transforms[ player ].translation
 
-				    this.transforms[ camera ].translation[ 0 ] = this.transforms[ player ].translation[ 0 ]
-				    this.transforms[ camera ].translation[ 1 ] = this.transforms[ player ].translation[ 1 ]
+				    cameraTranslation[ 0 ] = playerTranslation[ 0 ]
+				    cameraTranslation[ 1 ] = playerTranslation[ 1 ]
+				    
+				    if ( cameraTranslation[ 0 ] < 450 ) {
+				    	cameraTranslation[ 0 ] = 450
+				    }
+				    
+				    if ( cameraTranslation[ 0 ] > 1650 ) {
+				    	cameraTranslation[ 0 ] = 1650
+				    }
+				    
+				    if ( cameraTranslation[ 1 ] < 300 ) {
+				    	cameraTranslation[ 1 ] = 300
+				    }
+				    
+				    if ( cameraTranslation[ 1 ] > 700 ) {
+				    	cameraTranslation[ 1 ] = 700
+				    }				    
 			}
 		}
 

@@ -2,6 +2,7 @@
 	"version": 1,
 	"type": "scene",
 	"libraryIds": [
+		"spell.component.2d.globalTansform",
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
 		"spell.component.2d.graphics.camera",
@@ -46,6 +47,7 @@
 		"superkumba.system.createTilePhysics",
 		"superkumba.system.physics",
 		"superkumba.system.playerMover",
+		"xx",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
 		"spell.defaultSound",
@@ -171,7 +173,7 @@
 				"id": "spell.system.render",
 				"config": {
 					"active": true,
-					"debug": true
+					"debug": false
 				}
 			},
 			{
@@ -190,7 +192,8 @@
 				"spell.component.2d.graphics.camera": {
 					"active": true,
 					"height": 600,
-					"width": 900
+					"width": 900,
+					"clearUnsafeArea": true
 				}
 			}
 		},
@@ -274,6 +277,69 @@
 						},
 						"spell.component.2d.transform": {},
 						"spell.component.visualObject": {}
+					}
+				},
+				{
+					"name": "paralax far",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.level.wipfelwald.background.paralax_far"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								800,
+								520
+							],
+							"scale": [
+								1.5,
+								1.5
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": -1
+						}
+					}
+				},
+				{
+					"name": "paralax near",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.level.wipfelwald.background.paralax_palms"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								500,
+								400
+							],
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": -1
+						}
+					}
+				},
+				{
+					"name": "paralax near_copy",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.level.wipfelwald.background.paralax_palms"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								1460,
+								400
+							],
+							"scale": [
+								1,
+								1
+							]
+						},
+						"spell.component.visualObject": {
+							"layer": -1
+						}
 					}
 				}
 			]
