@@ -14,7 +14,6 @@ define(
 		'use strict'
 
 
-
 		/**
 		 * Creates an instance of the system.
 		 *
@@ -82,8 +81,8 @@ define(
 				    	cameraTranslation[ 0 ] = 450
 				    }
 				    
-				    if ( cameraTranslation[ 0 ] > 1650 ) {
-				    	cameraTranslation[ 0 ] = 1650
+				    if ( cameraTranslation[ 0 ] > 1850 ) {
+				    	cameraTranslation[ 0 ] = 1850
 				    }
 				    
 				    if ( cameraTranslation[ 1 ] < 300 ) {

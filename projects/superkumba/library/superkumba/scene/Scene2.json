@@ -119,6 +119,7 @@
 		"superkumba.level.wipfelwald.objects.jumppad_spritesheet",
 		"superkumba.level.wipfelwald.objects.moving_plattform",
 		"superkumba.obstacles.obstacle_spike_platform",
+		"superkumba.pickups.default_pickup_animation",
 		"superkumba.pickups.pickup_banana",
 		"superkumba.pickups.pickup_coconut",
 		"superkumba.pickups.pickup_super_banana",
@@ -147,12 +148,6 @@
 				}
 			},
 			{
-				"id": "superkumba.system.playerMover",
-				"config": {
-					"active": true
-				}
-			},
-			{
 				"id": "superkumba.system.physics",
 				"config": {
 					"active": true,
@@ -161,6 +156,12 @@
 						-10
 					],
 					"scale": 0.01
+				}
+			},
+			{
+				"id": "superkumba.system.playerMover",
+				"config": {
+					"active": true
 				}
 			},
 			{
@@ -341,6 +342,36 @@
 							"layer": -1
 						}
 					}
+				},
+				{
+					"name": "spikes",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.level.wipfelwald.objects.ground_spike"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								1250,
+								30
+							]
+						},
+						"spell.component.visualObject": {}
+					}
+				},
+				{
+					"name": "spikes_copy",
+					"config": {
+						"spell.component.2d.graphics.appearance": {
+							"assetId": "appearance:superkumba.level.wipfelwald.objects.ground_spike"
+						},
+						"spell.component.2d.transform": {
+							"translation": [
+								1315,
+								30
+							]
+						},
+						"spell.component.visualObject": {}
+					}
 				}
 			]
 		},
@@ -356,7 +387,51 @@
 						1
 					],
 					"translation": [
-						850,
+						900,
+						750
+					]
+				},
+				"spell.component.physics.body": {
+					"type": "kinematic",
+					"fixedRotation": true
+				},
+				"spell.component.physics.fixture": {
+					"restitution": 0,
+					"friction": 50
+				},
+				"spell.component.physics.shape.box": {
+					"dimensions": [
+						192,
+						64
+					]
+				},
+				"spell.component.visualObject": {},
+				"spellStaged.jumpAndRun.platform": {
+					"duration": 4000,
+					"waypointA": [
+						200,
+						0
+					],
+					"waypointB": [
+						-200,
+						0
+					]
+				}
+			}
+		},
+		{
+			"name": "platform front",
+			"config": {
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:superkumba.level.wipfelwald.objects.moving_plattform"
+				},
+				"spell.component.2d.transform": {
+					"scale": [
+						1,
+						1
+					],
+					"translation": [
+						280,
 						450
 					]
 				},
@@ -378,12 +453,30 @@
 					"duration": 6000,
 					"waypointA": [
 						0,
-						-100
+						-400
 					],
 					"waypointB": [
 						0,
 						300
 					]
+				}
+			}
+		},
+		{
+			"name": "pickup_superbanana",
+			"config": {
+				"spell.component.2d.graphics.appearance": {
+					"assetId": "appearance:superkumba.pickups.pickup_super_banana"
+				},
+				"spell.component.2d.transform": {
+					"translation": [
+						2180,
+						180
+					]
+				},
+				"spell.component.visualObject": {},
+				"spell.component.animation.keyFrameAnimation": {
+					"assetId": "keyFrameAnimation:superkumba.pickups.default_pickup_animation"
 				}
 			}
 		}
