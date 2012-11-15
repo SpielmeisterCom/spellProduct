@@ -16,6 +16,3 @@
 [submodule "modules/jsduck"]
 	path = modules/jsduck
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/jsduck.git
-[submodule "projects/superkumba"]
-	path = projects/superkumba
-	url = ssh://git@stash.spielmeister.com:7999/KG/superkumba.git
