@@ -12,8 +12,11 @@
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
+		"spell.component.audio.soundEmitter",
 		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.parent",
 		"spell.component.entityComposite.root",
+		"spell.component.events",
 		"spell.component.inputDefinition",
 		"spell.component.name",
 		"spell.component.physics.applyForce",
@@ -31,6 +34,7 @@
 		"spell.entity.2d.graphics.camera",
 		"spell.entity.inputDefinition",
 		"box2dTest.bodyTest",
+		"spell.system.audio",
 		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
@@ -40,7 +44,8 @@
 		"box2dTest.crate_wood_2",
 		"box2dTest.mario_8bit",
 		"spell.OpenSans14px",
-		"spell.defaultAppearance"
+		"spell.defaultAppearance",
+		"spell.defaultSound"
 	],
 	"systems": {
 		"update": [],
@@ -72,7 +77,7 @@
 				"id": "spell.system.render",
 				"config": {
 					"active": true,
-					"debug": false
+					"debug": true
 				}
 			},
 			{
@@ -119,7 +124,8 @@
 					"assetId": "appearance:box2dTest.mario_8bit"
 				},
 				"spell.component.physics.body": {
-					"fixedRotation": true
+					"fixedRotation": true,
+					"type": "dynamic"
 				},
 				"spell.component.physics.fixture": {
 					"friction": 1,
@@ -161,7 +167,9 @@
 						35
 					]
 				},
-				"spell.component.physics.body": {},
+				"spell.component.physics.body": {
+					"type": "dynamic"
+				},
 				"spell.component.physics.fixture": {
 					"restitution": 0.3,
 					"density": 2
@@ -184,7 +192,9 @@
 						1
 					]
 				},
-				"spell.component.physics.body": {},
+				"spell.component.physics.body": {
+					"type": "dynamic"
+				},
 				"spell.component.physics.fixture": {
 					"friction": 0.9,
 					"restitution": 0.5

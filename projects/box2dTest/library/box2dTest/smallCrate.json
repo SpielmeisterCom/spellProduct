@@ -15,10 +15,15 @@
 				0
 			]
 		},
-		"spell.component.physics.body": {},
+		"spell.component.physics.body": {
+			"type": "dynamic"
+		},
 		"spell.component.physics.fixture": {},
 		"spell.component.physics.shape.box": {
-			"dimensions" : [ 2, 2 ]
+			"dimensions": [
+				2,
+				2
+			]
 		},
 		"spell.component.visualObject": {}
 	},
