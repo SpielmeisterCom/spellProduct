@@ -19,13 +19,8 @@
 		"spell.component.eventHandlers",
 		"spell.component.inputDefinition",
 		"spell.component.name",
-		"spell.component.physics.applyForce",
-		"spell.component.physics.applyImpulse",
-		"spell.component.physics.applyTorque",
-		"spell.component.physics.applyVelocity",
 		"spell.component.physics.body",
 		"spell.component.physics.fixture",
-		"spell.component.physics.setPosition",
 		"spell.component.physics.shape.box",
 		"spell.component.physics.shape.circle",
 		"spell.component.physics.shape.jumpAndRunPlayer",
@@ -217,16 +212,6 @@
 					"translation": [
 						3,
 						30
-					]
-				},
-				"spell.component.physics.applyForce": {
-					"force": [
-						0,
-						0
-					],
-					"point": [
-						0,
-						0
 					]
 				}
 			}
