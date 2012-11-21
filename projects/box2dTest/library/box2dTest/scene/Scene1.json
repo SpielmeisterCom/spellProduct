@@ -16,7 +16,7 @@
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.parent",
 		"spell.component.entityComposite.root",
-		"spell.component.events",
+		"spell.component.eventHandlers",
 		"spell.component.inputDefinition",
 		"spell.component.name",
 		"spell.component.physics.applyForce",
