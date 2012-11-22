@@ -9,7 +9,7 @@
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spelled.git
 [submodule "modules/ace"]
 	path = modules/ace
-	url = https://github.com/Spielmeister/ace.git
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/ace.git
 [submodule "modules/extjs"]
 	path = modules/extjs
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/extjs.git
