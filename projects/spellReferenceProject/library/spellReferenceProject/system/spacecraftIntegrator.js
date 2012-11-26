@@ -10,7 +10,7 @@ define(
 
 		var spacecraftTorque = 1
 
-		var applyActionsToSpacecrafts = function( entityManager, deltaTimeInS, actors, spacecrafts, transforms ) {
+		var applyActionsToSpacecrafts = function( world, deltaTimeInS, actors, spacecrafts, transforms ) {
 			for( var id in actors ) {
 				var actions    = actors[ id ].actions,
 					transform  = transforms[ id ],
@@ -24,45 +24,31 @@ define(
 					)
 				)
 
-				// torque
 				var torque = ( rotationDirection ?
 					spacecraftTorque * rotationDirection :
-					0
+					undefined
 				)
 
-				entityManager.updateComponent(
-					id,
-					'spell.component.physics.applyTorque',
-					{
-						torque : torque
-					}
-				)
+				if( torque ) {
+					world.applyTorque( id, torque )
+				}
 
-				// force
-				var rotation      = transform.rotation,
-					thrusterForce = spacecraft.thrusterForce
+				if( actions.accelerate.executing ) {
+					var rotation      = transform.rotation,
+						thrusterForce = spacecraft.thrusterForce,
+						force         = [ Math.sin( rotation ) * thrusterForce, Math.cos( rotation ) * thrusterForce ]
 
-				var force = ( actions.accelerate.executing ?
-					[ Math.sin( rotation ) * thrusterForce, Math.cos( rotation ) * thrusterForce ] :
-					[ 0, 0 ]
-				)
-
-				entityManager.updateComponent(
-					id,
-					'spell.component.physics.applyForce',
-					{
-						force : force
-					}
-				)
+					world.applyForce( id, force )
+				}
 			}
 		}
 
-		var init = function( spell ) {}
+		var init = function( spell ) {
+			this.world = spell.box2dWorlds.main
+		}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
-			var deltaTimeInS = deltaTimeInMs / 1000
-
-			applyActionsToSpacecrafts( spell.entityManager, deltaTimeInMs, this.actors, this.spacecrafts, this.transforms )
+			applyActionsToSpacecrafts( this.world, deltaTimeInMs, this.actors, this.spacecrafts, this.transforms )
 		}
 
 

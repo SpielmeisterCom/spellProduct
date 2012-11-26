@@ -3,8 +3,12 @@
 	"type": "entityTemplate",
 	"config": {
 		"spell.component.2d.transform": {},
-		"spell.component.physics.body": {},
-		"spell.component.physics.fixture": {},
+		"spell.component.physics.body": {
+			"type": "dynamic"
+		},
+		"spell.component.physics.fixture": {
+			"restitution": 0
+		},
 		"spell.component.physics.shape.circle": {
 			"radius": 30
 		}

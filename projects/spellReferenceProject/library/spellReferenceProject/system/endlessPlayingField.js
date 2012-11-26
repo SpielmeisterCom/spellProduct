@@ -12,7 +12,7 @@ define(
 			topBorder           = playingFieldSize[ 1 ] + border,
 			bottomBorder        = 0 - border
 
-		var updatePosition = function( entityManager, bodies, transforms ) {
+		var updatePosition = function( world, bodies, transforms ) {
 			for( var id in bodies ) {
 				var transform = transforms[ id ],
 					position  = transform.translation,
@@ -35,25 +35,17 @@ define(
 				}
 
 				if( updated ) {
-					entityManager.addComponent(
-						id,
-						'spell.component.physics.setPosition',
-						{
-							value : position
-						}
-					)
+					world.setPosition( id, position )
 				}
 			}
 		}
 
-		var init = function( spell ) {}
+		var init = function( spell ) {
+			this.world = spell.box2dWorlds.main
+		}
 
 		var process = function( spell, timeInMs, deltaTimeInMs ) {
-			var entityManager = spell.entityManager,
-				bodies        = this.bodies,
-				transforms    = this.transforms
-
-			updatePosition( entityManager, bodies, transforms )
+			updatePosition( this.world, this.bodies, this.transforms )
 		}
 
 
