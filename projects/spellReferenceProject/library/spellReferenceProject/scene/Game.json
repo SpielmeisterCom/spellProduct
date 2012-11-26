@@ -16,13 +16,8 @@
 		"spell.component.entityComposite.root",
 		"spell.component.inputDefinition",
 		"spell.component.name",
-		"spell.component.physics.applyForce",
-		"spell.component.physics.applyImpulse",
-		"spell.component.physics.applyTorque",
-		"spell.component.physics.applyVelocity",
 		"spell.component.physics.body",
 		"spell.component.physics.fixture",
-		"spell.component.physics.setPosition",
 		"spell.component.physics.shape.box",
 		"spell.component.physics.shape.circle",
 		"spell.component.physics.shape.jumpAndRunPlayer",
@@ -158,9 +153,7 @@
 				},
 				"spell.component.physics.shape.circle": {
 					"radius": 43
-				},
-				"spell.component.physics.applyForce": {},
-				"spell.component.physics.applyTorque": {}
+				}
 			},
 			"children": [
 				{
@@ -215,9 +208,7 @@
 				},
 				"spell.component.physics.shape.circle": {
 					"radius": 23
-				},
-				"spell.component.physics.applyForce": {},
-				"spell.component.physics.applyTorque": {}
+				}
 			},
 			"children": [
 				{
