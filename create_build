@@ -73,5 +73,7 @@ rm -Rf $DEST_DIR/spellCore/docs $DEST_DIR/spellCore/misc
 for PROJECT in $(ls "$DEST_DIR/projects"); do
   cd $DEST_DIR/projects/$PROJECT
   ../../spellCore/sappre init
+  #remove assets directory
+  rm -rf assets/
   cd $CUR_DIR
 done
