@@ -9,7 +9,9 @@
 			]
 		},
 		"spell.component.visualObject": {},
-		"spell.component.physics.body": {},
+		"spell.component.physics.body": {
+			"type": "dynamic"
+		},
 		"spell.component.physics.fixture": {},
 		"spell.component.physics.shape.circle": {
 			"radius": 14

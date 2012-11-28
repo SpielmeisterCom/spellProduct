@@ -4,27 +4,31 @@
 	"libraryIds": [
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
+		"spell.component.2d.graphics.appearanceTransform",
 		"spell.component.2d.graphics.camera",
+		"spell.component.2d.graphics.cameraMovement",
 		"spell.component.2d.graphics.debug.box",
 		"spell.component.2d.graphics.debug.circle",
+		"spell.component.2d.graphics.geometry.quad",
+		"spell.component.2d.graphics.spriteSheetAppearance",
 		"spell.component.2d.graphics.textAppearance",
 		"spell.component.2d.graphics.tilemap",
 		"spell.component.2d.transform",
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
+		"spell.component.audio.soundEmitter",
 		"spell.component.entityComposite.children",
+		"spell.component.entityComposite.parent",
 		"spell.component.entityComposite.root",
+		"spell.component.eventHandlers",
 		"spell.component.inputDefinition",
 		"spell.component.name",
-		"spell.component.physics.applyForce",
-		"spell.component.physics.applyImpulse",
-		"spell.component.physics.applyTorque",
-		"spell.component.physics.applyVelocity",
 		"spell.component.physics.body",
+		"spell.component.physics.contactTrigger",
 		"spell.component.physics.fixture",
-		"spell.component.physics.setPosition",
 		"spell.component.physics.shape.box",
 		"spell.component.physics.shape.circle",
+		"spell.component.physics.shape.convexPolygon",
 		"spell.component.physics.shape.jumpAndRunPlayer",
 		"spell.component.visualObject",
 		"spellReferenceProject.component.spacecraft",
@@ -34,15 +38,21 @@
 		"spellReferenceProject.entity.alienSpacecraft",
 		"spellReferenceProject.entity.asteroid",
 		"spellReferenceProject.entity.spacecraft",
+		"spell.system.audio",
+		"spell.system.cameraMover",
+		"spell.system.clearKeyInput",
+		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
 		"spell.system.keyInput",
 		"spell.system.physics",
+		"spell.system.processKeyInput",
 		"spell.system.render",
 		"spellReferenceProject.system.aiControl",
 		"spellReferenceProject.system.endlessPlayingField",
 		"spellReferenceProject.system.spacecraftIntegrator",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
+		"spell.defaultSound",
 		"spellDemo.logo.animation",
 		"spellDemo.logo.appearance",
 		"spellReferenceProject.asset.Bello Pro",
@@ -60,22 +70,15 @@
 		"spellReferenceProject.asset.threeRingsSpriteSheet"
 	],
 	"systems": {
-		"update": [],
-		"render": [
+		"update": [
 			{
-				"id": "spell.system.keyInput",
+				"id": "spell.system.processKeyInput",
 				"config": {
 					"active": true
 				}
 			},
 			{
 				"id": "spellReferenceProject.system.aiControl",
-				"config": {
-					"active": true
-				}
-			},
-			{
-				"id": "spellReferenceProject.system.spacecraftIntegrator",
 				"config": {
 					"active": true
 				}
@@ -92,11 +95,25 @@
 				}
 			},
 			{
+				"id": "spellReferenceProject.system.spacecraftIntegrator",
+				"config": {
+					"active": true
+				}
+			},
+			{
 				"id": "spellReferenceProject.system.endlessPlayingField",
 				"config": {
 					"active": true
 				}
 			},
+			{
+				"id": "spell.system.clearKeyInput",
+				"config": {
+					"active": true
+				}
+			}
+		],
+		"render": [
 			{
 				"id": "spell.system.keyFrameAnimation",
 				"config": {
@@ -158,9 +175,7 @@
 				},
 				"spell.component.physics.shape.circle": {
 					"radius": 43
-				},
-				"spell.component.physics.applyForce": {},
-				"spell.component.physics.applyTorque": {}
+				}
 			},
 			"children": [
 				{
@@ -189,9 +204,7 @@
 					"config": {
 						"spell.component.2d.graphics.appearance": {
 							"assetId": "appearance:spellReferenceProject.asset.pixelShip2"
-						},
-						"spell.component.2d.transform": {},
-						"spell.component.visualObject": {}
+						}
 					}
 				}
 			]
@@ -216,8 +229,9 @@
 				"spell.component.physics.shape.circle": {
 					"radius": 23
 				},
-				"spell.component.physics.applyForce": {},
-				"spell.component.physics.applyTorque": {}
+				"spell.component.physics.fixture": {
+					"restitution": 0
+				}
 			},
 			"children": [
 				{
@@ -320,14 +334,6 @@
 							"opacity": 0.33
 						}
 					}
-				},
-				{
-					"name": "fuselage",
-					"config": {
-						"spell.component.2d.graphics.animatedAppearance": {},
-						"spell.component.2d.transform": {},
-						"spell.component.visualObject": {}
-				}
 				}
 			]
 		},
@@ -344,17 +350,7 @@
 				"spell.component.physics.shape.circle": {
 					"radius": 34
 				}
-			},
-			"children": [
-				{
-					"name": "fuselage",
-					"config": {
-						"spell.component.2d.graphics.animatedAppearance": {},
-						"spell.component.2d.transform": {},
-						"spell.component.visualObject": {}
 			}
-				}
-			]
 		},
 		{
 			"name": "asteroid (big)",
@@ -380,11 +376,9 @@
 					"config": {
 						"spell.component.2d.graphics.appearance": {
 							"assetId": "appearance:spellReferenceProject.asset.asteroid1"
-						},
-						"spell.component.2d.transform": {},
-						"spell.component.visualObject": {}
 						}
 					}
+				}
 			]
 		},
 		{
