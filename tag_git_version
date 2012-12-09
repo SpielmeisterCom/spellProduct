@@ -10,10 +10,7 @@ git push
 cd ../..
 
 git add VERSION
-git add modules/ace
-git add modules/spellEd
-git add modules/spellCore
-git add modules/spellFlash
+git add modules/*
 git commit -m "Version $VERSION release"
 git push
 
