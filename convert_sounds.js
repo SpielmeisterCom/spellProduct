@@ -14,7 +14,8 @@ var fs   = require('fs'),
 
 var pattern   = rootPath + "/*/library/**/*",
 	fileTypes = _.map( supportedMedia, function( mediaType ) { return "." + mediaType }),
-	files     = flob.byTypes( pattern, fileTypes )
+	files     = flob.byTypes( pattern, fileTypes ),
+	progress  = {}
 
 var callback = function (error, stdout, stderr) {
 	if (error !== null) {
@@ -32,10 +33,12 @@ var convertFile = function( filePath ) {
 	_.each(
 		supportedMedia,
 		function( type ) {
-			var newExtension = "." + type
+			var newExtension = "." + type,
+				soundPath    = path.join( dir, baseName + newExtension )
 
-			if( newExtension != extension ) {
-				var soxCommand = 'sox '+ filePath + ' ' + path.join( dir, baseName + newExtension )
+			if( newExtension != extension && !progress[ soundPath ] ) {
+				progress[ soundPath ] = true
+				var soxCommand = 'sox '+ filePath + ' ' + soundPath
 
 				console.log( 'Doing: ' + soxCommand )
 				var child = exec(
