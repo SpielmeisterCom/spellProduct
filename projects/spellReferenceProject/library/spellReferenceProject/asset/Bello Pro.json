@@ -677,7 +677,8 @@
 				"y": 470
 			}
 		},
-		"spacing": 14
+		"hSpacing": 14,
+		"vSpacing": 0
 	},
 	"file": "Bello Pro.png",
 	"version": 1
