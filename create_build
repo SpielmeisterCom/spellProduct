@@ -19,12 +19,7 @@ echo $VERSION >$DEST_DIR/VERSION
 
 echo Preparing deploy directory $DEST_DIR...
 
-mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore $DEST_DIR/projects
-
-echo Copying reference projects to generated directory...
-cp -aR projects/battleblast $DEST_DIR/projects
-cp -aR projects/box2dTest $DEST_DIR/projects
-cp -aR projects/spellReferenceProject $DEST_DIR/projects
+mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore
 
 echo Building SpellEd...
 cd modules/spellEd
