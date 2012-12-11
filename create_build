@@ -19,12 +19,7 @@ echo $VERSION >$DEST_DIR/VERSION
 
 echo Preparing deploy directory $DEST_DIR...
 
-mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore $DEST_DIR/projects
-
-echo Copying reference projects to generated directory...
-cp -aR projects/battleblast $DEST_DIR/projects
-cp -aR projects/box2dTest $DEST_DIR/projects
-cp -aR projects/spellReferenceProject $DEST_DIR/projects
+mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore
 
 echo Building SpellEd...
 cd modules/spellEd
@@ -70,12 +65,3 @@ cp -aR $DEST_DIR/spellCore/docs/generated/* $DEST_DIR/docs
 
 echo Stripping down export...
 rm -Rf $DEST_DIR/spellCore/docs $DEST_DIR/spellCore/misc
-
-#echo Reinitializing demo projects...
-for PROJECT in $(ls "$DEST_DIR/projects"); do
-  cd $DEST_DIR/projects/$PROJECT
-  ../../spellCore/sappre init
-  #remove assets directory
-  rm -rf assets/
-  cd $CUR_DIR
-done

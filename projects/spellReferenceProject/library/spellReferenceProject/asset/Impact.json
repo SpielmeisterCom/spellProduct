@@ -677,7 +677,8 @@
 				"y": 210
 			}
 		},
-		"spacing": 1
+		"hSpacing": 1,
+		"vSpacing": 0
 	},
 	"file": "Impact.png",
 	"version": 1

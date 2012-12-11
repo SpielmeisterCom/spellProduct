@@ -677,7 +677,8 @@
 				"y": 224
 			}
 		},
-		"spacing": 1
+		"hSpacing": 1,
+		"vSpacing": 0
 	},
 	"file": "LCARS 25.png",
 	"version": 1

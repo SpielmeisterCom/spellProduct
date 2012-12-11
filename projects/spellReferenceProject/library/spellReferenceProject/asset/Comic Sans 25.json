@@ -677,7 +677,8 @@
 				"y": 192
 			}
 		},
-		"spacing": 1
+		"hSpacing": 1,
+		"vSpacing": 0
 	},
 	"file": "Comic Sans 25.png",
 	"version": 1

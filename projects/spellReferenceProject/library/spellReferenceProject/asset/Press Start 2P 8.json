@@ -677,7 +677,8 @@
 				"y": 77
 			}
 		},
-		"spacing": 0
+		"vSpacing": 0,
+		"hSpacing": 0
 	},
 	"file": "Press Start 2P 8.png",
 	"version": 1
