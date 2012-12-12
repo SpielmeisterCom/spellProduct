@@ -32,7 +32,6 @@
 		"spell.system.audio",
 		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
-		"spell.system.keyInput",
 		"spell.system.physics",
 		"spell.system.render",
 		"box2dTest.crate_wood_1",
