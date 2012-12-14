@@ -18,12 +18,5 @@ rsync -avzC --delete $DEST_DIR/* root@$HOST:/opt/spellEngine/$VERSION
 echo Symlinking "latest" to version $VERSION
 ssh root@$HOST "rm /opt/spellEngine/latest && ln -sf /opt/spellEngine/$VERSION /opt/spellEngine/latest"
 
-echo Syncing user and tools...
-rsync -vz live-server/* build/VERSION root@$HOST:/root
-
-echo Recreating vhosts and restarting apache...
-ssh root@$HOST "cd /root && ./generate_vhosts_and_users"
-
-echo Starting servers...
-ssh root@$HOST "cd /root && ./start_servers"
-
+echo Calling SpellCloud\'s activate_version
+ssh root@$HOST "/opt/spellCloud/bin/activate_version $VERSION"
