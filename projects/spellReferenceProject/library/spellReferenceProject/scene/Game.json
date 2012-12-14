@@ -43,7 +43,6 @@
 		"spell.system.clearKeyInput",
 		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
-		"spell.system.keyInput",
 		"spell.system.physics",
 		"spell.system.processKeyInput",
 		"spell.system.render",
