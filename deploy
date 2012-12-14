@@ -14,6 +14,4 @@ ssh root@$HOST "mkdir /opt/spellEngine/$VERSION"
 
 echo Deploying version $VERSION on host $HOST
 rsync -avzC --delete $DEST_DIR/* root@$HOST:/opt/spellEngine/$VERSION
-
-echo Calling SpellCloud\'s activate_version
-ssh root@$HOST "/opt/spellCloud/bin/spellctl_activate_version $VERSION"
+ssh root@$HOST "/opt/spellCloud/bin/spellctl_set_latest_version $VERSION"
