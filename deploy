@@ -9,9 +9,12 @@ if [ ! -d $DEST_DIR ]; then
 	exit 0 
 fi
 
-echo Creating directory on host $HOST
-ssh root@$HOST "mkdir /opt/spellEngine/$VERSION"
+#echo Creating directory on host $HOST
+#ssh root@$HOST "mkdir /opt/spellEngine/$VERSION"
+
+ssh root@$HOST "cp -aRL /opt/spellEngine/latest/ /opt/spellEngine/$VERSION"
 
 echo Deploying version $VERSION on host $HOST
 rsync -avzC --delete $DEST_DIR/* root@$HOST:/opt/spellEngine/$VERSION
+
 ssh root@$HOST "/opt/spellCloud/bin/spellctl_set_latest_version $VERSION"
