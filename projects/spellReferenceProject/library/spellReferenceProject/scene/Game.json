@@ -10,6 +10,8 @@
 		"spell.component.2d.graphics.debug.box",
 		"spell.component.2d.graphics.debug.circle",
 		"spell.component.2d.graphics.geometry.quad",
+		"spell.component.2d.graphics.parallax",
+		"spell.component.2d.graphics.shape.rectangle",
 		"spell.component.2d.graphics.spriteSheetAppearance",
 		"spell.component.2d.graphics.textAppearance",
 		"spell.component.2d.graphics.tilemap",
@@ -17,12 +19,13 @@
 		"spell.component.actor",
 		"spell.component.animation.keyFrameAnimation",
 		"spell.component.audio.soundEmitter",
+		"spell.component.editorConfiguration",
 		"spell.component.entityComposite.children",
 		"spell.component.entityComposite.parent",
 		"spell.component.entityComposite.root",
+		"spell.component.entityMetaData",
 		"spell.component.eventHandlers",
 		"spell.component.inputDefinition",
-		"spell.component.name",
 		"spell.component.physics.body",
 		"spell.component.physics.contactTrigger",
 		"spell.component.physics.fixture",
@@ -33,6 +36,9 @@
 		"spell.component.visualObject",
 		"spellReferenceProject.component.spacecraft",
 		"spell.entity.2d.graphics.camera",
+		"spell.entity.2d.graphics.parallaxLayer",
+		"spell.entity.2d.graphics.text",
+		"spell.entity.default",
 		"spell.entity.inputDefinition",
 		"spellDemo.logo.entity",
 		"spellReferenceProject.entity.alienSpacecraft",
@@ -43,15 +49,17 @@
 		"spell.system.clearKeyInput",
 		"spell.system.debug.camera",
 		"spell.system.keyFrameAnimation",
+		"spell.system.parallax",
 		"spell.system.physics",
 		"spell.system.processKeyInput",
+		"spell.system.processPointerInput",
 		"spell.system.render",
 		"spellReferenceProject.system.aiControl",
 		"spellReferenceProject.system.endlessPlayingField",
 		"spellReferenceProject.system.spacecraftIntegrator",
 		"spell.OpenSans14px",
 		"spell.defaultAppearance",
-		"spell.defaultSound",
+		"spell.remove",
 		"spellDemo.logo.animation",
 		"spellDemo.logo.appearance",
 		"spellReferenceProject.asset.Bello Pro",
@@ -143,10 +151,6 @@
 					"translation": [
 						512,
 						384
-					],
-					"scale": [
-						1,
-						1
 					]
 				},
 				"spell.component.2d.graphics.camera": {
@@ -181,10 +185,6 @@
 					"name": "shield",
 					"config": {
 						"spell.component.2d.transform": {
-							"translation": [
-								0,
-								0
-							],
 							"scale": [
 								0.28,
 								0.28
@@ -227,9 +227,6 @@
 				},
 				"spell.component.physics.shape.circle": {
 					"radius": 23
-				},
-				"spell.component.physics.fixture": {
-					"restitution": 0
 				}
 			},
 			"children": [
@@ -359,10 +356,6 @@
 					"translation": [
 						600,
 						500
-					],
-					"scale": [
-						4,
-						4
 					]
 				},
 				"spell.component.physics.shape.circle": {
@@ -389,9 +382,6 @@
 						725,
 						650
 					]
-				},
-				"spell.component.physics.shape.circle": {
-					"radius": 14
 				}
 			}
 		},
@@ -461,12 +451,7 @@
 					"translation": [
 						8,
 						0
-					],
-					"scale": [
-						1,
-						1
-					],
-					"rotation": 0
+					]
 				},
 				"spell.component.visualObject": {
 					"layer": 2,
@@ -489,8 +474,7 @@
 					]
 				},
 				"spell.component.visualObject": {
-					"layer": 2,
-					"opacity": 1
+					"layer": 2
 				}
 			}
 		}
