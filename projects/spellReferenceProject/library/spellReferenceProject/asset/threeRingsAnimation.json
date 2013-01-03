@@ -1,10 +1,8 @@
 {
+	"version": 1,
 	"type": "asset",
 	"subtype": "animation",
-	"doc": "",
-	"assetId": "spriteSheet:spellReferenceProject.asset.threeRingsSpriteSheet",
 	"config": {
-		"type": "sprite",
 		"duration": 2000,
 		"frameIds": [
 			0,
@@ -55,7 +53,16 @@
 			45,
 			46,
 			47
+		],
+		"rotation": 0,
+		"transformation": [
+			0,
+			0
+		],
+		"scale": [
+			1,
+			1
 		]
 	},
-	"version": 1
+	"assetId": "spriteSheet:spellReferenceProject.asset.threeRingsSpriteSheet"
 }
