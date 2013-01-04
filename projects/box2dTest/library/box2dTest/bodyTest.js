@@ -130,13 +130,7 @@ define(
 					var id = spell.entityManager.getEntityIdsByName( 'mario' )[ 0 ]
 
 					if( id ) {
-						spell.entityManager.addComponent(
-							id,
-							'spell.component.physics.applyImpulse',
-							{
-								impulse : [ 0, 700 ]
-							}
-						)
+						spell.box2dWorlds.main.applyImpulse( id, [ 0, 700 ] )
 					}
 				}
 			}
