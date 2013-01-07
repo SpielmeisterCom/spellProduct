@@ -53,7 +53,10 @@
 		"spell.remove",
 		"spell.OpenSans14px",
 		"entityMergingTests.templates.simpleTemplate",
-		"item"
+		"item",
+		"entityMergingTests.templates.complexEntity",
+		"entityMergingTests.templates.multipleComplexEntities",
+		"entityMergingTests.templates.templateWithChildren"
 	],
 	"systems": {
 		"update": [
@@ -201,7 +204,7 @@
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [
-						0,
+						100,
 						0
 					],
 					"rotation": 0,
