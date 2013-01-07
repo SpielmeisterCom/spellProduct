@@ -125,8 +125,8 @@
 						0.5
 					],
 					"translation": [
-						-180,
-						50
+						-150,
+						120
 					],
 					"rotation": 1,
 					"skew": [
@@ -153,8 +153,8 @@
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [
-						100,
-						80
+						0,
+						120
 					]
 				},
 				"spell.component.visualObject": {}
@@ -167,6 +167,22 @@
 						"spell.component.2d.transform": {},
 						"spell.component.visualObject": {}
 					}
+				},
+				{
+					"name": "simple",
+					"entityTemplateId": "entityMergingTests.templates.simpleTemplate",
+					"config": {
+						"spell.component.2d.transform": {
+							"rotation": 1.2,
+							"translation": [
+								0,
+								0
+							]
+						},
+						"spell.component.visualObject": {
+							"opacity": 1
+						}
+					}
 				}
 			]
 		},
@@ -175,8 +191,8 @@
 			"config": {
 				"spell.component.2d.transform": {
 					"translation": [
-						140,
-						80
+						60,
+						120
 					],
 					"scale": [
 						0.1,
@@ -239,7 +255,76 @@
 						-220
 					]
 				}
-			}
+			},
+			"children": [
+				{
+					"name": "templateWithChildren",
+					"entityTemplateId": "entityMergingTests.templates.templateWithChildren",
+					"children": [
+						{
+							"name": "complexEntity1",
+							"entityTemplateId": "entityMergingTests.templates.complexEntity",
+							"config": {
+								"spell.component.2d.transform": {
+									"translation": [
+										-350,
+										0
+									]
+								}
+							}
+						},
+						{
+							"name": "complexEntity",
+							"entityTemplateId": "entityMergingTests.templates.complexEntity",
+							"config": {
+								"spell.component.2d.transform": {
+									"translation": [
+										350,
+										0
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "test",
+			"config": {
+				"spell.component.2d.transform": {},
+				"spell.component.visualObject": {}
+			},
+			"children": [
+				{
+					"name": "complexEntity1",
+					"entityTemplateId": "entityMergingTests.templates.complexEntity",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								-350,
+								0
+							]
+						}
+					}
+				},
+				{
+					"name": "complexEntity2",
+					"entityTemplateId": "entityMergingTests.templates.complexEntity"
+				},
+				{
+					"name": "complexEntity",
+					"entityTemplateId": "entityMergingTests.templates.complexEntity",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								350,
+								0
+							]
+						}
+					}
+				}
+			]
 		}
 	]
 }
