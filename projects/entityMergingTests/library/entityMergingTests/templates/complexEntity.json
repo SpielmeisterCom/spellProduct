@@ -1,0 +1,18 @@
+{
+	"version": 1,
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {}
+	},
+	"children": [
+		{
+			"name": "templateWithChildren",
+			"entityTemplateId": "entityMergingTests.templates.templateWithChildren"
+		},
+		{
+			"name": "simpleTemplate",
+			"entityTemplateId": "entityMergingTests.templates.simpleTemplate"
+		}
+	]
+}

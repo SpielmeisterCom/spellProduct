@@ -1,0 +1,28 @@
+{
+	"version": 1,
+	"type": "entityTemplate",
+	"config": {
+		"spell.component.2d.transform": {},
+		"spell.component.visualObject": {}
+	},
+	"children": [
+		{
+			"name": "templateWithChildren",
+			"entityTemplateId": "entityMergingTests.templates.templateWithChildren",
+			"children": [
+				{
+					"name": "complexEntity1",
+					"entityTemplateId": "entityMergingTests.templates.complexEntity"
+				},
+				{
+					"name": "complexEntity2",
+					"entityTemplateId": "entityMergingTests.templates.complexEntity"
+				},
+				{
+					"name": "complexEntity",
+					"entityTemplateId": "entityMergingTests.templates.complexEntity"
+				}
+			]
+		}
+	]
+}
