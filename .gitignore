@@ -7,5 +7,6 @@
 /projects/*.tar
 /projects/box2dTest/library/spell
 /projects/spellReferenceProject/library/spell
+/projects/entityMergingTests/library/spell
 /projects/battleblast
 /projects/superkumba
