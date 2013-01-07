@@ -12,15 +12,39 @@
 			"children": [
 				{
 					"name": "complexEntity1",
-					"entityTemplateId": "entityMergingTests.templates.complexEntity"
+					"entityTemplateId": "entityMergingTests.templates.complexEntity",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								-350,
+								0
+							]
+						}
+					}
 				},
 				{
 					"name": "complexEntity2",
-					"entityTemplateId": "entityMergingTests.templates.complexEntity"
+					"entityTemplateId": "entityMergingTests.templates.complexEntity",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								0,
+								0
+							]
+						}
+					}
 				},
 				{
 					"name": "complexEntity",
-					"entityTemplateId": "entityMergingTests.templates.complexEntity"
+					"entityTemplateId": "entityMergingTests.templates.complexEntity",
+					"config": {
+						"spell.component.2d.transform": {
+							"translation": [
+								350,
+								0
+							]
+						}
+					}
 				}
 			]
 		}

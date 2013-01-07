@@ -107,7 +107,9 @@
 			"entityTemplateId": "spell.entity.2d.graphics.camera",
 			"config": {
 				"spell.component.2d.graphics.camera": {
-					"active": true
+					"active": true,
+					"width": 620,
+					"height": 640
 				}
 			}
 		},
@@ -211,6 +213,30 @@
 					"skew": [
 						1,
 						1
+					]
+				}
+			}
+		},
+		{
+			"name": "complexEntity",
+			"entityTemplateId": "entityMergingTests.templates.complexEntity",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						0,
+						210
+					]
+				}
+			}
+		},
+		{
+			"name": "multiComplex",
+			"entityTemplateId": "entityMergingTests.templates.multipleComplexEntities",
+			"config": {
+				"spell.component.2d.transform": {
+					"translation": [
+						0,
+						-220
 					]
 				}
 			}
