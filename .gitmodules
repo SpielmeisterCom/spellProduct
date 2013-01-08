@@ -19,6 +19,6 @@
 [submodule "modules/spelliOS"]
 	path = modules/spelliOS
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellios.git
-[submodule "modules/spellAndroid"]
-	path = modules/spellAndroid
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellandroid.git
+[submodule "modules/spellCocoonJS"]
+	path = modules/spellCocoonJS
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellcocoonjs.git
