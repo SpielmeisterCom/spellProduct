@@ -57,7 +57,8 @@
 		"spellReferenceProject.asset.Impact",
 		"spellDemo.logo.entity",
 		"spellDemo.logo.appearance",
-		"spellDemo.logo.animation"
+		"spellDemo.logo.animation",
+		"spell.system.visibility"
 	],
 	"systems": {
 		"update": [
@@ -104,6 +105,12 @@
 			}
 		],
 		"render": [
+			{
+				"id": "spell.system.visibility",
+				"config": {
+					"active": true
+				}
+			},
 			{
 				"id": "spell.system.keyFrameAnimation",
 				"config": {
