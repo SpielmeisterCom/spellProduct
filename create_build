@@ -6,20 +6,18 @@ if [ -z "$VERSION" ] ; then
     exit
 fi
 
+ARCHS="linux-ia32 linux-x64 osx-ia32 win-ia32"
+
 CUR_DIR=$(pwd)
 DEST_DIR=build
 
 echo Building version $VERSION
 
-echo Purging build directory...
+echo Preparing build directory...
 rm -Rf $DEST_DIR/*
-
+mkdir -p $DEST_DIR/spellEd-cloud/public $DEST_DIR/spellEd-standalone $DEST_DIR/docs $DEST_DIR/spellCore
 
 echo $VERSION >$DEST_DIR/VERSION
-
-echo Preparing deploy directory $DEST_DIR...
-
-mkdir -p $DEST_DIR/docs $DEST_DIR/spellCore
 
 echo Building SpellEd...
 cd modules/spellEd
@@ -43,13 +41,13 @@ EOF
 
 make deploy
 cd $CUR_DIR
-mkdir $DEST_DIR/spellEd
-mkdir $DEST_DIR/spellEd/public
-cp -aR modules/spellEd/build/* $DEST_DIR/spellEd/public
-cp -aR modules/spellEd/src modules/spellEd/server $DEST_DIR/spellEd
+
+echo Copying spellEd build...
+cp -aR modules/spellEd/build/* $DEST_DIR/spellEd-cloud/public
+cp -aR modules/spellEd/src modules/spellEd/server $DEST_DIR/spellEd-cloud
 
 echo Copying node_modules...
-cp -aR node_modules $DEST_DIR/
+cp -aR node_modules $DEST_DIR/spellEd-cloud
 
 echo Building SpellCore...
 cp -aR modules/spellCore/* $DEST_DIR/spellCore
