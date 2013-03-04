@@ -47,7 +47,7 @@ cp -aR modules/spellEd/build/* $DEST_DIR/spellEd-cloud/public
 cp -aR modules/spellEd/src modules/spellEd/server $DEST_DIR/spellEd-cloud
 
 echo Copying node_modules...
-cp -aR node_modules $DEST_DIR/spellEd-cloud
+cp -aR node_modules $DEST_DIR
 
 echo Building SpellCore...
 cp -aR modules/spellCore/* $DEST_DIR/spellCore
