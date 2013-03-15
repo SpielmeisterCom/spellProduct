@@ -28,3 +28,6 @@
 [submodule "modules/node-webkit"]
 	path = modules/node-webkit
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/node-webkit.git
+[submodule "modules/SenchaCmd"]
+	path = modules/SenchaCmd
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/senchacmd.git
