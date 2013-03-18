@@ -31,3 +31,6 @@
 [submodule "modules/SenchaCmd"]
 	path = modules/SenchaCmd
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/senchacmd.git
+[submodule "modules/nodejs"]
+	path = modules/nodejs
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/nodejs.git
