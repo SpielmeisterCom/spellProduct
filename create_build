@@ -39,7 +39,7 @@ Ext.app.CONFIGURATION = {
 };
 EOF
 
-make deploy
+./buildtool build
 cd $CUR_DIR
 
 echo Copying spellEd build...
