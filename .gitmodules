@@ -43,3 +43,6 @@
 [submodule "modules/Ejecta"]
 	path = modules/Ejecta
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/ejecta.git
+[submodule "modules/nodejs-src"]
+	path = modules/nodejs-src
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/nodejs-src.git
