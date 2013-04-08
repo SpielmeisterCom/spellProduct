@@ -8,6 +8,8 @@ ifeq ($(UNAME_S),Cygwin)
 DEFAULT_BUILD_TARGET = build/win-ia32
 else ifeq ($(UNAME_S),Linux)
 DEFAULT_BUILD_TARGET = build/linux-x64
+else ifeq ($(UNAME_S),Darwin)
+DEFAULT_BUILD_TARGET = build/osx-ia32
 endif
 
 .PHONY: all
@@ -32,9 +34,6 @@ build/linux-x64:
 	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >build/linux-x64/spelled
 	chmod +x build/linux-x64/spelled 
 	
-	#copy a standalone version of node
-	cp modules/nodejs/linux-x64/bin/node build/linux-x64/
-
 build/osx-ia32:
 	mkdir -p build/osx-ia32
 	cp -aR modules/node-webkit/osx-ia32/node-webkit.app/ build/osx-ia32/spellEd.app
