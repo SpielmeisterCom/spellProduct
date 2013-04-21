@@ -1,0 +1,12 @@
+#!/bin/sh
+
+GIT_REVISION=$1
+if [ -z "$GIT_REVISION" ] ; then
+    echo "Usage: $0 <GIT_REVISION>"
+    exit
+fi
+
+git checkout $GIT_REVISION
+git reset --hard
+git submodule update
+
