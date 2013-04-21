@@ -1,7 +1,8 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
+UNAME_O := $(shell uname -o)
 
-ifeq ($(UNAME_S),Cygwin)
+ifeq ($(UNAME_O),Cygwin)
 DEFAULT_BUILD_TARGET = build/win-ia32
 else ifeq ($(UNAME_S),Linux)
 DEFAULT_BUILD_TARGET = build/linux-x64
