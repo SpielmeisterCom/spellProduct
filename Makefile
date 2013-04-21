@@ -22,9 +22,6 @@ spellEd-rebuild-nw:
 .PHONY: rebuild-spelled
 rebuild-spelled: clean spellEd-rebuild-nw $(DEFAULT_BUILD_TARGET)
 
-.PHONY: spellci
-spellcli:
-
 
 build/linux-x64:
 	$(eval DEST_DIR := build/linux-x64)
@@ -44,10 +41,10 @@ build/linux-x64:
 
 	#create spelled executable
 	mkdir $(DEST_DIR)/spellEd
-	cp -aR modules/node-webkit/linux-x64/nw.pak build/linux-x64/
-	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so build/linux-x64/
-	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >build/linux-x64/spelled
-	chmod +x build/linux-x64/spelled 
+	cp -aR modules/node-webkit/linux-x64/nw.pak $(DEST_DIR) 
+	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so $(DEST_DIR)
+	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >$(DEST_DIR)/spelled
+	chmod +x $(DEST_DIR)/spelled 
 	
 build/osx-ia32:
 	mkdir -p build/osx-ia32
@@ -56,8 +53,27 @@ build/osx-ia32:
 
 
 build/win-ia32:
-	mkdir -p build/win-ia32
+	$(eval DEST_DIR := build/win-ia32)
+	
+	mkdir -p $(DEST_DIR)
 
+	#build spellCore
+	cd modules/spellCore && make deploy
+
+	#copy spellCore build artefact to build dir
+	mkdir $(DEST_DIR)/spellCore
+	cp -aR modules/spellCore/build/* $(DEST_DIR)/spellCore
+	mv $(DEST_DIR)/spellCore/spellcli.exe $(DEST_DIR)
+
+	#build spellEd
+	cd modules/spellEd && make
+
+	#create spelled executable
+	mkdir $(DEST_DIR)/spellEd
+	cp -aR modules/node-webkit/linux-x64/nw.pak $(DEST_DIR) 
+	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so $(DEST_DIR)
+	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >$(DEST_DIR)/spelled
+	chmod +x $(DEST_DIR)/spelled 
 
 .PHONY: clean
 clean:
