@@ -59,9 +59,14 @@ build/win-ia32: build-common
 	mv $(DEST_DIR)/spellCore/spellcli.exe $(DEST_DIR)
 
 	#create spelled executable
-	cp -aR modules/node-webkit/linux-x64/nw.pak $(DEST_DIR) 
-	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so $(DEST_DIR)
-	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >$(DEST_DIR)/spelled
+
+	cp -aR modules/node-webkit/win-ia32/ffmpegsumo.dll $(DEST_DIR)
+	cp -aR modules/node-webkit/win-ia32/libEGL.dll $(DEST_DIR)
+	cp -aR modules/node-webkit/win-ia32/icudt.dll $(DEST_DIR)
+	cp -aR modules/node-webkit/win-ia32/libGLESv2.dll $(DEST_DIR)
+	cp -aR modules/node-webkit/win-ia32/nw.pak $(DEST_DIR) 
+
+	cat modules/node-webkit/win-ia32/nw.exe modules/spellEd/build/app.nw >$(DEST_DIR)/spelled.exe
 	chmod +x $(DEST_DIR)/spelled 
 
 .PHONY: clean
