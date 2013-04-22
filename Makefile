@@ -1,8 +1,9 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
-UNAME_O := $(shell uname -o)
 
-ifeq ($(UNAME_O),Cygwin)
+ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
+BUILD_TARGET = build/win-ia32
+else ifeq ($(UNAME_S),,CYGWIN_NT-6.2-WOW64)
 BUILD_TARGET = build/win-ia32
 else ifeq ($(UNAME_S),Linux)
 BUILD_TARGET = build/linux-x64
