@@ -8,5 +8,6 @@ fi
 
 git checkout $GIT_REVISION
 git reset --hard
-git submodule update
 
+git submodule init
+git submodule update
