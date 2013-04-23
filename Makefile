@@ -1,8 +1,9 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
-UNAME_O := $(shell uname -o)
 
-ifeq ($(UNAME_O),Cygwin)
+ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
+BUILD_TARGET = build/win-ia32
+else ifeq ($(UNAME_S),,CYGWIN_NT-6.2-WOW64)
 BUILD_TARGET = build/win-ia32
 else ifeq ($(UNAME_S),Linux)
 BUILD_TARGET = build/linux-x64
@@ -56,13 +57,18 @@ build/osx-ia32: build-common
 
 build/win-ia32: build-common
 	# move spellcli to the right directory
-	mv $(DEST_DIR)/spellCore/spellcli.exe $(DEST_DIR)
+	mv $(BUILD_TARGET)/spellCore/spellcli.exe $(BUILD_TARGET)
 
 	#create spelled executable
-	cp -aR modules/node-webkit/linux-x64/nw.pak $(DEST_DIR) 
-	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so $(DEST_DIR)
-	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >$(DEST_DIR)/spelled
-	chmod +x $(DEST_DIR)/spelled 
+
+	cp -aR modules/node-webkit/win-ia32/ffmpegsumo.dll $(BUILD_TARGET)
+	cp -aR modules/node-webkit/win-ia32/libEGL.dll $(BUILD_TARGET)
+	cp -aR modules/node-webkit/win-ia32/icudt.dll $(BUILD_TARGET)
+	cp -aR modules/node-webkit/win-ia32/libGLESv2.dll $(BUILD_TARGET)
+	cp -aR modules/node-webkit/win-ia32/nw.pak $(BUILD_TARGET) 
+
+	cat modules/node-webkit/win-ia32/nw.exe modules/spellEd/build/app.nw >$(BUILD_TARGET)/spelled.exe
+	chmod +x $(BUILD_TARGET)/spelled.exe
 
 .PHONY: clean
 clean:

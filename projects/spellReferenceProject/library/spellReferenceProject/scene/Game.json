@@ -77,7 +77,7 @@
 		"spell.OpenSans14px",
 		"spell.component.2d.graphics.animatedAppearance",
 		"spell.component.2d.graphics.appearance",
-		"spell.component.2d.graphics.appearanceTransform",
+		"spell.component.2d.graphics.textureMatrix",
 		"spell.component.2d.graphics.camera",
 		"spell.component.2d.graphics.debug.box",
 		"spell.component.2d.graphics.debug.circle",
