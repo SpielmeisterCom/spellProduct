@@ -26,9 +26,8 @@ rebuild-spelled: clean spellEd-rebuild-nw $(BUILD_TARGET)
 
 .PHONY: build-common
 build-common:
-	mkdir $(BUILD_TARGET)
-	mkdir $(BUILD_TARGET)/spellEd
-	mkdir $(BUILD_TARGET)/spellCore
+	mkdir $(BUILD_TARGET) || true
+	mkdir $(BUILD_TARGET)/spellCore || true
 
 	# build spellCore
 	cd modules/spellCore && make deploy
@@ -36,6 +35,9 @@ build-common:
 
 	#build spellEd
 	cd modules/spellEd && make
+
+build/spellCloud: build/linux-x64
+	#spellCloud specific build steps
 
 build/linux-x64: build-common
 	# move spellcli to the right directory
@@ -45,7 +47,7 @@ build/linux-x64: build-common
 	cp -aR modules/node-webkit/linux-x64/nw.pak $(BUILD_TARGET) 
 	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so $(BUILD_TARGET)
 	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >$(BUILD_TARGET)/spelled
-	chmod +x $(DEST_DIR)/spelled 
+	chmod +x $(BUILD_TARGET)/spelled 
 	
 build/osx-ia32: build-common
 	# move spellcli to the right directory
