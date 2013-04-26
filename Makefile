@@ -51,7 +51,8 @@ build/spellCloud: build/linux-x64
 	#copy spellEd
 	cp -aR modules/spellEd/build/spelledjs/public build/spellCloud
 
-	#copy spellEdServer
+	#build&copy spellEdServer
+	cd modules/spellEd && make build/spelledserver
 	cp modules/spellEd/build/spelledserver/spellEdServer.js build/spellCloud
 
 	#copy node
