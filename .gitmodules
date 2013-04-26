@@ -46,3 +46,6 @@
 [submodule "modules/upx"]
 	path = modules/upx
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/upx.git
+[submodule "node_modules"]
+	path = node_modules
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/node_modules.git
