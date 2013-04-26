@@ -1,6 +1,9 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
 
+#defaults to build/linux-x64
+BUILD_TARGET = build/linux-x64
+
 ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
 BUILD_TARGET = build/win-ia32
 else ifeq ($(UNAME_S),CYGWIN_NT-6.2-WOW64)
@@ -37,7 +40,25 @@ build-common:
 	cd modules/spellEd && make
 
 build/spellCloud: build/linux-x64
-	#spellCloud specific build steps
+	mkdir -p build/spellCloud
+
+	#copy spellCore
+	cp -aR build/linux-x64/spellCore build/spellCloud
+
+	#copy spellcli
+	cp -a build/linux-x64/spellcli build/spellCloud
+
+	#copy spellEd
+	cp -aR modules/spellEd/build/spelledjs/public build/spellCloud
+
+	#copy spellEdServer
+	cp modules/spellEd/build/spelledserver/spellEdServer.js build/spellCloud
+
+	#copy node
+	cp modules/nodejs/linux-x64/bin/node build/spellCloud
+
+	#copy node_modules
+	rsync -avzC node_modules build/spellCloud
 
 build/linux-x64: build-common
 	# move spellcli to the right directory
