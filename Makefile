@@ -52,7 +52,7 @@ build/spellCloud: build/linux-x64
 	cp -aR modules/spellEd/build/spelledjs/public build/spellCloud
 
 	#build&copy spellEdServer
-	cd modules/spellEd && make build/spelledserver && make docs
+	cd modules/spellEd && make build/spelledserver
 	cp modules/spellEd/build/spelledserver/spellEdServer.js build/spellCloud
 
 	#copy node
@@ -61,7 +61,8 @@ build/spellCloud: build/linux-x64
 	#copy node_modules
 	rsync -avzC node_modules build/spellCloud
 
-	#copy docs
+	#create & copy docs
+	cd modules/spellCore && make docs
 	cp -aR modules/spellCore/docs/generated build/spellCloud/docs
 
 build/linux-x64: build-common
