@@ -17,12 +17,18 @@ if [ -z "$VERSION" ]; then
 	exit 1
 fi
 
+echo "Copy old latest version to current version..."
+
 ssh root@$DEPLOY_HOST "cp -aRL /opt/spellEngine/latest/ /opt/spellEngine/$VERSION"
+
+echo "Rsyncing new version..."
 
 rsync -avzC --delete -e \
 "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i id_rsa_buildbot" \
 $SPELLCLOUD_BUILD_DIR/ \
 root@$DEPLOY_HOST:/opt/spellEngine/$VERSION
 
-ssh root@$HOST "nohup /opt/spellCloud/bin/spellctl_set_latest_version $VERSION </dev/null >>/var/log/spellCloud.log 2>&1 &"
+echo "Running spellctl_set_latest_version..."
+
+ssh root@$DEPLOY_HOST "nohup /opt/spellCloud/bin/spellctl_set_latest_version $VERSION </dev/null >>/var/log/spellCloud.log 2>&1 &"
 
