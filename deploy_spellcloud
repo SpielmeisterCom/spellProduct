@@ -11,6 +11,10 @@ if [ -z "$SPELLCLOUD_BUILD_DIR" ] || [ ! -d $SPELLCLOUD_BUILD_DIR  ]; then
 fi
 
 VERSION=$(cat VERSION)
+SSH="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i id_rsa_buildbot"
+
+#fix permissions for private key
+chmod 600 id_rsa_buildbot
 
 if [ -z "$VERSION" ]; then
 	echo Could not read VERSION
@@ -19,16 +23,15 @@ fi
 
 echo "Copy old latest version to current version..."
 
-ssh root@$DEPLOY_HOST "cp -aRL /opt/spellEngine/latest/ /opt/spellEngine/$VERSION"
+$SSH root@$DEPLOY_HOST "cp -aRL /opt/spellEngine/latest/ /opt/spellEngine/$VERSION"
 
 echo "Rsyncing new version..."
 
-rsync -avzC --delete -e \
-"ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i id_rsa_buildbot" \
+rsync -avzC --delete -e "$SSH" \
 $SPELLCLOUD_BUILD_DIR/ \
 root@$DEPLOY_HOST:/opt/spellEngine/$VERSION
 
 echo "Running spellctl_set_latest_version..."
 
-ssh root@$DEPLOY_HOST "nohup /opt/spellCloud/bin/spellctl_set_latest_version $VERSION </dev/null >>/var/log/spellCloud.log 2>&1 &"
+$SSH root@$DEPLOY_HOST "nohup /opt/spellCloud/bin/spellctl_set_latest_version $VERSION </dev/null >>/var/log/spellCloud.log 2>&1 &"
 
