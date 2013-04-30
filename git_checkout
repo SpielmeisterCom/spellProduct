@@ -6,6 +6,9 @@ if [ -z "$GIT_REVISION" ] ; then
     exit
 fi
 
+#reset changes to submodules
+git submodule foreach 'git reset --hard'
+
 git fetch origin
 git checkout $GIT_REVISION
 git reset --hard
