@@ -53,10 +53,12 @@ build/spellCloud: build/linux-x64
 
 	#build&copy spellEdServer
 	cd modules/spellEd && make build/spelledserver
-	cp modules/spellEd/build/spelledserver/spellEdServer.js build/spellCloud
+
+	mkdir build/spellCloud/spellEdServer
+	cp modules/spellEd/build/spelledserver/spellEdServer.js build/spellCloud/spellEdServer
 
 	#copy node
-	cp modules/nodejs/linux-x64/bin/node build/spellCloud
+	cp modules/nodejs/linux-x64/bin/node build/spellCloud/spellEdServer
 
 	#copy node_modules
 	rsync -avzC node_modules build/spellCloud
