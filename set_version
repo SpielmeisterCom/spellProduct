@@ -1,0 +1,16 @@
+#!/bin/sh
+
+VERSION=$1
+
+if [ -z "$VERSION" ] ; then
+	echo "Usage: $0 <VERSION>"
+	exit 1
+fi
+
+#setting version and build of spelled
+perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" modules/spellEd/public/app/Configuration.js
+
+#setting version of spellcli
+perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" modules/spellCore/src/spell/shared/Configuration.js
+
+echo $VERSION >VERSION
