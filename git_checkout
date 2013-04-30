@@ -6,12 +6,13 @@ if [ -z "$GIT_REVISION" ] ; then
     exit
 fi
 
-#reset changes to submodules
+# reset all changes made to this checkout (including submodules)
+git reset --hard
 git submodule foreach 'git reset --hard'
 
+# check out the specified revision
 git fetch origin
 git checkout $GIT_REVISION
-git reset --hard
 
 CHECK_GIT_REVISION=$(git rev-parse --verify HEAD)
 
