@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ -z "$DEPLOY_HOST" ]; then
+	echo No DEPLOY_HOST specified
+	exit 1
+fi
+
+if [ -z "$SPELLCLOUD_BUILD_DIR" ] || [ ! -d $SPELLCLOUD_BUILD_DIR  ]; then
+	echo No or invalid SPELLCLOUD_BUILD_DIR specified
+	exit 1
+fi
+
+VERSION=$(cat VERSION)
+
+if [ -z "$VERSION" ]; then
+	echo Could not read VERSION
+	exit 1
+fi
+
+ssh root@$DEPLOY_HOST "cp -aRL /opt/spellEngine/latest/ /opt/spellEngine/$VERSION"
+
+rsync -avzC --delete -e \
+"ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i id_rsa_buildbot" \
+$SPELLCLOUD_BUILD_DIR/ \
+root@$DEPLOY_HOST:/opt/spellEngine/$VERSION
+
+ssh root@$HOST "nohup /opt/spellCloud/bin/spellctl_set_latest_version $VERSION </dev/null >>/var/log/spellCloud.log 2>&1 &"
+
