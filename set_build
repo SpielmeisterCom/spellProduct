@@ -14,10 +14,10 @@ if [ -z "$BUILDTIMESTAMP" ] ; then
 fi
 
 #setting version and build of spelled
-perl -pi -e "s/buildNumber(\s*):(\s*)\'[^\']*\',/build\1:\2\'$BUILDNUMBER\',/g" modules/spellEd/public/app/Configuration.js
-perl -pi -e "s/buildTimeStamp(\s*):(\s*)\'[^\']*\',/buildtime\1:\2\'$BUILDTIMESTAMP\',/g" modules/spellEd/public/app/Configuration.js
+perl -pi -e "s/buildNumber(\s*):(\s*)\'[^\']*\',/buildNumber\1:\2\'$BUILDNUMBER\',/g" modules/spellEd/public/app/Configuration.js
+perl -pi -e "s/buildTimeStamp(\s*):(\s*)\'[^\']*\',/buildTimeStamp\1:\2\'$BUILDTIMESTAMP\',/g" modules/spellEd/public/app/Configuration.js
 
 #setting version of spellcli
-perl -pi -e "s/buildNumber(\s*):(\s*)\'[^\']*\',/build\1:\2\'$BUILDNUMBER\',/g" modules/spellCore/src/spell/shared/Configuration.js
-perl -pi -e "s/buildTimeStamp(\s*):(\s*)\'[^\']*\',/buildtime\1:\2\'$BUILDTIMESTAMP\',/g" modules/spellCore/src/spell/shared/Configuration.js
+perl -pi -e "s/buildNumber(\s*):(\s*)\'[^\']*\',/buildNumber\1:\2\'$BUILDNUMBER\',/g" modules/spellCore/src/spell/shared/Configuration.js
+perl -pi -e "s/buildTimeStamp(\s*):(\s*)\'[^\']*\',/buildTimeStamp\1:\2\'$BUILDTIMESTAMP\',/g" modules/spellCore/src/spell/shared/Configuration.js
 
