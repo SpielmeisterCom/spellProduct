@@ -13,10 +13,14 @@ if (!$ARGV[0] || $ARGV[0] eq '--patchlevel') {
 
 } elsif ($ARGV[0] eq '--major') {
 	$major++;
+	$minor = 0;
+	$patchlevel = 0;
+
 	print "Bumping to next major version\n";
 
 } elsif ($ARGV[0] eq '--minor') {
 	$minor++;
+	$patchlevel=0;
 	print "Bumping to next minor version\n";
 
 }
