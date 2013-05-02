@@ -1,0 +1,36 @@
+#!/bin/sh
+
+VERSION=$1
+
+if [ -z "$VERSION" ] ; then
+	echo "Usage: $0 <VERSION>"
+	exit 1
+fi
+
+#setting version and build of spelled
+cd modules/spellEd
+perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" public/app/Configuration.js
+perl -pi -e "s/\"version\"(\s*):(\s*)\"[^\"]*\",/\"version\"\1:\2\"$VERSION\",/g" nw-package/package.json 
+perl -pi -e "s/\"version\"(\s*):(\s*)\"[^\"]*\",/\"version\"\1:\2\"$VERSION\",/g" nw-debug-package/package.json 
+
+git add public/app/Configuration.js nw-package/package.json nw-debug-package/package.json
+git commit -m "Changed version to $VERSION" public/app/Configuration.js nw-package/package.json nw-debug-package/package.json
+git push origin master
+
+cd ../..
+
+#setting version of spellcli
+cd modules/spellCore
+perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" src/spell/shared/Configuration.js
+
+git add src/spell/shared/Configuration.js
+git commit -m "Changed version to $VERSION" src/spell/shared/Configuration.js
+git push origin master
+
+cd ../..
+
+echo $VERSION >VERSION
+git add VERSION
+git commit -m "Changed version to $VERSION" VERSION
+git push origin master
+

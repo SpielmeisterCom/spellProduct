@@ -1,0 +1,34 @@
+#!/usr/bin/perl
+
+open(VERSION, "<VERSION") || die $!;
+my $VERSION = <VERSION>;
+chomp($VERSION);
+close(VERSION);
+
+my($major, $minor, $patchlevel) = split(/\./, $VERSION);
+
+if (!$ARGV[0] || $ARGV[0] eq '--patchlevel') {
+	$patchlevel++;
+	print "Bumping to next patchlevel version\n";
+
+} elsif ($ARGV[0] eq '--major') {
+	$major++;
+	$minor = 0;
+	$patchlevel = 0;
+
+	print "Bumping to next major version\n";
+
+} elsif ($ARGV[0] eq '--minor') {
+	$minor++;
+	$patchlevel=0;
+	print "Bumping to next minor version\n";
+
+}
+
+my $newVersion = $major . "." . $minor . "." . $patchlevel;
+
+print "New version is: " . $newVersion . "\n";
+
+system("./set_version " . $newVersion );
+
+exit 0
