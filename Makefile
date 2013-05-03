@@ -29,8 +29,8 @@ rebuild-spelled: clean spellEd-rebuild-nw $(BUILD_TARGET)
 
 .PHONY: build-common
 build-common:
-	mkdir $(BUILD_TARGET) || true
-	mkdir $(BUILD_TARGET)/spellCore || true
+	mkdir -p $(BUILD_TARGET) || true
+	mkdir -p $(BUILD_TARGET)/spellCore || true
 
 	# build spellCore
 	cd modules/spellCore && make deploy
