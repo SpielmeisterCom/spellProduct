@@ -91,19 +91,19 @@ define(
 				var entityManager = spell.entityManager,
 					event         = this.inputEvents[ 0 ]
 
-				if( event.type === 'keydown' &&
+				if( event.type === 'keyDown' &&
 					event.keyCode === keyCodes.RIGHT_ARROW ) {
 
-					var components = entityManager.getComponentDictionaryById( 'spell.component.physics.body' )
+					var components = entityManager.getComponentMapById( 'spell.component.physics.body' )
 
 					if( _.size( components ) === 0 ) return
 
 					var id = _.find(
 						_.keys( components ),
 						function( id ) {
-							var name = entityManager.getComponentById( 'spell.component.name', id )
+							var entityMetaData = entityManager.getComponentById( id, 'spell.component.entityMetaData' )
 
-							return name.value === ''
+							return entityMetaData.name === ''
 						}
 					)
 
@@ -111,20 +111,19 @@ define(
 
 					spell.entityManager.removeEntity( id )
 
-				} else if( event.type === 'mousedown'  ) {
-
+				} else if( event.type === 'pointerDown'  ) {
 					var worldPosition = spell.renderingContext.transformScreenToWorld( event.position )
 
 					spell.entityManager.createEntity( {
 						entityTemplateId : 'box2dTest.smallCrate',
 						config : {
 							"spell.component.2d.transform" : {
-								"translation" : worldPosition
+								translation : worldPosition
 							}
 						}
 					} )
 
-				} else if( event.type === 'keydown' &&
+				} else if( event.type === 'keyDown' &&
 					event.keyCode === keyCodes.UP_ARROW ) {
 
 					var id = spell.entityManager.getEntityIdsByName( 'mario' )[ 0 ]
