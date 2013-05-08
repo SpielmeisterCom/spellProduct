@@ -29,7 +29,7 @@ define(
 			return _.reduce(
 				playerTransforms,
 				function( memo, playerTransform, entityId ) {
-					vec2.subtract( aiTransform.translation, playerTransform.translation, tmp )
+					vec2.subtract( tmp, aiTransform.translation, playerTransform.translation )
 					var distanceSquared = vec2.dot( tmp, tmp )
 
 					if( distanceSquared < memo.distanceSquared ) {
@@ -47,8 +47,8 @@ define(
 		}
 
 		var updateActor = function( aiActor, aiTransform, targetTransform ) {
-			vec2.subtract( targetTransform.translation, aiTransform.translation, tmp )
-			vec2.normalize( tmp )
+			vec2.subtract( tmp, targetTransform.translation, aiTransform.translation )
+			vec2.normalize( tmp, tmp )
 
 			var deltaAngle = Math.atan2( tmp[ 0 ], tmp[ 1 ] ) - aiTransform.rotation
 			deltaAngle += ( deltaAngle > Math.PI ) ? -2 * Math.PI : ( deltaAngle < -Math.PI ) ? 2 * Math.PI : 0

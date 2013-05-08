@@ -4,13 +4,13 @@ define(
 		'use strict'
 
 
-		var playingFieldSize    = [ 1024, 768 ],
-			border              = 100,
-			wrapOffset          = 75,
-			rightBorder         = playingFieldSize[ 0 ] + border,
-			leftBorder          = 0 - border,
-			topBorder           = playingFieldSize[ 1 ] + border,
-			bottomBorder        = 0 - border
+		var playingFieldSize = [ 1024, 768 ],
+			border           = 100,
+			wrapOffset       = 75,
+			rightBorder      = playingFieldSize[ 0 ] + border,
+			leftBorder       = 0 - border,
+			topBorder        = playingFieldSize[ 1 ] + border,
+			bottomBorder     = 0 - border
 
 		var updatePosition = function( world, bodies, transforms ) {
 			for( var id in bodies ) {
@@ -31,7 +31,7 @@ define(
 					position[ 1 ] = topBorder - wrapOffset
 
 				} else {
-					var updated = false
+					updated = false
 				}
 
 				if( updated ) {

@@ -36,7 +36,7 @@ define(
 				if( actions.accelerate.executing ) {
 					var rotation      = transform.rotation,
 						thrusterForce = spacecraft.thrusterForce,
-						force         = [ Math.sin( rotation ) * thrusterForce, Math.cos( rotation ) * thrusterForce ]
+						force         = [ Math.sin( -rotation ) * thrusterForce, Math.cos( rotation ) * thrusterForce ]
 
 					world.applyForce( id, force )
 				}

@@ -4,7 +4,8 @@
 		"screenSize": [
 			1024,
 			768
-		]
+		],
+		"supportedLanguages": []
 	},
 	"startScene": "spellReferenceProject.scene.Game",
 	"type": "project",

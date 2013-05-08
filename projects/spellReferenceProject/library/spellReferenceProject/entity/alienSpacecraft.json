@@ -1,6 +1,16 @@
 {
 	"version": 1,
 	"type": "entityTemplate",
+	"dependencies": [
+		"spell.component.2d.graphics.animatedAppearance",
+		"spell.component.2d.transform",
+		"spell.component.physics.body",
+		"spell.component.physics.fixture",
+		"spell.component.physics.shape.circle",
+		"spell.component.visualObject",
+		"spellReferenceProject.asset.threeRingsAnimation",
+		"spellReferenceProject.asset.threeRingsSpriteSheet"
+	],
 	"config": {
 		"spell.component.2d.transform": {},
 		"spell.component.physics.body": {

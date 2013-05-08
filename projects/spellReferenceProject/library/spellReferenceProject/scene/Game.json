@@ -19,6 +19,7 @@
 				"id": "spell.system.physics",
 				"config": {
 					"active": true,
+					"debug": true,
 					"gravity": [
 						0,
 						0
