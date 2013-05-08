@@ -1,0 +1,12 @@
+#!/bin/sh
+
+VERSION=$(cat VERSION)
+VERSION="SpellJS-$VERSION"
+
+
+git tag -a "$VERSION" -m "$VERSION release"
+git push origin --tags
+
+git submodule foreach "git tag -a $VERSION -m \"$VERSION release\""
+git submodule foreach "git push origin --tags"
+
