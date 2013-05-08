@@ -2,6 +2,9 @@
 
 for PROJECT in `ls -1 projects`
 do
-	modules/spellCore/spellcli init -d projects/$PROJECT
+	if [ -f "projects/$PROJECT/project.json" ]
+	then
+		modules/spellCore/spellcli init -d projects/$PROJECT
+	fi
 done
 
