@@ -32,6 +32,9 @@ build-common:
 	mkdir -p $(BUILD_TARGET) || true
 	mkdir -p $(BUILD_TARGET)/spellCore || true
 
+	# copy demo projects
+	rsync -avC demo_projects $(BUILD_TARGET)
+
 	# build spellCore
 	cd modules/spellCore && make deploy
 	cp -aR modules/spellCore/build/* $(BUILD_TARGET)/spellCore
@@ -42,6 +45,9 @@ build-common:
 build/spellCloud: build/linux-x64
 	mkdir -p build/spellCloud
 
+	# copy demo projects
+	cp -aR build/linux-x64/demo_projects build/spellCloud
+	
 	#copy spellCore
 	cp -aR build/linux-x64/spellCore build/spellCloud
 
