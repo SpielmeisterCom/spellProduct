@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# reset all changes made to this checkout (including submodules)
+git reset --hard
+git submodule foreach 'git reset --hard'
+
+# check out the specified revision
+git fetch origin
+git checkout master
+
+git submodule init
+git submodule update
+
+git submodule foreach 'git fetch origin'
+git submodule foreach 'git checkout master'
+
+git commit -a -m "updated to most recent submodules"
+git push origin master
+
