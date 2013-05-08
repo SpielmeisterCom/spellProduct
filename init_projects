@@ -1,10 +1,18 @@
 #!/bin/sh
 
-for PROJECT in `ls -1 projects`
+WORKSPACE=$1
+
+if [ ! -d "$WORKSPACE" ] ; then
+	echo "Usage: $0 WORKSPACE_DIRECTORY"
+	exit 1
+fi
+
+
+for PROJECT in `ls -1 $WORKSPACE`
 do
-	if [ -f "projects/$PROJECT/project.json" ]
+	if [ -f "$WORKSPACE/$PROJECT/project.json" ]
 	then
-		modules/spellCore/spellcli init -d projects/$PROJECT
+		modules/spellCore/spellcli init -d $WORKSPACE/$PROJECT
 	fi
 done
 
