@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cat VERSION >LAST_RELEASED_VERSION
+git add LAST_RELEASED_VERSION 
+git commit LAST_RELEASED_VERSION -m "updated LAST_VERSION file"
