@@ -16,7 +16,7 @@ git checkout $GIT_REVISION
 
 CHECK_GIT_REVISION=$(git rev-parse --verify HEAD)
 
-if [ "$GIT_REVISION" != "$CHECK_GIT_REVISION" ]; then
+if [ "$GIT_REVISION" != "master" ] && [ "$GIT_REVISION" != "$CHECK_GIT_REVISION" ]; then
 	echo Could not checkout $GIT_REVISION
 	exit 1
 fi
