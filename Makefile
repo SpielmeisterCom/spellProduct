@@ -37,7 +37,7 @@ build-common:
 
 	# build spellCore
 	cd modules/spellCore && make deploy
-	cp -aR modules/spellCore/build/* $(BUILD_TARGET)/spellCore
+	cp -aR modules/spellCore/build/* $(BUILD_TARGET)
 
 	#build spellEd
 	cd modules/spellEd && make
@@ -75,25 +75,22 @@ build/spellCloud: build/linux-x64
 
 build/linux-x64: build-common
 	# move spellcli to the right directory
-	mv $(BUILD_TARGET)/spellCore/spellcli $(BUILD_TARGET)
 
-	# create spellEd executable	
-	cp -aR modules/node-webkit/linux-x64/nw.pak $(BUILD_TARGET) 
+	# create spellEd executable
+	cp -aR modules/node-webkit/linux-x64/nw.pak $(BUILD_TARGET)
 	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so $(BUILD_TARGET)
 	cat modules/node-webkit/linux-x64/nw modules/spellEd/build/app.nw >$(BUILD_TARGET)/spelled
-	chmod +x $(BUILD_TARGET)/spelled 
-	
+	chmod +x $(BUILD_TARGET)/spelled
+
 build/osx-ia32: build-common
 	# move spellcli to the right directory
-	mv $(BUILD_TARGET)/spellCore/spellcli $(BUILD_TARGET)
-	
+
 	# create spellEd executable
 	cp -aR modules/node-webkit/osx-ia32/node-webkit.app/ build/osx-ia32/spellEd.app
 	cp modules/spellEd/build/app.nw build/osx-ia32/spellEd.app/Contents/Resources/
 
 build/win-ia32: build-common
 	# move spellcli to the right directory
-	mv $(BUILD_TARGET)/spellCore/spellcli.exe $(BUILD_TARGET)
 
 	#create spelled executable
 
@@ -101,7 +98,7 @@ build/win-ia32: build-common
 	cp -aR modules/node-webkit/win-ia32/libEGL.dll $(BUILD_TARGET)
 	cp -aR modules/node-webkit/win-ia32/icudt.dll $(BUILD_TARGET)
 	cp -aR modules/node-webkit/win-ia32/libGLESv2.dll $(BUILD_TARGET)
-	cp -aR modules/node-webkit/win-ia32/nw.pak $(BUILD_TARGET) 
+	cp -aR modules/node-webkit/win-ia32/nw.pak $(BUILD_TARGET)
 
 	cat modules/node-webkit/win-ia32/nw.exe modules/spellEd/build/app.nw >$(BUILD_TARGET)/spelled.exe
 	chmod +x $(BUILD_TARGET)/spelled.exe
