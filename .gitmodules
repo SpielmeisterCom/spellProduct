@@ -55,3 +55,6 @@
 [submodule "modules/spellAndroid"]
 	path = modules/spellAndroid
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellandroid.git
+[submodule "modules/devkit"]
+	path = modules/devkit
+	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/devkit.git
