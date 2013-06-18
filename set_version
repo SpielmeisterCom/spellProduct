@@ -9,6 +9,8 @@ fi
 
 #setting version and build of spelled
 cd modules/spellEd
+
+git checkout master
 perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" public/app/Configuration.js
 perl -pi -e "s/\"version\"(\s*):(\s*)\"[^\"]*\",/\"version\"\1:\2\"$VERSION\",/g" nw-package/package.json 
 perl -pi -e "s/\"version\"(\s*):(\s*)\"[^\"]*\",/\"version\"\1:\2\"$VERSION\",/g" nw-debug-package/package.json 
@@ -21,6 +23,8 @@ cd ../..
 
 #setting version of spellcli
 cd modules/spellCore
+
+git checkout master
 perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" src/spell/shared/Configuration.js
 
 git add src/spell/shared/Configuration.js
