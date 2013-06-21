@@ -12,7 +12,7 @@ for PROJECT in `ls -1 $WORKSPACE`
 do
 	if [ -f "$WORKSPACE/$PROJECT/project.json" ]
 	then
-		modules/spellCore/spellcli init -d $WORKSPACE/$PROJECT
+		modules/spellCore/spellcli init -p $WORKSPACE/$PROJECT
 	fi
 done
 
