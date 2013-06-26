@@ -47,9 +47,10 @@ build/spellCloud: build/linux-x64
 
 	# copy demo projects
 	cp -aR build/linux-x64/demo_projects build/spellCloud
-	
-	#copy spellCore
+
+	#copy spellCore and spellFlash
 	cp -aR build/linux-x64/spellCore build/spellCloud
+	cp -aR build/linux-x64/spellFlash build/spellCloud
 
 	#copy spellcli
 	cp -a build/linux-x64/spellcli build/spellCloud
