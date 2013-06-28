@@ -9,13 +9,14 @@ fi
 
 
 echo Updating version in spellEngine repository to $VERSION
+git reset --hard
 git checkout master
 git reset --hard
 git pull
 
 echo $VERSION >VERSION
 git add VERSION
-git commit -m "Changed version to $VERSION"
+git commit -m "Changed version to $VERSION" VERSION
 git push origin master
 
 #setting version and build of spelled
@@ -23,6 +24,7 @@ echo Updating version in spellEd to $VERSION
 
 cd modules/spellEd
 
+git reset --hard
 git checkout master
 git reset --hard
 git pull
@@ -32,7 +34,7 @@ perl -pi -e "s/\"version\"(\s*):(\s*)\"[^\"]*\",/\"version\"\1:\2\"$VERSION\",/g
 perl -pi -e "s/\"version\"(\s*):(\s*)\"[^\"]*\",/\"version\"\1:\2\"$VERSION\",/g" nw-debug-package/package.json 
 
 git add public/app/Configuration.js nw-package/package.json nw-debug-package/package.json
-git commit -m "Changed version to $VERSION"
+git commit -m "Changed version to $VERSION" public/app/Configuration.js nw-package/package.json nw-debug-package/package.json
 git push origin master
 
 cd ../..
@@ -42,6 +44,7 @@ echo Updating version in spellCore to $VERSION
 #setting version of spellcli
 cd modules/spellCore
 
+git reset --hard
 git checkout master
 git reset --hard
 git pull
@@ -49,7 +52,7 @@ git pull
 perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" src/spell/shared/Configuration.js
 
 git add src/spell/shared/Configuration.js
-git commit -m "Changed version to $VERSION"
+git commit -m "Changed version to $VERSION" src/spell/shared/Configuration.js
 git push origin master
 
 cd ../..
