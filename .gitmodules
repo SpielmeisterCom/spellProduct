@@ -34,12 +34,6 @@
 [submodule "modules/nodejs"]
 	path = modules/nodejs
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/nodejs.git
-[submodule "modules/android-ndk"]
-	path = modules/android-ndk
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/android-ndk.git
-[submodule "modules/android-sdk"]
-	path = modules/android-sdk
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/android-sdk.git
 [submodule "modules/Ejecta"]
 	path = modules/Ejecta
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/ejecta.git
