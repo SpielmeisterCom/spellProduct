@@ -48,4 +48,4 @@
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/demo_projects.git
 [submodule "modules/spellAndroid"]
 	path = modules/spellAndroid
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellandroid.git
+	url = ssh://git@stash.spielmeister.com:7999/SPELLANDROID/spellandroid.git 
