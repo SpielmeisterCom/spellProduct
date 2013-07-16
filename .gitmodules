@@ -6,7 +6,7 @@
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellflash.git
 [submodule "modules/spellEd"]
 	path = modules/spellEd
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spelled.git
+	url = ssh://git@stash.spielmeister.com:7999/spelled/spelled.git 
 [submodule "modules/jsduck"]
 	path = modules/jsduck
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/jsduck.git
