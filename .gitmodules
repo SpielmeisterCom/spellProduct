@@ -7,12 +7,6 @@
 [submodule "modules/spellEd"]
 	path = modules/spellEd
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spelled.git
-[submodule "modules/ace"]
-	path = modules/ace
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/ace.git
-[submodule "modules/extjs"]
-	path = modules/extjs
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/extjs.git
 [submodule "modules/jsduck"]
 	path = modules/jsduck
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/jsduck.git
@@ -28,9 +22,6 @@
 [submodule "modules/node-webkit"]
 	path = modules/node-webkit
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/node-webkit.git
-[submodule "modules/SenchaCmd"]
-	path = modules/SenchaCmd
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/senchacmd.git
 [submodule "modules/nodejs"]
 	path = modules/nodejs
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/nodejs.git
