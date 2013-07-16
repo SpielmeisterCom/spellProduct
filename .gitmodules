@@ -30,7 +30,7 @@
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/upx.git
 [submodule "node_modules"]
 	path = node_modules
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/node_modules.git
+	url = ssh://git@stash.spielmeister.com:7999/spellcommon/node_modules.git 
 [submodule "demo_projects"]
 	path = demo_projects
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/demo_projects.git
