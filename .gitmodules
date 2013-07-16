@@ -21,7 +21,7 @@
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/spellwin8.git
 [submodule "modules/nodejs"]
 	path = modules/nodejs
-	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/nodejs.git
+	url = ssh://git@stash.spielmeister.com:7999/spellcommon/nodejs.git
 [submodule "modules/Ejecta"]
 	path = modules/Ejecta
 	url = ssh://git@stash.spielmeister.com:7999/SPELLJS/ejecta.git
