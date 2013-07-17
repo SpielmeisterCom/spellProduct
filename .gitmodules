@@ -13,3 +13,6 @@
 [submodule "modules/demo_projects"]
 	path = modules/demo_projects
 	url = ssh://git@stash.spielmeister.com:7999/spellcommon/demo_projects.git
+[submodule "modules/spellCore"]
+	path = modules/spellCore
+	url = ssh://git@stash.spielmeister.com:7999/spellcore/spellcore.git
