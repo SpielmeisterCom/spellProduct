@@ -1,0 +1,15 @@
+[submodule "modules/spellAndroid"]
+	path = modules/spellAndroid
+	url = ssh://git@stash.spielmeister.com:7999/spellandroid/spellandroid.git
+[submodule "modules/spellDocs"]
+	path = modules/spellDocs
+	url = ssh://git@stash.spielmeister.com:7999/spelldocs/spelldocs.git
+[submodule "modules/spellEd"]
+	path = modules/spellEd
+	url = ssh://git@stash.spielmeister.com:7999/spelled/spelled.git
+[submodule "modules/spellFlash"]
+	path = modules/spellFlash
+	url = ssh://git@stash.spielmeister.com:7999/spellflash/spellflash.git
+[submodule "modules/demo_projects"]
+	path = modules/demo_projects
+	url = ssh://git@stash.spielmeister.com:7999/spellcommon/demo_projects.git
