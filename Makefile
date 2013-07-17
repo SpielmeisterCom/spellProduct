@@ -33,7 +33,7 @@ build-common:
 	mkdir -p $(BUILD_TARGET)/spellCore || true
 
 	# copy demo projects
-	rsync -avC demo_projects $(BUILD_TARGET)
+	rsync -avC modules/demo_projects $(BUILD_TARGET)
 
 	# build spellCore
 	cd modules/spellCore && make deploy
