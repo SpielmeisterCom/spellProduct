@@ -1,3 +1,0 @@
-#!/bin/sh
-cd modules/spellEd
-modules/nodejs/node ./server start-server -r ../../modules/demo_projects -c ../spellCore/spellcli
