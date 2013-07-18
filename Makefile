@@ -39,6 +39,10 @@ build-common:
 	cd modules/spellCore && make deploy
 	cp -aR modules/spellCore/build/* $(BUILD_TARGET)
 
+	# build spellFlash
+	cd modules/spellFlash && make
+	cp -aR modules/spellFlash/build/* $(BUILD_TARGET)
+
 	#build spellEd
 	cd modules/spellEd && make
 
@@ -109,4 +113,5 @@ clean:
 	rm -Rf build/*
 	cd modules/spellCore && make clean
 	cd modules/spellEd && make clean
+	cd modules/spellFlash && make clean
 
