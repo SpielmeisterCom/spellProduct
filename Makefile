@@ -44,9 +44,10 @@ build-common:
 	cp -aR modules/spellFlash/build/* $(BUILD_TARGET)
 
 	# add spellcli.cfg
-	echo 'spellCorePath = ./spellCore' > $(BUILD_TARGET)/spellcli.cfg
-	echo 'spellFlashPath = ./spellFlash' >> $(BUILD_TARGET)/spellcli.cfg
-	echo 'licenseFilePath = ./license.txt' >> $(BUILD_TARGET)/spellcli.cfg
+	echo '{' > $(BUILD_TARGET)/config.json
+	echo '	"spellCorePath": "./spellCore",' >> $(BUILD_TARGET)/config.json
+	echo '	"spellFlashPath": "./spellFlash"' >> $(BUILD_TARGET)/config.json
+	echo '}' >> $(BUILD_TARGET)/config.json
 
 	#build spellEd
 	cd modules/spellEd && make
