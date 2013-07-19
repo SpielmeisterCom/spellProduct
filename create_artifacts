@@ -4,12 +4,19 @@
 # the CI server (useful for development or testing or when the CI server is broken)
 # This script is not being used by the CI server because it does it's own artifact handling.
 
-MODULES="spellCli spellCore"
+MODULES="spellCli spellCore spellDocs spellFlash spellAndroid"
+
+git submodule init
+git submodule update
 
 for module in $MODULES; do
 
 	mkdir -p build-artifacts/$module
-	cd modules/$module && make
+
+	cd modules/$module 
+	git submodule init
+	git submodule update
+	make
 	cd ../..
 
 	cp -ar modules/$module/build/* build-artifacts/$module
