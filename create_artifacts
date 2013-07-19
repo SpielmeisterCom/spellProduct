@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# This script can be used to prepare all build artifacts which are needed for a full product build without using
+# the CI server (useful for development or testing or when the CI server is broken)
+# This script is not being used by the CI server because it does it's own artifact handling.
+
+MODULES="spellCli spellCore"
+
+for module in $MODULES; do
+
+	mkdir -p build-artifacts/$module
+	cd modules/$module && make
+	cd ../..
+
+	cp -ar modules/$module/build/* build-artifacts/$module
+done
+
