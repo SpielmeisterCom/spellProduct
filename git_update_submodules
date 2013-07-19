@@ -1,7 +1,7 @@
 #!/bin/sh
 
 for module in $(ls modules); do
-	cd $module
+	cd modules/$module
 
 	git reset --hard
 	git checkout master
@@ -17,6 +17,8 @@ for module in $(ls modules); do
 
 	git commit -a -m "updated to most recent submodules"
 	git push origin master
+	
+	cd ../..
 done
 
 # reset all changes made to this checkout (including submodules)
