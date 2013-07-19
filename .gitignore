@@ -3,3 +3,4 @@
 /build/*
 /atlassian-ide-plugin.xml
 /projects
+build-artifacts/*
