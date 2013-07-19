@@ -42,7 +42,7 @@ cd ../..
 echo Updating version in spellCore to $VERSION
 
 #setting version of spellcli
-cd modules/spellCore
+cd modules/spellCli
 
 git reset --hard
 git checkout master
