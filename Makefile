@@ -36,7 +36,7 @@ build-common:
 	rsync -avC modules/demo_projects $(BUILD_TARGET)
 
 	# build spellCore
-	cd modules/spellCore && make deploy
+	cd modules/spellCore && make
 	cp -aR modules/spellCore/build/* $(BUILD_TARGET)
 
 	# build spellFlash
