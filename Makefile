@@ -17,16 +17,6 @@ endif
 .PHONY: all
 all: clean $(BUILD_TARGET)
 
-# shortcut for rebuild-nw target of spelled
-.PHONY: spellEd-rebuild-nw
-spellEd-rebuild-nw:
-	#rebuild-nw
-	cd modules/spellEd && make rebuild-nw
-
-# rebuild spelled package (useful during development)
-.PHONY: rebuild-spelled
-rebuild-spelled: clean spellEd-rebuild-nw $(BUILD_TARGET)
-
 .PHONY: build-common
 build-common:
 	mkdir -p $(BUILD_TARGET) || true
