@@ -4,16 +4,34 @@ var fs      = require('fs'),
     ff      = require('ff'),
     parser  = new xml2js.Parser(),
     bambooJobConfiguration = {
-        'SPELLJS-SPELLCLI-JOB1':        { dstDir: 'spellCli' },
-        'SPELLJS-SPELLANDROID-JOB1':    { dstDir: 'spellAndroid' },
-        'SPELLJS-SPELLDOCS-JOB1':       { dstDir: 'spellDocs' },
-        'SPELLJS-SPELLED-JOB1':         { dstDir: 'spellEd' },
-        'SPELLJS-SPELLFLASH-JOB1':      { dstDir: 'spellFlash' },
-        'SPELLJS-SPELLCORE-JOB1':       { dstDir: 'spellCore' }
+        'SPELLJS-SPELLCLI-JOB1': {
+            artifact: 'SPELLJS-SPELLCLI',
+            dstDir: 'build-artifacts/spellCli'
+        },
+        'SPELLJS-SPELLANDROID-JOB1': {
+            artifact: 'SPELLJS-SPELLANDROID',
+            dstDir: 'build-artifacts/spellAndroid'
+        },
+        'SPELLJS-SPELLDOCS-JOB1': {
+            artifact: 'SPELLJS-SPELLDOCS',
+            dstDir: 'build-artifacts/spellDocs'
+        },
+        'SPELLJS-SPELLED-JOB1': {
+            artifact: 'SPELLJS-SPELLED',
+            dstDir: 'build-artifacts/spellEd'
+        },
+        'SPELLJS-SPELLFLASH-JOB1': {
+            artifact: 'SPELLJS-SPELLFLASH',
+            dstDir: 'build-artifacts/spellFlash'
+        },
+        'SPELLJS-SPELLCORE-JOB1': {
+            artifact: 'SPELLJS-SPELLCORE',
+            dstDir: 'build-artifacts/spellCore'
+        }
     }
 
 var get_last_successful_build = function(bambooJobKey, completeFn) {
-    var baseDir = '/srv/atlassian/application-data/bamboo/xml-data/builds/' + bambooJobKey
+    var baseDir = '/srv/atlassian/application-data/bamboo/xml-data/builds/' + bambooJobKey + '/results'
 
     var f = ff(this,
         function () {
@@ -64,6 +82,9 @@ var get_last_successful_build = function(bambooJobKey, completeFn) {
 }
 
 var copy_build_artifact = function(jobKey, buildNumber, completeFn) {
+    var baseDir = '/var/atlassian/application-data/bamboo/artifacts/' + bambooJobConfiguration[ jobKey ].artifact + '/shared/build-' + String('00000' + buildNumber).slice(-5);
+
+    console.log('copy artifact from ' + baseDir)
     console.log(jobKey + ' ' + buildNumber )
 }
 
