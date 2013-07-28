@@ -99,8 +99,9 @@ var copy_build_artifact = function(jobKey, buildNumber) {
 var f = ff(this,
     function() {
       console.log('Cleaing build-artifacts directory')
-      wrench.rmdirSyncRecursive('build-artifacts', true)
 
+      wrench.rmdirSyncRecursive('build-artifacts', true)
+      wrench.mkdirSyncRecursive('build-artifacts', 0777)
     },
     function() {
         //get latest successful build for every job
