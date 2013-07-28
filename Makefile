@@ -24,23 +24,13 @@ build-common:
 
 	# copy demo projects
 	rsync -avC modules/demo_projects $(BUILD_TARGET)
-
-	# build spellCore
-	cd modules/spellCore && make
-	cp -aR modules/spellCore/build/* $(BUILD_TARGET)
-
-	# build spellFlash
-	cd modules/spellFlash && make
-	cp -aR modules/spellFlash/build/* $(BUILD_TARGET)
+	cp -aR build-artifacts/* $(BUILD_TARGET)
 
 	# add spellcli.cfg
 	echo '{' > $(BUILD_TARGET)/config.json
 	echo '	"spellCorePath": "./spellCore",' >> $(BUILD_TARGET)/config.json
 	echo '	"spellFlashPath": "./spellFlash"' >> $(BUILD_TARGET)/config.json
 	echo '}' >> $(BUILD_TARGET)/config.json
-
-	#build spellEd
-	cd modules/spellEd && make
 
 build/spellCloud: build/linux-x64
 	mkdir -p build/spellCloud
@@ -75,8 +65,6 @@ build/spellCloud: build/linux-x64
 	cp -aR modules/spellCore/docs/generated build/spellCloud/docs
 
 build/linux-x64: build-common
-	# move spellcli to the right directory
-
 	# create spellEd executable
 	cp -aR modules/node-webkit/linux-x64/nw.pak $(BUILD_TARGET)
 	cp -aR modules/node-webkit/linux-x64/libffmpegsumo.so $(BUILD_TARGET)
@@ -84,8 +72,6 @@ build/linux-x64: build-common
 	chmod +x $(BUILD_TARGET)/spelled
 
 build/osx-ia32: build-common
-	# move spellcli to the right directory
-
 	# create spellEd executable
 	cp -aR modules/node-webkit/osx-ia32/node-webkit.app/ build/osx-ia32/spellEd.app
 	cp modules/spellEd/build/app.nw build/osx-ia32/spellEd.app/Contents/Resources/
@@ -107,7 +93,4 @@ build/win-ia32: build-common
 .PHONY: clean
 clean:
 	rm -Rf build/*
-	cd modules/spellCore && make clean
-	cd modules/spellEd && make clean
-	cd modules/spellFlash && make clean
 
