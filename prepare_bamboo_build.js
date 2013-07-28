@@ -81,14 +81,27 @@ var get_last_successful_build = function(bambooJobKey, completeFn) {
     ).onComplete( completeFn )
 }
 
-var copy_build_artifact = function(jobKey, buildNumber, completeFn) {
-    var baseDir = '/var/atlassian/application-data/bamboo/artifacts/' + bambooJobConfiguration[ jobKey ].artifact + '/shared/build-' + String('00000' + buildNumber).slice(-5);
+var copy_build_artifact = function(jobKey, buildNumber) {
+    var config      = bambooJobConfiguration[ jobKey ],
+        dstDir      = config.dstDir,
+        artifactDir = '/var/atlassian/application-data/bamboo/artifacts/' + config.artifact + '/shared/build-' + String('00000' + buildNumber).slice(-5);
 
-    console.log('copy artifact from ' + baseDir)
-    console.log(jobKey + ' ' + buildNumber )
+    console.log('copying artifact from ' + artifactDir + ' to ' + dstDir)
+
+    wrench.copyDirSyncRecursive(artifactDir, dstDir, {
+        forceDelete: true,
+        excludeHiddenUnix: true,
+        preserveFiles: false,
+        inflateSymlinks: true
+    })
 }
 
 var f = ff(this,
+    function() {
+      console.log('Cleaing build-artifacts directory')
+      wrench.rmdirSyncRecursive('build-artifacts', true)
+
+    },
     function() {
         //get latest successful build for every job
         for( var jobKey in bambooJobConfiguration ) {
@@ -102,9 +115,12 @@ var f = ff(this,
         for (var i=0; i<arguments.length; i++) {
             var latestBuild = arguments[i]
 
-
             copy_build_artifact(latestBuild.jobKey, latestBuild.number)
         }
+    },
+
+    function() {
+        //writing build config
     }
 ).onSuccess(function(result) {
        //console.log(result)
