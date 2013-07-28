@@ -13,7 +13,7 @@ var fs      = require('fs'),
     }
 
 var get_last_successful_build = function(bambooJobKey, completeFn) {
-    var baseDir = 'tmp/results'
+    var baseDir = '/srv/atlassian/application-data/bamboo/xml-data/builds/' + bambooJobKey
 
     var f = ff(this,
         function () {
@@ -80,6 +80,7 @@ var f = ff(this,
 
         for (var i=0; i<arguments.length; i++) {
             var latestBuild = arguments[i]
+
 
             copy_build_artifact(latestBuild.jobKey, latestBuild.number)
         }
