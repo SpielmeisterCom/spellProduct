@@ -13,7 +13,7 @@ var fs      = require('fs'),
     }
 
 var get_last_successful_build = function(bambooJobKey, completeFn) {
-    var baseDir = '/srv/atlassian/application-data/bamboo/xml-data/builds/' + bambooJobKey
+    var baseDir = '/srv/atlassian/application-data/bamboo/xml-data/builds/' + bambooJobKey + '/results'
 
     var f = ff(this,
         function () {
