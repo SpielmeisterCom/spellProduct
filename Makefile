@@ -26,12 +26,6 @@ build-common:
 	rsync -avC modules/demo_projects $(BUILD_TARGET)
 	cp -aR build-artifacts/* $(BUILD_TARGET)
 
-	# add spellcli.cfg
-	echo '{' > $(BUILD_TARGET)/config.json
-	echo '	"spellCorePath": "./spellCore",' >> $(BUILD_TARGET)/config.json
-	echo '	"spellFlashPath": "./spellFlash"' >> $(BUILD_TARGET)/config.json
-	echo '}' >> $(BUILD_TARGET)/config.json
-
 build/spellCloud: build/linux-x64
 	mkdir -p build/spellCloud
 
