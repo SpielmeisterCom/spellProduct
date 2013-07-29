@@ -14,10 +14,20 @@ else ifeq ($(UNAME_S),Darwin)
 BUILD_TARGET = build/osx-ia32
 endif
 
-.PHONY: all
-all: clean $(BUILD_TARGET)
+.PHONY: standalone prepare-bamboo bamboo build-common
+.DEFAULT: standalone
 
-.PHONY: build-common
+prepare-standalone:
+	./create_artifacts
+
+standalone: clean prepare-standalone $(BUILD_TARGET)
+
+prepare-bamboo:
+	modules/nodejs/node prepare_bamboo_build.js
+
+bamboo: clean prepare-bamboo $(BUILD_TARGET)
+
+
 build-common:
 	mkdir -p $(BUILD_TARGET) || true
 	mkdir -p $(BUILD_TARGET)/spellCore || true
