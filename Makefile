@@ -1,7 +1,7 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
 
-#defaults to build/linux-x64
+# defaults to build/linux-x64
 BUILD_TARGET = build/linux-x64
 
 ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
@@ -42,29 +42,29 @@ build/spellCloud: build/linux-x64
 	# copy demo projects
 	cp -aR build/linux-x64/demo_projects build/spellCloud
 
-	#copy spellCore and spellFlash
+	# copy spellCore and spellFlash
 	cp -aR build/linux-x64/spellCore build/spellCloud
 	cp -aR build/linux-x64/spellFlash build/spellCloud
 
-	#copy spellcli
+	# copy spellcli
 	cp -a build/linux-x64/spellcli build/spellCloud
 
-	#copy spellEd
+	# copy spellEd
 	mkdir build/spellCloud/spellEdServer
 	cp -aR modules/spellEd/build/spelledjs/public build/spellCloud/spellEdServer
 
-	#build&copy spellEdServer
+	# build & copy spellEdServer
 	cd modules/spellEd && make build/spelledserver
 
 	cp modules/spellEd/build/spelledserver/spellEdServer.js build/spellCloud/spellEdServer
 
-	#copy node
+	# copy node
 	cp modules/nodejs/linux-x64/bin/node build/spellCloud/spellEdServer
 
-	#copy node_modules
+	# copy node_modules
 	rsync -avzC node_modules build/spellCloud
 
-	#create & copy docs
+	# create & copy docs
 	cd modules/spellCore && make docs
 	cp -aR modules/spellCore/docs/generated build/spellCloud/docs
 
