@@ -66,6 +66,9 @@ build/spellCloud: build/linux-x64
 	cp -aR modules/spellCore/docs/generated build/spellCloud/docs
 
 build/linux-x64: build-common
+	chmod +x $(BUILD_TARGET)/spellCli/spellcli
+	chmod +x $(BUILD_TARGET)/spellEd/spelled
+
 
 build/osx-ia32: build-common
 
