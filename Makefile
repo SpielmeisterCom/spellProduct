@@ -15,14 +15,12 @@ BUILD_TARGET = build/$(ARCH)
 
 .PHONY: all prepare-bamboo bamboo build-common
 
-all: clean prepare-standalone $(BUILD_TARGET)
+all: prepare-standalone $(BUILD_TARGET)
 
-bamboo: clean prepare-bamboo $(BUILD_TARGET)
-
-prepare-standalone:
+prepare-standalone: clean
 	./create_build_artifacts
 
-prepare-bamboo:
+prepare-bamboo: clean
 	modules/nodejs/node prepare_bamboo_build.js
 
 build-common:
