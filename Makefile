@@ -31,10 +31,10 @@ build-common:
 
 	# copy demo projects
 	rsync -avC modules/demo_projects $(BUILD_TARGET)
-	cp -aR build-artifacts/spellAndroid $(BUILD_TARGET)/spellAndroid
 	cp -aR build-artifacts/spellCore $(BUILD_TARGET)/spellCore
 	cp -aR build-artifacts/spellFlash $(BUILD_TARGET)/spellFlash
 	cp -aR build-artifacts/spellCli/$(ARCH) $(BUILD_TARGET)/spellCli
+	cp -aR build-artifacts/spellEd/$(ARCH) $(BUILD_TARGET)/spellEd
 
 build/spellCloud: build/linux-x64
 	mkdir -p build/spellCloud
