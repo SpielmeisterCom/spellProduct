@@ -74,7 +74,7 @@ linux-x64: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
 	
-	cd $(BUILD_TARGET_DIR) && tar -cv . | gzip -9 - >../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar.gz
+	tar -cv -C $(BUILD_TARGET_DIR) . | gzip -9 - >$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar.gz
 
 
 osx-ia32: build-common
