@@ -27,7 +27,6 @@ prepare-bamboo:
 
 build-common:
 	mkdir -p $(BUILD_TARGET) || true
-	mkdir -p $(BUILD_TARGET)/spellCore || true
 
 	# copy demo projects
 	rsync -avC modules/demo_projects $(BUILD_TARGET)
