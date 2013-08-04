@@ -1,17 +1,20 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
+VERSION := $(shell cat VERSION)
 
 ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
-ARCH = win-ia32
+BUILD_TARGET = win-ia32
 else ifeq ($(UNAME_S),CYGWIN_NT-6.2-WOW64)
-ARCH = win-ia32
+BUILD_TARGET = win-ia32
 else ifeq ($(UNAME_S),Linux)
-ARCH = linux-x64
+BUILD_TARGET = linux-x64
 else ifeq ($(UNAME_S),Darwin)
-ARCH = osx-ia32
+BUILD_TARGET = osx-ia32
 endif
 
-BUILD_TARGET = build/$(ARCH)
+BUILD_DIR    = build
+TMP_DIR	     = tmp
+BUILD_TARGET_DIR = $(TMP_DIR)/$(BUILD_TARGET)
 
 .PHONY: all prepare-bamboo bamboo build-common
 
@@ -24,16 +27,18 @@ prepare-bamboo: clean
 	modules/nodejs/node prepare_bamboo_build.js
 
 build-common:
-	mkdir -p $(BUILD_TARGET) || true
+	mkdir -p $(BUILD_DIR) || true
+	mkdir -p $(TMP_DIR) || true
+	mkdir -p $(BUILD_TARGET_DIR) || true
 
 	# copy demo projects
-	rsync -avC modules/demo_projects $(BUILD_TARGET)
-	cp -aR build-artifacts/spellCore $(BUILD_TARGET)/spellCore
-	cp -aR build-artifacts/spellFlash $(BUILD_TARGET)/spellFlash
-	cp -aR build-artifacts/spellCli/$(ARCH) $(BUILD_TARGET)/spellCli
-	cp -aR build-artifacts/spellEd/$(ARCH) $(BUILD_TARGET)/spellEd
+	rsync -avC modules/demo_projects $(BUILD_TARGET_DIR)
+	cp -aR build-artifacts/spellCore $(BUILD_TARGET_DIR)/spellCore
+	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
+	cp -aR build-artifacts/spellCli/$(BUILD_TARGET) $(BUILD_TARGET_DIR)/spellCli
+	cp -aR build-artifacts/spellEd/$(BUILD_TARGET) $(BUILD_TARGET_DIR)/spellEd
 
-build/spellCloud: build/linux-x64
+build/spellCloud: linux-x64
 	mkdir -p build/spellCloud
 
 	# copy demo projects
@@ -65,16 +70,20 @@ build/spellCloud: build/linux-x64
 	cd modules/spellCore && make docs
 	cp -aR modules/spellCore/docs/generated build/spellCloud/docs
 
-build/linux-x64: build-common
-	chmod +x $(BUILD_TARGET)/spellCli/spellcli
-	chmod +x $(BUILD_TARGET)/spellEd/spelled
+linux-x64: build-common
+	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
+	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
+	
+	cd $(BUILD_TARGET_DIR) && tar -cv . | gzip -9 - >$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar.gz
 
 
-build/osx-ia32: build-common
+osx-ia32: build-common
+	cd $(BUILD_TARGET_DIR) && zip -9 -r $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).zip .
 
-build/win-ia32: build-common
+win-ia32: build-common
+	cd $(BUILD_TARGET_DIR) && zip -9 -r $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).zip .
 
 .PHONY: clean
 clean:
-	rm -Rf build/*
+	rm -Rf $(BUILD_DIR) $(TMP_DIR)
 
