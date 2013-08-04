@@ -7,27 +7,33 @@ var fs      = require( 'fs' ),
 var bambooJobConfiguration = {
 	'SPELLJS-SPELLCLI-JOB1': {
 		artifact: 'SPELLJS-SPELLCLI',
-		dstDir: 'build-artifacts'
+		srcDir: 'spellCli',
+		dstDir: 'build-artifacts/spellCli'
 	},
 	'SPELLJS-SPELLANDROID-JOB1': {
 		artifact: 'SPELLJS-SPELLANDROID',
-		dstDir: 'build-artifacts'
+		srcDir: 'spellAndroid',
+		dstDir: 'build-artifacts/spellAndroid'
 	},
 	'SPELLJS-SPELLDOCS-JOB1': {
 		artifact: 'SPELLJS-SPELLDOCS',
-		dstDir: 'build-artifacts'
+		srcDir: 'spellDocs',
+		dstDir: 'build-artifacts/spellDocs'
 	},
 	'SPELLJS-SPELLED-JOB1': {
 		artifact: 'SPELLJS-SPELLED',
-		dstDir: 'build-artifacts'
+		srcDir: 'spellEd',
+		dstDir: 'build-artifacts/spellEd'
 	},
 	'SPELLJS-SPELLFLASH-JOB1': {
 		artifact: 'SPELLJS-SPELLFLASH',
-		dstDir: 'build-artifacts'
+		srcDir: 'spellFlash',
+		dstDir: 'build-artifacts/spellFlash'
 	},
 	'SPELLJS-SPELLCORE-JOB1': {
 		artifact: 'SPELLJS-SPELLCORE',
-		dstDir: 'build-artifacts'
+		srcDir: 'spellCore',
+		dstDir: 'build-artifacts/spellCore'
 	}
 }
 
@@ -86,8 +92,9 @@ var getLastSuccessfulBuild = function( bambooJobKey, completeFn ) {
 
 var copyBuildArtifact = function( jobKey, buildNumber ) {
 	var config      = bambooJobConfiguration[ jobKey ],
+	    	srcDir      = config.srcDir,
 		dstDir      = config.dstDir,
-		artifactDir = '/var/atlassian/application-data/bamboo/artifacts/' + config.artifact + '/shared/build-' + String( '00000' + buildNumber ).slice( -5 )
+		artifactDir = '/var/atlassian/application-data/bamboo/artifacts/' + config.artifact + '/shared/build-' + String( '00000' + buildNumber ).slice( -5 ) + '/' + srcDir
 
 	console.log( 'copying artifact from ' + artifactDir + ' to ' + dstDir )
 
