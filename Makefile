@@ -1,18 +1,17 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
 
-# defaults to build/linux-x64
-BUILD_TARGET = build/linux-x64
-
 ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
-BUILD_TARGET = build/win-ia32
+ARCH = win-ia32
 else ifeq ($(UNAME_S),CYGWIN_NT-6.2-WOW64)
-BUILD_TARGET = build/win-ia32
+ARCH = win-ia32
 else ifeq ($(UNAME_S),Linux)
-BUILD_TARGET = build/linux-x64
+ARCH = linux-x64
 else ifeq ($(UNAME_S),Darwin)
-BUILD_TARGET = build/osx-ia32
+ARCH = osx-ia32
 endif
+
+BUILD_TARGET = build/$(ARCH)
 
 .PHONY: standalone prepare-bamboo bamboo build-common
 .DEFAULT: standalone
@@ -34,7 +33,10 @@ build-common:
 
 	# copy demo projects
 	rsync -avC modules/demo_projects $(BUILD_TARGET)
-	cp -aR build-artifacts/* $(BUILD_TARGET)
+	cp -aR build-artifacts/spellAndroid $(BUILD_TARGET)/spellAndroid
+	cp -aR build-artifacts/spellCore $(BUILD_TARGET)/spellCore
+	cp -aR build-artifacts/spellFlash $(BUILD_TARGET)/spellFlash
+	cp -aR build-artifacts/spellCli/$(ARCH) $(BUILD_TARGET)/spellCli
 
 build/spellCloud: build/linux-x64
 	mkdir -p build/spellCloud
