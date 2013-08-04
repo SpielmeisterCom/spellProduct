@@ -7,27 +7,27 @@ var fs      = require( 'fs' ),
 var bambooJobConfiguration = {
 	'SPELLJS-SPELLCLI-JOB1': {
 		artifact: 'SPELLJS-SPELLCLI',
-		dstDir: 'build-artifacts/spellCli'
+		dstDir: 'build-artifacts'
 	},
 	'SPELLJS-SPELLANDROID-JOB1': {
 		artifact: 'SPELLJS-SPELLANDROID',
-		dstDir: 'build-artifacts/spellAndroid'
+		dstDir: 'build-artifacts'
 	},
 	'SPELLJS-SPELLDOCS-JOB1': {
 		artifact: 'SPELLJS-SPELLDOCS',
-		dstDir: 'build-artifacts/spellDocs'
+		dstDir: 'build-artifacts'
 	},
 	'SPELLJS-SPELLED-JOB1': {
 		artifact: 'SPELLJS-SPELLED',
-		dstDir: 'build-artifacts/spellEd'
+		dstDir: 'build-artifacts'
 	},
 	'SPELLJS-SPELLFLASH-JOB1': {
 		artifact: 'SPELLJS-SPELLFLASH',
-		dstDir: 'build-artifacts/spellFlash'
+		dstDir: 'build-artifacts'
 	},
 	'SPELLJS-SPELLCORE-JOB1': {
 		artifact: 'SPELLJS-SPELLCORE',
-		dstDir: 'build-artifacts/spellCore'
+		dstDir: 'build-artifacts'
 	}
 }
 
