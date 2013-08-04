@@ -13,19 +13,17 @@ endif
 
 BUILD_TARGET = build/$(ARCH)
 
-.PHONY: standalone prepare-bamboo bamboo build-common
-.DEFAULT: standalone
+.PHONY: all prepare-bamboo bamboo build-common
 
-prepare-standalone:
-	./create_artifacts
-
-standalone: clean prepare-standalone $(BUILD_TARGET)
-
-prepare-bamboo:
-	modules/nodejs/node prepare_bamboo_build.js
+all: clean prepare-standalone $(BUILD_TARGET)
 
 bamboo: clean prepare-bamboo $(BUILD_TARGET)
 
+prepare-standalone:
+	./create_build_artifacts
+
+prepare-bamboo:
+	modules/nodejs/node prepare_bamboo_build.js
 
 build-common:
 	mkdir -p $(BUILD_TARGET) || true
