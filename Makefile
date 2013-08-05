@@ -32,9 +32,10 @@ build-common:
 	mkdir -p $(BUILD_TARGET_DIR) || true
 
 	# copy demo projects
-	rsync -avC modules/demo_projects $(BUILD_TARGET_DIR)
+	cp -aR modules/demo_projects $(BUILD_TARGET_DIR)
 	cp -aR build-artifacts/spellCore $(BUILD_TARGET_DIR)/spellCore
 	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
+	cp -aR build-artifacts/spellDocs $(BUILD_TARGET_DIR)/spellDocs
 	cp -aR build-artifacts/spellCli/$(BUILD_TARGET) $(BUILD_TARGET_DIR)/spellCli
 	cp -aR build-artifacts/spellEd/$(BUILD_TARGET) $(BUILD_TARGET_DIR)/spellEd
 
