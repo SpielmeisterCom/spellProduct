@@ -51,8 +51,8 @@ spellCloud: $(TMP_DIR)/linux-x64
 
 	# create and populate spellEdServer directory
 	mkdir -p $(TMP_DIR)/spellCloud/spellEdServer
-	cp -aR modules/spellEd/build/spelledjs/public $(TMP_DIR)/spellCloud/spellEdServer
-	cp modules/spellEd/build/spelledserver/spellEdServer.js $(TMP_DIR)/spellCloud/spellEdServer
+	cp -aR build-artifacts/spellEd/build/spelledjs/public $(TMP_DIR)/spellCloud/spellEdServer
+	cp build-artifacts/spellEd/build/spelledserver/spellEdServer.js $(TMP_DIR)/spellCloud/spellEdServer
 	cp -aR node_modules $(TMP_DIR)/spellCloud/spellEdServer
 	cp modules/nodejs/linux-x64/bin/node $(TMP_DIR)/spellCloud/spellEdServer
 	
