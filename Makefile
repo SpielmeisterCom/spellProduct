@@ -73,6 +73,9 @@ osx-ia32: build-common
 	cd $(BUILD_TARGET_DIR) && zip -9 -r ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).zip .
 
 win-ia32: build-common
+	#change icons for spellcli.exe and spelled.exe
+	#Resourcer -op:upd -src:%EXE_PATH% -type:14 -name:IDR_MAINFRAME -file:%ICO_PATH%
+
 	cd $(BUILD_TARGET_DIR) && zip -9 -r ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).zip .
 
 .PHONY: clean
