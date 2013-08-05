@@ -42,7 +42,7 @@ build-common:
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
 
-spellCloud: linux-x64
+spellCloud: $(TMP_DIR)/linux-x64
 	mkdir -p $(TMP_DIR)/spellCloud
 	cp -aR $(TMP_DIR)/linux-x64/* $(TMP_DIR)/spellCloud
 
@@ -58,7 +58,10 @@ spellCloud: linux-x64
 	
 	cd $(TMP_DIR)/spellCloud && tar -cvf ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar 
 
-linux-x64: build-common
+# shortcut to $(TMP_DIR) so we can reuse the build artifact for spellCloud
+linux-x64: $(TMP_DIR)/linux-x64
+
+$(TMP_DIR)/linux-x64: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
 	
