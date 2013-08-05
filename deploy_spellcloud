@@ -27,7 +27,7 @@ if [ -z "$VERSION" ]; then
 	exit 1
 fi
 
-mkdir $TMP_DIR && cd $TMP_DIR && tar -xvzf $SPELLCLOUD_PACKAGE
+mkdir $TMP_DIR && cd $TMP_DIR && tar -xvzf $SPELLCLOUD_PACKAGE && cd $DIRNAME
 
 echo "Copy old latest version to current version..."
 
