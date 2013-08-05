@@ -42,43 +42,27 @@ build-common:
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
 
-build/spellCloud: linux-x64
-	mkdir -p build/spellCloud
+spellCloud: linux-x64
+	mkdir -p $(TMP_DIR)/spellCloud
+	cp -aR $(TMP_DIR)/linux-x64/* $(TMP_DIR)/spellCloud
 
-	# copy demo projects
-	cp -aR build/linux-x64/demo_projects build/spellCloud
+	# remove spellEd directory because it isn't needed in the spellCloud versin
+	rm -rf $(TMP_DIR)/spellCloud/spellEd
 
-	# copy spellCore and spellFlash
-	cp -aR build/linux-x64/spellCore build/spellCloud
-	cp -aR build/linux-x64/spellFlash build/spellCloud
-
-	# copy spellcli
-	cp -a build/linux-x64/spellcli build/spellCloud
-
-	# copy spellEd
-	mkdir build/spellCloud/spellEdServer
-	cp -aR modules/spellEd/build/spelledjs/public build/spellCloud/spellEdServer
-
-	# build & copy spellEdServer
-	cd modules/spellEd && make build/spelledserver
-
-	cp modules/spellEd/build/spelledserver/spellEdServer.js build/spellCloud/spellEdServer
-
-	# copy node
-	cp modules/nodejs/linux-x64/bin/node build/spellCloud/spellEdServer
-
-	# copy node_modules
-	rsync -avzC node_modules build/spellCloud
-
-	# create & copy docs
-	cd modules/spellCore && make docs
-	cp -aR modules/spellCore/docs/generated build/spellCloud/docs
+	# create and populate spellEdServer directory
+	mkdir -p $(TMP_DIR)/spellCloud/spellEdServer
+	cp -aR modules/spellEd/build/spelledjs/public $(TMP_DIR)/spellCloud/spellEdServer
+	cp modules/spellEd/build/spelledserver/spellEdServer.js $(TMP_DIR)/spellCloud/spellEdServer
+	cp -aR node_modules $(TMP_DIR)/spellCloud/spellEdServer
+	cp modules/nodejs/linux-x64/bin/node $(TMP_DIR)/spellCloud/spellEdServer
+	
+	cd $(TMP_DIR)/spellCloud && tar -cvf ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar 
 
 linux-x64: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
 	
-	cd $(BUILD_TARGET_DIR) && tar -cvf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar 
+	cd $(BUILD_TARGET_DIR) && tar -cvf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar 
 
 
 osx-ia32: build-common
