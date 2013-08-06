@@ -33,7 +33,7 @@ build-common:
 
 	# copy demo projects
 	cp -aR modules/demo_projects $(BUILD_TARGET_DIR)
-	rm -rf $(BUILD_TARGET_DIR)/demo_projects/.git || true
+	rm -rf $(BUILD_TARGET_DIR)/demo_projects/.git $(BUILD_TARGET_DIR)/demo_projects/.gitignore || true
 	cp -aR build-artifacts/spellCore $(BUILD_TARGET_DIR)/spellCore
 	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
 	cp -aR build-artifacts/spellDocs $(BUILD_TARGET_DIR)/spellDocs
