@@ -85,5 +85,6 @@ win-ia32: build-common
 
 .PHONY: clean
 clean:
-	rm -Rf $(BUILD_DIR) $(TMP_DIR) || true
+	rm -rf $(BUILD_DIR) || true 
+	rm -rf $(TMP_DIR) || true
 
