@@ -78,7 +78,7 @@ $(TMP_DIR)/linux-x64: build-common
 
 osx-ia32: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
-	chmod +x "$(BUILD_TARGET_DIR)/spellEd/MacOS/node-webkit"
+	chmod +x "$(BUILD_TARGET_DIR)/spellEd/spellEd.app/Contents/MacOS/node-webkit"
 	chmod +x "$(BUILD_TARGET_DIR)/spellEd/spellEd.app/Contents/Frameworks/node-webkit Helper.app/Contents/MacOS/node-webkit Helper"
 	cd $(BUILD_TARGET_DIR) && tar -cvf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar 
 
