@@ -84,8 +84,15 @@ win-ia32: build-common
 	#Resourcer -op:upd -src:%EXE_PATH% -type:14 -name:IDR_MAINFRAME -file:%ICO_PATH%
 	
 	# sign spellcli.exe and spelled.exe
-	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/spellcli.exe
-	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellEd/spelled.exe
+	# workaround: copy the files to local tmp dir first, because signtool cannot sign the files on a network share
+	cp $(BUILD_TARGET_DIR)/spellCli/spellcli.exe /tmp
+	cp $(BUILD_TARGET_DIR)/spellEd/spelled.exe /tmp
+	
+	modules/certs/sign_authenticode /tmp/spellcli.exe
+	modules/certs/sign_authenticode /tmp/spelled.exe 
+	
+	mv /tmp/spellcli.exe $(BUILD_TARGET_DIR)/spellCli/spellcli.exe
+	mv /tmp/spelled.exe $(BUILD_TARGET_DIR)/spellEd/spelled.exe
 
 	cd $(BUILD_TARGET_DIR) && zip -9 -r ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).zip .
 
