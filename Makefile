@@ -56,7 +56,10 @@ spellCloud: $(TMP_DIR)/linux-x64
 	cp build-artifacts/spellEd/spelledserver/spellEdServer.js $(TMP_DIR)/spellCloud/spellEdServer
 	cp -aR node_modules $(TMP_DIR)/spellCloud/spellEdServer
 	cp modules/nodejs/linux-x64/bin/node $(TMP_DIR)/spellCloud/spellEdServer
-	
+
+	# create a spellConfig.json
+	mv $(TMP_DIR)/spellCloud/defaultSpellConfig.json $(TMP_DIR)/spellCloud/spellConfig.json
+
 	cd $(TMP_DIR)/spellCloud && tar -cvf ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar 
 
 # shortcut to $(TMP_DIR) so we can reuse the build artifact for spellCloud
