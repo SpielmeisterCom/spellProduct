@@ -49,10 +49,10 @@ git checkout master
 git reset --hard
 git pull
 
-perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" src/spell/shared/Configuration.js
+perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" src/spell/BuildInfo.js 
 
-git add src/spell/shared/Configuration.js
-git commit -m "Changed version to $VERSION" src/spell/shared/Configuration.js
+git add src/spell/BuildInfo.js 
+git commit -m "Changed version to $VERSION" src/spell/BuildInfo.js 
 git push origin master
 
 cd ../..
