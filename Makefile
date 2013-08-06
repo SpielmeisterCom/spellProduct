@@ -29,6 +29,8 @@ prepare-bamboo: clean
 build-common:
 	mkdir -p $(BUILD_DIR) || true
 	mkdir -p $(TMP_DIR) || true
+
+	rm -rf $(BUILD_TARGET_DIR) || true
 	mkdir -p $(BUILD_TARGET_DIR) || true
 
 	# copy demo projects
