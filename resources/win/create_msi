@@ -8,7 +8,7 @@ if [ $# -lt 2 ]; then
 	exit 1
 fi
 
-IN_DIR_CYGWIN=$1
+IN_DIR_CYGWIN=$(cd `dirname $1` && pwd)
 IN_DIR=$(cygpath.exe -w $IN_DIR_CYGWIN)
 
 OUTFILE_CYGWIN=$2
