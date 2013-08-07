@@ -11,7 +11,7 @@ fi
 IN_DIR_CYGWIN=$(cd `dirname $1` && pwd)
 IN_DIR=$(cygpath.exe -w $IN_DIR_CYGWIN)
 
-OUTFILE_CYGWIN=$2
+OUTFILE_CYGWIN=$(cd `dirname $2` && pwd)/$(basename $2)
 OUTFILE=$(cygpath.exe -w $OUTFILE_CYGWIN)
 
 PRODUCT_WXS_CYGWIN=$DIRNAME/SpellProduct.wxs
