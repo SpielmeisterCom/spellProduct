@@ -84,8 +84,9 @@ osx-ia32: build-common
 
 win-ia32: build-common
 	#change icons for spellcli.exe and spelled.exe
-	#Resourcer -op:upd -src:%EXE_PATH% -type:14 -name:IDR_MAINFRAME -file:%ICO_PATH%
 	
+	resources/win/set_windows_icon $(BUILD_TARGET_DIR)/spellEd/spelled.exe resources/win/icon.ico
+
 	# sign spellcli.exe and spelled.exe
 	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/spellcli.exe 
 	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellEd/spelled.exe
