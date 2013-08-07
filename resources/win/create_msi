@@ -9,11 +9,12 @@ if [ $# -lt 1 ]; then
 fi
 
 OUTFILE=$(cygpath.exe -w $1)
+WXS_FILE=$(cygpath.exe -w $DIRNAME/SpellProduct.wxs)
 
 echo Generating MSI package in output file $OUTFILE
 
 heat dir . -gg -dr INSTALLDIR -cg SpellProduct -template fragment -out files.wxs
-candle.exe $DIRNAME/SpellProduct.wxs files.wxs
+candle.exe $WXS_FILE files.wxs
 light.exe SpellProduct.wixobj files.wixobj -out $OUTFILE
 
 # remove temp files
