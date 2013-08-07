@@ -8,8 +8,15 @@ fi
 INPUT=$1
 
 ICON_SIZES="16 32 48 64 128"
+ICONS=""
 
 for size in $ICON_SIZES; do
+	FILENAME=icon_$size\x$size.png
+	
 	convert -colors 256 -resize $sizex$size $INPUT \
-		icon_$size\x$size.ico
+		$FILENAME
+	ICONS="$ICONS $FILENAME "
 done
+
+icotool -c -o icon.ico $ICONS
+rm $ICONS
