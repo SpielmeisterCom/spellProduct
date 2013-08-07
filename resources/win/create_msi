@@ -3,27 +3,36 @@
 PATH=$PATH:"/cygdrive/c/Program Files (x86)/WiX Toolset v3.7/bin"
 DIRNAME=$(cd `dirname $0` && pwd)
 
-if [ $# -lt 1 ]; then
-	echo Usage $0 OUTPUT.msi
+if [ $# -lt 2 ]; then
+	echo Usage $0 PATH_TO_DIRECTORY/ OUTPUT.msi
 	exit 1
 fi
 
-OUTFILE=$(cygpath.exe -w $1)
-SPELLPRODUCT_WXS=$DIRNAME/SpellProduct.wxs
-IN_DIR=.
-TMP_DIR=/tmp/$$
-TMP_WXS=$TMP_DIR/files.wxs
+IN_DIR_CYGWIN=$1
+IN_DIR=$(cygpath.exe -w $IN_DIR_CYGWIN)
 
-mkdir $TMP_DIR
-mkdir $TMP_DIR/wixobj
+OUTFILE_CYGWIN=$2
+OUTFILE=$(cygpath.exe -w $OUTFILE_CYGWIN)
 
-echo Generating MSI package in output file $OUTFILE using TMP_DIR $TMP_DIR
+PRODUCT_WXS_CYGWIN=$DIRNAME/SpellProduct.wxs
+PRODUCT_WXS=$(cygpath.exe -w $PRODUCT_WXS_CYGWIN)
 
-heat dir $(cygpath.exe -w $IN_DIR) -gg -dr INSTALLDIR -cg SpellProduct -template fragment -out $(cygpath.exe -w $TMP_WXS)
+TMP_DIR_CYGWIN=/tmp/$$
+TMP_DIR=$(cygpath.exe -w $TMP_DIR_CYGWIN)
 
-candle.exe $(cygpath.exe -w $SPELLPRODUCT_WXS) $(cygpath.exe -w $TMP_WXS) -o $(cygpath.exe -w $TMP_DIR/wixobj)\\
+TMP_WXS_CYGWIN=$TMP_DIR/files.wxs
+TMP_WXS=$(cygpath.exe -w $TMP_WXS_CYGWIN)
 
-light.exe $(cygpath.exe -w $TMP_DIR/wixobj)\\* -b $(cygpath.exe -w $IN_DIR) -out $OUTFILE
+mkdir $TMP_DIR_CYGWIN
+mkdir $TMP_DIR_CYGWIN/wixobj
 
-rm -rf $TMP_DIR
+echo Packaging all files from $IN_DIR into MSI package $OUTFILE using TMP_DIR $TMP_DIR and WXS file $PRODUCT_WXS
+
+heat dir $IN_DIR -gg -dr INSTALLDIR -cg SpellProduct -template fragment -out $TMP_WXS
+
+candle.exe $PRODUCT_WXS $TMP_WXS -o $TMP_DIR\\wixobj\\
+
+light.exe $TMP_DIR\\wixobj\\* -b $IN_DIR -out $OUTFILE
+
+rm -rf $TMP_DIR_CYGWIN
 
