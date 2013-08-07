@@ -4,7 +4,7 @@
     Language="1033" Codepage="1252" Version="0.8.35" Manufacturer="Spielmeister GmbH">
 
     <Package Id="*" Keywords="Installer" Description="SpellJS Installer" Manufacturer="Spielmeister GmbH"
-      InstallerVersion="0.8.35" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
+      InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
 
     <Media Id="1" Cabinet="spellProduct.cab" EmbedCab="yes"/>
 
