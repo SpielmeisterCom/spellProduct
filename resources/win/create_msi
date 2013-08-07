@@ -4,4 +4,4 @@ PATH=$PATH:"/cygdrive/c/Program Files (x86)/WiX Toolset v3.7/bin"
 
 heat dir . -gg -cg SpellProduct -template fragment -out files.wxs
 candle.exe SpellProduct.wxs files.wxs
-light.exe SpellProduct.wixobj files.wixobj
+light.exe SpellProduct.wixobj files.wixobj -out test.msi
