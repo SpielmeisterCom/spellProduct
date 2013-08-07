@@ -14,6 +14,8 @@ IN_DIR=$(cygpath.exe -w $IN_DIR_CYGWIN)
 OUTFILE_CYGWIN=$(cd `dirname $2` && pwd)/$(basename $2)
 OUTFILE=$(cygpath.exe -w $OUTFILE_CYGWIN)
 
+OUTDIR_CYGWIN=$(cd `dirname $2` && pwd)
+
 PRODUCT_WXS_CYGWIN=$DIRNAME/SpellProduct.wxs
 PRODUCT_WXS=$(cygpath.exe -w $PRODUCT_WXS_CYGWIN)
 
@@ -33,4 +35,5 @@ candle.exe $PRODUCT_WXS $TMP_WXS -o $TMP_DIR\\wixobj\\ &&\
 light.exe $TMP_DIR\\wixobj\\* -b $IN_DIR -out $OUTFILE
 
 rm -rf $TMP_DIR_CYGWIN
+rm -f $OUTDIR_CYGWIN/*wixpdb
 
