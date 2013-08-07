@@ -1,0 +1,6 @@
+#!/bin/sh
+
+PATH=$PATH:"/cygdrive/c/Program Files (x86)/WiX Toolset v3.7/bin"
+
+candle.exe SpellProduct.wxs
+light.exe SpellProduct.wixobj
