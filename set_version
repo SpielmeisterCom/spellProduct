@@ -57,7 +57,7 @@ git push origin master
 
 cd ../..
 
-perl -pi -e "s/Version=\"[^\"]*\"/Version=\"$VERSION\"/g" resources/win/spellProduct.wxs 
+perl -pi -e "s/ Version=\"[^\"]*\"/ Version=\"$VERSION\"/g" resources/win/spellProduct.wxs 
 git add resources/win/spellProduct.wxs
 git commit -m "Changed version $VERSION for MSI package generation" resources/win/spellProduct.wxs
 git push origin master
