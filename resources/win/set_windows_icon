@@ -1,0 +1,17 @@
+#!/bin/sh
+
+DIRNAME=$(cd `dirname $0` && pwd)
+
+if [ $# -lt 2 ]; then
+	echo Usage $0 FILE.EXE ICON.ICO
+	exit 1
+fi
+
+EXE_FILE_CYGWIN=$(cd `dirname $1` && pwd)/$(basename $1)
+EXE_FILE=$(cygpath.exe -w $EXE_FILE_CYGWIN)
+
+ICO_FILE_CYGWIN=$(cd `dirname $2` && pwd)/$(basename $2)
+ICO_FILE=$(cygpath.exe -w $ICO_FILE_CYGWIN)
+
+Resourcer.exe -op:upd -src:$EXE_FILE -type:14 -name:IDR_MAINFRAME -file:$ICO_FILE
+
