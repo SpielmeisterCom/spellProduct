@@ -3,10 +3,19 @@
 PATH=$PATH:"/cygdrive/c/Program Files (x86)/WiX Toolset v3.7/bin"
 DIRNAME=$(cd `dirname $0` && pwd)
 
+if [ $# -lt 1 ]; then
+	echo Usage $0 OUTPUT.msi
+	exit 1
+fi
+
+OUTFILE=$(cygpath.exe -w $1)
+
+echo Generating MSI package in output file $OUTFILE
+
 heat dir . -gg -cg SpellProduct -template fragment -out files.wxs
 
 candle.exe $DIRNAME/SpellProduct.wxs files.wxs
-light.exe SpellProduct.wixobj files.wixobj -out test.msi
+light.exe SpellProduct.wixobj files.wixobj -out $OUTFILE
 
 # remove temp files
 rm SpellProduct.wixobj files.wxs files.wixobj
