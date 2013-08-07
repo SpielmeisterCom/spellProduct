@@ -91,7 +91,7 @@ win-ia32: build-common
 	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellEd/spelled.exe
 
 	# create create & sign msi package
-	cd $(BUILD_TARGET_DIR) && ../../resources/win/create_msi ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi
+	resources/win/create_msi $(BUILD_TARGET_DIR) ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi
 	modules/certs/sign_authenticode ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi
 
 	cd $(BUILD_TARGET_DIR) && zip -9 -r ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).zip .
