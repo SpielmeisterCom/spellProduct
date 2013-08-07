@@ -9,16 +9,20 @@ if [ $# -lt 1 ]; then
 fi
 
 OUTFILE=$(cygpath.exe -w $1)
-SPELLPRODUCT_WXS=$(cygpath.exe -w $DIRNAME/SpellProduct.wxs)
-TMP_DIR=$(cygpath.exe -w /tmp/$$)
+SPELLPRODUCT_WXS=$DIRNAME/SpellProduct.wxs
+TMP_DIR=/tmp/$$
+TMP_WXS=$TMP_DIR/files.wxs
 
 mkdir $TMP_DIR
+mkdir $TMP_DIR/wixobj
 
 echo Generating MSI package in output file $OUTFILE using TMP_DIR $TMP_DIR
 
-heat dir . -gg -dr INSTALLDIR -cg SpellProduct -template fragment -out $TEMP_WXS
-candle.exe $SPELLPRODUCT_WXS $TEMP_WXS -o $TMP_DIR\\
-light.exe $TMP_DIR\\* -out $OUTFILE
+heat dir . -gg -dr INSTALLDIR -cg SpellProduct -template fragment -out $(cygpath.exe -w $TMP_WXS)
+
+candle.exe $(cygpath.exe -w $SPELLPRODUCT_WXS) $(cygpath.exe -w $TMP_WXS) -o $(cygpath.exe -w $TMP_DIR/wixobj)\\
+
+light.exe $(cygpath.exe -w $TMP_DIR/wixobj)\\* -out $OUTFILE
 
 rm -rf $TMP_DIR
 
