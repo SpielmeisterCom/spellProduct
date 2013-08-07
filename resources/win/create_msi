@@ -10,8 +10,6 @@ fi
 
 OUTFILE=$(cygpath.exe -w $1)
 SPELLPRODUCT_WXS=$(cygpath.exe -w $DIRNAME/SpellProduct.wxs)
-TEMP_WXS=$(cygpath.exe -w /tmp/files.wxs)
-
 TMP_DIR=$(cygpath.exe -w /tmp/$$)
 
 mkdir $TMP_DIR
@@ -21,3 +19,6 @@ echo Generating MSI package in output file $OUTFILE using TMP_DIR $TMP_DIR
 heat dir . -gg -dr INSTALLDIR -cg SpellProduct -template fragment -out $TEMP_WXS
 candle.exe $SPELLPRODUCT_WXS $TEMP_WXS -o $TMP_DIR\\
 light.exe $TMP_DIR\\* -out $OUTFILE
+
+rm -rf $TMP_DIR
+
