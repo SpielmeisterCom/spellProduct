@@ -7,9 +7,9 @@ fi
 
 INPUT=$1
 
-convert -resize x16 -gravity center -crop 16x16+0+0 $INPUT -flatten -colors 256 icon_16x16.ico
-convert -resize x32 -gravity center -crop 32x32+0+0 $INPUT -flatten -colors 256 icon_32x32.ico
-convert -resize x48 -gravity center -crop 48x48+0+0 $INPUT -flatten -colors 256 icon_48x48.ico
-convert -resize x64 -gravity center -crop 64x64+0+0 $INPUT -flatten -colors 256 icon_64x64.ico
-convert -resize x128 -gravity center -crop 128x128+0+0 $INPUT -flatten -colors 256 icon_128x128.ico
+ICON_SIZES="16 32 48 64 128"
 
+for size in $ICON_SIZES; do
+	convert -colors 256 -resize $sizex$size $INPUT \
+		icon_$size\x$size.ico
+done
