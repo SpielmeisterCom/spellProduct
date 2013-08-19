@@ -30,7 +30,7 @@ mkdir $TMP_DIR_CYGWIN/wixobj
 
 echo Packaging all files from $IN_DIR into MSI package $OUTFILE using TMP_DIR $TMP_DIR and WXS file $PRODUCT_WXS
 
-heat.exe dir $IN_DIR\\ -gg -dr INSTALLDIR -cg TheProduct -template fragment -out $TMP_WXS &&\
+heat.exe dir $IN_DIR\\ -gg -srd -dr INSTALLDIR -cg TheProduct -template fragment -out $TMP_WXS &&\
 candle.exe $PRODUCT_WXS $TMP_WXS -o $TMP_DIR\\wixobj\\ &&\
 light.exe $TMP_DIR\\wixobj\\* -b $IN_DIR\\ -out $OUTFILE
 
