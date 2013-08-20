@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Name="SpellJS" Id="0E450904-47C8-44E1-8615-4758CC60CAED" UpgradeCode="73009432-A0F6-4F94-B6E7-3C9CEBFB5541"
     Language="1033" Codepage="1252" Version="0.8.35" Manufacturer="Spielmeister GmbH">
 
@@ -27,7 +28,10 @@
                   Name="SpellEd"
                   Description="The SpellJS Editor"
                   Target="[SPELLEDDIR]\spelled.exe"
-                  WorkingDirectory="SPELLEDDIR"/>
+		  WorkingDirectory="SPELLEDDIR"/>
+
+	  <util:InternetShortcut Id="OnlineDocumentationShortcut" Name="SpellJS Documentation (online)" Target="http://docs.spelljs.com"/>
+							       	
             <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
             <RegistryValue Root="HKCU" Key="Software\Spielmeister\SpellJS" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
         </Component>
