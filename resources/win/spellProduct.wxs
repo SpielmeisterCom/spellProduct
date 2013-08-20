@@ -30,7 +30,7 @@
                   Target="[SPELLEDDIR]\spelled.exe"
 		  WorkingDirectory="SPELLEDDIR"/>
 
-	  <util:InternetShortcut Id="OnlineDocumentationShortcut" Name="SpellJS Documentation (online)" Target="http://docs.spelljs.com"/>
+	  <util:InternetShortcut Id="OnlineDocumentationShortcut" Name="SpellJS Documentation (online)" Target="http://docs.spelljs.com" Type="url"/>
 							       	
             <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
             <RegistryValue Root="HKCU" Key="Software\Spielmeister\SpellJS" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
