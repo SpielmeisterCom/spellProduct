@@ -4,13 +4,11 @@
   <Product Name="SpellJS" Id="*" UpgradeCode="73009432-A0F6-4F94-B6E7-3C9CEBFB5541"
     Language="1033" Codepage="1252" Version="0.8.36" Manufacturer="Spielmeister GmbH">
 
-    <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
-    <Upgrade Id="3182FB09-54E1-4820-BE91-B7A39931BE36">  
-    <UpgradeVersion
-        Minimum="1.0.0.0" Maximum="99.0.0.0"
-        Property="PREVIOUSVERSIONSINSTALLED"
-        IncludeMinimum="yes" IncludeMaximum="no" />
-    </Upgrade> 
+   <Upgrade Id="73009432-A0F6-4F94-B6E7-3C9CEBFB5541">
+       <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND"
+         Minimum="1.0.0.0"  IncludeMinimum="yes"
+         Maximum="99.0.0.0" IncludeMaximum="no" />
+    </Upgrade>
 
     <InstallExecuteSequence>
 	<RemoveExistingProducts Before="InstallInitialize" /> 
