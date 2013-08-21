@@ -3,22 +3,15 @@
 	xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Name="SpellJS" Id="*" UpgradeCode="73009432-A0F6-4F94-B6E7-3C9CEBFB5541"
     Language="1033" Codepage="1252" Version="0.8.36" Manufacturer="Spielmeister GmbH">
-
-   <Upgrade Id="73009432-A0F6-4F94-B6E7-3C9CEBFB5541">
-       <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND"
-         Minimum="1.0.0.0"  IncludeMinimum="yes"
-         Maximum="99.0.0.0" IncludeMaximum="no" />
-    </Upgrade>
-
-    <InstallExecuteSequence>
-	<RemoveExistingProducts Before="InstallInitialize" /> 
-    </InstallExecuteSequence>
-
-
+    
     <Package Id="*" Keywords="Installer" Description="SpellJS Installer" Manufacturer="Spielmeister GmbH"
       InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
 
     <Media Id="1" Cabinet="spellProduct.cab" EmbedCab="yes"/>
+    
+    <InstallExecuteSequence>
+	<RemoveExistingProducts Before="InstallInitialize" /> 
+    </InstallExecuteSequence>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
 		<Directory Id="ProgramMenuFolder">
