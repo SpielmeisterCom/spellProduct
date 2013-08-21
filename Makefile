@@ -93,7 +93,7 @@ win-ia32: build-common
 
 	# create create & sign msi package
 	resources/win/create_msi $(BUILD_TARGET_DIR) $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi
-	modules/certs/sign_authenticode $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi /d $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi 
+	modules/certs/sign_authenticode $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi "SpellJS" 
 
 .PHONY: clean
 clean:
