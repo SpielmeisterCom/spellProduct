@@ -2,6 +2,7 @@
 	"spellFlashPath": "../spellFlash",
 	"spellCorePath": "../spellCore",
 	"spellCliPath": "../spellCli",
+	"spellAndroidPath": "",
 	"jdkPath": "",
 	"androidSdkPath": ""
 }
