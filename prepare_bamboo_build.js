@@ -71,7 +71,7 @@ var getLastSuccessfulBuild = function( bambooJobKey, completeFn ) {
 					buildDate   = result.BuildResults.myBuildDate[ 0 ]
 
 				if( buildState == 'Successful' &&
-					lastSuccessfulBuild.number < buildNumber ) {
+					parseInt( lastSuccessfulBuild.number, 10 ) < parseInt( buildNumber, 10 ) ) {
 
 					lastSuccessfulBuild.state = buildState
 					lastSuccessfulBuild.number = buildNumber
