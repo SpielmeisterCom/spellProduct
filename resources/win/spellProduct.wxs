@@ -31,6 +31,16 @@
 				</Directory>
 			</Directory>
 		</Directory>
+		
+		<Directory Id="AppDataFolder" Name="AppData">
+			<Directory Id="SpellJSAppData" Name="SpellJS">
+				<Component Id="AppDataFolderCmp" Guid="4933941C-6CF8-4CEE-9B33-81AC8342103E">
+					<CreateFolder/>
+					<RemoveFolder Id="SpellJSAppData" On="uninstall" />
+					<RegistryValue Root="HKCU" Key="Software\Spielmeister\SpellJS" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+				</Component>
+			</Directory>
+		</Directory>
     </Directory>
 
     <DirectoryRef Id="ApplicationProgramsFolder">
@@ -47,16 +57,6 @@
             <RegistryValue Root="HKCU" Key="Software\Spielmeister\SpellJS" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
         </Component>
     </DirectoryRef>
-
-    <Directory Id="AppDataFolder" Name="AppData">
-       <Directory Id="SpellJSAppData" Name="SpellJS">
-        <Component Id="AppDataFolderCmp" Guid="4933941C-6CF8-4CEE-9B33-81AC8342103E">
-        	<CreateFolder/>
-        	<RemoveFolder Id="SpellJSAppData" On="uninstall" />
-        	<RegistryValue Root="HKCU" Key="Software\Spielmeister\SpellJS" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
-      </Component>
-    </Directory>
-  </Directory>
 
     <Feature Id="Complete" Level="1">
 	<ComponentGroupRef Id="TheProduct" />
