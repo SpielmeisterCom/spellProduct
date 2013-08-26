@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
 	xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Name="SpellJS" Id="D0D1B756-63A2-4FE6-9881-70C3D558A6EE" UpgradeCode="73009432-A0F6-4F94-B6E7-3C9CEBFB5541"
-    Language="1033" Codepage="1252" Version="0.8.37" Manufacturer="Spielmeister GmbH">
+    Language="1033" Codepage="1252" Version="0.8.38" Manufacturer="Spielmeister GmbH">
     
     <Package Id="*" Keywords="Installer" Description="SpellJS Installer" Manufacturer="Spielmeister GmbH"
       InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
