@@ -37,7 +37,7 @@
 				<Component Id="AppDataFolderCmp" Guid="4933941C-6CF8-4CEE-9B33-81AC8342103E">
 					<CreateFolder/>
 					<RemoveFolder Id="SpellJSAppData" On="uninstall" />
-					<RegistryValue Root="HKCU" Key="Software\Spielmeister\SpellJS" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+					<RegistryValue Root="HKCU" Key="Software\Spielmeister\SpellJS" Name="appdata" Type="integer" Value="1" KeyPath="yes"/>
 				</Component>
 			</Directory>
 		</Directory>
