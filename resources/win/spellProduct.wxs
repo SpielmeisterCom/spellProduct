@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
 	xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Product Name="SpellJS" Id="D0D1B756-63A2-4FE6-9881-70C3D558A6EE" UpgradeCode="73009432-A0F6-4F94-B6E7-3C9CEBFB5541"
-    Language="1033" Codepage="1252" Version="0.8.37" Manufacturer="Spielmeister GmbH">
+
+  <?define Manufactor = "Spielmeister GmbH"?>
+  <?define UpgradeGuid = "{73009432-A0F6-4F94-B6E7-3C9CEBFB5541}"?>
+  <?define Version = "0.8.37"?>
+
+  <Product Name="SpellJS" Id="*" UpgradeCode="$(var.UpgradeGuid)"
+    Language="1033" Codepage="1252" Version="$(var.Version)" Manufacturer="$(var.Manufactor)">
     
-    <Package Id="*" Keywords="Installer" Description="SpellJS Installer" Manufacturer="Spielmeister GmbH"
+    <Package Id="*" Keywords="Installer" Description="SpellJS Installer" Manufacturer="$(var.Manufactor)"
       InstallerVersion="100" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
 
     <Media Id="1" Cabinet="spellProduct.cab" EmbedCab="yes"/>
-    
-    <InstallExecuteSequence>
-	<RemoveExistingProducts Before="InstallInitialize" /> 
-    </InstallExecuteSequence>
+
+    <Upgrade Id="$(var.UpgradeGuid)">
+      <UpgradeVersion Minimum="!(var.Version)"
+                      IncludeMinimum="no"
+                      OnlyDetect="yes"
+                      Language="1033"
+                      Property="NEWPRODUCTFOUND" />
+      <UpgradeVersion Minimum="0.1.0.0"
+                      IncludeMinimum="yes"
+                      Maximum="!(var.Version)"
+                      IncludeMaximum="no"
+                      Language="1033"
+                      Property="UPGRADEFOUND" />
+      <UpgradeVersion Minimum="1.0.0.0" Maximum="99.0.0.0"
+         Property="PREVIOUSVERSIONSINSTALLED"
+         IncludeMinimum="yes" IncludeMaximum="no" />
+    </Upgrade>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
 		<Directory Id="ProgramMenuFolder">
@@ -45,6 +63,16 @@
 	<ComponentGroupRef Id="TheProduct" />
 	<ComponentRef Id="ApplicationShortcut" />
     </Feature>
+
+    <CustomAction Id="PreventDowngrading"
+                  Error="A newer version of this software is already installed on this computer." />
+
+    <InstallExecuteSequence>
+      <Custom Action="PreventDowngrading"
+              After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
+      <RemoveExistingProducts After="InstallFinalize" />
+    </InstallExecuteSequence>
+
   </Product>
 </Wix>
 
