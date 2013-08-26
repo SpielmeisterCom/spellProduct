@@ -4,7 +4,7 @@
       
   <?define Manufactor = "Spielmeister GmbH"?>
   <?define UpgradeGuid = "{73009432-A0F6-4F94-B6E7-3C9CEBFB5541}"?>
-  <?define Version = "0.8.37"?>
+  <?define Version = "0.8.37.0"?>
 
   <Product Name="SpellJS" Id="*" UpgradeCode="$(var.UpgradeGuid)"
     Language="1033" Codepage="1252" Version="$(var.Version)" Manufacturer="$(var.Manufactor)">
@@ -17,7 +17,7 @@
     <Upgrade Id="$(var.UpgradeGuid)">
 	<UpgradeVersion Minimum="!(var.Version)" IncludeMinimum="no" OnlyDetect="yes" Language="1033" Property="NEWPRODUCTFOUND" />
 	<UpgradeVersion Minimum="0.1.0.0" IncludeMinimum="yes" Maximum="!(var.Version)" IncludeMaximum="no" Language="1033" Property="UPGRADEFOUND" />
-	<UpgradeVersion Minimum="1.0.0.0" Maximum="99.0.0.0" Property="PREVIOUSVERSIONSINSTALLED" IncludeMinimum="yes" IncludeMaximum="no" />
+	<UpgradeVersion Minimum="0.0.0.0" Maximum="99.0.0.0" Property="PREVIOUSVERSIONSINSTALLED" IncludeMinimum="yes" IncludeMaximum="no" />
     </Upgrade>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
