@@ -145,7 +145,7 @@ var f = ff(
 	function( moduleConfig ) {
 		// writing build config
 		var fileContent = JSON.stringify( moduleConfig, null, 4 )
-		fs.writeFileSync( 'build-artifacts/moduleConfig.json', fileContent )
+		fs.writeFileSync( 'build-artifacts/moduleBuilds.json', fileContent )
 	}
 
 ).onSuccess(

@@ -44,7 +44,7 @@ build-common:
 	cp -aR build-artifacts/spellCli/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellCli/
 	cp -aR build-artifacts/spellEd/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellEd/
 
-	cp -aR build-artifacts/moduleConfig.json $(BUILD_TARGET_DIR)/ || true
+	cp -aR build-artifacts/moduleBuilds.json $(BUILD_TARGET_DIR)/ || true
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
