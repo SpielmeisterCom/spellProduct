@@ -17,7 +17,7 @@
     <Upgrade Id="$(var.UpgradeGuid)">
 	<UpgradeVersion Minimum="$(var.Version).0" IncludeMinimum="no" OnlyDetect="yes" Language="1033" Property="NEWPRODUCTFOUND" />
 	<UpgradeVersion Minimum="0.1.0.0" IncludeMinimum="yes" Maximum="$(var.Version).0" IncludeMaximum="no" Language="1033" Property="UPGRADEFOUND" />
-	<UpgradeVersion Minimum="0.0.0.0" Maximum="99.0.0.0" Property="PREVIOUSVERSIONSINSTALLED" IncludeMinimum="yes" IncludeMaximum="no" />
+	<UpgradeVersion Minimum="0.0.0.0" Maximum="$(var.Version).0" Property="PREVIOUSVERSIONSINSTALLED" IncludeMinimum="yes" IncludeMaximum="no" />
     </Upgrade>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
