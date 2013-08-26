@@ -129,14 +129,15 @@ var f = ff(
 
 		// copy all build artifacts
 		for( var i = 0; i < arguments.length; i++ ) {
-			var latestBuild	= arguments[ i ],
-			    config	= bambooJobConfiguration[ latestBuild.jobKey ]
+			var latestBuild		= arguments[ i ],
+			    config		= bambooJobConfiguration[ latestBuild.jobKey ],
+			    buildDate		= new Date( parseInt( latestBuild.date, 10 ) )
 
 			copyBuildArtifact( latestBuild.jobKey, latestBuild.number )
 
 			moduleConfig[ config.artifact ] = {
-				buildNumber: parseInt( latestBuild.number, 10 ),
-				buildTime: parseInt( latestBuild.date, 10 )
+				buildNumber:	parseInt( latestBuild.number, 10 ),
+				buildTimeStamp:	buildDate.toISOString() 
 			}
 		}
 	
