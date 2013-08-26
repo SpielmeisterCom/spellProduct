@@ -125,15 +125,27 @@ var f = ff(
 		}
 	},
 	function() {
+		var moduleConfig = {}
+
 		// copy all build artifacts
 		for( var i = 0; i < arguments.length; i++ ) {
-			var latestBuild = arguments[ i ]
+			var latestBuild	= arguments[ i ],
+			    config	= bambooJobConfiguration[ latestBuild.jobKey ]
 
 			copyBuildArtifact( latestBuild.jobKey, latestBuild.number )
+
+			moduleConfig[ config.artifact ] = {
+				buildNumber: parseInt( latestBuild.number, 10 ),
+				buildTime: parseInt( latestBuild.date, 10 )
+			}
 		}
+	
+		f.pass( moduleConfig )
 	},
-	function() {
+	function( moduleConfig ) {
 		// writing build config
+		var fileContent = JSON.stringify( moduleConfig, null, 4 )
+		fs.writeFileSync( 'build-artifacts/moduleConfig.json', fileContent )
 	}
 
 ).onSuccess(
