@@ -13,22 +13,11 @@
 
     <Media Id="1" Cabinet="spellProduct.cab" EmbedCab="yes"/>
 
-    <Upgrade Id="$(var.UpgradeGuid)">
-      <UpgradeVersion Minimum="!(var.Version)"
-                      IncludeMinimum="no"
-                      OnlyDetect="yes"
-                      Language="1033"
-                      Property="NEWPRODUCTFOUND" />
-      <UpgradeVersion Minimum="0.1.0.0"
-                      IncludeMinimum="yes"
-                      Maximum="!(var.Version)"
-                      IncludeMaximum="no"
-                      Language="1033"
-                      Property="UPGRADEFOUND" />
-      <UpgradeVersion Minimum="1.0.0.0" Maximum="99.0.0.0"
-         Property="PREVIOUSVERSIONSINSTALLED"
-         IncludeMinimum="yes" IncludeMaximum="no" />
-    </Upgrade>
+    <Upgrade Id="$(var.UpgradeGuid)">
+	<UpgradeVersion Minimum="!(var.Version)" IncludeMinimum="no" OnlyDetect="yes" Language="1033" Property="NEWPRODUCTFOUND" />
+	<UpgradeVersion Minimum="0.1.0.0" IncludeMinimum="yes" Maximum="!(var.Version)" IncludeMaximum="no" Language="1033" Property="UPGRADEFOUND" />
+	<UpgradeVersion Minimum="1.0.0.0" Maximum="99.0.0.0" Property="PREVIOUSVERSIONSINSTALLED" IncludeMinimum="yes" IncludeMaximum="no" />
+    </Upgrade>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
 		<Directory Id="ProgramMenuFolder">
@@ -62,15 +51,13 @@
 	<ComponentGroupRef Id="TheProduct" />
 	<ComponentRef Id="ApplicationShortcut" />
     </Feature>
+    
+    <CustomAction Id="PreventDowngrading" Error="A newer version of this software is already installed on this computer." />
 
-    <CustomAction Id="PreventDowngrading"
-                  Error="A newer version of this software is already installed on this computer." />
-
-    <InstallExecuteSequence>
-      <Custom Action="PreventDowngrading"
-              After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
-      <RemoveExistingProducts After="InstallFinalize" />
-    </InstallExecuteSequence>
+    <InstallExecuteSequence>
+	    <Custom Action="PreventDowngrading" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
+	    <RemoveExistingProducts After="InstallFinalize" />
+    </InstallExecuteSequence>
 
   </Product>
 </Wix>
