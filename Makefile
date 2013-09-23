@@ -40,7 +40,7 @@ build-common:
 	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
 	cp -aR build-artifacts/spellDocs $(BUILD_TARGET_DIR)/spellDocs
 
-	mkdir $(BUILD_TARGET_DIR)/spellCli $(BUILD_TARGET_DIR)/spellEd 
+	mkdir $(BUILD_TARGET_DIR)/spellCli $(BUILD_TARGET_DIR)/spellEd
 	cp -aR build-artifacts/spellCli/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellCli/
 	cp -aR build-artifacts/spellEd/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellEd/
 
@@ -66,7 +66,7 @@ spellCloud: $(TMP_DIR)/linux-x64
 	# create a spellConfig.json
 	mv $(TMP_DIR)/spellCloud/defaultSpellConfig.json $(TMP_DIR)/spellCloud/spellConfig.json
 
-	cd $(TMP_DIR)/spellCloud && tar -cvf ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar 
+	cd $(TMP_DIR)/spellCloud && tar -cvpf ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar
 
 # shortcut to $(TMP_DIR) so we can reuse the build artifact for spellCloud
 linux-x64: $(TMP_DIR)/linux-x64
@@ -74,8 +74,8 @@ linux-x64: $(TMP_DIR)/linux-x64
 $(TMP_DIR)/linux-x64: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
-	
-	cd $(BUILD_TARGET_DIR) && tar -cvf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar 
+
+	cd $(BUILD_TARGET_DIR) && tar -cvpf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar
 
 
 osx-ia32: build-common
@@ -85,23 +85,23 @@ osx-ia32: build-common
 	mv $(BUILD_TARGET_DIR)/spellEd/spellEd.app $(BUILD_TARGET_DIR)/../spellEd.app
 	mv $(BUILD_TARGET_DIR)/* "$(BUILD_TARGET_DIR)/../spellEd.app/Contents/Frameworks/node-webkit Helper.app/Contents"
 	mv "$(BUILD_TARGET_DIR)/../spellEd.app" $(BUILD_TARGET_DIR)
-	cd $(BUILD_TARGET_DIR) && tar -cvf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar 
+	cd $(BUILD_TARGET_DIR) && tar -cvpf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar
 
 win-ia32: build-common
 	#change icons for spellcli.exe and spelled.exe
-	
+
 	resources/win/set_windows_icon $(BUILD_TARGET_DIR)/spellEd/spelled.exe resources/win/icon.ico
 
 	# sign spellcli.exe and spelled.exe
-	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/spellcli.exe 
+	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/spellcli.exe
 	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellEd/spelled.exe
 
 	# create create & sign msi package
 	resources/win/create_msi $(BUILD_TARGET_DIR) $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi
-	modules/certs/sign_authenticode $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi "SpellJS" 
+	modules/certs/sign_authenticode $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).msi "SpellJS"
 
 .PHONY: clean
 clean:
-	rm -rf $(BUILD_DIR) || true 
+	rm -rf $(BUILD_DIR) || true
 	rm -rf $(TMP_DIR) || true
 
