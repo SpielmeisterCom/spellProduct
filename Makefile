@@ -85,7 +85,14 @@ osx-ia32: build-common
 	mv $(BUILD_TARGET_DIR)/spellEd/spellEd.app $(BUILD_TARGET_DIR)/../spellEd.app
 	mv $(BUILD_TARGET_DIR)/* "$(BUILD_TARGET_DIR)/../spellEd.app/Contents/Frameworks/node-webkit Helper.app/Contents"
 	mv "$(BUILD_TARGET_DIR)/../spellEd.app" $(BUILD_TARGET_DIR)/SpellJS.app
-	resources/osx/create-dmg/create-dmg --volname "SpellJS $(VERSION)" --window-size 400 180 --icon-size 128 --icon "SpellJS.app" 0 0 --app-drop-link 200 0 ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg $(BUILD_TARGET_DIR)/SpellJS.app
+	resources/osx/create-dmg/create-dmg \
+		--volname "SpellJS $(VERSION)" \
+		--window-size 400 180 \
+		--icon-size 128 \
+		--icon "SpellJS.app" 0 0 \
+		--app-drop-link 200 0 \
+		$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
+		$(BUILD_TARGET_DIR)/SpellJS.app
 
 win-ia32: build-common
 	#change icons for spellcli.exe and spelled.exe
