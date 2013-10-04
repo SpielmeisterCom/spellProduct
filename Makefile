@@ -85,7 +85,7 @@ osx-ia32: build-common
 	mv $(BUILD_TARGET_DIR)/spellEd/spellEd.app $(BUILD_TARGET_DIR)/../spellEd.app
 	mv $(BUILD_TARGET_DIR)/* "$(BUILD_TARGET_DIR)/../spellEd.app/Contents/Frameworks/node-webkit Helper.app/Contents"
 	mv "$(BUILD_TARGET_DIR)/../spellEd.app" $(BUILD_TARGET_DIR)/SpellJS.app
-	resources/osx/create-dmg/create-dmg \
+	resources/run_in_loginwindow_context resources/osx/create-dmg/create-dmg \
 		--volname "SpellJS $(VERSION)" \
 		--window-size 400 180 \
 		--icon-size 128 \
