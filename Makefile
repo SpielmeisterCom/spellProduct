@@ -91,7 +91,10 @@ osx-ia32: build-common
 
 	#change icon
 	cp resources/osx/spelljs.icns $(BUILD_TARGET_DIR)/SpellJS.app/Contents/Resources/nw.icns
-	
+
+	# sign the app bundle
+	codesign -s 2B532D63B91AF0E1FFC1AA6B9AE942DD0A35F881 $(BUILD_TARGET_DIR)/SpellJS.app
+
 	# create dmg
 	resources/osx/run_in_loginwindow_context "resources/osx/create-dmg/create-dmg \
 --volname SpellJS_$(VERSION) \
