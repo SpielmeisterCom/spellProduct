@@ -92,10 +92,11 @@ osx-ia32: build-common
 	# create dmg
 	resources/osx/run_in_loginwindow_context "resources/osx/create-dmg/create-dmg \
 --volname SpellJS_$(VERSION) \
---window-size 400 180 \
---icon-size 128 \
---icon SpellJS.app 0 0 \
---app-drop-link 200 0 \
+--window-size 450 320 \
+--icon-size 96 \
+--icon SpellJS.app 76 158 \
+--app-drop-link 355 158 \
+--background resources/osx/spelljs_dmg_bg.png \
 $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
 $(BUILD_TARGET_DIR)/SpellJS.app"
 
