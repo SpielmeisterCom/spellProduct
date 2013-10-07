@@ -93,7 +93,10 @@ osx-ia32: build-common
 	cp resources/osx/spelljs.icns $(BUILD_TARGET_DIR)/SpellJS.app/Contents/Resources/nw.icns
 
 	# sign the app bundle
-	codesign -s 2B532D63B91AF0E1FFC1AA6B9AE942DD0A35F881 $(BUILD_TARGET_DIR)/SpellJS.app
+	modules/certs/codesign_wrapper \
+modules/certs/apple_macapp/Spielmeister_GmbH.p12 VidTotAr7ma \
+Spielmeister_Developer_ID.cer \
+-s 2B532D63B91AF0E1FFC1AA6B9AE942DD0A35F881 $(BUILD_TARGET_DIR)/SpellJS.app
 
 	# create dmg
 	resources/osx/run_in_loginwindow_context "resources/osx/create-dmg/create-dmg \
