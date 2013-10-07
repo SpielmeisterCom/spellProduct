@@ -86,6 +86,9 @@ osx-ia32: build-common
 	mv $(BUILD_TARGET_DIR)/* "$(BUILD_TARGET_DIR)/../spellEd.app/Contents/Frameworks/node-webkit Helper.app/Contents"
 	mv "$(BUILD_TARGET_DIR)/../spellEd.app" $(BUILD_TARGET_DIR)/SpellJS.app
 
+	#exchange Info.plist
+	cp resources/osx/Info.plist $(BUILD_TARGET_DIR)/SpellJS.app/Contents/Info.plist
+
 	#change icon
 	cp resources/osx/spelljs.icns $(BUILD_TARGET_DIR)/SpellJS.app/Contents/Resources/nw.icns
 	
