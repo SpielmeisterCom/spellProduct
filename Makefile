@@ -95,7 +95,7 @@ osx-ia32: build-common
 	# sign the app bundle
 	modules/certs/codesign_wrapper \
 modules/certs/apple_macapp/Spielmeister_GmbH.p12 VidTotAr7ma \
-Spielmeister_Developer_ID.cer \
+modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 -s 2B532D63B91AF0E1FFC1AA6B9AE942DD0A35F881 $(BUILD_TARGET_DIR)/SpellJS.app
 
 	# create dmg
