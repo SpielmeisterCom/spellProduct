@@ -108,9 +108,9 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 --icon-size 96 \
 --icon SpellJS.app 76 158 \
 --app-drop-link 355 158 \
---background resources/osx/spelljs_dmg_bg.png \
 $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
 $(BUILD_TARGET_DIR)/SpellJS.app"
+#--background resources/osx/spelljs_dmg_bg.png \
 
 win-ia32: build-common
 	#change icons for spellcli.exe and spelled.exe
