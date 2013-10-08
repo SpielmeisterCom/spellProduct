@@ -1,7 +1,7 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
 VERSION := $(shell cat VERSION)
-LOCAL_TMP_DIR := $(shell mktemp -t SpellProduct)
+LOCAL_TMP_DIR := $(shell mktemp -t SpellProductXXX)
 
 ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
 BUILD_TARGET = win-ia32
@@ -103,7 +103,7 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 	# give some feedback for the build logs if the signing suceeded
 	codesign --display --verbose $(BUILD_TARGET_DIR)/SpellJS.app
 
-	mkdir $(LOCAL_TMP_DIR)
+	mkdir $(LOCAL_TMP_DIR) || true
 	cp resources/osx/spelljs_dmg_bg.png $(LOCAL_TMP_DIR)
 	cp -aR $(BUILD_TARGET_DIR)/SpellJS.app $(LOCAL_TMP_DIR) 
 
