@@ -75,8 +75,16 @@ $(TMP_DIR)/linux-x64: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
 
+	#add a root level diretory (needed for the tar generation afterwards)
+	mkdir $(BUILD_TARGET_DIR)/SpellJS_$(VERSION)
+	mv $(BUILD_TARGET_DIR)/* $(BUILD_TARGET_DIR)/SpellJS_$(VERSION) || true
+
+	#create .tar.gz package
 	cd $(BUILD_TARGET_DIR) && tar -cvpf ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).tar
 
+	#remove root level directory again (only needed for tar generation)
+	mv $(BUILD_TARGET_DIR)/SpellJS_$(VERSION)/* $(BUILD_TARGET_DIR)
+	rm -rf $(BUILD_TARGET_DIR)/SpellJS_$(VERSION)
 
 osx-ia32: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
