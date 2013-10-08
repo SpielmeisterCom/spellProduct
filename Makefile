@@ -103,7 +103,8 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 	# give some feedback for the build logs if the signing suceeded
 	codesign --display --verbose $(BUILD_TARGET_DIR)/SpellJS.app
 
-	mkdir $(LOCAL_TMP_DIR) || true
+	rm -rf $(LOCAL_TMP_DIR)
+	mkdir $(LOCAL_TMP_DIR)
 	cp resources/osx/spelljs_dmg_bg.png $(LOCAL_TMP_DIR)
 	cp -aR $(BUILD_TARGET_DIR)/SpellJS.app $(LOCAL_TMP_DIR) 
 
