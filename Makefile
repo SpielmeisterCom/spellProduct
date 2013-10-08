@@ -100,6 +100,8 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 
 	# give some feedback for the build logs if the signing suceeded
 	codesign --display --verbose $(BUILD_TARGET_DIR)/SpellJS.app
+	
+	cp resources/osx/spelljs_dmg_bg.png /Users/buildbot
 
 	# create dmg
 	resources/osx/run_in_loginwindow_context "resources/osx/create-dmg/create-dmg \
@@ -108,9 +110,9 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 --icon-size 96 \
 --icon SpellJS.app 76 158 \
 --app-drop-link 355 158 \
+--background /Users/buildbot/spelljs_dmg_bg.png \
 $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
 $(BUILD_TARGET_DIR)/SpellJS.app"
-#--background resources/osx/spelljs_dmg_bg.png \
 
 win-ia32: build-common
 	#change icons for spellcli.exe and spelled.exe
