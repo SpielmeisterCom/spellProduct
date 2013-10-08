@@ -103,6 +103,8 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 	
 	cp resources/osx/spelljs_dmg_bg.png /Users/buildbot
 
+	cp -aR $(BUILD_TARGET_DIR)/SpellJS.app /Users/buildbot
+
 	# create dmg
 	resources/osx/run_in_loginwindow_context "resources/osx/create-dmg/create-dmg \
 --volname SpellJS_$(VERSION) \
@@ -111,8 +113,11 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 --icon SpellJS.app 76 158 \
 --app-drop-link 355 158 \
 --background /Users/buildbot/spelljs_dmg_bg.png \
-$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
-$(BUILD_TARGET_DIR)/SpellJS.app"
+/Users/buildbot/tmp.dmg \
+/Users/buildbot/SpellJS.app"
+
+	rm -rf /Users/buildbot/SpellJS.app
+	mv /Users/buildbot/tmp.dmg $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg
 
 win-ia32: build-common
 	#change icons for spellcli.exe and spelled.exe
