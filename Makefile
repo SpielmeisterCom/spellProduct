@@ -1,6 +1,7 @@
 UNAME_S := $(shell uname -s)
 UNAME_P := $(shell uname -p)
 VERSION := $(shell cat VERSION)
+LOCAL_TMP_DIR := $(shell mktemp -t SpellProductXXX)
 
 ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
 BUILD_TARGET = win-ia32
@@ -14,6 +15,7 @@ endif
 
 BUILD_DIR    = build
 TMP_DIR	     = tmp
+
 BUILD_TARGET_DIR = $(TMP_DIR)/$(BUILD_TARGET)
 
 .PHONY: all prepare-bamboo bamboo build-common
@@ -109,6 +111,11 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 	# give some feedback for the build logs if the signing suceeded
 	codesign --display --verbose $(BUILD_TARGET_DIR)/SpellJS.app
 
+	rm -rf $(LOCAL_TMP_DIR)
+	mkdir $(LOCAL_TMP_DIR)
+	cp resources/osx/spelljs_dmg_bg.png $(LOCAL_TMP_DIR)
+	cp -aR $(BUILD_TARGET_DIR)/SpellJS.app $(LOCAL_TMP_DIR) 
+
 	# create dmg
 	resources/osx/run_in_loginwindow_context "resources/osx/create-dmg/create-dmg \
 --volname SpellJS_$(VERSION) \
@@ -116,9 +123,12 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 --icon-size 96 \
 --icon SpellJS.app 76 158 \
 --app-drop-link 355 158 \
---background resources/osx/spelljs_dmg_bg.png \
-$(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
-$(BUILD_TARGET_DIR)/SpellJS.app"
+--background /Users/buildbot/spelljs_dmg_bg.png \
+$(LOCAL_TMP_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
+$(LOCAL_TMP_DIR)/SpellJS.app"
+
+	mv $(LOCAL_TMP_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg $(BUILD_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg
+	rm -rf $(LOCAL_TMP_DIR)
 
 win-ia32: build-common
 	#change icons for spellcli.exe and spelled.exe
