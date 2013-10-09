@@ -82,7 +82,7 @@
 	</UI>
       	<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch SpellEd" />
 
-	<Property Id="WixShellExecTarget" Value="[#spellEd/spelled.exe]" />
+	<Property Id="WixShellExecTarget" Value="[SPELLEDDIR]\spelled.exe" />
 	<CustomAction Id="LaunchApplication" 
         BinaryKey="WixCA" 
         DllEntry="WixShellExec"
