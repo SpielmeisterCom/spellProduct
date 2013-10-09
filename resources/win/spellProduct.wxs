@@ -87,10 +87,8 @@
         BinaryKey="WixCA" 
         DllEntry="WixShellExec"
         Impersonate="yes" />
-    </Product>
 
 	<UIRef Id="WixUI_Common" />
-
   </Product>
 </Wix>
 
