@@ -81,7 +81,8 @@
 	  <Publish Dialog="WelcomeDlg" Control="Next" Event="EndDialog" Value="Return" Order="2"></Publish>
 
 	</UI>
-      	<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value=" Launch SpellEd" />
+	<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1"/>
+	<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value=" Launch SpellEd" />
 
 	<Property Id="WixShellExecTarget" Value="[SPELLEDDIR]\spelled.exe" />
 	<CustomAction Id="LaunchApplication" 
