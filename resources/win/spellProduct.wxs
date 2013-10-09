@@ -76,10 +76,19 @@
 	  <DialogRef Id="FatalError" />
 	  <DialogRef Id="UserExit" />
 
-	  <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+	  <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication" Order="999">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
 	  <Publish Dialog="WelcomeDlg" Control="Next" Event="EndDialog" Value="Return" Order="2"></Publish>
 
 	</UI>
+      	<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch SpellEd" />
+
+	<Property Id="WixShellExecTarget" Value="[#spellEd/spelled.exe]" />
+	<CustomAction Id="LaunchApplication" 
+        BinaryKey="WixCA" 
+        DllEntry="WixShellExec"
+        Impersonate="yes" />
+    </Product>
+
 	<UIRef Id="WixUI_Common" />
 
   </Product>
