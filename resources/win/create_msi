@@ -32,7 +32,10 @@ echo Packaging all files from $IN_DIR into MSI package $OUTFILE using TMP_DIR $T
 
 heat.exe dir $IN_DIR\\ -gg -srd -dr INSTALLDIR -cg TheProduct -template fragment -out $TMP_WXS &&\
 candle.exe $PRODUCT_WXS $TMP_WXS -o $TMP_DIR\\wixobj\\ -ext WixUtilExtension &&\
-light.exe $TMP_DIR\\wixobj\\* -b $IN_DIR\\ -ext WixUtilExtension -ext WixUIExtension -dWixUIDialogBmp=resources/win/spelljs_wixui_dialog.bmp -out $OUTFILE
+light.exe $TMP_DIR\\wixobj\\* -b $IN_DIR\\ -ext WixUtilExtension -ext WixUIExtension \
+-dWixUIDialogBmp=resources/win/spelljs_wixui_dialog.bmp \
+-dWixUIBannerBmp=resources/win/spelljs_wixui_banner.bmp \
+-out $OUTFILE
 
 rm -rf $TMP_DIR_CYGWIN
 rm -f $OUTDIR_CYGWIN/*wixpdb
