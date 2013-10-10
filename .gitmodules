@@ -31,6 +31,3 @@
 [submodule "modules/certs"]
 	path = modules/certs
 	url = ssh://git@stash.spielmeister.com:7999/smint/certs.git
-[submodule "modules/jdk"]
-	path = modules/jdk
-	url = ssh://git@stash.spielmeister.com:7999/spellcommon/jdk.git
