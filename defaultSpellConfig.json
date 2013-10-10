@@ -3,6 +3,6 @@
 	"spellCorePath": "../spellCore",
 	"spellCliPath": "../spellCli",
 	"spellAndroidPath": "",
-	"jdkPath": "",
+	"jdkPath": "../jdk",
 	"androidSdkPath": ""
 }

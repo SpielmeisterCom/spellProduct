@@ -5,12 +5,16 @@ LOCAL_TMP_DIR := $(shell mktemp -t SpellProductXXX)
 
 ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
 BUILD_TARGET = win-ia32
+JAVA_TARGET = win-ia32
 else ifeq ($(UNAME_S),CYGWIN_NT-6.2-WOW64)
 BUILD_TARGET = win-ia32
+JAVA_TARGET = win-ia32
 else ifeq ($(UNAME_S),Linux)
 BUILD_TARGET = linux-x64
+JAVA_TARGET = linux-ia32
 else ifeq ($(UNAME_S),Darwin)
 BUILD_TARGET = osx-ia32
+JAVA_TARGET = osx-x64
 endif
 
 BUILD_DIR    = build
@@ -45,6 +49,9 @@ build-common:
 	mkdir $(BUILD_TARGET_DIR)/spellCli $(BUILD_TARGET_DIR)/spellEd
 	cp -aR build-artifacts/spellCli/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellCli/
 	cp -aR build-artifacts/spellEd/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellEd/
+
+	# integrate jdk
+	cp -aR modules/jdk/$(JAVA_TARGET) $(BUILD_TARGET_DIR)/jdk
 
 	cp -aR build-artifacts/moduleBuilds.json $(BUILD_TARGET_DIR)/ || true
 
