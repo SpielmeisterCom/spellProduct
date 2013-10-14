@@ -10,11 +10,11 @@ var bambooJobConfiguration = {
 		srcDir: 'spellCli',
 		dstDir: 'build-artifacts/spellCli'
 	},
-//	'SPELLJS-SPELLANDROID-JOB1': {
-//		artifact: 'SPELLJS-SPELLANDROID',
-//		srcDir: 'spellAndroid',
-//		dstDir: 'build-artifacts/spellAndroid'
-//	},
+	'SPELLJS-SPELLANDROID-JOB1': {
+		artifact: 'SPELLJS-SPELLANDROID',
+		srcDir: 'spellAndroid',
+		dstDir: 'build-artifacts/spellAndroid'
+	},
 	'SPELLJS-SPELLDOCS-JOB1': {
 		artifact: 'SPELLJS-SPELLDOCS',
 		srcDir: 'spellDocs',

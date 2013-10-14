@@ -41,6 +41,7 @@ build-common:
 	cp -aR build-artifacts/spellCore $(BUILD_TARGET_DIR)/spellCore
 	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
 	cp -aR build-artifacts/spellDocs $(BUILD_TARGET_DIR)/spellDocs
+	cp -aR build-artifacts/spellAndroid $(BUILD_TARGET_DIR)/spellAndroid
 
 	mkdir $(BUILD_TARGET_DIR)/spellCli $(BUILD_TARGET_DIR)/spellEd
 	cp -aR build-artifacts/spellCli/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellCli/
