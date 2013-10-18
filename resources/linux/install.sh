@@ -3,7 +3,7 @@
 DIRNAME=$(cd $(dirname $0) && pwd)
 BASE_INSTALL_DIR=/opt
 INSTALL_DIR=$BASE_INSTALL_DIR/$(basename $DIRNAME)
-CONFIG_DIR=$USER/.config/SpellJS
+CONFIG_DIR=$HOME/.config/SpellJS
 
 if [ "$USER" != "root" ]; then
 	echo "This script must be run as the user root"
