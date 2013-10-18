@@ -81,6 +81,7 @@ $(TMP_DIR)/linux-x64: build-common
 	cp resources/linux/install.sh $(BUILD_TARGET_DIR)
 
 	#fix file permissions
+	chmod +x $(BUILD_TARGET_DIR)/spellFlash/vendor/flex_sdk/bin/mxmlc
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
