@@ -78,12 +78,14 @@ $(TMP_DIR)/linux-x64: build-common
 	# provide starter shell scripts
 	cp resources/linux/spellcli $(BUILD_TARGET_DIR)
 	cp resources/linux/spelled $(BUILD_TARGET_DIR)
+	cp resources/linux/install.sh $(BUILD_TARGET_DIR)
 
 	#fix file permissions
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
 	chmod +x $(BUILD_TARGET_DIR)/spelled
+	chmod +x $(BUILD_TARGET_DIR)/install.sh
 	
 	#add a root level diretory (needed for the tar generation afterwards)
 	mkdir $(BUILD_TARGET_DIR)/SpellJS_$(VERSION)
