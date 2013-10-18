@@ -58,8 +58,8 @@ if [ "$REPLY" == "y" ]; then
 		echo
 		echo "Copying $INSTALL_DIR/defaultSpellConfig.json to $CONFIG_DIR/spellConfig.json"
 		echo
-		echo "If you want to use spellcli with your normal user account please copy this template config file"
-		echo "to your ~/.config/SpellJS/spellConfig.json or start spellEd under your normal  user account"
+		echo "If you want to use spellcli with your normal user account copy $INSTALL_DIR/defaultSpellConfig.json"
+		echo "to your ~/.config/SpellJS/spellConfig.json or start spelled under your normal user account"
 
 		cp $INSTALL_DIR/defaultSpellConfig.json $CONFIG_DIR/spellConfig.json
 	fi
