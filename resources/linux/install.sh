@@ -29,7 +29,18 @@ fi
 
 if [ "$REPLY" == "y" ]; then
 	if [ -d $INSTALL_DIR ]; then
-		rm -Rf $INSTALL_DIR
+		REPLY=""
+
+		if [ "$AUTOYES" = "1" ]; then
+		        REPLY="y"
+		else
+		        read -n1 -p "Remove old directory $INSTALL_DIR? (y/n) "
+		        echo
+		fi
+
+		if [ "$REPLY" == "y" ]; then
+			rm -Rf $INSTALL_DIR
+		fi
 	fi
 	
 	mv $DIRNAME $BASE_INSTALL_DIR
