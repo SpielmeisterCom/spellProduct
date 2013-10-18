@@ -1,3 +1,13 @@
 #!/bin/sh
 
-exec $(dirname $0)/spellCli/spellcli $*
+FILE=$0
+while [ -L $FILE ];
+do
+        FILE=$(readlink $FILE)
+done
+
+INSTALLDIR=$(cd `dirname $FILE` && pwd)
+
+exec $INSTALLDIR/spellCli/spellcli $*
+
+

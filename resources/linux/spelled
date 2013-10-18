@@ -1,3 +1,11 @@
 #!/bin/sh
 
-exec $(dirname $0)/spellEd/spelled $*
+FILE=$0
+while [ -L $FILE ];
+do
+        FILE=$(readlink $FILE)
+done
+
+INSTALLDIR=$(cd `dirname $FILE` && pwd)
+
+exec $INSTALLDIR/spellEd/spelled $*
