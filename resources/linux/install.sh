@@ -7,7 +7,11 @@ CONFIG_DIR=$HOME/.config/SpellJS
 
 if [ "$USER" != "root" ]; then
 	echo "This script must be run as the user root"
-	echo "Try sudo $0"
+	read -n1 -p "Should i rerun myself with: sudo $0 (y/n) "
+	echo
+	if [ "$REPLY" == "y" ]; then
+		sudo $0
+	fi
 	exit 1
 fi
 
