@@ -142,8 +142,11 @@ $(LOCAL_TMP_DIR)/SpellJS.app"
 	rm -rf $(LOCAL_TMP_DIR)
 
 win-ia32: build-common
-	#change icons for spellcli.exe and spelled.exe
+	#copy additional cli tools
+	cp -aR resources/win/additional_cli_tools/* $(BUILD_TARGET_DIR)/spellCli
+	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/xsltproc.exe
 
+	#change icons for spellcli.exe and spelled.exe
 	resources/win/set_windows_icon $(BUILD_TARGET_DIR)/spellEd/spelled.exe resources/win/icon.ico
 
 	# sign spellcli.exe and spelled.exe
