@@ -82,6 +82,7 @@ $(TMP_DIR)/linux-x64: build-common
 
 	#fix file permissions
 	chmod +x $(BUILD_TARGET_DIR)/spellFlash/vendor/flex_sdk/bin/mxmlc
+	chmod +x $(BUILD_TARGET_DIR)/spellCli/ant/bin/ant
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellEd/spelled
@@ -142,9 +143,8 @@ $(LOCAL_TMP_DIR)/SpellJS.app"
 	rm -rf $(LOCAL_TMP_DIR)
 
 win-ia32: build-common
-	#copy additional cli tools
-	cp -aR resources/win/additional_cli_tools/* $(BUILD_TARGET_DIR)/spellCli
-	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/xsltproc.exe
+	# sign xsltproc
+	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/xmltools/xsltproc.exe
 
 	#change icons for spellcli.exe and spelled.exe
 	resources/win/set_windows_icon $(BUILD_TARGET_DIR)/spellEd/spelled.exe resources/win/icon.ico
