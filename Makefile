@@ -102,6 +102,7 @@ $(TMP_DIR)/linux-x64: build-common
 
 osx-ia32: build-common
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
+	chmod +x $(BUILD_TARGET_DIR)/spellFlash/vendor/flex_sdk/bin/mxmlc
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/ant/bin/ant
 	chmod +x "$(BUILD_TARGET_DIR)/spellEd/spellEd.app/Contents/MacOS/node-webkit"
 	chmod +x "$(BUILD_TARGET_DIR)/spellEd/spellEd.app/Contents/Frameworks/node-webkit Helper.app/Contents/MacOS/node-webkit Helper"
