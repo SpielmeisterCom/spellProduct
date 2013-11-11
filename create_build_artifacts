@@ -4,7 +4,7 @@
 # the CI server (useful for development or testing or when the CI server is broken)
 # This script is not being used by the CI server because it does it's own artifact handling.
 
-MODULES="spellCli spellCore spellEd spellDocs spellFlash spellAndroid"
+MODULES="spellCli spellCore spellEd spellDocs spellFlash spellAndroid spelliOS"
 
 git submodule init
 git submodule update
