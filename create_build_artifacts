@@ -6,19 +6,17 @@
 
 MODULES="spellCli spellCore spellEd spellDocs spellFlash spellAndroid spelliOS"
 
-git submodule init
-git submodule update
-
 for module in $MODULES; do
 
 	mkdir -p build-artifacts/$module
 
-	cd modules/$module 
-	git submodule init
-	git submodule update
-	make
-	cd ../..
+	if [ ! -d ../$module ]; then
+		echo "Missing ../$module directory"
+		exit 1
+	fi
 
-	cp -ar modules/$module/build/* build-artifacts/$module
+	cd ../$module && make
+
+	cp -ar ../$module/build/* build-artifacts/$module
 done
 
