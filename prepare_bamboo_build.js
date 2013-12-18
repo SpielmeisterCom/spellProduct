@@ -7,7 +7,7 @@ var fs      = require( 'fs' ),
 var bambooJobConfiguration = {
 	'SPELLJS-SPELLCLI-JOB1': {
 		artifact: 'SPELLJS-SPELLCLI',
-		srcDir: '',
+		srcDir: 'spellCli',
 		dstDir: 'build-artifacts/spellCli'
 	},
 	'SPELLJS-SPELLIOS-JOB1': {
