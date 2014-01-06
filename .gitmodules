@@ -7,9 +7,6 @@
 [submodule "node_modules"]
 	path = node_modules
 	url = ssh://git@stash.spielmeister.com:7999/spellcommon/node_modules.git
-[submodule "modules/nodejs"]
-	path = modules/nodejs
-	url = ssh://git@stash.spielmeister.com:7999/spellcommon/nodejs.git
 [submodule "modules/certs"]
 	path = modules/certs
 	url = ssh://git@stash.spielmeister.com:7999/smint/certs.git

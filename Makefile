@@ -26,7 +26,7 @@ prepare-standalone: clean
 	./create_build_artifacts
 
 prepare-bamboo: clean
-	modules/nodejs/node prepare_bamboo_build.js
+	node prepare_bamboo_build.js
 
 build-common:
 	mkdir -p $(BUILD_DIR) || true
@@ -65,7 +65,7 @@ spellCloud: $(TMP_DIR)/linux-x64
 	cp -aR build-artifacts/spellEd/spelledjs/public $(TMP_DIR)/spellCloud/spellEdServer
 	cp build-artifacts/spellEd/spelledserver/spellEdServer.js $(TMP_DIR)/spellCloud/spellEdServer
 	cp -aR node_modules $(TMP_DIR)/spellCloud/spellEdServer
-	cp modules/nodejs/linux-x64/bin/node $(TMP_DIR)/spellCloud/spellEdServer
+	cp /usr/local/bin/node $(TMP_DIR)/spellCloud/spellEdServer
 
 	# create a spellConfig.json
 	mv $(TMP_DIR)/spellCloud/defaultSpellConfig.json $(TMP_DIR)/spellCloud/spellConfig.json
