@@ -7,6 +7,8 @@ ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
 BUILD_TARGET = win-ia32
 else ifeq ($(UNAME_S),CYGWIN_NT-6.2-WOW64)
 BUILD_TARGET = win-ia32
+else ifeq ($(UNAME_S),CYGWIN_NT-6.3-WOW64)
+BUILD_TARGET = win-ia32
 else ifeq ($(UNAME_S),Linux)
 BUILD_TARGET = linux-x64
 else ifeq ($(UNAME_S),Darwin)
