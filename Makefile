@@ -19,15 +19,12 @@ TMP_DIR	     = tmp
 
 BUILD_TARGET_DIR = $(TMP_DIR)/$(BUILD_TARGET)
 
-.PHONY: all prepare-bamboo bamboo build-common
+.PHONY: all bamboo build-common
 
 all: prepare-standalone $(BUILD_TARGET)
 
 prepare-standalone: clean
 	./create_build_artifacts
-
-prepare-bamboo: clean
-	node prepare_bamboo_build.js
 
 build-common:
 	mkdir -p $(BUILD_DIR) || true
