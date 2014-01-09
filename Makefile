@@ -27,7 +27,7 @@ prepare-standalone: clean
 	./create_build_artifacts
 
 prepare-bamboo: clean
-	modules/nodejs/node prepare_bamboo_build.js
+	node prepare_bamboo_build.js
 
 build-common:
 	mkdir -p $(BUILD_DIR) || true
@@ -37,8 +37,8 @@ build-common:
 	mkdir -p $(BUILD_TARGET_DIR) || true
 
 	# copy demo projects
-	cp -aR modules/demo_projects $(BUILD_TARGET_DIR)
-	rm -rf $(BUILD_TARGET_DIR)/demo_projects/.git || true
+#	cp -aR modules/demo_projects $(BUILD_TARGET_DIR)
+#	rm -rf $(BUILD_TARGET_DIR)/demo_projects/.git || true
 	cp -aR build-artifacts/spellCore $(BUILD_TARGET_DIR)/spellCore
 	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
 	cp -aR build-artifacts/spellDocs $(BUILD_TARGET_DIR)/spellDocs
@@ -66,7 +66,7 @@ spellCloud: $(TMP_DIR)/linux-x64
 	cp -aR build-artifacts/spellEd/spelledjs/public $(TMP_DIR)/spellCloud/spellEdServer
 	cp build-artifacts/spellEd/spelledserver/spellEdServer.js $(TMP_DIR)/spellCloud/spellEdServer
 	cp -aR node_modules $(TMP_DIR)/spellCloud/spellEdServer
-	cp modules/nodejs/linux-x64/bin/node $(TMP_DIR)/spellCloud/spellEdServer
+	cp /usr/local/bin/node $(TMP_DIR)/spellCloud/spellEdServer
 
 	# create a spellConfig.json
 	mv $(TMP_DIR)/spellCloud/defaultSpellConfig.json $(TMP_DIR)/spellCloud/spellConfig.json
