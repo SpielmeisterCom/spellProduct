@@ -14,6 +14,7 @@ BUILD_TARGET = osx-ia32
 endif
 
 BUILD_DIR    = build
+BUILD_ARTIFACTS_DIR = build-artifacts
 TMP_DIR	     = tmp
 
 BUILD_TARGET_DIR = $(TMP_DIR)/$(BUILD_TARGET)
@@ -164,4 +165,4 @@ win-ia32: build-common
 clean:
 	rm -rf $(BUILD_DIR) || true
 	rm -rf $(TMP_DIR) || true
-
+	rm -rf $(BUILD_ARTIFACTS_DIR) || true
