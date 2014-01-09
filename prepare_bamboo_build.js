@@ -43,7 +43,7 @@ var bambooJobConfiguration = {
 }
 
 var getLastSuccessfulBuild = function( bambooJobKey, completeFn ) {
-	var baseDir = '/srv/atlassian/application-data/bamboo/xml-data/builds/' + bambooJobKey + '/results'
+	var baseDir = '/var/atlassian/application-data/bamboo/xml-data/builds/' + bambooJobKey + '/results'
 
 	var f = ff(
 		this,
