@@ -1,12 +1,6 @@
-[submodule "modules/node-webkit"]
-	path = modules/node-webkit
-	url = ssh://git@stash.spielmeister.com:7999/spelled/node-webkit.git
 [submodule "node_modules"]
 	path = node_modules
 	url = ssh://git@stash.spielmeister.com:7999/spellcommon/node_modules.git
 [submodule "modules/certs"]
 	path = modules/certs
 	url = ssh://git@stash.spielmeister.com:7999/smint/certs.git
-[submodule "modules/spellPlugins"]
-	path = modules/spellPlugins
-	url = ssh://git@stash.spielmeister.com:7999/spellplugins/spellplugins.git
