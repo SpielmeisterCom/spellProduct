@@ -38,20 +38,20 @@ build-common:
 	rm -rf $(BUILD_TARGET_DIR) || true
 	mkdir -p $(BUILD_TARGET_DIR) || true
 
-	# copy demo projects
-#	cp -aR modules/demo_projects $(BUILD_TARGET_DIR)
-#	rm -rf $(BUILD_TARGET_DIR)/demo_projects/.git || true
-	cp -aR build-artifacts/spellCore $(BUILD_TARGET_DIR)/spellCore
-	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
-	cp -aR build-artifacts/spellDocs $(BUILD_TARGET_DIR)/spellDocs
-	cp -aR build-artifacts/spellAndroid $(BUILD_TARGET_DIR)/spellAndroid
-	cp -aR build-artifacts/spelliOS $(BUILD_TARGET_DIR)/spelliOS
-	cp -aR build-artifacts/spellCli $(BUILD_TARGET_DIR)/spellCli
+	mv build-artifacts/spellCore $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellFlash $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellDocs $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellAndroid $(BUILD_TARGET_DIR)
 
-	mkdir $(BUILD_TARGET_DIR)/spellEd
-	cp -aR build-artifacts/spellEd/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellEd/
+	#TODO: only integrate spelliOS on Mac OS X builds
+	mv build-artifacts/spelliOS $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellCli $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellEd $(BUILD_TARGET_DIR)
 
-	cp -aR build-artifacts/moduleBuilds.json $(BUILD_TARGET_DIR)/ || true
+	# TODO: integrate demo projects copy demo projects
+
+	# TODO: reintegrate moduleBuilds.json
+	#cp -aR build-artifacts/moduleBuilds.json $(BUILD_TARGET_DIR)/ || true
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
