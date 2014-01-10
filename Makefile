@@ -138,7 +138,7 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 --icon-size 96 \
 --icon SpellJS.app 76 158 \
 --app-drop-link 355 158 \
---background /Users/buildbot/spelljs_dmg_bg.png \
+--background $(LOCAL_TMP_DIR)/spelljs_dmg_bg.png \
 $(LOCAL_TMP_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
 $(LOCAL_TMP_DIR)/SpellJS.app"
 
