@@ -12,7 +12,7 @@ fi
 
 echo Copying $FILE
     
-rsync -avzC --delete -e "$SSH" \
+rsync -vzC --delete -e "$SSH" \
 $FILE \
 root@$DEPLOY_HOST:/srv/cdn/prerelease
 
