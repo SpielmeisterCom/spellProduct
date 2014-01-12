@@ -7,8 +7,6 @@ var directories     = fs.readdirSync( 'build-artifacts' ),
 
 
 _.each(directories, function( directory ) {
-	console.log( 'Parsing directory ' + directory )
-
 	var propertyFile = path.join( 'build-artifacts', directory, 'build.properties' )
 
 	if( fs.existsSync( propertyFile ) ) {
