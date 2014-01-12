@@ -35,6 +35,10 @@ build-common:
 	rm -rf $(BUILD_TARGET_DIR) || true
 	mkdir -p $(BUILD_TARGET_DIR) || true
 
+	# generate modulesBuilds.json
+	node generate_moduleBuildsJson.js >$(BUILD_TARGET_DIR)/moduleBuilds.json
+	cat $(BUILD_TARGET_DIR)/moduleBuilds.json
+
 	mv build-artifacts/spellCore $(BUILD_TARGET_DIR)
 	mv build-artifacts/spellFlash $(BUILD_TARGET_DIR)
 	mv build-artifacts/spellDocs $(BUILD_TARGET_DIR)
@@ -43,10 +47,6 @@ build-common:
 	mv build-artifacts/spellEd $(BUILD_TARGET_DIR)
 
 	# TODO: integrate demo projects copy demo projects
-
-	# generate modulesBuilds.json
-	node generate_moduleBuildsJson.js >$(BUILD_TARGET_DIR)/moduleBuilds.json
-	cat $(BUILD_TARGET_DIR)/moduleBuilds.json
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
