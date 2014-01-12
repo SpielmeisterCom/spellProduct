@@ -50,8 +50,8 @@ build-common:
 
 	# TODO: integrate demo projects copy demo projects
 
-	# TODO: reintegrate moduleBuilds.json
-	#cp -aR build-artifacts/moduleBuilds.json $(BUILD_TARGET_DIR)/ || true
+	# generate modulesBuilds.json
+	node generate_moduleBuildsJson.js >$(BUILD_TARGET_DIR)/moduleBuilds.json
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
