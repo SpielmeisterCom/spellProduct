@@ -25,9 +25,6 @@ BUILD_TARGET_DIR = $(TMP_DIR)/$(BUILD_TARGET)
 
 all: prepare-standalone $(BUILD_TARGET)
 
-upload-prerelease:
-	./upload_prelease
-
 prepare-standalone: clean
 	./create_build_artifacts
 
