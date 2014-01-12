@@ -42,9 +42,6 @@ build-common:
 	mv build-artifacts/spellFlash $(BUILD_TARGET_DIR)
 	mv build-artifacts/spellDocs $(BUILD_TARGET_DIR)
 	mv build-artifacts/spellAndroid $(BUILD_TARGET_DIR)
-
-	#TODO: only integrate spelliOS on Mac OS X builds
-	mv build-artifacts/spelliOS $(BUILD_TARGET_DIR)
 	mv build-artifacts/spellCli $(BUILD_TARGET_DIR)
 	mv build-artifacts/spellEd $(BUILD_TARGET_DIR)
 
@@ -79,6 +76,9 @@ spellCloud: $(TMP_DIR)/linux-x64
 linux-x64: $(TMP_DIR)/linux-x64
 
 $(TMP_DIR)/linux-x64: build-common
+	# provide an empty spelliOS directory on linux
+	mkdir $(BUILD_TARGET_DIR)/spelliOS
+
 	# provide starter shell scripts
 	cp resources/linux/spellcli $(BUILD_TARGET_DIR)
 	cp resources/linux/spelled $(BUILD_TARGET_DIR)
@@ -105,6 +105,8 @@ $(TMP_DIR)/linux-x64: build-common
 	rm -rf $(BUILD_TARGET_DIR)/SpellJS_$(VERSION)
 
 osx-ia32: build-common
+	mv build-artifacts/spelliOS $(BUILD_TARGET_DIR)
+
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellFlash/vendor/flex_sdk/bin/mxmlc
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/ant/bin/ant
@@ -149,6 +151,9 @@ $(LOCAL_TMP_DIR)/SpellJS.app"
 	rm -rf $(LOCAL_TMP_DIR)
 
 win-ia32: build-common
+	# provide an empty spelliOS directory on windows
+	mkdir $(BUILD_TARGET_DIR)/spelliOS
+
 	# sign xsltproc
 	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/xmltools/xsltproc.exe
 
