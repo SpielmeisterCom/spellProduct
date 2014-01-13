@@ -22,7 +22,7 @@ git push origin master
 #setting version and build of spelled
 echo Updating version in spellEd to $VERSION
 
-cd modules/spellEd
+cd ../spellEd
 
 git reset --hard
 git checkout master
@@ -37,12 +37,12 @@ git add public/app/Configuration.js nw-package/package.json nw-debug-package/pac
 git commit -m "Changed version to $VERSION" public/app/Configuration.js nw-package/package.json nw-debug-package/package.json
 git push origin master
 
-cd ../..
+cd spellProduct
 
 echo Updating version in spellCore to $VERSION
 
 #setting version of spellcli
-cd modules/spellCli
+cd ../spellCli
 
 git reset --hard
 git checkout master
@@ -55,7 +55,7 @@ git add src/spell/BuildInfo.js
 git commit -m "Changed version to $VERSION" src/spell/BuildInfo.js 
 git push origin master
 
-cd ../..
+cd spellProduct 
 
 #perl -pi -e "s/ Version=\"[^\"]*\"/ Version=\"$VERSION\"/g" resources/win/spellProduct.wxs 
 perl -pi -e "s/Version = \"[^\"]*\"/Version = \"$VERSION\"/g" resources/win/spellProduct.wxs 
