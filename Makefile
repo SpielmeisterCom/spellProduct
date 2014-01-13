@@ -47,6 +47,7 @@ build-common:
 	mv build-artifacts/spellEd $(BUILD_TARGET_DIR)
 
 	# TODO: integrate demo projects copy demo projects
+	mkdir $(BUILD_TARGET_DIR)/demo_projects
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
