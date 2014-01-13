@@ -3,11 +3,11 @@
 	"spellCorePath": "../spellCore",
 	"spellCliPath": "../spellCli",
 	"spellAndroidPath": "../spellAndroid",
-	"spelliOSPath": "",
-	"spellWindowsPhone8": "",
-	"tizenSdkPath": "",
-	"windowsSdkPath": "",
-	"msBuildPath": "",	
-	"jdkPath": "",
-	"androidSdkPath": ""
+	"spelliOSPath": "../spelliOS",
+	"spellWindowsPhone8": ".",
+	"tizenSdkPath": ".",
+	"windowsSdkPath": ".",
+	"msBuildPath": ".",
+	"jdkPath": ".",
+	"androidSdkPath": "."
 }
