@@ -152,6 +152,7 @@ $(LOCAL_TMP_DIR)/SpellJS.app"
 win-ia32: build-common
 	# provide an empty spelliOS directory on windows
 	mkdir $(BUILD_TARGET_DIR)/spelliOS
+	echo keepdir >$(BUILD_TARGET_DIR)/spelliOS/KEEPDIR
 
 	# sign xsltproc
 	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/xmltools/xsltproc.exe
