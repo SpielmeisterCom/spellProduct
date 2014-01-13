@@ -23,7 +23,10 @@ _.each(directories, function( directory ) {
 				properties[ property[ 0 ] ] =  (property[ 0 ] == 'buildNumber') ? parseInt( property[ 1 ], 10 ) : property[ 1 ]
 			})
 
-		moduleConfigs[ properties.buildKey ] = properties
+		var buildPlanName = properties.buildPlanName || ""
+		buildPlanNameParts = buildPlanName.split( / - / )
+
+		moduleConfigs[ buildPlanNameParts[ 1 ] ] = properties
 	}
 })
 
