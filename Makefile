@@ -52,26 +52,7 @@ build-common:
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
 
-spellCloud: $(TMP_DIR)/linux-x64
-	mkdir -p $(TMP_DIR)/spellCloud
-	cp -aR $(TMP_DIR)/linux-x64/* $(TMP_DIR)/spellCloud
-
-	# remove spellEd directory because it isn't needed in the spellCloud versin
-	rm -rf $(TMP_DIR)/spellCloud/spellEd
-
-	# create and populate spellEdServer directory
-	mkdir -p $(TMP_DIR)/spellCloud/spellEdServer
-	cp -aR build-artifacts/spellEd/spelledjs/public $(TMP_DIR)/spellCloud/spellEdServer
-	cp build-artifacts/spellEd/spelledserver/spellEdServer.js $(TMP_DIR)/spellCloud/spellEdServer
-	cp -aR node_modules $(TMP_DIR)/spellCloud/spellEdServer
-	cp modules/nodejs/linux-x64/bin/node $(TMP_DIR)/spellCloud/spellEdServer
-
-	# create a spellConfig.json
-	mv $(TMP_DIR)/spellCloud/defaultSpellConfig.json $(TMP_DIR)/spellCloud/spellConfig.json
-
-	cd $(TMP_DIR)/spellCloud && tar -cvpf ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar * && gzip --best --force ../../$(BUILD_DIR)/spelljs-cloud-$(VERSION).tar
-
-# shortcut to $(TMP_DIR) so we can reuse the build artifact for spellCloud
+# shortcut to $(TMP_DIR) 
 linux-x64: $(TMP_DIR)/linux-x64
 
 $(TMP_DIR)/linux-x64: build-common
