@@ -7,6 +7,8 @@ ifeq ($(UNAME_S),CYGWIN_NT-6.1-WOW64)
 BUILD_TARGET = win-ia32
 else ifeq ($(UNAME_S),CYGWIN_NT-6.2-WOW64)
 BUILD_TARGET = win-ia32
+else ifeq ($(UNAME_S),CYGWIN_NT-6.3-WOW64)
+BUILD_TARGET = win-ia32
 else ifeq ($(UNAME_S),Linux)
 BUILD_TARGET = linux-x64
 else ifeq ($(UNAME_S),Darwin)
@@ -14,19 +16,17 @@ BUILD_TARGET = osx-ia32
 endif
 
 BUILD_DIR    = build
+BUILD_ARTIFACTS_DIR = build-artifacts
 TMP_DIR	     = tmp
 
 BUILD_TARGET_DIR = $(TMP_DIR)/$(BUILD_TARGET)
 
-.PHONY: all prepare-bamboo bamboo build-common
+.PHONY: all build-common
 
 all: prepare-standalone $(BUILD_TARGET)
 
 prepare-standalone: clean
 	./create_build_artifacts
-
-prepare-bamboo: clean
-	modules/nodejs/node prepare_bamboo_build.js
 
 build-common:
 	mkdir -p $(BUILD_DIR) || true
@@ -35,19 +35,19 @@ build-common:
 	rm -rf $(BUILD_TARGET_DIR) || true
 	mkdir -p $(BUILD_TARGET_DIR) || true
 
-	# copy demo projects
-	cp -aR modules/demo_projects $(BUILD_TARGET_DIR)
-	rm -rf $(BUILD_TARGET_DIR)/demo_projects/.git || true
-	cp -aR build-artifacts/spellCore $(BUILD_TARGET_DIR)/spellCore
-	cp -aR build-artifacts/spellFlash $(BUILD_TARGET_DIR)/spellFlash
-	cp -aR build-artifacts/spellDocs $(BUILD_TARGET_DIR)/spellDocs
-	cp -aR build-artifacts/spellAndroid $(BUILD_TARGET_DIR)/spellAndroid
+	# generate modulesBuilds.json
+	node generate_moduleBuildsJson.js >$(BUILD_TARGET_DIR)/moduleBuilds.json
+	cat $(BUILD_TARGET_DIR)/moduleBuilds.json
 
-	mkdir $(BUILD_TARGET_DIR)/spellCli $(BUILD_TARGET_DIR)/spellEd
-	cp -aR build-artifacts/spellCli/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellCli/
-	cp -aR build-artifacts/spellEd/$(BUILD_TARGET)/* $(BUILD_TARGET_DIR)/spellEd/
+	mv build-artifacts/spellCore $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellFlash $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellDocs $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellAndroid $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellCli $(BUILD_TARGET_DIR)
+	mv build-artifacts/spellEd $(BUILD_TARGET_DIR)
 
-	cp -aR build-artifacts/moduleBuilds.json $(BUILD_TARGET_DIR)/ || true
+	# TODO: integrate demo projects copy demo projects
+	mkdir $(BUILD_TARGET_DIR)/demo_projects
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
@@ -56,6 +56,9 @@ build-common:
 linux-x64: $(TMP_DIR)/linux-x64
 
 $(TMP_DIR)/linux-x64: build-common
+	# provide an empty spelliOS directory on linux
+	mkdir $(BUILD_TARGET_DIR)/spelliOS
+
 	# provide starter shell scripts
 	cp resources/linux/spellcli $(BUILD_TARGET_DIR)
 	cp resources/linux/spelled $(BUILD_TARGET_DIR)
@@ -82,6 +85,8 @@ $(TMP_DIR)/linux-x64: build-common
 	rm -rf $(BUILD_TARGET_DIR)/SpellJS_$(VERSION)
 
 osx-ia32: build-common
+	mv build-artifacts/spelliOS $(BUILD_TARGET_DIR)
+
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/spellcli
 	chmod +x $(BUILD_TARGET_DIR)/spellFlash/vendor/flex_sdk/bin/mxmlc
 	chmod +x $(BUILD_TARGET_DIR)/spellCli/ant/bin/ant
@@ -118,7 +123,7 @@ modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 --icon-size 96 \
 --icon SpellJS.app 76 158 \
 --app-drop-link 355 158 \
---background /Users/buildbot/spelljs_dmg_bg.png \
+--background $(LOCAL_TMP_DIR)/spelljs_dmg_bg.png \
 $(LOCAL_TMP_DIR)/spelljs-desktop-$(VERSION)-$(BUILD_TARGET).dmg \
 $(LOCAL_TMP_DIR)/SpellJS.app"
 
@@ -126,6 +131,10 @@ $(LOCAL_TMP_DIR)/SpellJS.app"
 	rm -rf $(LOCAL_TMP_DIR)
 
 win-ia32: build-common
+	# provide an empty spelliOS directory on windows
+	mkdir $(BUILD_TARGET_DIR)/spelliOS
+	echo keepdir >$(BUILD_TARGET_DIR)/spelliOS/KEEPDIR
+
 	# sign xsltproc
 	modules/certs/sign_authenticode $(BUILD_TARGET_DIR)/spellCli/xmltools/xsltproc.exe
 
@@ -144,4 +153,4 @@ win-ia32: build-common
 clean:
 	rm -rf $(BUILD_DIR) || true
 	rm -rf $(TMP_DIR) || true
-
+	rm -rf $(BUILD_ARTIFACTS_DIR) || true

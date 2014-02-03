@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PATH=$PATH:"/cygdrive/c/Program Files (x86)/WiX Toolset v3.7/bin"
+PATH=$PATH:"/cygdrive/c/Program Files (x86)/WiX Toolset v3.8/bin"
 DIRNAME=$(cd `dirname $0` && pwd)
 
 if [ $# -lt 2 ]; then

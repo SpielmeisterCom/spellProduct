@@ -4,21 +4,19 @@
 # the CI server (useful for development or testing or when the CI server is broken)
 # This script is not being used by the CI server because it does it's own artifact handling.
 
-MODULES="spellCli spellCore spellEd spellDocs spellFlash spellAndroid"
-
-git submodule init
-git submodule update
+MODULES="spellCli spellCore spellEd spellDocs spellFlash spellAndroid spelliOS"
 
 for module in $MODULES; do
 
 	mkdir -p build-artifacts/$module
 
-	cd modules/$module 
-	git submodule init
-	git submodule update
-	make
-	cd ../..
+	if [ ! -d ../$module ]; then
+		echo "Missing ../$module directory"
+		exit 1
+	fi
 
-	cp -ar modules/$module/build/* build-artifacts/$module
+	cd ../$module && make
+
+	cp -ar ../$module/build/* build-artifacts/$module
 done
 

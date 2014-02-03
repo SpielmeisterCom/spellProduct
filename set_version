@@ -8,21 +8,28 @@ if [ -z "$VERSION" ] ; then
 fi
 
 
-echo Updating version in spellEngine repository to $VERSION
+echo Updating version in spellProduct repository to $VERSION
 git reset --hard
 git checkout master
 git reset --hard
 git pull
 
+# change version in VERSION file
 echo $VERSION >VERSION
 git add VERSION
 git commit -m "Changed version to $VERSION" VERSION
+
+# change version of MSI generator
+perl -pi -e "s/Version = \"[^\"]*\"/Version = \"$VERSION\"/g" resources/win/spellProduct.wxs 
+git add resources/win/spellProduct.wxs
+git commit -m "Changed version $VERSION for MSI package generation" resources/win/spellProduct.wxs
+
 git push origin master
 
 #setting version and build of spelled
 echo Updating version in spellEd to $VERSION
 
-cd modules/spellEd
+cd ../spellEd
 
 git reset --hard
 git checkout master
@@ -37,12 +44,12 @@ git add public/app/Configuration.js nw-package/package.json nw-debug-package/pac
 git commit -m "Changed version to $VERSION" public/app/Configuration.js nw-package/package.json nw-debug-package/package.json
 git push origin master
 
-cd ../..
+cd spellProduct
 
 echo Updating version in spellCore to $VERSION
 
 #setting version of spellcli
-cd modules/spellCli
+cd ../spellCli
 
 git reset --hard
 git checkout master
@@ -53,14 +60,5 @@ perl -pi -e "s/version(\s*):(\s*)\'[^\']*\',/version\1:\2\'$VERSION\',/g" src/sp
 
 git add src/spell/BuildInfo.js 
 git commit -m "Changed version to $VERSION" src/spell/BuildInfo.js 
-git push origin master
-
-cd ../..
-
-#perl -pi -e "s/ Version=\"[^\"]*\"/ Version=\"$VERSION\"/g" resources/win/spellProduct.wxs 
-perl -pi -e "s/Version = \"[^\"]*\"/Version = \"$VERSION\"/g" resources/win/spellProduct.wxs 
-
-git add resources/win/spellProduct.wxs
-git commit -m "Changed version $VERSION for MSI package generation" resources/win/spellProduct.wxs
 git push origin master
 
