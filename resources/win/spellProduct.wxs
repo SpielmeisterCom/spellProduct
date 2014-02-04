@@ -4,7 +4,7 @@
       
   <?define Manufactor = "Spielmeister GmbH"?>
   <?define UpgradeGuid = "{73009432-A0F6-4F94-B6E7-3C9CEBFB5541}"?>
-  <?define Version = "0.10.0"?>
+  <?define Version = "0.9.6"?>
 
   <Product Name="SpellJS $(var.Version)" Id="*" UpgradeCode="$(var.UpgradeGuid)"
     Language="1033" Codepage="1252" Version="$(var.Version).0" Manufacturer="$(var.Manufactor)">
