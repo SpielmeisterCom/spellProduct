@@ -7,3 +7,6 @@
 [submodule "demo_projects/demo_asteroids"]
 	path = demo_projects/demo_asteroids
 	url = ssh://git@stash.spielmeister.com:7999/smg/demo_asteroids.git
+[submodule "demo_projects/demo_physics"]
+	path = demo_projects/demo_physics
+	url = ssh://git@stash.spielmeister.com:7999/smg/demo_physics.git
