@@ -55,8 +55,8 @@ build-common:
 	cp -aR demo_projects/demo_physics $(BUILD_TARGET_DIR)/demo_physics
 	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_physics/.git
 	
-	cp -aR demo_projects/demo_benchmarks $(BUILD_TARGET_DIR)/demo_benchmarks
-	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_benchmarks/.git
+	cp -aR demo_projects/demo_benchmark $(BUILD_TARGET_DIR)/demo_benchmark
+	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_benchmark/.git
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
