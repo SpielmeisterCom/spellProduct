@@ -51,6 +51,9 @@ build-common:
 	cp -aR demo_projects/demo_asteroids $(BUILD_TARGET_DIR)/demo_projects
 	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_asteroids/.git
 
+	cp -aR demo_projects/demo_physics $(BUILD_TARGET_DIR)/demo_physics
+	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_physics/.git
+
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
 
