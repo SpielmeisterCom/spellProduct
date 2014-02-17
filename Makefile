@@ -48,11 +48,15 @@ build-common:
 
 	# TODO: integrate demo projects copy demo projects
 	mkdir $(BUILD_TARGET_DIR)/demo_projects
+
 	cp -aR demo_projects/demo_asteroids $(BUILD_TARGET_DIR)/demo_projects
 	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_asteroids/.git
 
 	cp -aR demo_projects/demo_physics $(BUILD_TARGET_DIR)/demo_physics
 	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_physics/.git
+	
+	cp -aR demo_projects/demo_benchmarks $(BUILD_TARGET_DIR)/demo_benchmarks
+	rm -rf $(BUILD_TARGET_DIR)/demo_projects/demo_benchmarks/.git
 
 	# provide a default config for the spell product
 	cp defaultSpellConfig.json $(BUILD_TARGET_DIR)
