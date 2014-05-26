@@ -112,13 +112,13 @@ osx-ia32: build-common
 	cp resources/osx/spelljs.icns $(BUILD_TARGET_DIR)/SpellJS.app/Contents/Resources/nw.icns
 
 	# sign the app bundle
-	modules/certs/codesign_wrapper \
+#	modules/certs/codesign_wrapper \
 modules/certs/apple_macapp/Spielmeister_GmbH.p12 VidTotAr7ma \
 modules/certs/apple_macapp/Spielmeister_Developer_ID.cer \
 -s 2B532D63B91AF0E1FFC1AA6B9AE942DD0A35F881 $(BUILD_TARGET_DIR)/SpellJS.app
 
 	# give some feedback for the build logs if the signing suceeded
-	codesign --display --verbose $(BUILD_TARGET_DIR)/SpellJS.app
+#	codesign --display --verbose $(BUILD_TARGET_DIR)/SpellJS.app
 
 	rm -rf $(LOCAL_TMP_DIR)
 	mkdir $(LOCAL_TMP_DIR)
